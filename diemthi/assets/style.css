@@ -172,7 +172,9 @@ hr.soften {
 	border-radius:2px;
 }
 .carousel-control, .carousel-control:hover {
+
 	background:#0A5BC4; 
+
 	height:43px; 
 	line-height:34px; 
 	color: #fff;
