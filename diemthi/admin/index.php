@@ -7,7 +7,6 @@ if($_SESSION['ses_level']!=1) {
 }
 ?>
 <div class="banner">
-    <center><img src="../assets/img/Ban.gif"></center>
     <body bgcolor="#CAFFFF">
     <style type="text/css">
         #menu ul{
@@ -45,8 +44,8 @@ if($_SESSION['ses_level']!=1) {
     </style>
 <link rel="stylesheet" type="text/css" href="style.css">
 <div id="menu" >
-    <p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">CHÀO MỪNG BẠN ĐẾN TRANG QUẢN TRỊ HỆ THỐNG</p>
-    <p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">TRƯỜNG THPT TRẦN KHAI NGUYÊN</p>
+    <p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">WELCOME TO THE SYSTEM ADMIN PAGE</p>
+    <p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">TRƯỜNG ĐẠI HỌC MỞ TP. HỒ CHÍ MINH</p>
     	<ul>
             <li><a href="index.php?mod=hs">Quản Lý Học Sinh</a></li>
             <li><a href="index.php?mod=gv">Quản Lý Giáo Viên</a></li>
@@ -67,7 +66,7 @@ if($_SESSION['ses_level']!=1) {
     <TR>
         <TD>	<tr>
         <td  colspan="2" bgcolor="#336699" align="center" style="color:white; height: 30px" >
-            Copyright &copy; 2016 Trường THPT Trần Khai Nguyên <br>
+           Dev&Designed by hthanh and mkhue <br>
         </td>
     </tr>
     </td>
