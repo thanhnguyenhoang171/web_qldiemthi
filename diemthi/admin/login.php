@@ -87,20 +87,22 @@ if (isset($_POST['ok'])) {
 </head>
 
 <body>
-	<div style="margin-top:60px;text-align: center;font-weight: bold;font-size: 25px;font-family: Tahoma ">TRƯỜNG ĐẠI
+	<div
+		style="margin-top:60px;text-align: center;font-weight: bold;font-size: 25px;font-family: Tahoma ; color:#f1f1f1;">
+		TRƯỜNG ĐẠI
 		HỌC MỞ TP. HỒ CHÍ MINH</div>
-	<div style="margin-top:20px;text-align: center;font-weight: bold;font-size: 25px;font-family: Tahoma ">TRANG QUẢN
-		TRỊ</div>
+	<div style="margin-top:20px;text-align: center;font-size: 25px;font-family: Tahoma;color:#f1f1f1; ">
+		TÀI KHOẢN QUẢN TRỊ VIÊN</div>
 	<div class="wrap">
 		<div class="avatar">
 			<img src="../assets/img/images/admin.png">
 		</div>
 		<form action="login.php" method="post" novalidate>
-			<input type="text" name="txtuser" placeholder="Username" required>
+			<input type="text" name="txtuser" placeholder="username" required>
 			<div class="bar">
 				<i></i>
 			</div>
-			<input type="password" name="txtpass" placeholder="Password" required>
+			<input type="password" name="txtpass" placeholder="password" required>
 			<a href="" class="forgot_link">refresh</a>
 			<button><input type="submit" name="ok" value="Đăng Nhập" /></button>
 		</form>
