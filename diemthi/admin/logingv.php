@@ -66,19 +66,19 @@ if(isset($_POST['gv'])){
 </head>
 
 <body>
-<div style="margin-top:60px;text-align: center;font-weight: bold;font-size: 25px;font-family: Tahoma ">TRƯỜNG THPT TRẦN KHAI NGUYÊN</div>
-<div style="margin-top:20px;text-align: center;font-weight: bold;font-size: 25px;font-family: Tahoma ">TRANG GIÁO VIÊN</div>
+<div style="margin-top:60px;text-align: center;font-weight: bold;font-size: 25px;font-family: Tahoma;color:#f1f1f1 ">TRƯỜNG ĐẠI HỌC MỞ THÀNH PHỐ HỒ CHÍ MINH</div>
+<div style="margin-top:20px;text-align: center; font-size: 25px;font-family: Tahoma;color:#f1f1f1;  ">TÀI KHOẢN GIẢNG VIÊN</div>
   <div class="wrap" style="margin-top: 40px">
 		<div class="avatar">
       <img src="../assets/img/images/gv.jpg">
 		</div>
 		<form action="logingv.php" method="post">
-		<input type="text" name="txtusergv" placeholder="Tên tài khoản" required>
+		<input type="text" name="txtusergv" placeholder="username" required>
 		<div class="bar">
 			<i></i>
 		</div>
-		<input type="password" name="txtpassgv" placeholder="Mật Khẩu" required>
-		<a href="" class="forgot_link">làm mới lại ?</a>
+		<input type="password" name="txtpassgv" placeholder="password" required>
+		<a href="" class="forgot_link">refresh?</a>
 		<button><input type="submit" name="gv" value="Đăng Nhập" /></button>
 	</form>
 	</div>
