@@ -60,7 +60,13 @@ if (isset($_POST['ok'])) {
 			$_SESSION['ses_level'] = $data['level'];
 			$_SESSION['ses_userid'] = $data['userid'];
 			$_SESSION['password'] = $data['password'];
-			header("location:index.php");
+			?>
+			<script type="text/javascript">
+				alert("Đăng nhập thành công!");
+				window.location = "index.php";
+			</script>
+			<?php
+			//header("location:index.php");
 			exit();
 		}
 
