@@ -249,21 +249,22 @@ hr.soften {
 	color:#444;
 }
 .caption p{
-	margin:0
+	margin: 0
 }
 .caption h4{
 	margin:0
 }
 .thumbnail .caption {
 	padding: 9px;
-	color: 555555;
+	color: #555555;
 	background: #F3F2F2;
 }
 .footer {
-	background-color:#C00; 
+	background-color:#0A5BC4; 
 	color:#eee; 
-	padding: 28px 8px 18px; 
+	padding: 20px 8px 18px; 
 	margin-top: 18px;
+	
 }
 .footer a{
 	color:#bbb; 
@@ -271,29 +272,30 @@ hr.soften {
 }
 .copyright {
 	clear: both; 
-	padding: 8px; 
+	padding: 2px; 
 	border-top: 1px solid #CCC; 
 	font-size: 13px; 
 	background: #f2f2f2; 
 	box-shadow: 0 0 3px #B1AFAF;
+	text-align: center;
 }
 .topNav{
-	padding: 0;
+	padding: 2px;
 	border-bottom: 1px solid #CCC;
 	background: white;
 	box-shadow: 0 0 3px #B1AFAF;
 }
 .topNav a{
 	color:#596ed3; 
-	font-size:12px; 
+	font-size:13px; 
 	font-weight:bold; 
 	display:inline-block;  
-	padding:8px 4px;
+	padding:10px 2px;
 	text-decoration: none;
 }
 .topNav a:hover, .topNav a.active{
 	color:#4876FF; 
-	background:#F86706; 
+	background:#959bb5; 
 	text-decoration:none;
 }
 .socialNw a{
@@ -561,12 +563,12 @@ hr.soften {
 	border-left-color:#C00;
 	border-top-color:#C00;
 	border-right-color:#C00;
-	background-color:#C00
+	background-color:#022b61
 }
 
 .nav1{
 	background-color:#F2F2F2;
-	color:#C00;
+	color:rgb(33, 33, 33);
 	border-left-color:#63F;
 	border-right-color:#63F;
 	border-top-color:#63F;
