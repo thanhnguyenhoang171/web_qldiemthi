@@ -11,19 +11,8 @@
 
 	<div class="banner">
 		<center><img src="../assets/img/Ban.png" width="100%" height="250px"></center>
-<body bgcolor="#b5d5ff">
-<?php
-echo '<br/>';
-?>
-<?php
-?>
-<style type="text/css">
-#menu ul{
-	margin-left:145px;
-	text-align: center;
 
-
-		<body bgcolor="#CAFFFF">
+		<body bgcolor="CCFF99">
 			<?php
 			echo '<br/>';
 			?>
@@ -34,38 +23,38 @@ echo '<br/>';
 					margin-left: 14.9vw;
 					padding-bottom: 40vh;
 					text-align: center;
-
 				}
+
 				.menu {}
 
 				#menu ul li {
 					display: inline;
 
 				}
-        #menu ul a{
-            text-decoration:none;
-              width: 490px;
-            float:left;
-            background:#0a428d;
-            color:#FFFFFF;
-            text-align:center;
-            line-height:27px;
-            font-weight:bold;
-            border-left:1px solid #FFFFFF;
-        }
 
-        #menu ul a:hover{
-            background:#f1f1f1;
-            color:#000;
-        }
+				#menu ul a {
+					text-decoration: none;
+					width: 490px;
+					float: left;
+					background: #0a428d;
+					color: #FFFFFF;
+					text-align: center;
+					line-height: 27px;
+					font-weight: bold;
+					border-left: 1px solid #FFFFFF;
+				}
+
+				#menu ul a:hover {
+					background: #f1f1f1;
+					color: #000;
+				}
 			</style>
 			<link rel="stylesheet" type="text/css" href="style.css">
 			<div id="menu">
 				<p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large;color:#FF3300;">CHÀO
 					MỪNG BẠN ĐẾN
 					TRANG ĐĂNG NHẬP</p>
-				<p
-					style="font-family: Tahoma; font-style: italic; text-align: center; font-size: large; color: #F1F1F1">
+				<p style="font-family: Tahoma; font-style: italic; text-align: center; font-size: large; color: 000066">
 					Hãy chọn loại
 					tài khoản để đăng nhập</p>
 
@@ -86,5 +75,6 @@ echo '<br/>';
 				</TR>
 			</table>
 		</body>
+
 
 </html>
