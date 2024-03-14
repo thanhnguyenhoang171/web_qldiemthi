@@ -12,7 +12,7 @@
 	<div class="banner">
 		<center><img src="../assets/img/Ban.png" width="100%" height="250px"></center>
 
-		<body bgcolor="CCFF99">
+		<body bgcolor="a3cbff">
 			<?php
 			echo '<br/>';
 			?>
@@ -20,7 +20,7 @@
 			?>
 			<style type="text/css">
 				#menu ul {
-					margin-left: 14.9vw;
+					margin-left: 21.3vw;
 					padding-bottom: 40vh;
 					text-align: center;
 				}
@@ -51,7 +51,7 @@
 			</style>
 			<link rel="stylesheet" type="text/css" href="style.css">
 			<div id="menu">
-				<p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large;color:#FF3300;">CHÀO
+				<p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: 30px;color:#f1f1f1;">CHÀO
 					MỪNG BẠN ĐẾN
 					TRANG ĐĂNG NHẬP</p>
 				<p style="font-family: Tahoma; font-style: italic; text-align: center; font-size: large; color: 000066">
