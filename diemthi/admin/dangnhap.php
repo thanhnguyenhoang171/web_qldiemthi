@@ -7,7 +7,7 @@
 <body>
 <div class="banner">
 <center><img src="../assets/img/Ban.gif"></center>
-<body bgcolor="#CAFFFF">
+<body bgcolor="#b5d5ff">
 <?php
 echo '<br/>';
 ?>
@@ -30,7 +30,7 @@ display:inline;
 text-decoration:none;
 	width: 490px;
 float:left;
-background:#336699;
+background:#0a428d;
 color:#FFFFFF;
 text-align:center;
 line-height:27px;
@@ -39,7 +39,8 @@ border-left:1px solid #FFFFFF;
 }
 
 #menu ul a:hover{
-background:#000000;
+background:#f1f1f1;
+color:#000;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -53,7 +54,7 @@ background:#000000;
 <table  border=0 cellpadding=5 cellspacing=0 align="center" width="983">
 	<TR>
 		<TD>	<tr>
-		<td  colspan="2" bgcolor="#336699" align="center" style="color:white" >
+		<td  colspan="2" bgcolor="#0A5BC4" align="center" style="color:white" >
 		 Copyright &copy; 20016 Trường THPT Trần Khai Nguyên <br>		
 		</td>
 	</tr>
