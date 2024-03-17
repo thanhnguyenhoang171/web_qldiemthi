@@ -47,8 +47,8 @@ if($_SESSION['ses_level']!=1) {
     <p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">WELCOME TO THE SYSTEM ADMIN PAGE</p>
     <p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">TRƯỜNG ĐẠI HỌC MỞ TP. HỒ CHÍ MINH</p>
     	<ul>
-            <li><a href="index.php?mod=hs">Quản Lý Học Sinh</a></li>
-            <li><a href="index.php?mod=gv">Quản Lý Giáo Viên</a></li>
+            <li><a href="index.php?mod=hs">Quản Lý Sinh Viên</a></li>
+            <li><a href="index.php?mod=gv">Quản Lý Giảng Viên</a></li>
             <li><a href="index.php?mod=mh">Quản Lý Môn Học</a></li>
             <li><a href="index.php?mod=diem">Quản Lý Điểm</a></li>
         	<li><a href="index.php?mod=hk">Quản Lý Học Kỳ</a></li>

@@ -23,7 +23,7 @@ $lop=$con->alllop();
     <tr>
         <td>Mã Lớp</td>
         <td>Tên Lớp</td>
-        <td>Khối</td>
+        <td>Khoa</td>
         <td>Sửa</td>
         <td>Xóa</td>
     </tr>

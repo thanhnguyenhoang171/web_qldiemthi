@@ -3,8 +3,8 @@ require '../classes/DB.class.php';
 session_start();
 $connect = new DB();
 $con = $connect->connect();
-if (isset($_POST['ok'])) {
-	if (empty($_POST['txtuser']) && empty($_POST['txtpass'])) {
+if (isset ($_POST['ok'])) {
+	if (empty ($_POST['txtuser']) && empty ($_POST['txtpass'])) {
 		?>
 		<script type="text/javascript">
 			alert("Vui lòng nhập đầy đủ tên tài khoản và mật khẩu!");
@@ -71,6 +71,7 @@ if (isset($_POST['ok'])) {
 		}
 
 	}
+
 }
 ?>
 <!DOCTYPE html>
@@ -103,13 +104,31 @@ if (isset($_POST['ok'])) {
 				<i></i>
 			</div>
 			<input type="password" name="txtpass" placeholder="password" required>
-			<a href="" class="forgot_link">refresh</a>
+			<a href="" class="forgot_link">refresh?</a>
 			<button><input type="submit" name="ok" value="Đăng Nhập" /></button>
 		</form>
 	</div>
 
 	<script src="js/index.js"></script>
 
+	<script>
+		// Bắt sự kiện khi nhấn Enter trên trường input và gọi hàm xử lý
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector("input[name='txtuser']").addEventListener("keypress", function (event) {
+				if (event.keyCode === 13) { // 13 là mã ASCII của phím Enter
+					event.preventDefault();
+					document.querySelector("[name='ok']").click(); // Tự động kích hoạt sự kiện click cho nút "Đăng Nhập"
+				}
+			});
+
+			document.querySelector("input[name='txtpass']").addEventListener("keypress", function (event) {
+				if (event.keyCode === 13) {
+					event.preventDefault();
+					document.querySelector("[name='ok']").click();
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>
