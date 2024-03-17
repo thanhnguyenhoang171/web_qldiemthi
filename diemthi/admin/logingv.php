@@ -4,9 +4,9 @@ require '../classes/DB.class.php';
 $connect = new DB();
 $con = $connect->connect();
 $ugv = $pgv = "";
-if (isset($_POST['gv'])) {
+if (isset ($_POST['gv'])) {
 
-	if (empty($_POST['txtusergv']) && empty($_POST['txtpassgv'])) {
+	if (empty ($_POST['txtusergv']) && empty ($_POST['txtpassgv'])) {
 		?>
 		<script type="text/javascript">
 			alert("Vui lòng nhập đầy đủ tên tài khoản và mật khẩu!");
@@ -31,6 +31,7 @@ if (isset($_POST['gv'])) {
 	} else {
 		$ugv = $_POST['txtusergv'];
 	}
+
 	if ($_POST['txtpassgv'] == null) {
 		?>
 		<script type="text/javascript">
@@ -42,34 +43,39 @@ if (isset($_POST['gv'])) {
 	} else {
 		$pgv = $_POST['txtpassgv'];
 	}
+
 	if ($ugv && $pgv) {
-		$query = "select * from giaovien where Magv='$ugv' and passwordgv='$pgv'";
+		$query = "select * from giaovien where Magv='$ugv'";
 		$results = mysqli_query($con, $query);
 
-		if ($rowscount = mysqli_num_rows($results) == 0) {
+		if (mysqli_num_rows($results) == 0) {
 			?>
 			<script type="text/javascript">
-				alert("Tên tài khoản hoặc mật khẩu chưa chính xác.Vui lòng nhập lại!!");
+				alert("Tên tài khoản hoặc mật khẩu chưa chính xác.Vui lòng nhập lại!");
 				window.location = "logingv.php";
 			</script>
 			<?php
 			exit();
 		} else {
-
 			$data = mysqli_fetch_assoc($results);
-			$_SESSION['ses_Magv'] = $data['Magv'];
-			$_SESSION['ses_passwordgv'] = $data['passwordgv'];
-			?>
-			<script type="text/javascript">
-				alert("Đăng nhập thành công!");
-				window.location = "qlgv.php";
-			</script>
-			<?php
-			//header("location:qlgv.php");
-			exit();
+			$hashed_password = $data['passwordgv']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
+			if (md5($pgv) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
+				$_SESSION['ses_Magv'] = $data['Magv'];
+				$_SESSION['ses_passwordgv'] = $hashed_password;
+				header("location: qlgv.php");
+				exit();
+			} else {
+				?>
+				<script type="text/javascript">
+					alert("Mật khẩu không đúng. Vui lòng kiểm tra lại!");
+					window.location = "logingv.php";
+				</script>
+				<?php
+				exit();
+			}
 		}
-
 	}
+	$dis = $con->close();
 }
 ?>
 
@@ -94,7 +100,7 @@ if (isset($_POST['gv'])) {
 		GIẢNG VIÊN</div>
 	<div class="wrap" style="margin-top: 40px">
 		<div class="avatar">
-			<img src="../assets/img/images/gv.jpg">
+			<img src="../assets/img/images/teacher.png">
 		</div>
 		<form action="logingv.php" method="post" novalidate>
 			<input type="text" name="txtusergv" placeholder="username" required>
@@ -108,6 +114,25 @@ if (isset($_POST['gv'])) {
 	</div>
 
 	<script src="js/index.js"></script>
+
+	<script>
+		// Bắt sự kiện khi nhấn Enter trên trường input và gọi hàm xử lý
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector("input[name='txtusergv']").addEventListener("keypress", function (event) {
+				if (event.keyCode === 13) { // 13 là mã ASCII của phím Enter
+					event.preventDefault();
+					document.querySelector("[name='gv']").click(); // Tự động kích hoạt sự kiện click cho nút "Đăng Nhập"
+				}
+			});
+
+			document.querySelector("input[name='txtpassgv']").addEventListener("keypress", function (event) {
+				if (event.keyCode === 13) {
+					event.preventDefault();
+					document.querySelector("[name='gv']").click();
+				}
+			});
+		});
+	</script>
 
 </body>
 

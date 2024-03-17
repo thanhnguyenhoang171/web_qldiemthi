@@ -24,7 +24,7 @@ $day=$con->allday();
     <tr style="font-weight: bold">
         <td>Mã Lịch Dạy</td>
         <td>Mã Môn Học</td>
-        <td>Mã Giáo Viên</td>
+        <td>Mã Giảng Viên</td>
         <td>Mã Lớp Học</td>
         <td>Mã Học Kỳ</td>
         <td>Mô tả</td>
