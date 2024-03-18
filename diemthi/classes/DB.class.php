@@ -19,7 +19,6 @@ class DB
     }
     function close()
     {
-
         mysqli_close($this->myconn);
         //echo 'Connection closed!';
     }
