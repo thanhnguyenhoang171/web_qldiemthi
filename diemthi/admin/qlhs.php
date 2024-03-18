@@ -1,5 +1,5 @@
 ﻿<div class="banner">
-	<center><img src="../assets/img/Ban.jpg"></center>
+	<center><img src="../assets/img/Ban.png" width="100%" height="160px"></center>
 
 	<body bgcolor="#CAFFFF">
 		<?php
@@ -14,7 +14,7 @@
 		</div>
 		<style type="text/css">
 			#menu ul {
-				margin-left: 145px;
+				margin-left: 15%;
 
 			}
 
@@ -57,8 +57,8 @@
 			<TR>
 				<TD>
 			<tr>
-				<td colspan="2" bgcolor="#336699" align="center" style="color:white">
-					Copyright &copy; 20016 Trường THPT Trần Khai Nguyên <br>
+				<td colspan="2" bgcolor="#336699" align="center" style="color:white; font-style:italic;">
+					dev&designed by hthanh and mkhue Open University <br>
 				</td>
 			</tr>
 			</td>

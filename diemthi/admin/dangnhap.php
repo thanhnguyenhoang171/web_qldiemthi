@@ -20,8 +20,8 @@
 			?>
 			<style type="text/css">
 				#menu ul {
-					margin-left: 21.3vw;
-					padding-bottom: 40vh;
+					margin-left: 15%;
+					padding-bottom: 35vh;
 					text-align: center;
 				}
 

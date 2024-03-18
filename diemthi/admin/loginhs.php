@@ -90,14 +90,14 @@ if (isset ($_POST['hs'])) {
 	</div>
 	<div class="wrap" style="margin-top:30px">
 		<div class="avatar">
-			<img src="../assets/img/images/hs.png">
+			<img src="../assets/img/images/student.png">
 		</div>
 		<form action="loginhs.php" method="post" novalidate>
-			<input type="text" name="txtuserhs" placeholder="Tên tài khoản" required>
+			<input type="text" name="txtuserhs" placeholder="username" required>
 			<div class="bar">
 				<i></i>
 			</div>
-			<input type="password" name="txtpasshs" placeholder="Mật Khẩu" required>
+			<input type="password" name="txtpasshs" placeholder="password" required>
 			<a href="" class="forgot_link">refresh?</a>
 			<button><input type="submit" name="hs" value="Đăng Nhập" /></button>
 		</form>
