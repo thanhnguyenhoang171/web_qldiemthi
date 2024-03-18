@@ -65,7 +65,7 @@ require '../includes/config.php';
     </h2>
     <table width="75%" border="1" cellspacing="0" cellpadding="10" style="margin-left:180px">
         <tr class="diem" style="font-weight: bold;color: #0A246A">
-            <td>Mã Học Sinh</td>
+            <td>Mã Sinh Viên</td>
             <td style="width:200px">Tên Sinh Viên</td>
             <td>Mã Lớp</td>
             <td>Mã Học Kỳ</td>

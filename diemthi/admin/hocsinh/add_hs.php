@@ -5,7 +5,7 @@ require "../../classes/hocsinh.class.php";
 $con = new hocsinh();
 if (isset ($_POST['ok'])) {
 	if ($_POST['txtmahs'] == null) {
-		echo "Bạn Chưa Nhập Mã Học Sinh!<br/>";
+		echo "Bạn Chưa Nhập Mã Sinh Viên!<br/>";
 	} else {
 		$rule = "/^[0-9]{6}$/";
 		if (preg_match($rule, $_POST['txtmahs'])) {
@@ -13,7 +13,7 @@ if (isset ($_POST['ok'])) {
 		} else {
 			?>
 			<script type="text/javascript">
-				alert("Ma Hoc Sinh Khong Hop Le.!");
+				alert("Mã Sinh Viên không hợp lệ.!");
 				window.location = "add_hs.php";
 			</script>
 			<?php
@@ -25,7 +25,7 @@ if (isset ($_POST['ok'])) {
 		$malop = $_POST['malophoc'];
 	}
 	if ($_POST['txtten'] == null) {
-		echo "Bạn Chưa Nhập Vào Tên Học Sinh";
+		echo "Bạn Chưa Nhập Vào Tên Sinh Viên";
 	} else {
 		$hoten = "/^[a-zA-Z'-'\sáàảãạăâắằấầặẵẫậéèẻ ẽẹếềểễệóòỏõọôốồổỗộ ơớờởỡợíìỉĩịđùúủũụưứ� �ửữựÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠ ƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼ� ��ỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞ ỠỢỤỨỪỬỮỰỲỴÝỶỸửữựỵ ỷỹ]*$/";
 		if (preg_match($hoten, $_POST['txtten'])) {
@@ -33,7 +33,7 @@ if (isset ($_POST['ok'])) {
 		} else {
 			?>
 			<script type="text/javascript">
-				alert("Ho Ten Hoc Sinh Khong Hop Le.!");
+				alert("Họ Tên Sinh Viên không hợp lệ.!");
 				window.location = "add_hs.php";
 			</script>
 			<?php
@@ -41,10 +41,10 @@ if (isset ($_POST['ok'])) {
 		}
 	}
 	/*if($_POST['txtgt'] == null){
-						  echo "Bạn Chưa Nhập Vào giới tính";
-					  }else{
-						  $gt=$_POST['txtgt'];
-					  }*/
+											   echo "Bạn Chưa Nhập Vào giới tính";
+										   }else{
+											   $gt=$_POST['txtgt'];
+										   }*/
 	if ($_POST['txtgt'] == 1) {
 		$gt = "Nam";
 	} else {
@@ -76,7 +76,7 @@ if (isset ($_POST['ok'])) {
 		$me = $_POST['txtme'];
 	}
 	if ($_POST['txtpasshs'] == null) {
-		echo "Bạn Chưa Nhập Mật Khẩu Học Sinh";
+		echo "Bạn Chưa Nhập Mật Khẩu Sinh Viên";
 	} else {
 		$pass = "/^[a-zA-Z0-9]{6,}$/";
 		if (preg_match($pass, $_POST['txtpasshs'])) {
@@ -84,7 +84,7 @@ if (isset ($_POST['ok'])) {
 		} else {
 			?>
 			<script type="text/javascript">
-				alert("Password Nhap Vao Khong Hop Le.!");
+				alert("Password nhập vào không hợp lệ.!");
 				window.location = "add_hs.php";
 			</script>
 			<?php
@@ -97,7 +97,7 @@ if (isset ($_POST['ok'])) {
 		?>
 		require ("../../classes/DB.class.php");
 		<script type="text/javascript">
-			alert("Bạn Đã Thêm Học Sinh Thành Công.Nhấn OK Để Tiếp Tục Thêm Học Sinh!");
+			alert("Bạn Đã Thêm Sinh Viên Thành Công.Nhấn OK Để Tiếp Tục Thêm Sinh Viên!");
 			window.location = "../index.php?mod=hs";
 		</script>
 		<?php
@@ -116,12 +116,12 @@ if (isset ($_POST['ok'])) {
 
 <body bgcolor="#CAFFFF">
 	<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
-	<h1 align="center">Trang Thêm Học Sinh</h1>
+	<h1 align="center">Trang Thêm Sinh Viên</h1>
 	<form action="add_hs.php" method="post">
 		<div id="menu">
 			<table align="center" border="1" cellspacing="0" cellpadding="10">
 				<tr>
-					<td>Mã Học Sinh:</td>
+					<td>Mã Sinh Viên:</td>
 					<td> <input type="text" name="txtmahs" size="25" placeholder="6 số nguyên từ 0-9" /><br />
 					</td>
 				</tr>
@@ -146,7 +146,7 @@ if (isset ($_POST['ok'])) {
 					<td><input type="text" name="txtten" size="25" /></td>
 				</tr>
 				<tr>
-					<td>giới tính</td>
+					<td>Giới Tính</td>
 					<td><input type="radio" name="txtgt" value="1">Nam
 						<input type="radio" name="txtgt" value="2">Nữ
 					</td>
@@ -172,12 +172,12 @@ if (isset ($_POST['ok'])) {
 					<td><input type="text" name="txtme" size="25" /> </td>
 				</tr>
 				<tr>
-					<td>Password Học Sinh:</td>
+					<td>Password Sinh Viên:</td>
 					<td><input type="password" name="txtpasshs" size="25" placeholder="Trên 6 kí tự" /></td>
 				</tr>
 				<tr>
 					<td> </td>
-					<td> <input type="submit" name="ok" value="Thêm Học Sinh" /><br />
+					<td> <input type="submit" name="ok" value="Thêm Sinh Viên" /><br />
 					</td>
 				</tr>
 			</table>
