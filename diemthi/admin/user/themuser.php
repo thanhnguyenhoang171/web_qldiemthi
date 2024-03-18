@@ -9,9 +9,11 @@
 
 <body>
     <?php
+    session_start();
     require_once ("../../classes/DB.class.php");
     $connect = new DB();
     $conn = $connect->connect();
+    $name=$password="";
     if (isset ($_POST["btn_submit"])) {
         //lấy thông tin từ các form bằng phương thức POST
         $ten = "/^[a-zA-Z0-9]{6,}$/";

@@ -6,7 +6,7 @@ $m = $t = $dc = $dt = $p = "";
 if (isset ($_POST['ok'])) {
 	$con = new giaovien();
 	if ($_POST['txtmagv'] == null) {
-		echo "Bạn Chưa Nhập Mã Giao Vien!!!<br/>";
+		echo "Bạn Chưa Nhập Mã Giáo Viên!!!<br/>";
 	} else {
 		$rule = "/^[0-9]{4}$/";
 		if (preg_match($rule, $_POST['txtmagv'])) {

@@ -43,33 +43,42 @@ if (isset ($_POST['ok'])) {
 
 		require '../includes/config.php';
 
-		$query = "select * from user where username='$u' and password='$p'";
+		$query = "SELECT * FROM user WHERE username='$u'";
 		$results = mysqli_query($con, $query);
 		if ($numrows = mysqli_num_rows($results) == 0) {
 			?>
 			<script type="text/javascript">
-				alert("Tên Truy cập Hoặc Mật Khẩu chưa chính Xác.Vui Lòng Nhập Lại!");
+				alert("Tên Truy cập chưa chính Xác.Vui Lòng Nhập Lại!");
 				window.location = "login.php";
 			</script>
 			<?php
 			exit();
-
 		} else {
 			$data = mysqli_fetch_assoc($results);
-			$_SESSION['ses_username'] = $data['username'];
-			$_SESSION['ses_level'] = $data['level'];
-			$_SESSION['ses_userid'] = $data['userid'];
-			$_SESSION['password'] = $data['password'];
-			?>
-			<script type="text/javascript">
-				alert("Đăng nhập thành công!");
-				window.location = "index.php";
-			</script>
-			<?php
-			//header("location:index.php");
-			exit();
+			$hashed_password = $data['password']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
+			if (md5($p) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
+				$_SESSION['ses_username'] = $data['username'];
+				$_SESSION['ses_level'] = $data['level'];
+				$_SESSION['ses_userid'] = $data['userid'];
+				$_SESSION['password'] = $hashed_password;
+				?>
+				<script type="text/javascript">
+					alert("Đăng nhập thành công!");
+					window.location = "index.php";
+				</script>
+				<?php
+				//header("location:index.php");
+				exit();
+			} else {
+				?>
+				<script type="text/javascript">
+					alert("Mật khẩu không đúng. Vui lòng kiểm tra lại!");
+					window.location = "login.php";
+				</script>
+				<?php
+				exit();
+			}
 		}
-
 	}
 
 }
