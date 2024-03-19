@@ -17,10 +17,33 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 </script>
 
 <h1 align="center" style="font-family: Tahoma">Quản Lý Sinh Viên</h1>
-<h2 align="center"><a href="hocsinh/add_hs.php"><button type='button'>Thêm Sinh Viên</button></a></h2>
+<h2 align="center">
+    <a href="hocsinh/add_hs.php">
+        <button type='button' style='background-color: #336699;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            border-bottom: 3px solid #f1f1f1;
+            transition: background-color 0.3s;' 
+			onmouseover="this.style.backgroundColor='#2c4a6a';"
+        	onmouseout="this.style.backgroundColor='#336699';">Thêm Sinh Viên
+        </button>
+    </a>
+</h2>
+
 
 <form method="post">
-	<select name="malophoc">
+	<select name="malophoc" style="padding: 3px; 
+	border: 1px solid #ccc; 
+	text-align: center;
+	border-radius: 5px; 
+	font-size: 16px; 
+	width: 100px;">
+
 		<?php
 		$con = new hocsinh();
 		$data = $con->alllop();
@@ -29,11 +52,27 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 		}
 		?>
 	</select>
-	<input type="submit" value="Xem" name="submit">
+	<input type="submit" style='background-color: #f1f1f1;
+    border: none;
+    color: #336699;
+    padding: 5px 15px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;' 
+    value="Xem" 
+    name="submit"
+    onmouseover="this.style.backgroundColor='#ddd'; this.style.color='#000';"
+    onmouseout="this.style.backgroundColor='#f1f1f1'; this.style.color='#336699';">
 </form>
 
 <table align='center' width='90%' border='1' cellspacing="0" cellpadding="10">
-	<tr style="font-family: Tahoma;color: #0000bf;font-weight: bold">
+	<tr style="font-family: Tahoma;
+	color: #f1f1f1;
+	font-weight: bold; 
+	text-align: center;
+	background-color: #336699;">
 		<td>STT</td>
 		<td>Mã Sinh Viên</td>
 		<td>Mã Lớp Học</td>
@@ -55,7 +94,8 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 		$stt = 0;
 		foreach ($hocsinh as $row) {
 			$stt++;
-			echo "<tr>";
+			$row_color = ($stt % 2 == 0) ? "#ffffff" : "#f2f2f2";
+			echo "<tr style='background-color: $row_color;'>";
 			echo "<td>$stt</td>";
 			echo "<td>$row[MaHS]</td>";
 			echo "<td>$row[MaLopHoc]</td>";
@@ -66,8 +106,26 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 			echo "<td>$row[dantoc]</td>";
 			echo "<td>$row[hotencha]</td>";
 			echo "<td>$row[hotenme]</td>";
-			echo "<td><a href='hocsinh/sua_hs.php?cmahs=$row[MaHS]'><button type='button'>Sửa</button></a></td>";
-			echo "<td><a href='hocsinh/xoa_hs.php?cmahs=$row[MaHS]' onclick='return XacNhan();'><button type='button'>Xóa</button></a></td>";
+			echo "<td><a href='hocsinh/sua_hs.php?cmahs=$row[MaHS]'><button type='button' style='background-color: #336699;
+			border: none;
+			color: white;
+			padding: 5px 10px;
+			font-size: 14px;
+			margin: 2px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s;' onmouseover=\"this.style.backgroundColor='#2c4a6a';\" onmouseout=\"this.style.backgroundColor='#336699';\">Sửa</button></a></td>";
+
+			echo "<td><a href='hocsinh/xoa_hs.php?cmahs=$row[MaHS]' onclick='return XacNhan();'><button type='button' style='background-color: #336699;
+			border: none;
+			color: white;
+			padding: 5px 10px;
+			font-size: 14px;
+			margin: 2px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s;' onmouseover=\"this.style.backgroundColor='#2c4a6a';\" onmouseout=\"this.style.backgroundColor='#336699';\">Xóa</button></a></td>";
+
 			echo "</tr>";
 		}
 	}

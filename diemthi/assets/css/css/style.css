@@ -10,17 +10,17 @@ body {
 	font-family: "Lato" ;
 }
 .wrap {
-	width:250px;
+	width: 30%;
 	height: auto;
 	margin: auto;
-	margin-top: 10%;
+	margin-top: 5%;
 }
 .avatar {
 	width: 100%;
 	margin: auto;
-	width: 65px;
+	width: 62px;
 	border-radius: 100px;
-	height: 65px;
+	height: 61px;
 	background: #448ed3 ;
 	position: relative;
 	bottom: -15px;
@@ -70,7 +70,7 @@ body {
 	text-decoration: none;
 	font-size: 11px;
 	position: relative;
-	left: 193px;
+	left: 80%;
 	top: -36px;
 }
 .wrap button {
