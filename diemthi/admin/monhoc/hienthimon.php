@@ -19,9 +19,28 @@ $mon=$con->allmon();
 </head>
 <body>
 <h1 align="center"style="font-family:Tahoma;font-weight: bold">Danh sách Môn Học</h1>
-<h3 align="center"><a href="monhoc/themmon.php"><button>Thêm Môn Học</button></a></h3>
+<h3 align="center">
+    <a href="monhoc/themmon.php">
+        <button style='background-color: #336699;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            border-bottom: 3px solid #f1f1f1;
+            transition: background-color 0.3s;' 
+			onmouseover="this.style.backgroundColor='#2c4a6a';"
+        	onmouseout="this.style.backgroundColor='#336699';">Thêm Môn Học</button>
+    </a>
+</h3>
 <table align="center" border="1" cellspacing="0" cellpadding="10">
-    <tr style="font-weight: bold">
+    <tr style="font-weight: bold;
+    color: #f1f1f1;
+	font-weight: bold; 
+	text-align: center;
+	background-color: #336699;">
         <td>Mã Môn Học</td>
         <td>Tên Môn Học</td>
         <td>Số Tiết</td>
@@ -29,13 +48,38 @@ $mon=$con->allmon();
         <td>Chức Năng</td>
     </tr>
     <?php foreach ($mon as $item){ ?>
-        <tr>
+        <tr style="background-color: #f9f9f9;">
             <td><?php echo $item['MaMonHoc']; ?></td>
             <td><?php echo $item['TenMonHoc']; ?></td>
             <td><?php echo $item['SoTiet']; ?></td>
             <td><?php echo $item['HeSoMonHoc']; ?></td>
-            <td><?php echo "<a href='monhoc/suamon.php?id=$item[MaMonHoc]'><button type='button'>Sửa</button></a>"; ?>
-                <?php echo "<a href='monhoc/xoamon.php?id=$item[MaMonHoc]' onclick='return XacNhan();'><button type='button'>Xóa</button></a>"; ?>
+            <td><?php echo "<a href='monhoc/suamon.php?id=$item[MaMonHoc]'>
+            <button type='button' style='background-color: #336699;
+			border: none;
+			color: white;
+			padding: 5px 10px;
+			font-size: 14px;
+			margin: 2px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s;' 
+            onmouseover=\"this.style.backgroundColor='#2c4a6a';\" 
+            onmouseout=\"this.style.backgroundColor='#336699';\">
+            Sửa</button>
+            </a>"; ?>
+                <?php echo "<a href='monhoc/xoamon.php?id=$item[MaMonHoc]' onclick='return XacNhan();'>
+                <button type='button' style='background-color: #336699;
+			border: none;
+			color: white;
+			padding: 5px 10px;
+			font-size: 14px;
+			margin: 2px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s;' 
+            onmouseover=\"this.style.backgroundColor='#2c4a6a';\" 
+            onmouseout=\"this.style.backgroundColor='#336699';\">Xóa</button>
+                </a>"; ?>
             </td>
         </tr>
     <?php } ?>

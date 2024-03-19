@@ -8,7 +8,7 @@ if ($_SESSION['ses_level'] != 1) {
 ?>
 <div class="banner">
 
-    <body bgcolor="#CAFFFF">
+    <body bgcolor="#a3cbff">
         <style type="text/css">
             #menu ul {
                 margin-left: 3%;

@@ -10,7 +10,7 @@
 <body>
 
 	<div class="banner">
-		<center><img src="../assets/img/Ban.png" width="100%" height="250px"></center>
+		<center><img src="../assets/img/Ban.png" width="100%" height="350px"></center>
 
 		<body bgcolor="a3cbff">
 			<?php
