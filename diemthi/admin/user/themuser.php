@@ -13,7 +13,7 @@
     require_once ("../../classes/DB.class.php");
     $connect = new DB();
     $conn = $connect->connect();
-    $name=$password="";
+    $name = $password = "";
     if (isset ($_POST["btn_submit"])) {
         //lấy thông tin từ các form bằng phương thức POST
         $ten = "/^[a-zA-Z0-9]{6,}$/";
@@ -22,7 +22,7 @@
         } else {
             ?>
             <script type="text/javascript">
-                alert("user Khong Hop Le.!");
+                alert("Username không hợp lệ!");
                 window.location = "themuser.php";
             </script>
             <?php
@@ -30,20 +30,20 @@
         }
         $pass = "/^(?=.*\d)(?=.*[a-zA-Z0-9]).{6,}$/";
         if (preg_match($pass, $_POST['pass'])) {
-            $password = $_POST["pass"];
+            $password = md5($_POST["pass"]);
         } else {
             ?>
             <script type="text/javascript">
-                alert("pass Khong Hop Le.!");
+                alert("Password không hợp lệ!");
                 window.location = "themuser.php";
             </script>
             <?php
             exit();
         }
-        $level = $_POST["level"];
+        $level = 1;
         //Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
-        if ($name == "" || $password == "" || $level == "") {
-            echo "bạn vui lòng nhập đầy đủ thông tin";
+        if ($name == "" || $password == "") {
+            echo "Bạn vui lòng nhập đầy đủ thông tin";
         } else {
             //thực hiện việc lưu trữ dữ liệu vào db
             $sql = "INSERT INTO user(
@@ -76,19 +76,19 @@
                 <table>
                     <tr>
                         <td>Tên Đăng Nhập </td>
-                        <td><input type="text" id="username" name="username"></td>
+                        <td><input type="text" id="username" name="username" placeholder="Ít nhất 6 ký tự"></td>
                     </tr>
                     <tr>
                         <td>Mật Khẩu </td>
-                        <td><input type="password" id="pass" name="pass"></td>
+                        <td><input type="password" id="pass" name="pass" placeholder="Ít nhất 6 ký tự"></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>Level </td>
                         <td><select id="level" name="level">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select> </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td colspan="2" align="center"><input type="submit" name="btn_submit" value="Thêm Admin"></td>
                     </tr>

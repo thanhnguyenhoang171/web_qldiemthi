@@ -10,26 +10,26 @@ $connect=new db();
 $old=$new=$pre=" ";
 if(isset($_POST['gv'])){
 	if($_POST['txtpassgv'] == null){
-		echo "ban chua nhap mat khau.";
+		echo "Bạn chưa nhập mật khẩu!.";
 	}else{
-		if($_POST['txtpassgv'] != $pgv){
-			echo "mat khau va mat khau cu khong trung.";
+		if(md5($_POST['txtpassgv']) != $pgv){
+			echo "Mật khẩu và mật khẩu cũ không trùng!.";
 		}else{
 			$old=$_POST['txtpassgv'];
 		}
 	}
 	if($_POST['txtpassgv2'] == null){
-		echo "ban chua nhap mat khau moi.";
+		echo "Bạn chưa nhập mật khẩu mới!.";
 	}else {
 		if ($_POST['txtpassgv2'] != $_POST['txtpassgv3']) {
-			echo "mat khau nhap vao khong trung nhau";
+			echo "Nhập lại mật khẩu mới không trùng nhau!";
 		} else {
 			if ($_POST['txtpassgv2'] != $_POST['txtpassgv3']) {
-				echo "mat khau nhap vao khong trung nhau";
+				echo "Nhập lại mật khẩu mới không trùng nhau!";
 			} else {
 				$mk = "/^[a-zA-Z0-9]{6,}$/";
 				if (preg_match($mk, $_POST["txtpassgv2"])) {
-					$new = $_POST['txtpassgv2'];
+					$new = md5($_POST['txtpassgv2']);
 				} else {
 					?>
 					<script type="text/javascript">
@@ -49,7 +49,7 @@ if(isset($_POST['gv'])){
 		$results = mysqli_query($conn,$query);
 		?>
 		<script type="text/javascript">
-		alert("Đã Thay doi mat khau thanh cong!");
+		alert("Đã thay đổi mật khẩu thành công!");
 		window.location="qlgv.php";
 		</script>
 		<?php
