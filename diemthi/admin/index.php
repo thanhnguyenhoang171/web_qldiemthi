@@ -44,6 +44,7 @@ if ($_SESSION['ses_level'] != 1) {
             }
         </style>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="../assets/css/css/stylea.css">
         <div id="menu">
             <p style="font-family:Tahoma;font-weight: bold;text-align: center;font-size: large">WELCOME TO THE SYSTEM
                 ADMIN PAGE</p>

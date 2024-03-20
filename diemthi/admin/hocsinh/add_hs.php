@@ -41,10 +41,10 @@ if (isset ($_POST['ok'])) {
 		}
 	}
 	/*if($_POST['txtgt'] == null){
-											   echo "Bạn Chưa Nhập Vào giới tính";
-										   }else{
-											   $gt=$_POST['txtgt'];
-										   }*/
+			  echo "Bạn Chưa Nhập Vào giới tính";
+		  }else{
+			  $gt=$_POST['txtgt'];
+		  }*/
 	if ($_POST['txtgt'] == 1) {
 		$gt = "Nam";
 	} else {
@@ -108,25 +108,27 @@ if (isset ($_POST['ok'])) {
 	}
 }
 ?>
+
+<link rel="stylesheet" href="../../assets/css/css/stylea.css">
 <style type="text/css">
 	#menu table td {
 		font-weight: bold;
 	}
 </style>
 
-<body bgcolor="#CAFFFF">
+<body bgcolor="#a3cbff">
 	<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
 	<h1 align="center">Trang Thêm Sinh Viên</h1>
 	<form action="add_hs.php" method="post">
 		<div id="menu">
 			<table align="center" border="1" cellspacing="0" cellpadding="10">
-				<tr>
-					<td>Mã Sinh Viên:</td>
+				<tr style="background-color: #f1f1f1;">
+					<td class="ToT">Mã Sinh Viên:</td>
 					<td> <input type="text" name="txtmahs" size="25" placeholder="6 số nguyên từ 0-9" /><br />
 					</td>
 				</tr>
-				<tr>
-					<td>Mã Lớp Học</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Mã Lớp Học</td>
 					<td><select name="malophoc">
 
 							<?php
@@ -141,46 +143,43 @@ if (isset ($_POST['ok'])) {
 
 						</select></td>
 				</tr>
-				<tr>
-					<td>Tên Học Sinh</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Tên Học Sinh</td>
 					<td><input type="text" name="txtten" size="25" /></td>
 				</tr>
-				<tr>
-					<td>Giới Tính</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Giới Tính</td>
 					<td><input type="radio" name="txtgt" value="1">Nam
 						<input type="radio" name="txtgt" value="2">Nữ
 					</td>
 				</tr>
-				<tr>
-					<td>Ngày Sinh:</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Ngày Sinh:</td>
 					<td><input type="date" name="txtngs" size="25" /> </td>
 				</tr>
-				<tr>
-					<td>Nơi Sinh:</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Nơi Sinh:</td>
 					<td><input type="text" name="txtns" size="25" /> </td>
 				</tr>
-				<tr>
-					<td>Dân Tộc:</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Dân Tộc:</td>
 					<td><input type="text" name="txtdantoc" size="25" /> </td>
 				</tr>
-				<tr>
-					<td>Họ Tên Cha:</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Họ Tên Cha:</td>
 					<td><input type="text" name="txtcha" size="25" /> </td>
 				</tr>
-				<tr>
-					<td>Họ Tên Mẹ:</td>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Họ Tên Mẹ:</td>
 					<td><input type="text" name="txtme" size="25" /> </td>
-				</tr>
-				<tr>
-					<td>Password Sinh Viên:</td>
+				</tr style='background-color: #f1f1f1;'>
+				<tr style='background-color: #f1f1f1;'>
+					<td class="ToT">Password Sinh Viên:</td>
 					<td><input type="password" name="txtpasshs" size="25" placeholder="Trên 6 kí tự" /></td>
 				</tr>
-				<tr>
-					<td> </td>
-					<td> <input type="submit" name="ok" value="Thêm Sinh Viên" /><br />
-					</td>
-				</tr>
 			</table>
+					<h1  style = "text-align: center;"> <input type="submit" name="ok" value="Thêm Sinh Viên" class='add-button'>
+					</h1>
 		</div>
 	</form>
 
