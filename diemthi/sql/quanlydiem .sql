@@ -191,7 +191,7 @@ INSERT INTO `lophoc` (`MaLopHoc`, `Tenlophoc`, `KhoiHoc`) VALUES
 
 CREATE TABLE `monhoc` (
   `MaMonHoc` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `TenMonHoc` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `TenMonHoc` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `SoTiet` int(20) NOT NULL,
   `HeSoMonHoc` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
