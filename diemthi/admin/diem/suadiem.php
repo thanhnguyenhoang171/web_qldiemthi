@@ -1,117 +1,165 @@
 <?php
 session_start();
+require "../../classes/diem.class.php";
 require "../../includes/config.php";
-$madiem=$_GET['cma'];
-$malop=$t=$gt=$ns=$nois=$dt=$cha=$me="";
-if(isset($_POST['ok'])){
-    if($_POST['txtmalop'] == null){
-        echo "ban chua nhap ma lop hoc";
-    }else{
-        $malop=$_POST['txtmalop'];
+$con = new diem();
+$madiem = $_GET['cma'];
+if (!empty ($_POST['edit_diem'])) {
+    // Lay data
+    $data['DiemMieng'] = isset ($_POST['diemmieng']) ? $_POST['diemmieng'] : '';
+    $data['Diem15Phut1'] = isset ($_POST['diem15phut1']) ? $_POST['diem15phut1'] : '';
+    $data['Diem15Phut2'] = isset ($_POST['diem15phut2']) ? $_POST['diem15phut2'] : '';
+    $data['Diem1Tiet1'] = isset ($_POST['diem1tiet1']) ? $_POST['diem1tiet1'] : '';
+    $data['Diem1Tiet2'] = isset ($_POST['diem1tiet2']) ? $_POST['diem1tiet2'] : '';
+    $data['DiemThi'] = isset ($_POST['diemthi']) ? $_POST['diemthi'] : '';
+    $errors = array();
+    if (empty ($data['DiemMieng'])) {
+        $errors['DiemMieng'] = 'Chưa nhập điểm miệng';
     }
-    if($_POST['txtten'] == null){
-        echo "ban chua nhap ten";
-    }else{
-        $t=$_POST['txtten'];
+
+    if (empty ($data['Diem15Phut1'])) {
+        $errors['Diem15Phut1'] = 'Chưa nhập điểm 15 phút';
     }
-    if($_POST['txtgt'] == null){
-        echo "Bạn Chưa Nhập Vào giới tính";
-    }else{
-        $gt=$_POST['txtgt'];
+    if (empty ($data['Diem15Phut2'])) {
+        $errors['Diem15Phut2'] = 'Chưa nhập điểm 15 phút';
     }
-    if($_POST['txtns'] == null){
-        echo "Bạn Chưa Nhập Vào Ngày Sinh";
-    }else{
-        $ns=$_POST['txtns'];
+    if (empty ($data['Diem1Tiet1'])) {
+        $errors['Diem1Tiet1'] = 'Chưa nhập điểm 1 tiết';
     }
-    if($_POST['txtnois'] == null){
-        echo "Bạn Chưa Nhập Vào Nơi Sinh";
-    }else{
-        $nois=$_POST['txtnois'];
+    if (empty ($data['Diem1Tiet2'])) {
+        $errors['Diem1Tiet2'] = 'Chưa nhập điểm 1 tiết';
     }
-    if($_POST['txtdantoc'] == null){
-        echo "Bạn Chưa Nhập Vào Dân Tộc";
-    }else{
-        $dt=$_POST['txtdantoc'];
+    if (empty ($data['DiemThi'])) {
+        $errors['DiemThi'] = 'Chưa nhập điểm thi';
     }
-    if($_POST['txtcha'] == null){
-        echo "Bạn Chưa Nhập Vào Họ Tên Cha";
-    }else{
-        $cha=$_POST['txtcha'];
-    }
-    if($_POST['txtme'] == null){
-        echo "Bạn Chưa Nhập Vào Họ Tên Mẹ";
-    }else{
-        $me=$_POST['txtme'];
-    }
-    if($_POST['txtpasshs'] == null){
-        echo "Bạn Chưa Nhập Vào Tên Học Sinh";
-    }else{
-        $p=$_POST['txtpasshs'];
-    }
-    if( $malop && $t && $gt&&$ns&&$nois&&$dt&&$cha&&$me&&$p ){
-        $query="update hocsinh set MaLopHoc='$malop',TenHS='$t',GioiTinh='$gt',NgaySinh='$ns',noisinh='$nois',dantoc='$dt',hotencha='$cha',hotenme='$me',passwordhs='$p' where MaHS='$mahs'";
-        $results = mysqli_query($conn,$query);
-        header("location:../index.php?mod=diem");
+
+    if (!$errors) {
+        $diemmieng = floatval($_POST['diemmieng']); // Chuyển giá trị thành số thực
+        $diem15phut1 = floatval($_POST['diem15phut1']);
+        $diem15phut2 = floatval($_POST['diem15phut2']);
+        $diem1tiet1 = floatval($_POST['diem1tiet1']);
+        $diem1tiet2 = floatval($_POST['diem1tiet2']);
+        $diemthi = floatval($_POST['diemthi']);
+
+        $diemtrungbinh = ($diemmieng + $diem15phut1 + $diem15phut2 + ($diem1tiet1 + $diem1tiet2) * 2 + $diemthi * 3) / 10; // Tính điểm trung bình
+
+        // $diem = $con->edit($madiem, $data['DiemMieng'], $data['Diem15Phut1'], $data['Diem15Phut2'], $data['Diem1Tiet1'], $data['Diem1Tiet2'], $data['DiemThi'], $diemtrungbinh);
+
+        // // Trở về trang danh sách
+        // header("location:../index.php?mod=diem");
+        ?>
+        <script type="text/javascript">
+            var result = confirm("Bạn có chắc chắn muốn lưu điểm?");
+            if (result == true) {
+                // Nếu người dùng chọn Yes, tiến hành lưu điểm
+                <?php
+                $diem = $con->edit($madiem, $data['DiemMieng'], $data['Diem15Phut1'], $data['Diem15Phut2'], $data['Diem1Tiet1'], $data['Diem1Tiet2'], $data['DiemThi'], $diemtrungbinh);
+                ?>
+                // Trở về trang danh sách
+                window.location.href = "../index.php?mod=diem";
+            } else {
+                // Trở về trang danh sách
+                window.location.href = "../index.php?mod=diem";
+            }
+        </script>
+        <?php
         exit();
-
-
-
     }
 }
-$query="select * from diem where MaDiem='$madiem'";
-$results = mysqli_query($conn,$query);
-$row=mysqli_fetch_assoc($results);
 ?>
-<center><img src="../../assets/img/Ban.gif"></center>
-<body bgcolor="#CAFFFF">
-<h1 align="center">TRANG SỬA ĐIỂM</h1>
-<table align="center" border="1" cellspacing="0" cellpadding="10">
-    <form action="suadiem.php?cma=<?php echo $row['MaDiem']; ?>" method="post">
-        <tr>
-            <td>Mã Học Sinh</td>
-            <td><input type="text" name="txtmalop" size="25" value="<?php echo $row['MaHS']; ?>" readonly="readonly"/></td>
-        </tr>
+<?php
+$data = $con->selectdiem($madiem);
+?>
+<!DOCTYPE html>
+<html>
 
-        <tr>
-            <td>Mã Lớp</td>
-            <td><input type="text" name="txtten" size="25" value="<?php echo $row['MaLopHoc']; ?>" readonly="readonly"/></td>
-        </tr>
-        <tr>
-            <td>Mã Môn</td>
-            <td><input type="text" name="txtten" size="25" value="<?php echo $row['MaMonHoc']; ?>" readonly="readonly"/></td>
-        </tr>
-        <tr>
-            <td>Mã Học Kỳ</td>
-            <td><input type="text" name="txtns" size="25" value="<?php echo $row['MaHocKy']; ?>" readonly="readonly"/> </td>
-        </tr>
-        <tr>
-            <td>Điểm Miệng</td>
-            <td><input type="text" name="txtnois" size="25" value="<?php echo $row['DiemMieng']; ?>"/> </td>
-        </tr>
-        <tr>
-            <td>Điểm 15 Phút</td>
-            <td><input type="text" name="txtdantoc" size="25" value="<?php echo $row['Diem15Phut1']; ?>"/> </td>
-        </tr>
-        <tr>
-            <td>Điểm 15 Phút</td>
-            <td><input type="text" name="txtcha" size="25" value="<?php echo $row['Diem15Phut2']; ?>"/> </td>
-        </tr>
-        <tr>
-            <td>Điểm 1 Tiết</td>
-            <td><input type="text" name="txtme" size="25" value="<?php echo $row['Diem1Tiet1']; ?>"/> </td>
-        </tr>
-        <tr>
-            <td>Điểm 1 Tiết</td>
-            <td><input type="text" name="txtpasshs" size="25" value="<?php echo $row['Diem1Tiet2']; ?>" /></td>
-        </tr>
-        <td>Điểm Thi</td>
-        <td><input type="text" name="txtten" size="25" value="<?php echo $row['DiemThi']; ?>" /></td>
-        </tr>
-        <tr>
-            <td></td>
-        <td>  <input type="submit" name="ok" value="Sửa" /><br/>
-        </td>
-        </tr>
-    </form>
-</TABLE>
+<head>
+    <title>Môn Học</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<center><img src="../../assets/img/Ban.gif"></center>
+<center>
+
+    <body bgcolor="#CAFFFF">
+        <h1>Sửa Điểm </h1>
+        <a href="../index.php?mod=diem"><button>Trở về</button></a> <br /> <br />
+        <form method="post" action="suadiem.php?cma=<?php echo $data['MaDiem']; ?>">
+            <table width="50%" border="1" cellspacing="0" cellpadding="10">
+
+                <tr>
+                    <td>Điểm Miệng</td>
+                    <td>
+                        <input type="text" name="diemmieng" value="<?php echo $data['DiemMieng']; ?>" />
+                        <?php if (!empty ($errors['DiemMieng']))
+                            echo $errors['DiemMieng']; ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Điểm 15 phút</td>
+                    <td>
+                        <input type="text" name="diem15phut1" value="<?php echo $data['Diem15Phut1']; ?>" />
+                        <?php if (!empty ($errors['Diem15Phut1']))
+                            echo $errors['Diem15Phut1']; ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Điểm 15 phút</td>
+                    <td>
+                        <input type="text" name="diem15phut2" value="<?php echo $data['Diem15Phut2']; ?>" />
+                        <?php if (!empty ($errors['Diem15Phut2']))
+                            echo $errors['Diem15Phut2']; ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Điểm 1 tiết</td>
+                    <td>
+                        <input type="text" name="diem1tiet1" value="<?php echo $data['Diem1Tiet1']; ?>" />
+                        <?php if (!empty ($errors['Diem1Tiet1']))
+                            echo $errors['Diem1Tiet1']; ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Điểm 1 tiết</td>
+                    <td>
+                        <input type="text" name="diem1tiet2" value="<?php echo $data['Diem1Tiet2']; ?>" />
+                        <?php if (!empty ($errors['Diem1Tiet2']))
+                            echo $errors['Diem1Tiet2']; ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Điểm thi</td>
+                    <td>
+                        <input type="text" name="diemthi" value="<?php echo $data['DiemThi']; ?>" />
+                        <?php if (!empty ($errors['DiemThi']))
+                            echo $errors['DiemThi']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Điểm trung bình</td>
+                    <td>
+                        <input type="text" name="diemtrungbinh" value="<?php echo $data['DiemTB']; ?>"
+                            readonly="readonly" />
+                        <?php if (!empty ($errors['DiemTB']))
+                            echo $errors['DiemTB']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="hidden" name="id" value="<?php echo $data['MaDiem']; ?>" />
+                        <input type="submit" name="edit_diem" value="Lưu" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</center>
+
+</html>

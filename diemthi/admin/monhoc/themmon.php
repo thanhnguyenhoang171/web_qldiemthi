@@ -12,7 +12,7 @@ if (!empty($_POST['add_mon']))
     }else{
         ?>
         <script type="text/javascript">
-            alert("Mon Hoc Khong Hop Le.!");
+            alert("Môn học không hợp lệ.!");
             window.location="themmon.php";
         </script>
         <?php
@@ -25,7 +25,7 @@ if (!empty($_POST['add_mon']))
     }else{
         ?>
         <script type="text/javascript">
-            alert("Them Mon Hoc Khong Hop Le.!");
+            alert("Thêm môn học không hợp lệ!");
             window.location="themmon.php";
         </script>
         <?php
@@ -37,7 +37,7 @@ if (!empty($_POST['add_mon']))
     }else{
         ?>
         <script type="text/javascript">
-            alert("So Tiet Khong Hop Le.!");
+            alert("Số Tiết không hợp lệ.!");
             window.location="themmon.php";
         </script>
         <?php
@@ -49,7 +49,7 @@ if (!empty($_POST['add_mon']))
     }else{
         ?>
         <script type="text/javascript">
-            alert("He So Mon Hoc Khong Hop Le.!");
+            alert("Hệ Số Môn không hợp lệ.!");
             window.location="themmon.php";
         </script>
         <?php
@@ -60,17 +60,17 @@ if (!empty($_POST['add_mon']))
     // Validate thong tin
     $errors = array();
     if (empty($data['MaMonHoc'])){
-        $errors['MaMonHoc'] = 'Chưa nhập tên sinh vien';
+        $errors['MaMonHoc'] = 'Chưa nhập tên sinh viên';
     }
 
     if (empty($data['TenMonHoc'])){
-        $errors['TenMonHoc'] = 'Chưa nhập giới tính sinh vien';
+        $errors['TenMonHoc'] = 'Chưa nhập giới tính sinh viên';
     }
     if (empty($data['SoTiet'])){
-        $errors['SoTiet'] = 'Chưa nhập giới tính sinh vien';
+        $errors['SoTiet'] = 'Chưa nhập giới tính sinh viên';
     }
     if (empty($data['HeSoMonHoc'])){
-        $errors['HeSoMonHoc'] = 'Chưa nhập giới tính sinh vien';
+        $errors['HeSoMonHoc'] = 'Chưa nhập giới tính sinh viên';
     }
     // Neu ko co loi thi insert
     if (!$errors){
@@ -101,7 +101,7 @@ if (!empty($_POST['add_mon']))
         <tr>
             <td>Mã Môn Học</td>
             <td>
-                <input type="text" name="ma" value="<?php echo !empty($data['MaMonHoc']) ? $data['MaMonHoc'] : ''; ?>" placeholder="Tối đa 2 kí tự, là chữ cái viết tắt của môn"/>
+                <input type="text" name="ma" value="<?php echo !empty($data['MaMonHoc']) ? $data['MaMonHoc'] : ''; ?>" placeholder="Tối đa 5 kí tự"/>
                 <?php if (!empty($errors['MaMonHoc'])) echo $errors['MaMonHoc']; ?>
             </td>
         </tr>
