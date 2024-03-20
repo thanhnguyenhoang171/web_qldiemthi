@@ -19,9 +19,13 @@ $day=$con->allday();
 </head>
 <body>
 <h1 align="center"style="font-family:Tahoma;font-weight: bold">Lịch Phân Công Dạy</h1>
-<h3 align="center"><a href="day/themday.php"><button>Thêm Lịch Dạy</button></a></h3>
+<h3 align="center">
+    <a href="day/themday.php">
+        <button class = "add-button" >Thêm Lịch Dạy</button>
+    </a>
+</h3>
 <table align="center" border="1" cellspacing="0" cellpadding="10">
-    <tr style="font-weight: bold">
+    <tr class = "ToT">
         <td>Mã Lịch Dạy</td>
         <td>Mã Môn Học</td>
         <td>Mã Giảng Viên</td>
@@ -32,15 +36,20 @@ $day=$con->allday();
         <td>Xóa</td>
     </tr>
     <?php foreach ($day as $item){ ?>
-        <tr>
+        <tr style = 'background-color: #f1f1f1;'>
             <td><?php echo $item['MaDayHoc']; ?></td>
             <td><?php echo $item['MaMonHoc']; ?></td>
             <td><?php echo $item['Magv']; ?></td>
             <td><?php echo $item['MaLopHoc']; ?></td>
             <td><?php echo $item['MaHocKy']; ?></td>
             <td><?php echo $item['MoTaPhanCong']; ?></td>
-            <td><?php echo "<a href='#?id=$item[MaMonHoc]'><button type='button'>Sửa</button></a>"; ?></td>
-               <td> <?php echo "<a href='day/xoaday.php?id=$item[MaDayHoc]' onclick='return XacNhan();'><button type='button'>Xóa</button></a>"; ?>
+            <td><?php echo "<a href='#?id=$item[MaMonHoc]'>
+            <button type='button' class = 'fix-button'>Sửa</button>
+            </a>"; ?>
+            </td>
+               <td><?php echo "<a href='day/xoaday.php?id=$item[MaDayHoc]' onclick='return XacNhan();'>
+               <button type='button'  class = 'fix-button'>Xóa</button>
+               </a>"; ?>
             </td>
         </tr>
     <?php } ?>
