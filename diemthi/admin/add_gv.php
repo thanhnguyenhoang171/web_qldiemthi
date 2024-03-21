@@ -6,7 +6,7 @@ $m = $t = $dc = $dt = $p = "";
 if (isset ($_POST['ok'])) {
 	$con = new giaovien();
 	if ($_POST['txtmagv'] == null) {
-		echo "Bạn Chưa Nhập Mã Giáo Viên!!!<br/>";
+		echo "Bạn Chưa Nhập Mã Giảng Viên!!!<br/>";
 	} else {
 		$rule = "/^[0-9]{4}$/";
 		if (preg_match($rule, $_POST['txtmagv'])) {
@@ -14,7 +14,7 @@ if (isset ($_POST['ok'])) {
 		} else {
 			?>
 			<script type="text/javascript">
-				alert("Ma Giao Vien Khong Hop Le.!");
+				alert("Mã Giảng Viên không hợp lệ!");
 				window.location = "add_gv.php";
 			</script>
 			<?php
@@ -61,7 +61,7 @@ if (isset ($_POST['ok'])) {
 		} else {
 			?>
 			<script type="text/javascript">
-				alert("Password Nhap Vao Khong Hop Le.!");
+				alert("Password nhập vào không hợp lệ.!");
 				window.location = "add_gv.php";
 			</script>
 			<?php
@@ -76,7 +76,7 @@ if (isset ($_POST['ok'])) {
 		$giaovien = $con->add($m, $mamon, $t, $dc, $dt, $p);
 		?>
 		<script type="text/javascript">
-			alert("Bạn Đã Thêm Giáo Viên Thành Công!");
+			alert("Bạn Đã Thêm Giảng Viên Thành Công!");
 			window.location = "index.php?mod=gv";
 		</script>
 		<?php
@@ -86,16 +86,21 @@ if (isset ($_POST['ok'])) {
 }
 //$con->close();
 ?>
+
 <link rel="stylesheet" href="../assets/css/css/stylea.css">
 
 <center><img width="100%" src="../assets/img/Ban.png"></center>
 
+
+
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Trang Thêm Giáo Viên</title>
+	<meta charset="UTF-8">
+	<title>Trang Thêm Giảng Viên</title>
 </head>
+
 <body bgcolor="#a3cbff">
 <h1 align="center">Trang Thêm Giáo Viên</h1>
 <form action="add_gv.php" method="post">
@@ -109,6 +114,7 @@ if (isset ($_POST['ok'])) {
             <td>
                 <select name="mamonhoc">
                     <?php
+
 						$db = new DB();
 						$conn = $db->connect();
 						$query = "select * from monhoc";
@@ -121,6 +127,7 @@ if (isset ($_POST['ok'])) {
 				</td>
 			</tr>
 			<tr>
+
 				<td class = "ToT">Tên Giáo Viên:</td>
 				<td><input type="text" name="txtten" size="25" /></td>
 			</tr>
@@ -136,6 +143,7 @@ if (isset ($_POST['ok'])) {
 				<td class = "ToT">Password Giáo Viên:</td>
 				<td><input type="password" name="txtpass" size="25" placeholder="Mật khẩu trên 6 kí tự" /></td>
 			</tr>
+
 		</table>
 	</form>
 					<h1 style="text-align: center;"><input type="submit" class = "add-button" name="ok" value="Thêm Giáo Viên" /></h1>

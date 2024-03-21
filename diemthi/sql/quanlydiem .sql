@@ -167,7 +167,7 @@ INSERT INTO `hocsinh` (`MaHS`, `MaLopHoc`, `TenHS`, `GioiTinh`, `NgaySinh`, `noi
 CREATE TABLE `lophoc` (
   `MaLopHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `Tenlophoc` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `KhoiHoc` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `KhoiHoc` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

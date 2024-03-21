@@ -31,7 +31,8 @@ if(isset($_POST['ok'])){
 		$p=$_POST['txtpass'];
 	}
 	if($mamon && $t && $dc && $dt && $p){
-		$giaovien=$con->edit($ma,$mamon,$t,$dc,$dt,$p);
+		$encryptedPassword = md5($p);
+		$giaovien=$con->edit($ma,$mamon,$t,$dc,$dt,$encryptedPassword);
 		header("location:index.php?mod=gv");
 		$dis=$con->dis();
 		exit();

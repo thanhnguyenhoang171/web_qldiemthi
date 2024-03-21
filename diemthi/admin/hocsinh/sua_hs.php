@@ -52,13 +52,25 @@ if (isset ($_POST['ok'])) {
 		$p = $_POST['txtpasshs'];
 	}
 	if ($mahs && $malop && $t && $gt && $ns && $nois && $dt && $cha && $me && $p) {
+
+		// Encrypt the password using MD5 hash
+		$encryptedPassword = md5($p);
+
 		//$hs=$con->edit($mahs,$malop,$t,$gt,$ns,$nois,$dt,$cha,$me,$p);
 		$query = "update hocsinh set MaLopHoc='$malop',TenHS='$t',GioiTinh='$gt',NgaySinh='$ns',noisinh='$nois',dantoc='$dt',
-		hotencha='$cha',hotenme='$me',passwordhs='$p' where MaHS='$mahs'";
+		hotencha='$cha',hotenme='$me',passwordhs='$encryptedPassword' where MaHS='$mahs'";
 		$results = mysqli_query($conn, $query);
-		header("location:../index.php?mod=hs");
+		//header("location:../index.php?mod=hs");
+		?>
+		<script type="text/javascript">
+			alert("Bạn Đã Sửa Học Sinh Thành Công.Nhấn OK Để Tiếp Tục !");
+			window.location = "../index.php?mod=hs";
+		</script>
+		<?php
 		exit();
 	}
+	
+
 
 }
 $row = $con->selecths($mahs);
@@ -83,6 +95,7 @@ $row = $con->selecths($mahs);
 			</tr>
 			<tr style='background: #f1f1f1'>
 				<td class = "ToT">Giới tính</td>
+
 				<td><input type="radio" name="txtgt" value="Nam" value="<?php echo $row['GioiTinh']; ?>">Nam
 					<input type="radio" name="txtgt" value="Nữ" value="<?php echo $row['GioiTinh']; ?>">Nữ
 				</td>
@@ -117,4 +130,5 @@ $row = $con->selecths($mahs);
 	<h1 style="text-align: center;">
 	<input type="submit" class='add-button' name="ok" value="Sửa" />
 	</h1>
+			
 </body>

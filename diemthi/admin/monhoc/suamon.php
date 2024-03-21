@@ -21,11 +21,24 @@ if (!empty ($_POST['edit_mon'])) {
         $errors['HeSoMonHoc'] = 'Nhập hệ số môn học';
     }
 
-    // Neu ko co loi thi insert
     if (!$errors) {
-        $mon = $con->edit($data['MaMonHoc'], $data['TenMonHoc'], $data['SoTiet'], $data['HeSoMonHoc']);
-        // Trở về trang danh sách
-        header("location:../index.php?mod=mh");
+        ?>
+        <script type="text/javascript">
+            var result = confirm("Bạn có chắc chắn muốn lưu điểm?");
+            if (result == true) {
+                <?php
+                    $mon = $con->edit($data['MaMonHoc'], $data['TenMonHoc'], $data['SoTiet'], $data['HeSoMonHoc']);
+                ?>
+                window.location.href = "../index.php?mod=mh";
+                // header("location:../index.php?mod=mh");
+
+            } else {
+                window.location.href = "../index.php?mod=mh";
+                //   header("location:../index.php?mod=mh");
+            }
+        </script>
+        <?php
+        exit();
     }
 }
 ?>
