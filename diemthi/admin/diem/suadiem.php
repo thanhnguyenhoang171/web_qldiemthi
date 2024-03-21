@@ -42,11 +42,6 @@ if (!empty ($_POST['edit_diem'])) {
         $diemthi = floatval($_POST['diemthi']);
 
         $diemtrungbinh = ($diemmieng + $diem15phut1 + $diem15phut2 + ($diem1tiet1 + $diem1tiet2) * 2 + $diemthi * 3) / 10; // Tính điểm trung bình
-
-        // $diem = $con->edit($madiem, $data['DiemMieng'], $data['Diem15Phut1'], $data['Diem15Phut2'], $data['Diem1Tiet1'], $data['Diem1Tiet2'], $data['DiemThi'], $diemtrungbinh);
-
-        // // Trở về trang danh sách
-        // header("location:../index.php?mod=diem");
         ?>
         <script type="text/javascript">
             var result = confirm("Bạn có chắc chắn muốn lưu điểm?");
@@ -79,7 +74,7 @@ $data = $con->selectdiem($madiem);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<center><img src="../../assets/img/Ban.gif"></center>
+<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
 <center>
 
     <body bgcolor="#CAFFFF">
