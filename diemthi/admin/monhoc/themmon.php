@@ -90,17 +90,19 @@ if (!empty ($_POST['add_mon'])) {
     <title>Thêm Môn Học</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 </head>
-<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
+<center><img width="100%" src="../../assets/img/Ban.png"></center>
 
-<body bgcolor="#CAFFFF">
+<body bgcolor="#a3cbff">
     <center>
         <h1>Thêm Môn Học </h1>
-        <a href="../index.php?mod=mh"><button>Trở về</button></a> <br /> <br />
+        <a href="../index.php?mod=mh"><button class = "add-button" >Trở về</button></a> <br /> <br />
         <form method="post" action="themmon.php">
-            <table width="50%" border="1" cellspacing="0" cellpadding="10">
+            <table style = "background: #f1f1f1" width="50%" border="1" cellspacing="0" cellpadding="10">
                 <tr>
-                    <td>Mã Môn Học</td>
+                    <td class = "ToT">Mã Môn Học</td>
+
                     <td>
                         <input type="text" name="ma"
                             value="<?php echo !empty ($data['MaMonHoc']) ? $data['MaMonHoc'] : ''; ?>"
@@ -110,7 +112,8 @@ if (!empty ($_POST['add_mon'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>Tên Môn Học</td>
+                    <td class = "ToT">Tên Môn Học</td>
+
                     <td>
                         <input type="text" name="name"
                             value="<?php echo !empty ($data['TenMonHoc']) ? $data['TenMonHoc'] : ''; ?>" />
@@ -119,7 +122,9 @@ if (!empty ($_POST['add_mon'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>Số Tiết</td>
+
+                    <td class = "ToT">Số Tiết</td>
+
                     <td>
                         <input type="text" name="tiet"
                             value="<?php echo !empty ($data['SoTiet']) ? $data['SoTiet'] : ''; ?>"
@@ -129,7 +134,9 @@ if (!empty ($_POST['add_mon'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>Hệ Số Môn Học</td>
+
+                    <td class = "ToT">Hệ Số Môn Học</td>
+
                     <td>
                         <input type="text" name="so"
                             value="<?php echo !empty ($data['HeSoMonHoc']) ? $data['HeSoMonHoc'] : ''; ?>"
@@ -138,13 +145,13 @@ if (!empty ($_POST['add_mon'])) {
                             echo $errors['HeSoMonHoc']; ?>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" name="add_mon" value="Lưu" />
-                    </td>
-                </tr>
+
             </table>
+
+            <h1 style ="text-align: center;">
+                <input type="submit" class = "add-button" name="add_mon" value="Lưu" />
+            </h1>
+
         </form>
     </center>
 </body>

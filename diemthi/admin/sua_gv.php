@@ -44,35 +44,33 @@ if(isset($_POST['ok'])){
 $row=$con->selectgv($ma);
 
 ?>
-<center><img src="../assets/img/Ban.gif"></center>
-<body bgcolor="#CAFFFF">
+<link rel="stylesheet" href="../assets/css/css/stylea.css">
+<center><img width="100%" src="../assets/img/Ban.png"></center>
+<body bgcolor="#a3cbff">
 	<h1 align="center">Trang Sửa giáo viên</h1>
 <form action="sua_gv.php?cma=<?php echo $row['Magv'];?>" method="post">
 <table align="center" border="1" cellspacing="0" cellpadding="10">
-		<tr>
-		<td>Mã Môn Học</td>
+		<tr style = "background: #f1f1f1">
+		<td class = "ToT">Mã Môn Học</td>
 			<td><input type="text" name="txtmamon" size="25" value="<?php echo $row['MaMonHoc']; ?>" /></td>
 		</tr>
-		<tr>
-			<td>Tên giáo viên:</td>
+		<tr style = "background: #f1f1f1">
+			<td class = "ToT">Tên giáo viên:</td>
 			<td><input type="text" name="txtten" size="25" value="<?php echo $row['Tengv']; ?>" /></td>
 		</tr>
-		<tr>
-			<td>Địa Chỉ: </td>
+		<tr style = "background: #f1f1f1">
+			<td class = "ToT">Địa Chỉ: </td>
 			<td><textarea type="text" name="txtdiachi"><?php echo $row['DiaChi']; ?> </textarea></td>
 		</tr>
-		<tr>
-			<td>Điện Thoại:</td>
+		<tr style = "background: #f1f1f1">
+			<td class = "ToT">Điện Thoại:</td>
 			<td><input type="text" name="txtdienthoai" size="25" value="<?php echo $row['SDT']; ?>" /> </td>
 		</tr>
-		<tr>
-			<td>Password giáo viên:</td>
+		<tr style = "background: #f1f1f1">
+			<td class = "ToT">Password giáo viên:</td>
 			<td><input type="password" name="txtpass" size="25" value="<?php echo $row['passwordgv']; ?>"/></td>
-		</tr>
-			<td> </td>
-			<td>  <input type="submit" name="ok" value="Sửa" /><br/>
-			</td>
-		</tr>
 </table>
+			<h1 style = "text-align: center">  <input type="submit" class = "add-button" name="ok" value="Sửa" /><br/>
+			</h1>
 </form>
 </body>

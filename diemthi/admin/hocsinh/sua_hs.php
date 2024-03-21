@@ -52,6 +52,7 @@ if (isset ($_POST['ok'])) {
 		$p = $_POST['txtpasshs'];
 	}
 	if ($mahs && $malop && $t && $gt && $ns && $nois && $dt && $cha && $me && $p) {
+
 		// Encrypt the password using MD5 hash
 		$encryptedPassword = md5($p);
 
@@ -70,61 +71,64 @@ if (isset ($_POST['ok'])) {
 	}
 	
 
+
 }
 $row = $con->selecths($mahs);
 ?>
-<center><img src="../../assets/img/Ban.gif"></center>
 
-<body bgcolor="#CAFFFF">
+<link rel="stylesheet" href="../../assets/css/css/stylea.css">
+
+<center><img width="100%" src="../../assets/img/Ban.png"></center>
+
+<body bgcolor="#a3cbff">
 	<h1 style="text-align: center">TRANG SỬA HỌC THÔNG TIN HỌC SINH</h1>
 	<table align="center" border="1" cellspacing="0" cellpadding="10">
 		<form action="sua_hs.php?cmahs=<?php echo $row['MaHS']; ?>" method="post">
-			<tr>
-				<td>Mã Lớp Học</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Mã Lớp Học</td>
 				<td><input type="text" name="txtmalop" size="25" value="<?php echo $row['MaLopHoc']; ?>" /></td>
 			</tr>
 
-			<tr>
-				<td>Tên Học Sinh</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Tên Học Sinh</td>
 				<td><input type="text" name="txtten" size="25" value="<?php echo $row['TenHS']; ?>" /></td>
 			</tr>
-			<tr>
-				<td>giới tính</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Giới tính</td>
+
 				<td><input type="radio" name="txtgt" value="Nam" value="<?php echo $row['GioiTinh']; ?>">Nam
 					<input type="radio" name="txtgt" value="Nữ" value="<?php echo $row['GioiTinh']; ?>">Nữ
 				</td>
 			</tr>
-			<tr>
-				<td>Ngày Sinh:</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Ngày Sinh:</td>
 				<td><input type="date" name="txtns" size="25" value="<?php echo $row['NgaySinh']; ?>" /> </td>
 			</tr>
-			<tr>
-				<td>Nơi Sinh:</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Nơi Sinh:</td>
 				<td><input type="text" name="txtnois" size="25" value="<?php echo $row['noisinh']; ?>" /> </td>
 			</tr>
-			<tr>
-				<td>Dân Tộc:</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Dân Tộc:</td>
 				<td><input type="text" name="txtdantoc" size="25" value="<?php echo $row['dantoc']; ?>" /> </td>
 			</tr>
-			<tr>
-				<td>Họ Tên Cha:</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Họ Tên Cha:</td>
 				<td><input type="text" name="txtcha" size="25" value="<?php echo $row['hotencha']; ?>" /> </td>
 			</tr>
-			<tr>
-				<td>Họ Tên Mẹ:</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Họ Tên Mẹ:</td>
 				<td><input type="text" name="txtme" size="25" value="<?php echo $row['hotenme']; ?>" /> </td>
 			</tr>
-			<tr>
-				<td>Password Học Sinh:</td>
+			<tr style='background: #f1f1f1'>
+				<td class = "ToT">Password Học Sinh:</td>
 				<td><input type="password" name="txtpasshs" size="25" value="<?php echo $row['passwordhs']; ?>" /></td>
 			</tr>
 
-			</tr>
-
-			<td> </td>
-			<td> <input type="submit" name="ok" value="Sửa" /><br />
-			</td>
-			</tr>
 		</form>
-	</TABLE>
+	</table>
+	<h1 style="text-align: center;">
+	<input type="submit" class='add-button' name="ok" value="Sửa" />
+	</h1>
+			
 </body>
