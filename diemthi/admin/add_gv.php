@@ -6,7 +6,7 @@ $m = $t = $dc = $dt = $p = "";
 if (isset ($_POST['ok'])) {
 	$con = new giaovien();
 	if ($_POST['txtmagv'] == null) {
-		echo "Bạn Chưa Nhập Mã Giáo Viên!!!<br/>";
+		echo "Bạn Chưa Nhập Mã Giảng Viên!!!<br/>";
 	} else {
 		$rule = "/^[0-9]{4}$/";
 		if (preg_match($rule, $_POST['txtmagv'])) {
@@ -14,7 +14,7 @@ if (isset ($_POST['ok'])) {
 		} else {
 			?>
 			<script type="text/javascript">
-				alert("Ma Giao Vien Khong Hop Le.!");
+				alert("Mã Giảng Viên không hợp lệ!");
 				window.location = "add_gv.php";
 			</script>
 			<?php
@@ -61,7 +61,7 @@ if (isset ($_POST['ok'])) {
 		} else {
 			?>
 			<script type="text/javascript">
-				alert("Password Nhap Vao Khong Hop Le.!");
+				alert("Password nhập vào không hợp lệ.!");
 				window.location = "add_gv.php";
 			</script>
 			<?php
@@ -76,7 +76,7 @@ if (isset ($_POST['ok'])) {
 		$giaovien = $con->add($m, $mamon, $t, $dc, $dt, $p);
 		?>
 		<script type="text/javascript">
-			alert("Bạn Đã Thêm Giáo Viên Thành Công!");
+			alert("Bạn Đã Thêm Giảng Viên Thành Công!");
 			window.location = "index.php?mod=gv";
 		</script>
 		<?php
@@ -86,27 +86,29 @@ if (isset ($_POST['ok'])) {
 }
 //$con->close();
 ?>
-<center><img src="../assets/img/Ban.gif"></center>
+<center><img src="../assets/img/Ban.png" width="100%" height="160px"></center>
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Trang Thêm Giáo Viên</title>
+	<meta charset="UTF-8">
+	<title>Trang Thêm Giảng Viên</title>
 </head>
+
 <body bgcolor="#CAFFFF">
-<h1 align="center">Trang Thêm Giáo Viên</h1>
-<form action="add_gv.php" method="post">
-    <table align="center" border="1" cellspacing="0" cellpadding="10">
-        <tr>
-            <td>Mã Giáo Viên:</td>
-            <td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giáo Viên là số 4 ký tự" /><br /></td>
-        </tr>
-        <tr>
-            <td>Mã Môn Học</td>
-            <td>
-                <select name="mamonhoc">
-                    <?php
+	<h1 align="center">Trang Thêm Giảng Viên</h1>
+	<form action="add_gv.php" method="post">
+		<table align="center" border="1" cellspacing="0" cellpadding="10">
+			<tr>
+				<td>Mã Giáo Viên:</td>
+				<td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giảng Viên là số 4 ký tự" /><br /></td>
+			</tr>
+			<tr>
+				<td>Mã Môn Học</td>
+				<td>
+					<select name="mamonhoc">
+						<?php
 						$db = new DB();
 						$conn = $db->connect();
 						$query = "select * from monhoc";
@@ -119,7 +121,7 @@ if (isset ($_POST['ok'])) {
 				</td>
 			</tr>
 			<tr>
-				<td>Tên Giáo Viên:</td>
+				<td>Tên Giảng Viên:</td>
 				<td><input type="text" name="txtten" size="25" /></td>
 			</tr>
 			<tr>
@@ -131,12 +133,12 @@ if (isset ($_POST['ok'])) {
 				<td><input type="text" name="txtdienthoai" size="25" placeholder="Số từ 9 đến 11 số không âm" /></td>
 			</tr>
 			<tr>
-				<td>Password Giáo Viên:</td>
+				<td>Password Giảng Viên:</td>
 				<td><input type="password" name="txtpass" size="25" placeholder="Mật khẩu trên 6 kí tự" /></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" name="ok" value="Thêm Giáo Viên" /><br /></td>
+				<td><input type="submit" name="ok" value="Thêm Giảng Viên" /><br /></td>
 			</tr>
 		</table>
 	</form>
