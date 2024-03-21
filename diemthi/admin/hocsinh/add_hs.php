@@ -123,7 +123,7 @@ if (isset ($_POST['ok'])) {
 		<div id="menu">
 			<table align="center" border="1" cellspacing="0" cellpadding="10">
 				<tr style="background-color: #f1f1f1;">
-					<td class="ToT">Mã Sinh Viên:</td>
+					<td class="ToT"> Mã Sinh Viên:</td>
 					<td> <input type="text" name="txtmahs" size="25" placeholder="6 số nguyên từ 0-9" /><br />
 					</td>
 				</tr>

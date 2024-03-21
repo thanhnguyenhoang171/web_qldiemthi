@@ -39,17 +39,18 @@ $data = $con->selectmon($id);
     <title>Môn Học</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 </head>
-<center><img src="../../assets/img/Ban.gif"></center>
+<center><img width="100%" src="../../assets/img/Ban.png"></center>
 <center>
 
-    <body bgcolor="#CAFFFF">
+    <body bgcolor="#a3cbff">
         <h1>Sửa Môn Học </h1>
         <a href="../index.php?mod=mh"><button>Trở về</button></a> <br /> <br />
         <form method="post" action="suamon.php?id=<?php echo $data['MaMonHoc']; ?>">
-            <table width="50%" border="1" cellspacing="0" cellpadding="10">
+            <table style= "background: #f1f1f1" width="50%" border="1" cellspacing="0" cellpadding="10">
                 <tr>
-                    <td>Tên Môn Học</td>
+                    <td class = "ToT">Tên Môn Học</td>
                     <td>
                         <input type="text" name="name" value="<?php echo $data['TenMonHoc']; ?>" />
                         <?php if (!empty ($errors['TenMonHoc']))
@@ -57,7 +58,7 @@ $data = $con->selectmon($id);
                     </td>
                 </tr>
                 <tr>
-                    <td>Số Tiết</td>
+                    <td class = "ToT">Số Tiết</td>
                     <td>
                         <input type="text" name="tiet" value="<?php echo $data['SoTiet']; ?>" />
                         <?php if (!empty ($errors['SoTiet']))
@@ -65,21 +66,18 @@ $data = $con->selectmon($id);
                     </td>
                 </tr>
                 <tr>
-                    <td>Hệ Số Môn Học</td>
+                    <td class = "ToT">Hệ Số Môn Học</td>
                     <td>
                         <input type="text" name="heso" value="<?php echo $data['HeSoMonHoc']; ?>" />
                         <?php if (!empty ($errors['HeSoMonHoc']))
                             echo $errors['HeSoMonHoc']; ?>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="hidden" name="id" value="<?php echo $data['MaMonHoc']; ?>" />
-                        <input type="submit" name="edit_mon" value="Lưu" />
-                    </td>
-                </tr>
             </table>
+            <h1 style =" text-align: center; ">
+                <input type="hidden" name="id" value="<?php echo $data['MaMonHoc']; ?>" />
+                <input type="submit" class = "add-button" name="edit_mon" value="Lưu" />
+            </h1>
         </form>
     </body>
 </center>

@@ -86,7 +86,9 @@ if (isset ($_POST['ok'])) {
 }
 //$con->close();
 ?>
-<center><img src="../assets/img/Ban.gif"></center>
+<link rel="stylesheet" href="../assets/css/css/stylea.css">
+
+<center><img width="100%" src="../assets/img/Ban.png"></center>
 
 <!DOCTYPE html>
 <html>
@@ -94,16 +96,16 @@ if (isset ($_POST['ok'])) {
     <meta charset="UTF-8">
     <title>Trang Thêm Giáo Viên</title>
 </head>
-<body bgcolor="#CAFFFF">
+<body bgcolor="#a3cbff">
 <h1 align="center">Trang Thêm Giáo Viên</h1>
 <form action="add_gv.php" method="post">
-    <table align="center" border="1" cellspacing="0" cellpadding="10">
+    <table style= "background: #f1f1f1" align="center" border="1" cellspacing="0" cellpadding="10">
         <tr>
-            <td>Mã Giáo Viên:</td>
+            <td class = "ToT">Mã Giáo Viên:</td>
             <td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giáo Viên là số 4 ký tự" /><br /></td>
         </tr>
         <tr>
-            <td>Mã Môn Học</td>
+            <td class = "ToT">Mã Môn Học</td>
             <td>
                 <select name="mamonhoc">
                     <?php
@@ -119,27 +121,24 @@ if (isset ($_POST['ok'])) {
 				</td>
 			</tr>
 			<tr>
-				<td>Tên Giáo Viên:</td>
+				<td class = "ToT">Tên Giáo Viên:</td>
 				<td><input type="text" name="txtten" size="25" /></td>
 			</tr>
 			<tr>
-				<td>Địa Chỉ: </td>
+				<td class = "ToT">Địa Chỉ: </td>
 				<td><textarea type="text" name="txtdiachi"></textarea></td>
 			</tr>
 			<tr>
-				<td>Điện Thoại:</td>
+				<td class = "ToT">Điện Thoại:</td>
 				<td><input type="text" name="txtdienthoai" size="25" placeholder="Số từ 9 đến 11 số không âm" /></td>
 			</tr>
 			<tr>
-				<td>Password Giáo Viên:</td>
+				<td class = "ToT">Password Giáo Viên:</td>
 				<td><input type="password" name="txtpass" size="25" placeholder="Mật khẩu trên 6 kí tự" /></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><input type="submit" name="ok" value="Thêm Giáo Viên" /><br /></td>
 			</tr>
 		</table>
 	</form>
+					<h1 style="text-align: center;"><input type="submit" class = "add-button" name="ok" value="Thêm Giáo Viên" /></h1>
 </body>
 
 </html>

@@ -17,9 +17,10 @@ require '../includes/config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 </head>
 
-<body bgcolor="#CAFFFF">
+<body bgcolor="#a3cbff">
     <br />
     <h1 class="h1" style="font-family:Tahoma;text-align: center;">Điểm Sinh Viên</h1>
     <h2 align="center">
@@ -27,7 +28,7 @@ require '../includes/config.php';
             <div style="text-align:center">
                 <?php
                 ?>
-                <select name="hk" style="width:100px;height: 25px ">
+                <select name="hk" class = "select-style">
                     <?php
                     $query = "select MaHocKy from hocky";
                     $results = mysqli_query($conn, $query);
@@ -36,7 +37,7 @@ require '../includes/config.php';
                     }
                     ?>
                 </select>
-                <select name="lop" style="width:100px;height: 25px">
+                <select name="lop" class = "select-style">
                     <?php
                     $query2 = "select * from lophoc";
                     $results2 = mysqli_query($conn, $query2);
@@ -46,7 +47,7 @@ require '../includes/config.php';
                     ?>
 
                 </select>
-                <select name="mon" style="width:100px;height: 25px">
+                <select name="mon" class = "select-style">
                     <?php
                     $query3 = "select * from monhoc";
                     $results3 = mysqli_query($conn, $query3);
@@ -56,7 +57,7 @@ require '../includes/config.php';
                     ?>
 
                 </select>
-                <p> <input type="submit" name="add" value="Chọn" style="width:100px;height: 25px" /></p>
+                <p> <input type="submit" class = "view-button" name="add" value="Chọn" /></p>
 
             </div>
         </form>
@@ -64,7 +65,11 @@ require '../includes/config.php';
         </form>
     </h2>
     <table width="75%" border="1" cellspacing="0" cellpadding="10" style="margin-left:180px">
-        <tr class="diem" style="font-weight: bold;color: #0A246A">
+        <tr class="diem" style="font-weight: bold;
+        color: #f1f1f1;
+        background-color: #336699;
+        text-align: center;
+        font-weight: bold;">
             <td>Mã Sinh Viên</td>
             <td style="width:200px">Tên Sinh Viên</td>
             <td>Mã Lớp</td>
@@ -90,7 +95,7 @@ require '../includes/config.php';
             foreach ($students as $item) {
                 if ($_POST['hk'] == $item['MaHocKy'] && $_POST['lop'] == $item['MaLopHoc'] && $_POST['mon'] == $item['MaMonHoc']) {
                     ?>
-                    <tr>
+                    <tr style = "background: #f1f1f1">
                         <td>
                             <?php echo $item['MaHS']; ?>
                         </td>
@@ -133,10 +138,10 @@ require '../includes/config.php';
                             <?php echo round($item['DiemTB'], 1); ?>
                         </td>
                         <td>
-                            <?php echo "<a href='diem/suadiem.php?cma=$item[MaDiem]'><button type='button'>Sửa</button></a>"; ?>
+                            <?php echo "<a href='diem/suadiem.php?cma=$item[MaDiem]'><button type='button' class = 'fix-button'>Sửa</button></a>"; ?>
                         </td>
                         <td>
-                            <?php echo "<a href='diem/xoadiem.php?cma=$item[MaDiem]'  onclick='return XacNhan();'><button type='button'>Xóa</button></a>"; ?>
+                            <?php echo "<a href='diem/xoadiem.php?cma=$item[MaDiem]'  onclick='return XacNhan();'><button type='button' class = 'fix-button'>Xóa</button></a>"; ?>
                         </td>
                     </tr>
                     <?php
