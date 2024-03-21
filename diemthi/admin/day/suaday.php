@@ -1,161 +1,115 @@
 <?php
 session_start();
 require "../../classes/day.class.php";
-require "../../includes/config.php";
+
 $con = new day();
-$id = $_GET['id'];
 
-if (!empty ($_POST['edit_day'])) {
-    // Lay data
-    $data['DiemMieng'] = isset ($_POST['diemmieng']) ? $_POST['diemmieng'] : '';
-    $data['Diem15Phut1'] = isset ($_POST['diem15phut1']) ? $_POST['diem15phut1'] : '';
-    $data['Diem15Phut2'] = isset ($_POST['diem15phut2']) ? $_POST['diem15phut2'] : '';
-    $data['Diem1Tiet1'] = isset ($_POST['diem1tiet1']) ? $_POST['diem1tiet1'] : '';
-    $data['Diem1Tiet2'] = isset ($_POST['diem1tiet2']) ? $_POST['diem1tiet2'] : '';
-    $data['DiemThi'] = isset ($_POST['diemthi']) ? $_POST['diemthi'] : '';
-    $errors = array();
-    if (empty ($data['DiemMieng'])) {
-        $errors['DiemMieng'] = 'Chưa nhập điểm miệng';
+if (isset ($_GET['id'])) {
+    $id = $_GET['id'];
+
+    if (!empty ($_POST['edit_day'])) {
+        $data['MaMonHoc'] = isset ($_POST['mamonhoc']) ? $_POST['mamonhoc'] : '';
+        $data['Magv'] = isset ($_POST['magiangvien']) ? $_POST['magiangvien'] : '';
+        $data['MaLopHoc'] = isset ($_POST['malophoc']) ? $_POST['malophoc'] : '';
+        $data['MaHocKy'] = isset ($_POST['mahocky']) ? $_POST['mahocky'] : '';
+        $data['MoTaPhanCong'] = isset ($_POST['motaphancong']) ? $_POST['motaphancong'] : '';
+
+        $errors = array();
+
+        if (empty ($data['MaMonHoc'])) {
+            $errors['MaMonHoc'] = 'Chưa nhập mã môn học';
+        }
+        if (empty ($data['Magv'])) {
+            $errors['Magv'] = 'Chưa nhập mã giảng viên';
+        }
+        if (empty ($data['MaLopHoc'])) {
+            $errors['MaLopHoc'] = 'Chưa nhập mã lớp học';
+        }
+        if (empty ($data['MaHocKy'])) {
+            $errors['MaHocKy'] = 'Chưa nhập mã học kỳ';
+        }
+        if (empty ($data['MoTaPhanCong'])) {
+            $errors['MoTaPhanCong'] = 'Chưa nhập mô tả phân công';
+        }
+
+        if (empty ($errors)) {
+            $dayhoc = $con->edit($id, $data['MaMonHoc'], $data['Magv'], $data['MaLopHoc'], $data['MaHocKy'], $data['MoTaPhanCong']);
+            header("Location: ../index.php?mod=day");
+            exit();
+        }
     }
 
-    if (empty ($data['Diem15Phut1'])) {
-        $errors['Diem15Phut1'] = 'Chưa nhập điểm 15 phút';
-    }
-    if (empty ($data['Diem15Phut2'])) {
-        $errors['Diem15Phut2'] = 'Chưa nhập điểm 15 phút';
-    }
-    if (empty ($data['Diem1Tiet1'])) {
-        $errors['Diem1Tiet1'] = 'Chưa nhập điểm 1 tiết';
-    }
-    if (empty ($data['Diem1Tiet2'])) {
-        $errors['Diem1Tiet2'] = 'Chưa nhập điểm 1 tiết';
-    }
-    if (empty ($data['DiemThi'])) {
-        $errors['DiemThi'] = 'Chưa nhập điểm thi';
-    }
-
-    if (!$errors) {
-        $diemmieng = floatval($_POST['diemmieng']); // Chuyển giá trị thành số thực
-        $diem15phut1 = floatval($_POST['diem15phut1']);
-        $diem15phut2 = floatval($_POST['diem15phut2']);
-        $diem1tiet1 = floatval($_POST['diem1tiet1']);
-        $diem1tiet2 = floatval($_POST['diem1tiet2']);
-        $diemthi = floatval($_POST['diemthi']);
-
-        $diemtrungbinh = ($diemmieng + $diem15phut1 + $diem15phut2 + ($diem1tiet1 + $diem1tiet2) * 2 + $diemthi * 3) / 10; // Tính điểm trung bình
-        ?>
-        <script type="text/javascript">
-            var result = confirm("Bạn có chắc chắn muốn lưu điểm?");
-            if (result == true) {
-                // Nếu người dùng chọn Yes, tiến hành lưu điểm
-                <?php
-                $diem = $con->edit($madiem, $data['DiemMieng'], $data['Diem15Phut1'], $data['Diem15Phut2'], $data['Diem1Tiet1'], $data['Diem1Tiet2'], $data['DiemThi'], $diemtrungbinh);
-                ?>
-                // Trở về trang danh sách
-                window.location.href = "../index.php?mod=diem";
-            } else {
-                // Trở về trang danh sách
-                window.location.href = "../index.php?mod=diem";
-            }
-        </script>
-        <?php
-        exit();
-    }
+    $data = $con->selectday($id);
+} else {
+    header("Location: ../index.php?mod=day");
+    exit();
 }
 ?>
-<?php
-$data = $con->selectdiem($madiem);
-?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Lịch Dạy</title>
+    <title>Sửa Lịch Dạy</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
-<center><img src="../../assets/img/Ban.gif"></center>
-<center>
 
-    <body bgcolor="#CAFFFF">
-        <h1>Sửa Lịch Dạy </h1>
-        <a href="../index.php?mod=day"><button>Trở về</button></a> <br /> <br />
-        <form method="post" action="suaday.php?id=<?php echo $data['MaDayHoc']; ?>">
-            <table width="50%" border="1" cellspacing="0" cellpadding="10">
+<body bgcolor="#CAFFFF">
+    <h1 align="center">Sửa Lịch Dạy</h1>
+    <a href="../index.php?mod=day"><button>Trở về</button></a> <br /><br />
 
-                <tr>
-                    <td>Điểm Miệng</td>
-                    <td>
-                        <input type="text" name="diemmieng" value="<?php echo $data['MaDayHoc']; ?>" />
-                        <?php if (!empty ($errors['MaDayHoc']))
-                            echo $errors['DiemMieng']; ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Điểm 15 phút</td>
-                    <td>
-                        <input type="text" name="diem15phut1" value="<?php echo $data['Diem15Phut1']; ?>" />
-                        <?php if (!empty ($errors['Diem15Phut1']))
-                            echo $errors['Diem15Phut1']; ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Điểm 15 phút</td>
-                    <td>
-                        <input type="text" name="diem15phut2" value="<?php echo $data['Diem15Phut2']; ?>" />
-                        <?php if (!empty ($errors['Diem15Phut2']))
-                            echo $errors['Diem15Phut2']; ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Điểm 1 tiết</td>
-                    <td>
-                        <input type="text" name="diem1tiet1" value="<?php echo $data['Diem1Tiet1']; ?>" />
-                        <?php if (!empty ($errors['Diem1Tiet1']))
-                            echo $errors['Diem1Tiet1']; ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Điểm 1 tiết</td>
-                    <td>
-                        <input type="text" name="diem1tiet2" value="<?php echo $data['Diem1Tiet2']; ?>" />
-                        <?php if (!empty ($errors['Diem1Tiet2']))
-                            echo $errors['Diem1Tiet2']; ?>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Điểm thi</td>
-                    <td>
-                        <input type="text" name="diemthi" value="<?php echo $data['DiemThi']; ?>" />
-                        <?php if (!empty ($errors['DiemThi']))
-                            echo $errors['DiemThi']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Điểm trung bình</td>
-                    <td>
-                        <input type="text" name="diemtrungbinh" value="<?php echo $data['DiemTB']; ?>"
-                            readonly="readonly" />
-                        <?php if (!empty ($errors['DiemTB']))
-                            echo $errors['DiemTB']; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="hidden" name="id" value="<?php echo $data['MaDiem']; ?>" />
-                        <input type="submit" name="edit_day" value="Lưu" />
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </body>
-</center>
+    <form method="post" action="suaday.php?id=<?php echo $data['MaDayHoc']; ?>">
+        <table width="50%" border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <td>Mã Môn Học</td>
+                <td>
+                    <input type="text" name="mamonhoc" value="<?php echo $data['MaMonHoc']; ?>" />
+                    <?php if (!empty ($errors['MaMonHoc']))
+                        echo $errors['MaMonHoc']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Mã Giảng Viên</td>
+                <td>
+                    <input type="text" name="magiangvien" value="<?php echo $data['Magv']; ?>" />
+                    <?php if (!empty ($errors['Magv']))
+                        echo $errors['Magv']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Mã Lớp Học</td>
+                <td>
+                    <input type="text" name="malophoc" value="<?php echo $data['MaLopHoc']; ?>" />
+                    <?php if (!empty ($errors['MaLopHoc']))
+                        echo $errors['MaLopHoc']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Mã Học Kỳ</td>
+                <td>
+                    <input type="text" name="mahocky" value="<?php echo $data['MaHocKy']; ?>" />
+                    <?php if (!empty ($errors['MaHocKy']))
+                        echo $errors['MaHocKy']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Mô Tả Phân Công</td>
+                <td>
+                    <input type="text" name="motaphancong" value="<?php echo $data['MoTaPhanCong']; ?>" />
+                    <?php if (!empty ($errors['MoTaPhanCong']))
+                        echo $errors['MoTaPhanCong']; ?>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="hidden" name="id" value="<?php echo $data['MaDayHoc']; ?>" />
+                    <input type="submit" name="edit_day" value="Lưu" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
 
 </html>
