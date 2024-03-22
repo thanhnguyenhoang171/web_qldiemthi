@@ -39,7 +39,7 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<div id="menu">
 			<ul>
-				<li><a href="diem/add_chon2.php">Nhập Điểm Lần Đầu</a></li>
+				<li><a href="diem/add_chon.php">Nhập Điểm Lần Đầu</a></li>
 				<li><a href="diem/capnhatdiem.php"> Cập Nhật Điểm</a></li>
 				<li><a href="qlgv.php?mod=hs">Xem Điểm</a></li>
 				<li><a href="repass1.php">Thay Đổi Mật Khẩu</a></li>
