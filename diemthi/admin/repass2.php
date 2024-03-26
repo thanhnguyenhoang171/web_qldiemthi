@@ -10,21 +10,45 @@ $con = $connect->connect();
 $old = $new = $pre = " ";
 if (isset ($_POST['hs'])) {
 	if ($_POST['txtpasshs'] == null) {
-		echo "Bạn chưa nhập Mật Khẩu";
+		?>
+		<script type="text/javascript">
+			alert("Bạn chưa nhập Mật Khẩu");
+			window.location = "repass2.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$old_password_md5 = md5($_POST['txtpasshs']);
 
 		if ($old_password_md5 != $phs) {
-			echo "Mật Khẩu Cũ không chính xác";
+			?>
+			<script type="text/javascript">
+				alert("Mật Khẩu Cũ không chính xác");
+				window.location = "repass2.php";
+			</script>
+			<?php
+			exit();
 		} else {
 			$old = $_POST['txtpasshs'];
 		}
 	}
 	if ($_POST['txtpasshs2'] == null) {
-		echo "Bạn chưa nhập Mật Khẩu Mới";
+		?>
+		<script type="text/javascript">
+			alert("Bạn chưa nhập Mật Khẩu Mới");
+			window.location = "repass2.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		if ($_POST['txtpasshs2'] != $_POST['txtpasshs3']) {
-			echo "Mật Khẩu Mới không trùng khớp";
+			?>
+			<script type="text/javascript">
+				alert("Mật Khẩu Mới không trùng khớp");
+				window.location = "repass2.php";
+			</script>
+			<?php
+			exit();
 		} else {
 			$mk = "/^[a-zA-Z0-9]{6,}$/";
 			if (preg_match($mk, $_POST["txtpasshs2"])) {
