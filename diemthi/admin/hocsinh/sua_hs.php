@@ -69,7 +69,7 @@ if (isset ($_POST['ok'])) {
 		<?php
 		exit();
 	}
-	
+
 
 
 }
@@ -82,53 +82,60 @@ $row = $con->selecths($mahs);
 
 <body bgcolor="#a3cbff">
 	<h1 style="text-align: center">TRANG SỬA HỌC THÔNG TIN HỌC SINH</h1>
-	<table align="center" border="1" cellspacing="0" cellpadding="10">
+	<table align="center" border="1" cellspacing="0" cellpadding="10" style="border: 1px solid transparent;">
 		<form action="sua_hs.php?cmahs=<?php echo $row['MaHS']; ?>" method="post">
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Mã Lớp Học</td>
+				<td class="ToT">Mã Lớp Học</td>
 				<td><input type="text" name="txtmalop" size="25" value="<?php echo $row['MaLopHoc']; ?>" /></td>
 			</tr>
 
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Tên Học Sinh</td>
+				<td class="ToT">Tên Học Sinh</td>
 				<td><input type="text" name="txtten" size="25" value="<?php echo $row['TenHS']; ?>" /></td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Giới tính</td>
+				<td class="ToT">Giới tính</td>
 
 				<td><input type="radio" name="txtgt" value="Nam" value="<?php echo $row['GioiTinh']; ?>">Nam
 					<input type="radio" name="txtgt" value="Nữ" value="<?php echo $row['GioiTinh']; ?>">Nữ
 				</td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Ngày Sinh:</td>
+				<td class="ToT">Ngày Sinh:</td>
 				<td><input type="date" name="txtns" size="25" value="<?php echo $row['NgaySinh']; ?>" /> </td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Nơi Sinh:</td>
+				<td class="ToT">Nơi Sinh:</td>
 				<td><input type="text" name="txtnois" size="25" value="<?php echo $row['noisinh']; ?>" /> </td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Dân Tộc:</td>
+				<td class="ToT">Dân Tộc:</td>
 				<td><input type="text" name="txtdantoc" size="25" value="<?php echo $row['dantoc']; ?>" /> </td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Họ Tên Cha:</td>
+				<td class="ToT">Họ Tên Cha:</td>
 				<td><input type="text" name="txtcha" size="25" value="<?php echo $row['hotencha']; ?>" /> </td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Họ Tên Mẹ:</td>
+				<td class="ToT">Họ Tên Mẹ:</td>
 				<td><input type="text" name="txtme" size="25" value="<?php echo $row['hotenme']; ?>" /> </td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class = "ToT">Password Học Sinh:</td>
+				<td class="ToT">Password Học Sinh:</td>
 				<td><input type="password" name="txtpasshs" size="25" value="<?php echo $row['passwordhs']; ?>" /></td>
 			</tr>
+			<tr style="text-align: center;">
+				<td style="border: 1px solid transparent;"><input type="submit" class='add-button' name="ok"
+						value="Sửa" /></td>
+
+			</tr>
+
+
 
 		</form>
 	</table>
-	<h1 style="text-align: center;">
+	<!-- <h1 style="text-align: center;">
 	<input type="submit" class='add-button' name="ok" value="Sửa" />
-	</h1>
-			
+	</h1> -->
+
 </body>

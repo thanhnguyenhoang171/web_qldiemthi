@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../assets/css/css/stylea.css">
+
 <?php
 session_start();
 $n = $ten = $h = $nam = "";
@@ -82,34 +84,32 @@ if (isset ($_POST['ok'])) {
     }
 }
 ?>
-<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
+<center><img src="../../assets/img/Ban.png" width="100%" height="360px"></center>
 
-<body bgcolor="#CAFFFF">
+<body bgcolor="#a3cbff">
     <h1 align="center">Trang Thêm Học Kỳ</h1>
     <form action="add_hk.php" method="post">
-        <table align="center" border="1" cellspacing="0" cellpadding="10">
+        <table align="center" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
             <tr>
-                <td>Mã Số Học Kỳ:</td>
+                <td class = "ToT">Mã Số Học Kỳ:</td>
                 <td> <input type="text" name="txthk" size="25" placeholder="Mẫu:12016" /><br />
                 </td>
             </tr>
             <tr>
-                <td>Tên Học Kỳ:</td>
+                <td class = "ToT">Tên Học Kỳ:</td>
                 <td><input type="text" name="txtten" size="25" placeholder="Là chữ tiếng Việt" /></td>
             </tr>
             <tr>
-                <td>Hệ Số HK:</td>
+                <td class = "ToT">Hệ Số HK:</td>
                 <td><input type="text" name="txtheso" size="25" placeholder="Nhập 1 hoặc 2" /></td>
             </tr>
             <tr>
-                <td>Năm Học:</td>
+                <td class = "ToT">Năm Học:</td>
                 <td><input type="text" name="txtnam" size="25" placeholder="Mẫu: 2016-2017" /></td>
             </tr>
-            <tr>
-                <td> </td>
-                <td> <input type="submit" name="ok" value="Thêm Học Kỳ" /><br />
-                </td>
-            </tr>
         </table>
+        <h1 style = "text-align: center"> 
+            <input type="submit" class = "add-button" name="ok" value="Thêm Học Kỳ" />
+        </h1>
     </form>
 </body>

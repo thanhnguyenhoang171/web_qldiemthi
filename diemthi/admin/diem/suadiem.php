@@ -72,19 +72,22 @@ $data = $con->selectdiem($madiem);
     <title>Môn Học</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 
 </head>
-<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
+<center><img src="../../assets/img/Ban.png" width="100%" height="360px"></center>
 <center>
 
-    <body bgcolor="#CAFFFF">
+    <body bgcolor="#a3cbff">
         <h1>Sửa Điểm </h1>
-        <a href="../index.php?mod=diem"><button>Trở về</button></a> <br /> <br />
+        <a href="../index.php?mod=diem">
+            <button>Trở về</button>
+        </a> <br /> <br />
         <form method="post" action="suadiem.php?cma=<?php echo $data['MaDiem']; ?>">
-            <table width="50%" border="1" cellspacing="0" cellpadding="10">
+            <table style = "background: #f1f1f1" width="50%" border="1" cellspacing="0" cellpadding="10" style="border: 1px solid transparent;">
 
                 <tr>
-                    <td>Điểm Miệng</td>
+                    <td class = "ToT">Điểm Miệng</td>
                     <td>
                         <input type="text" name="diemmieng" value="<?php echo $data['DiemMieng']; ?>" />
                         <?php if (!empty ($errors['DiemMieng']))
@@ -93,7 +96,7 @@ $data = $con->selectdiem($madiem);
                 </tr>
 
                 <tr>
-                    <td>Điểm 15 phút</td>
+                    <td class = "ToT">Điểm 15 phút</td>
                     <td>
                         <input type="text" name="diem15phut1" value="<?php echo $data['Diem15Phut1']; ?>" />
                         <?php if (!empty ($errors['Diem15Phut1']))
@@ -102,7 +105,7 @@ $data = $con->selectdiem($madiem);
                 </tr>
 
                 <tr>
-                    <td>Điểm 15 phút</td>
+                    <td class = "ToT">Điểm 15 phút</td>
                     <td>
                         <input type="text" name="diem15phut2" value="<?php echo $data['Diem15Phut2']; ?>" />
                         <?php if (!empty ($errors['Diem15Phut2']))
@@ -111,7 +114,7 @@ $data = $con->selectdiem($madiem);
                 </tr>
 
                 <tr>
-                    <td>Điểm 1 tiết</td>
+                    <td class = "ToT">Điểm 1 tiết</td>
                     <td>
                         <input type="text" name="diem1tiet1" value="<?php echo $data['Diem1Tiet1']; ?>" />
                         <?php if (!empty ($errors['Diem1Tiet1']))
@@ -120,7 +123,7 @@ $data = $con->selectdiem($madiem);
                 </tr>
 
                 <tr>
-                    <td>Điểm 1 tiết</td>
+                    <td class = "ToT">Điểm 1 tiết</td>
                     <td>
                         <input type="text" name="diem1tiet2" value="<?php echo $data['Diem1Tiet2']; ?>" />
                         <?php if (!empty ($errors['Diem1Tiet2']))
@@ -129,7 +132,7 @@ $data = $con->selectdiem($madiem);
                 </tr>
 
                 <tr>
-                    <td>Điểm thi</td>
+                    <td class = "ToT">Điểm thi</td>
                     <td>
                         <input type="text" name="diemthi" value="<?php echo $data['DiemThi']; ?>" />
                         <?php if (!empty ($errors['DiemThi']))
@@ -137,7 +140,7 @@ $data = $con->selectdiem($madiem);
                     </td>
                 </tr>
                 <tr>
-                    <td>Điểm trung bình</td>
+                    <td class = "ToT">Điểm trung bình</td>
                     <td>
                         <input type="text" name="diemtrungbinh" value="<?php echo $data['DiemTB']; ?>"
                             readonly="readonly" />
@@ -145,14 +148,12 @@ $data = $con->selectdiem($madiem);
                             echo $errors['DiemTB']; ?>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="hidden" name="id" value="<?php echo $data['MaDiem']; ?>" />
-                        <input type="submit" name="edit_diem" value="Lưu" />
-                    </td>
-                </tr>
             </table>
+
+            <a style ="text-align: center">
+                <input type="hidden" name="id" value="<?php echo $data['MaDiem']; ?>" />
+                <input type="submit" class = "add-button" name="edit_diem" value="Lưu" />
+            </a>
         </form>
     </body>
 </center>
