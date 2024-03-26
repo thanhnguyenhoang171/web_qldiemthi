@@ -5,7 +5,13 @@ require "../../classes/hocsinh.class.php";
 $con = new hocsinh();
 if (isset ($_POST['ok'])) {
 	if ($_POST['txtmahs'] == null) {
-		echo "Bạn Chưa Nhập Mã Sinh Viên!<br/>";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Mã Sinh Viên!<br/>");
+			window.location = "add_hs.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$rule = "/^[0-9]{6}$/";
 		if (preg_match($rule, $_POST['txtmahs'])) {
@@ -25,7 +31,13 @@ if (isset ($_POST['ok'])) {
 		$malop = $_POST['malophoc'];
 	}
 	if ($_POST['txtten'] == null) {
-		echo "Bạn Chưa Nhập Vào Tên Sinh Viên";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Vào Tên Sinh Viên";
+			window.location = "add_hs.php");
+		</script>
+		<?php
+		exit();
 	} else {
 		$hoten = "/^[a-zA-Z'-'\sáàảãạăâắằấầặẵẫậéèẻ ẽẹếềểễệóòỏõọôốồổỗộ ơớờởỡợíìỉĩịđùúủũụưứ� �ửữựÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠ ƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼ� ��ỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞ ỠỢỤỨỪỬỮỰỲỴÝỶỸửữựỵ ỷỹ]*$/";
 		if (preg_match($hoten, $_POST['txtten'])) {
@@ -41,42 +53,78 @@ if (isset ($_POST['ok'])) {
 		}
 	}
 	/*if($_POST['txtgt'] == null){
-			  echo "Bạn Chưa Nhập Vào giới tính";
-		  }else{
-			  $gt=$_POST['txtgt'];
-		  }*/
+												  echo "Bạn Chưa Nhập Vào giới tính";
+											  }else{
+												  $gt=$_POST['txtgt'];
+											  }*/
 	if ($_POST['txtgt'] == 1) {
 		$gt = "Nam";
 	} else {
 		$gt = "Nữ";
 	}
 	if ($_POST['txtngs'] == null) {
-		echo "Bạn Chưa Nhập Vào Ngày Sinh";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Vào Ngày Sinh");
+			window.location = "add_hs.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$ns = $_POST['txtngs'];
 	}
 	if ($_POST['txtns'] == null) {
-		echo "Bạn Chưa Nhập Vào Nơi Sinh";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Vào Nơi Sinh");
+			window.location = "add_hs.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$nois = $_POST['txtns'];
 	}
 	if ($_POST['txtdantoc'] == null) {
-		echo "Bạn Chưa Nhập Vào Dân Tộc";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Vào Dân Tộc");
+			window.location = "add_hs.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$dt = $_POST['txtdantoc'];
 	}
 	if ($_POST['txtcha'] == null) {
-		echo "Bạn Chưa Nhập Vào Họ Tên Cha";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Vào Họ Tên Cha");
+			window.location = "add_hs.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$cha = $_POST['txtcha'];
 	}
 	if ($_POST['txtme'] == null) {
-		echo "Bạn Chưa Nhập Vào Họ Tên Mẹ";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Vào Họ Tên Mẹ");
+			window.location = "add_hs.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$me = $_POST['txtme'];
 	}
 	if ($_POST['txtpasshs'] == null) {
-		echo "Bạn Chưa Nhập Mật Khẩu Sinh Viên";
+		?>
+		<script type="text/javascript">
+			alert("Bạn Chưa Nhập Mật Khẩu Sinh Viên");
+			window.location = "add_hs.php";
+		</script>
+		<?php
+		exit();
 	} else {
 		$pass = "/^[a-zA-Z0-9]{6,}$/";
 		if (preg_match($pass, $_POST['txtpasshs'])) {
@@ -178,9 +226,13 @@ if (isset ($_POST['ok'])) {
 					<td><input type="password" name="txtpasshs" size="25" placeholder="Trên 6 kí tự" /></td>
 				</tr>
 			</table>
-					<h1  style = "text-align: center;"> <input type="submit" name="ok" value="Thêm Sinh Viên" class='add-button'>
-					</h1>
+			<h1 style="text-align: center;"> <input type="submit" name="ok" value="Thêm Sinh Viên" class='add-button'>
+			</h1>
 		</div>
 	</form>
-
+	<form action="../index.php?mod=hs" method="post">
+		<div style="text-align:center; margin-top: 5%;">
+			<input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+		</div>
+	</form>
 </body>

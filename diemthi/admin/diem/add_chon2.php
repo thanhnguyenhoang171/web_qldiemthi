@@ -119,6 +119,12 @@ if (isset ($_POST['themdiem'])) {
             <input type="submit" name="themdiem" value="Thêm Điểm" />
         </div>
     </form>
+    <form action="add_chon.php" method="post">
+        <div style="text-align:center; margin-top: 20%;">
+            <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+        </div>
+    </form>
+
 </body>
 
 </html>

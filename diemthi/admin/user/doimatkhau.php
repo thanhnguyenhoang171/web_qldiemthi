@@ -12,21 +12,45 @@ $old = $new = $pre = " ";
 
 if (isset ($_POST['ad'])) {
     if ($_POST['txtpassad'] == null) {
-        echo "Bạn chưa nhập Mật Khẩu";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn chưa nhập Mật Khẩu");
+            window.location = "doimatkhau.php";
+        </script>
+        <?php
+        exit();
     } else {
         $old_password_md5 = md5($_POST['txtpassad']);
 
         if ($old_password_md5 != $pad) {
-            echo "Mật Khẩu Cũ không chính xác";
+            ?>
+            <script type="text/javascript">
+                alert("Mật Khẩu Cũ không chính xác");
+                window.location = "doimatkhau.php";
+            </script>
+            <?php
+            exit();
         } else {
             $old = $_POST['txtpassad'];
         }
     }
     if ($_POST['txtpassad2'] == null) {
-        echo "Bạn chưa nhập Mật Khẩu Mới";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn chưa nhập Mật Khẩu Mới");
+            window.location = "doimatkhau.php";
+        </script>
+        <?php
+        exit();
     } else {
         if ($_POST['txtpassad2'] != $_POST['txtpassad3']) {
-            echo "Mật Khẩu Mới không trùng khớp";
+            ?>
+            <script type="text/javascript">
+                alert("Mật Khẩu Mới không trùng khớp");
+                window.location = "doimatkhau.php";
+            </script>
+            <?php
+            exit();
         } else {
             $mk = "/^[a-zA-Z0-9]{6,}$/";
             if (preg_match($mk, $_POST["txtpassad2"])) {
@@ -55,7 +79,14 @@ if (isset ($_POST['ad'])) {
             <?php
             exit();
         } else {
-            echo "Có lỗi xảy ra khi cập nhật mật khẩu.";
+            ?>
+            <script type="text/javascript">
+                alert("Có lỗi xảy ra khi cập nhật mật khẩu.");
+                window.location = "../index.php";
+
+            </script>
+            <?php
+            exit();
         }
 
 
@@ -82,7 +113,7 @@ if (isset ($_POST['ad'])) {
         <div class="avatar">
             <img src="../../assets/img/images/admin.png">
         </div>
-        <form action="doimatkhau.php" method="post">
+        <form action="doimatkhau.php" method="post" novalidate>
             <input type="password" name="txtpassad" placeholder="old password" required>
             <div class="bar">
                 <i></i>
@@ -96,7 +127,11 @@ if (isset ($_POST['ad'])) {
             <button><input type="submit" name="ad" value="Thay đổi" /></button>
         </form>
     </div>
-
+    <form action="../index.php?mod=capnhat" method="post">
+        <div style="text-align:center; margin-top: 20%;">
+            <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+        </div>
+    </form>
     <script src="js/index.js"></script>
 
 </body>

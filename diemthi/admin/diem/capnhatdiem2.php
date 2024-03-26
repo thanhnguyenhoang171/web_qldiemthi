@@ -109,7 +109,7 @@ if (isset ($_POST['themdiem'])) {
             <!-- Phần 2 -->
             <div>
                 <div style="text-align: right;float: left">
-                    <a href="../qlgv.php"><button type='button'>Trở Về</button></a>
+                    <a href="capnhatdiem.php"><button type='button'>Trở Về</button></a>
                 </div>
                 <div style="text-align: right">
                     <input type="submit" name="themdiem" value="Thêm Điểm" />

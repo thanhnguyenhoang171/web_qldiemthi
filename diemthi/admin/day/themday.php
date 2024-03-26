@@ -8,37 +8,73 @@ if (isset ($_POST['ok'])) {
     $connect = new day();
 
     if ($_POST['txtid'] == null) {
-        echo "</br>Bạn Chưa Nhập Mã Học Dạy";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn Chưa Nhập Mã Dạy Học");
+            window.location = "themday.php";
+        </script>
+        <?php
+        exit();
     } else {
         $ma = $_POST['txtid'];
     }
 
     if ($_POST['txtgv'] == null) {
-        echo "</br> Bạn Chưa Nhập Mã Giảng Viên";
+        ?>
+        <script type="text/javascript">
+            alert(" Bạn Chưa Nhập Mã Giảng Viên");
+            window.location = "themday.php";
+        </script>
+        <?php
+        exit();
     } else {
         $gv = $_POST['txtgv'];
     }
 
     if ($_POST['txtmh'] == null) {
-        echo "</br> Bạn Chưa Nhập Mã Môn Học";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn Chưa Nhập Mã Môn Học");
+            window.location = "themday.php";
+        </script>
+        <?php
+        exit();
     } else {
         $mon = $_POST['txtmh'];
     }
 
     if ($_POST['txtlop'] == null) {
-        echo "</br> Bạn Chưa Nhập Lớp Học";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn Chưa Nhập Lớp Học");
+            window.location = "themday.php";
+        </script>
+        <?php
+        exit();
     } else {
         $lop = $_POST['txtlop'];
     }
 
     if ($_POST['txthk'] == null) {
-        echo "</br> Bạn Chưa Nhập Học Kỳ";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn Chưa Nhập Học Kỳ");
+            window.location = "themday.php";
+        </script>
+        <?php
+        exit();
     } else {
         $hk = $_POST['txthk'];
     }
 
     if ($_POST['txtmota'] == null) {
-        echo "</br> Bạn chưa nhập Mô tả";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn chưa nhập Mô tả");
+            window.location = "themday.php";
+        </script>
+        <?php
+        exit();
     } else {
         $pc = $_POST['txtmota'];
     }
@@ -54,7 +90,12 @@ if (isset ($_POST['ok'])) {
             <?php
             exit();
         } else {
-            echo "Có lỗi xảy ra khi thêm lịch dạy!";
+            ?>
+            <script type="text/javascript">
+                alert("Có lỗi xảy ra khi thêm lịch dạy!");
+            </script>
+            <?php
+            exit();
         }
     }
 }
@@ -144,5 +185,10 @@ if (isset ($_POST['ok'])) {
                 </td>
             </tr>
         </table>
+    </form>
+    <form action="../index.php?mod=day" method="post">
+        <div style="text-align:center; margin-top: 10%;">
+            <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+        </div>
     </form>
 </body>

@@ -43,7 +43,13 @@
         $level = 1;
         //Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
         if ($name == "" || $password == "") {
-            echo "Bạn vui lòng nhập đầy đủ thông tin";
+            ?>
+            <script type="text/javascript">
+                alert("Bạn vui lòng nhập đầy đủ thông tin");
+                window.location = "themuser.php";
+            </script>
+            <?php
+            exit();
         } else {
             //thực hiện việc lưu trữ dữ liệu vào db
             $sql = "INSERT INTO user(

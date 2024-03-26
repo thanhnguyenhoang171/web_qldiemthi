@@ -41,7 +41,8 @@
 			<ul>
 				<li><a href="diem/add_chon.php">Nhập Điểm Lần Đầu</a></li>
 				<li><a href="diem/capnhatdiem.php"> Cập Nhật Điểm</a></li>
-				<li><a href="qlgv.php?mod=hs">Xem Điểm</a></li>
+				<!-- <li><a href="qlgv.php?mod=hs">Xem Điểm</a></li> -->
+				<li><a href="diem/xemdiem_gv.php">Xem Điểm</a></li>
 				<li><a href="repass1.php">Thay Đổi Mật Khẩu</a></li>
 				<li><a href="logout.php">Đăng Xuất</a></li>
 

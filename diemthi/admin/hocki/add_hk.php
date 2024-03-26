@@ -6,7 +6,13 @@ if (isset ($_POST['ok'])) {
     $connect = new hocki();
     $d = $connect->allquery();
     if ($_POST['txthk'] == null) {
-        echo "Bạn Chưa Nhập Mã Học Kỳ!";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn Chưa Nhập Mã Học Kỳ!");
+            window.location = "add_hk.php";
+        </script>
+        <?php
+        exit();
     } else {
         $hocky = "/^[0-9]{5}$/";
         if (preg_match($hocky, $_POST['txthk'])) {
@@ -22,7 +28,13 @@ if (isset ($_POST['ok'])) {
         }
     }
     if ($_POST['txtten'] == null) {
-        echo "</br> Bạn Chưa Nhập Tên Học Kỳ!";
+        ?>
+        <script type="text/javascript">
+            alert("Bạn Chưa Nhập Tên Học Kỳ!");
+            window.location = "add_hk.php";
+        </script>
+        <?php
+        exit();
     } else {
         $tenhk = "/^(?=.*\d)(?=.*[a-zA-Z0-9]).{6,}$/";
         if (preg_match($tenhk, $_POST['txtten'])) {
@@ -38,7 +50,13 @@ if (isset ($_POST['ok'])) {
         }
     }
     if ($_POST['txtheso'] == null) {
-        echo "</br> Bạn Chưa Nhập Hệ Số Học Kỳ!";
+        ?>
+        <script type="text/javascript">
+            alert("</br> Bạn Chưa Nhập Hệ Số Học Kỳ!");
+            window.location = "add_hk.php";
+        </script>
+        <?php
+        exit();
     } else {
         $heso = "/^[1-2]{1}$/";
         if (preg_match($heso, $_POST['txtheso'])) {
@@ -54,7 +72,13 @@ if (isset ($_POST['ok'])) {
         }
     }
     if ($_POST['txtnam'] == null) {
-        echo "</br> Bạn Chưa Nhập Năm Học!";
+        ?>
+        <script type="text/javascript">
+            alert(" Bạn Chưa Nhập Năm Học!");
+            window.location = "add_hk.php";
+        </script>
+        <?php
+        exit();
     } else {
         $nh = "/^[0-9_-]{9,}$/";
         if (preg_match($nh, $_POST['txtnam'])) {
@@ -111,5 +135,10 @@ if (isset ($_POST['ok'])) {
                 </td>
             </tr>
         </table>
+    </form>
+    <form action="../index.php?mod=hk" method="post">
+        <div style="text-align:center; margin-top: 15%;">
+            <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+        </div>
     </form>
 </body>

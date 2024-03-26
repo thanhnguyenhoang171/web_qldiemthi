@@ -1,4 +1,9 @@
-﻿<div class="banner">
+﻿<?php
+require '../classes/DB.class.php';
+$connect = new DB();
+$con = $connect->connect();
+?>
+<div class="banner">
 	<center><img src="../assets/img/Ban.png" width="100%" height="160px"></center>
 
 	<body bgcolor="#CAFFFF">
@@ -8,7 +13,14 @@
 		?>
 		<div style="text-align:right;margin-right:186px ">
 			<?php
-			echo "<b>Chào Bạn " . $_SESSION['ses_MaHS'];
+			$mahs = $_SESSION['ses_MaHS'];
+			$sql = "select * from hocsinh where MaHS = $mahs";
+			$query = mysqli_query($con, $sql);
+			$data = mysqli_fetch_assoc($query)
+				?>
+			<?php
+			echo "<b>Chào Bạn  " . $data["TenHS"] . " - MSSV: ";
+			echo " " . $_SESSION['ses_MaHS'];
 			echo "</b>"
 				?>
 		</div>

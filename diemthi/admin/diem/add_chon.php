@@ -91,4 +91,9 @@ if (isset ($_POST['add'])) {
                 </table>
             </div>
         </form>
+        <form action="../qlgv.php" method="post">
+            <div style="text-align:center; margin-top: 20%;">
+                <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+            </div>
+        </form>
     </body>
