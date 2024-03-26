@@ -1,3 +1,4 @@
+<!-- Có thể bỏ -->
 <?php
 session_start();
 //require "../../classes/DB.class.php";
