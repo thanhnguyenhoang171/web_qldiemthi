@@ -82,8 +82,10 @@ $row = $con->selecths($mahs);
 
 <body bgcolor="#a3cbff">
 	<h1 style="text-align: center">TRANG SỬA HỌC THÔNG TIN HỌC SINH</h1>
+
 	<table align="center" border="1" cellspacing="0" cellpadding="10" style="border: 1px solid transparent;">
 		<form action="sua_hs.php?cmahs=<?php echo $row['MaHS']; ?>" method="post">
+
 			<tr style='background: #f1f1f1'>
 				<td class="ToT">Mã Lớp Học</td>
 				<td><input type="text" name="txtmalop" size="25" value="<?php echo $row['MaLopHoc']; ?>" /></td>
@@ -132,10 +134,12 @@ $row = $con->selecths($mahs);
 
 
 
+
 		</form>
 	</table>
 	<!-- <h1 style="text-align: center;">
 	<input type="submit" class='add-button' name="ok" value="Sửa" />
 	</h1> -->
+
 
 </body>
