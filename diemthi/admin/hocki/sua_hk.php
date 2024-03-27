@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../assets/css/css/stylea.css">
+
 <?php
 session_start();
 require "../../classes/hocki.class.php";
@@ -28,31 +30,26 @@ if(isset($_POST['ok'])){
 }
 $conn=$connect->selectquery($mahk);
 ?>
-<center><img src="../../assets/img/Ban.gif"></center>
-<body bgcolor="#CAFFFF">
+<center><img width="100%" src="../../assets/img/Ban.png"></center>
+<body bgcolor="#a3cbff">
 <h1 align="center">Trang Sửa Học Kỳ</h1>
 <form action="sua_hk.php?cmahk=<?php echo $conn['MaHocKy'];?>" method="post">
-<table align="center" border="1" cellspacing="0" cellpadding="10">
+<table align="center" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
 	
 <tr>
-			<td>Tên Học Kỳ:</td>
+			<td class = "ToT" >Tên Học Kỳ:</td>
 			<td><input type="text" name="txtten" size="25" value="<?php echo $conn['TenHocKy']; ?>"/></td>
 		</tr>
 <tr>
-			<td>Hệ Số Học Kỳ:</td>
+			<td class = "ToT">Hệ Số Học Kỳ:</td>
 			<td><input type="text" name="txthocky" size="25" value="<?php echo $conn['HeSoHK']; ?>"/></td>
 		</tr>
 		<tr>
-			<td>Năm Học:</td>
+			<td class = "ToT">Năm Học:</td>
 			<td><input type="text" name="txtnamhoc" size="25" value="<?php echo $conn['NamHoc']; ?>"/></td>
 		</tr>
-
-
-<tr>
-			<td> </td>
-			<td>  <input type="submit" name="ok" value="Sửa Năm Học" /><br/>
-			</td>
-		</tr>
 </table>
+			<h1 style = "text-align: center">  <input type="submit" class = "add-button" name="ok" value="Sửa Năm Học" /><br/>
+			</h1>
 </form>
 </body>

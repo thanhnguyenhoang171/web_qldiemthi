@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../assets/css/css/stylea.css">
+
 <?php
 session_start();
 require "../../classes/day.class.php";
@@ -54,16 +56,16 @@ if (isset ($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<body bgcolor="#CAFFFF">
+<center><img src="../../assets/img/Ban.png" width="100%" height="360px" alt=""></center>
+<body bgcolor="#a3cbff">
     <h1 align="center">Sửa Lịch Dạy</h1>
     <div align="center">
-        <a href="../index.php?mod=day"><button>Trở về</button></a> <br /><br />
+        <a href="../index.php?mod=day"><button class = "view-button">Trở về</button></a> <br /><br />
 
         <form method="post" action="suaday.php?id=<?php echo $data['MaDayHoc']; ?>">
-            <table width="50%" border="1" cellspacing="0" cellpadding="10">
+            <table width="50%" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
                 <tr>
-                    <td>Mã Môn Học</td>
+                    <td class = "ToT" >Mã Môn Học</td>
                     <td>
                         <input type="text" name="mamonhoc" value="<?php echo $data['MaMonHoc']; ?>" />
                         <?php if (!empty ($errors['MaMonHoc']))
@@ -71,7 +73,7 @@ if (isset ($_GET['id'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>Mã Giảng Viên</td>
+                    <td class = "ToT">Mã Giảng Viên</td>
                     <td>
                         <input type="text" name="magiangvien" value="<?php echo $data['Magv']; ?>" />
                         <?php if (!empty ($errors['Magv']))
@@ -79,7 +81,7 @@ if (isset ($_GET['id'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>Mã Lớp Học</td>
+                    <td class = "ToT">Mã Lớp Học</td>
                     <td>
                         <input type="text" name="malophoc" value="<?php echo $data['MaLopHoc']; ?>" />
                         <?php if (!empty ($errors['MaLopHoc']))
@@ -87,7 +89,7 @@ if (isset ($_GET['id'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>Mã Học Kỳ</td>
+                    <td class = "ToT">Mã Học Kỳ</td>
                     <td>
                         <input type="text" name="mahocky" value="<?php echo $data['MaHocKy']; ?>" />
                         <?php if (!empty ($errors['MaHocKy']))
@@ -95,21 +97,18 @@ if (isset ($_GET['id'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td>Mô Tả Phân Công</td>
+                    <td class = "ToT">Mô Tả Phân Công</td>
                     <td>
                         <input type="text" name="motaphancong" value="<?php echo $data['MoTaPhanCong']; ?>" />
                         <?php if (!empty ($errors['MoTaPhanCong']))
                             echo $errors['MoTaPhanCong']; ?>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="hidden" name="id" value="<?php echo $data['MaDayHoc']; ?>" />
-                        <input type="submit" name="edit_day" value="Lưu" />
-                    </td>
-                </tr>
             </table>
+            <td>
+                <input type="hidden" name="id" value="<?php echo $data['MaDayHoc']; ?>" />
+                <input type="submit" class = "add-button" name="edit_day" value="Lưu" />
+            </td>
         </form>
     </div>
 </body>

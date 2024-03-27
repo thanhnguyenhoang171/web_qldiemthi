@@ -8,14 +8,16 @@
     <title>Quản lý Thành Viên</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
+        <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 
 </head>
 
-<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
+<center><img src="../../assets/img/Ban.png" width="100%" height="360px"></center>
 <center>
 
-    <body bgcolor="#CAFFFF">
+    <body bgcolor="#a3cbff">
         <?php
         require "../../classes/DB.class.php";
         $connect = new db();
@@ -24,10 +26,10 @@
         <div class="container">
             <div class="row">
                 <h3 style="font-weight: bold"> QUẢN LÝ QUẢN TRỊ VIÊN</h3>
-                <a href="../index.php?mod=capnhat" style="color: #1a1a1a;font-weight: bold"><button>Trở Về</button></a>
-                <table class="table">
+                <a href="../index.php?mod=capnhat"><button class ="view-button">Trở Về</button></a>
+                <table width="80%" cellspacing="3" cellpadding="10" style = "background: #f1f1f1; border: none">
                     <thead>
-                        <tr>
+                        <tr class = "ToT">
                             <th>STT</th>
                             <th>Tên Đăng Nhập</th>
                             <th>Cấp độ</th>
@@ -57,7 +59,11 @@
                                     }
                                     ?>
                                 </td>
-                                <td><a href="xoauser.php?id=<?php echo $data["username"]; ?>">Xóa</a></td>
+                                <td>
+                                    <a  href="xoauser.php?id=<?php echo $data["username"]; ?>"> 
+                                    <button class ="fix-button">Xóa </button>
+                                    </a>
+                                </td>
                             </tr>
                             <?php
                         }
