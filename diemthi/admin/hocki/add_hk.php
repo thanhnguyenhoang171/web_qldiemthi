@@ -16,13 +16,13 @@ if (isset ($_POST['ok'])) {
         <?php
         exit();
     } else {
-        $hocky = "/^[0-9]{5}$/";
+        $hocky = "/^[a-zA-Z0-9]{1,5}$/";
         if (preg_match($hocky, $_POST['txthk'])) {
             $n = $_POST['txthk'];
         } else {
             ?>
             <script type="text/javascript">
-                alert("Mã Học Kỳ không hợp lệ.!");
+                alert("mmmMã Học Kỳ không hợp lệ.!");
                 window.location = "add_hk.php";
             </script>
             <?php
@@ -113,27 +113,27 @@ if (isset ($_POST['ok'])) {
 <body bgcolor="#a3cbff">
     <h1 align="center">Trang Thêm Học Kỳ</h1>
     <form action="add_hk.php" method="post">
-        <table align="center" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
+        <table align="center" border="1" cellspacing="0" cellpadding="10" style="background: #f1f1f1">
             <tr>
-                <td class = "ToT">Mã Số Học Kỳ:</td>
+                <td class="ToT">Mã Số Học Kỳ:</td>
                 <td> <input type="text" name="txthk" size="25" placeholder="Mẫu:12016" /><br />
                 </td>
             </tr>
             <tr>
-                <td class = "ToT">Tên Học Kỳ:</td>
+                <td class="ToT">Tên Học Kỳ:</td>
                 <td><input type="text" name="txtten" size="25" placeholder="Là chữ tiếng Việt" /></td>
             </tr>
             <tr>
-                <td class = "ToT">Hệ Số HK:</td>
+                <td class="ToT">Hệ Số HK:</td>
                 <td><input type="text" name="txtheso" size="25" placeholder="Nhập 1 hoặc 2" /></td>
             </tr>
             <tr>
-                <td class = "ToT">Năm Học:</td>
+                <td class="ToT">Năm Học:</td>
                 <td><input type="text" name="txtnam" size="25" placeholder="Mẫu: 2016-2017" /></td>
             </tr>
         </table>
-        <h1 style = "text-align: center"> 
-            <input type="submit" class = "add-button" name="ok" value="Thêm Học Kỳ" />
+        <h1 style="text-align: center">
+            <input type="submit" class="add-button" name="ok" value="Thêm Học Kỳ" />
         </h1>
     </form>
     <form action="../index.php?mod=hk" method="post">
