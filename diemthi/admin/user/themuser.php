@@ -4,6 +4,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
     <title>Thêm Thành Viên</title>
 </head>
 
@@ -72,20 +73,20 @@
         }
     }
     ?>
-    <center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
+    <center><img src="../../assets/img/Ban.png" width="100%" height="360px"></center>
     <center>
 
-        <body bgcolor="#CAFFFF">
+        <body bgcolor="#a3cbff">
             <h1>THÊM ADMIN</h1>
-            <a href="../index.php?mod=capnhat"><button>Trở Về</button></a>
+            <a href="../index.php?mod=capnhat"><button class = "view-button">Trở Về</button></a>
             <form action="themuser.php" method="post">
-                <table>
+                <table width="50%" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
                     <tr>
-                        <td>Tên Đăng Nhập </td>
+                        <td class = "ToT">Tên Đăng Nhập </td>
                         <td><input type="text" id="username" name="username" placeholder="Ít nhất 6 ký tự"></td>
                     </tr>
                     <tr>
-                        <td>Mật Khẩu </td>
+                        <td  class = "ToT">Mật Khẩu </td>
                         <td><input type="password" id="pass" name="pass" placeholder="Ít nhất 6 ký tự"></td>
                     </tr>
                     <!-- <tr>
@@ -95,11 +96,10 @@
                                 <option value="2">2</option>
                             </select> </td>
                     </tr> -->
-                    <tr>
-                        <td colspan="2" align="center"><input type="submit" name="btn_submit" value="Thêm Admin"></td>
-                    </tr>
                 </table>
-
+                <h1 style = "text-align: center">
+                    <td><input type="submit" class = "add-button" name="btn_submit" value="Thêm Admin"></td>
+                </h1>
             </form>
         </body>
 

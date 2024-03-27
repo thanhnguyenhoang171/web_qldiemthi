@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../assets/css/css/stylea.css">
+
 <?php
 
 require '../../classes/lop.class.php';
@@ -75,17 +77,17 @@ if (!empty ($_POST['themlop'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
+<center><img src="../../assets/img/Ban.png" width="100%" height="360px"></center>
 <center>
 
-    <body bgcolor="#CAFFFF">
+    <body bgcolor="#a3cbff">
         <div>
             <h1>THÊM LỚP HỌC </h1>
-            <a href="../index.php?mod=lop"><button>Trở về</button></a> <br /> <br />
+            <a href="../index.php?mod=lop"><button class = "view-button">Trở về</button></a> <br /> <br />
             <form method="post" action="themlop.php">
-                <table width="50%" border="1" cellspacing="0" cellpadding="10">
+                <table width="50%" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
                     <tr>
-                        <td>Mã Lớp</td>
+                        <td class = "ToT" >Mã Lớp</td>
                         <td>
                             <input type="text" name="malop"
                                 value="<?php echo !empty ($data['MaLopHoc']) ? $data['MaLopHoc'] : ''; ?>"
@@ -95,7 +97,7 @@ if (!empty ($_POST['themlop'])) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Tên Lớp</td>
+                        <td class = "ToT">Tên Lớp</td>
                         <td>
                             <input type="text" name="tenlop"
                                 value="<?php echo !empty ($data['Tenlophoc']) ? $data['Tenlophoc'] : ''; ?>" />
@@ -104,7 +106,7 @@ if (!empty ($_POST['themlop'])) {
                         </td>
                     </tr>
                     <tr>
-                        <td>Khoa</td>
+                        <td class = "ToT">Khoa</td>
                         <td>
                             <input type="text" name="khoilop"
                                 value="<?php echo !empty ($data['KhoiHoc']) ? $data['KhoiHoc'] : ''; ?>"
@@ -113,13 +115,11 @@ if (!empty ($_POST['themlop'])) {
                                 echo $errors['KhoiHoc']; ?>
                         </td>
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" name="themlop" value="Lưu" />
-                        </td>
-                    </tr>
+
                 </table>
+                <h1 style = "text-align: center">
+                    <input type="submit" class = "add-button" name="themlop" value="Lưu" />
+                </h1>
             </form>
         </div>
     </body>
