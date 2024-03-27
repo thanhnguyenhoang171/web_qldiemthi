@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2024 at 05:59 PM
+-- Generation Time: Mar 27, 2024 at 05:10 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -27,11 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `day` (
-  `MaDayHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `MaMonHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `Magv` int(10) NOT NULL,
+  `MaDayHoc` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `MaMonHoc` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `Magv` int(6) NOT NULL,
   `MaLopHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `MaHocKy` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `MaHocKy` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `MoTaPhanCong` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -40,7 +40,7 @@ CREATE TABLE `day` (
 --
 
 INSERT INTO `day` (`MaDayHoc`, `MaMonHoc`, `Magv`, `MaLopHoc`, `MaHocKy`, `MoTaPhanCong`) VALUES
-('1', 'ITEC10001', 1010, '10A1', '12016', 'nhan'),
+('1', 'T', 1010, '10A1', '12016', 'nhan'),
 ('2', 'A', 1012, '10A2', '12016', 'Phân Công Môn Toán'),
 ('3', 'T', 1010, '10A2', '12016', 'sdsd');
 
@@ -52,9 +52,9 @@ INSERT INTO `day` (`MaDayHoc`, `MaMonHoc`, `Magv`, `MaLopHoc`, `MaHocKy`, `MoTaP
 
 CREATE TABLE `diem` (
   `MaDiem` int(6) NOT NULL,
-  `MaHocKy` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `MaMonHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `MaHS` int(10) NOT NULL,
+  `MaHocKy` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `MaMonHoc` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `MaHS` int(6) NOT NULL,
   `MaLopHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `DiemMieng` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
   `Diem15Phut1` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
@@ -83,8 +83,8 @@ INSERT INTO `diem` (`MaDiem`, `MaHocKy`, `MaMonHoc`, `MaHS`, `MaLopHoc`, `DiemMi
 --
 
 CREATE TABLE `giaovien` (
-  `Magv` int(10) NOT NULL,
-  `MaMonHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Magv` int(4) NOT NULL,
+  `MaMonHoc` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `Tengv` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `DiaChi` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `SDT` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
@@ -109,8 +109,8 @@ INSERT INTO `giaovien` (`Magv`, `MaMonHoc`, `Tengv`, `DiaChi`, `SDT`, `passwordg
 --
 
 CREATE TABLE `hocky` (
-  `MaHocKy` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `TenHocKy` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `MaHocKy` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `TenHocKy` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `HeSoHK` int(1) NOT NULL,
   `NamHoc` char(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -130,7 +130,7 @@ INSERT INTO `hocky` (`MaHocKy`, `TenHocKy`, `HeSoHK`, `NamHoc`) VALUES
 --
 
 CREATE TABLE `hocsinh` (
-  `MaHS` int(10) NOT NULL,
+  `MaHS` int(6) NOT NULL,
   `MaLopHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `TenHS` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `GioiTinh` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
@@ -190,7 +190,7 @@ INSERT INTO `lophoc` (`MaLopHoc`, `Tenlophoc`, `KhoiHoc`) VALUES
 --
 
 CREATE TABLE `monhoc` (
-  `MaMonHoc` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `MaMonHoc` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `TenMonHoc` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `SoTiet` int(20) NOT NULL,
   `HeSoMonHoc` int(1) NOT NULL
