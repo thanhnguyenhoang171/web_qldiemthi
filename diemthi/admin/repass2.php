@@ -103,7 +103,7 @@ if (isset ($_POST['hs'])) {
 		<div class="avatar">
 			<img src="../assets/img/images/hs.png">
 		</div>
-		<form action="repass2.php" method="post">
+		<form action="repass2.php" method="post" novalidate>
 			<input type="password" name="txtpasshs" placeholder="old password" required>
 			<div class="bar">
 				<i></i>
@@ -116,6 +116,14 @@ if (isset ($_POST['hs'])) {
 			<a href="" class="forgot_link">forgot ?</a>
 			<button><input type="submit" name="hs" value="Thay đổi" /></button>
 		</form>
+
+		<form action="hocsinh/hocsinh_xemthongtin.php" method="post">
+			<div style="text-align:center; margin-top: 20%;">
+				<input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+			</div>
+		</form>
+
+
 	</div>
 
 	<script src="js/index.js"></script>
