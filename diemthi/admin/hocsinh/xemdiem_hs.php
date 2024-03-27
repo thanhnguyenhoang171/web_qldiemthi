@@ -3,9 +3,17 @@
 </div>
 <br />
 <div style="text-align:right;margin-right:186px;font-weight: bold ">
+
     <?php
-    session_start();
-    echo "Chào Bạn  " . $_SESSION['ses_MaHS'];
+    require '../../includes/config.php';
+    session_start(); // Corrected typo here
+    $mahs = $_SESSION['ses_MaHS'];
+    $query = "select * from hocsinh where MaHS= $mahs";
+    $results = mysqli_query($conn, $query);
+    while ($data = mysqli_fetch_assoc($results)) {
+        echo "Chào Bạn,  " . $data["TenHS"] . " - ";
+        echo "MSSV: " . $mahs;
+    }
     ?>
 </div>
 <style type="text/css">
@@ -90,6 +98,7 @@ $dis = $connect->dong();
     </center>
     <?php
     if (isset ($_POST['ok'])) {
+        $datafound = false; //flag check empty
         ?>
         <table width="73%" border="1" cellspacing="0" cellpadding="10" style="margin-left:180px">
             <tr class="diem" style="font-weight: bold;color: #0A246A">
@@ -107,6 +116,7 @@ $dis = $connect->dong();
             foreach ($students as $item) {
                 if ($_SESSION['ses_MaHS'] == $item['MaHS']) {
                     if ($_POST['hk'] == $item['TenHocKy']) {
+                        $datafound = true; // non-empty list std
                         ?>
                         <tr>
                             <td>
@@ -152,8 +162,12 @@ $dis = $connect->dong();
                     }
                 }
             }
+            if (!$datafound) { // If no data found, display alert
+                echo "<script>alert('Không tìm thấy dữ liệu cho học kỳ được chọn');</script>";
+            }
     }
     ?>
+
     </table>
 
 

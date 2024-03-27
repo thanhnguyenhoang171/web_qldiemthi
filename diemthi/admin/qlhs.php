@@ -16,10 +16,10 @@ $con = $connect->connect();
 			$mahs = $_SESSION['ses_MaHS'];
 			$sql = "select * from hocsinh where MaHS = $mahs";
 			$query = mysqli_query($con, $sql);
-			$data = mysqli_fetch_assoc($query)
-				?>
+			$data = mysqli_fetch_assoc($query);
+			?>
 			<?php
-			echo "<b>Chào Bạn  " . $data["TenHS"] . " - MSSV: ";
+			echo "<b>Chào Bạn,  " . $data["TenHS"] . " - MSSV: ";
 			echo " " . $_SESSION['ses_MaHS'];
 			echo "</b>"
 				?>
