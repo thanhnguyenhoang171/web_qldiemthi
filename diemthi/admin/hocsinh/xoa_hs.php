@@ -15,8 +15,14 @@ $result2 = mysqli_query($conn, $query2);
 
 // Kiểm tra kết quả của cả hai truy vấn
 if ($result1 && $result2) {
-    header("location:../index.php?mod=hs");
+    ?>
+    <script type="text/javascript">
+        alert("Xoá học sinh thành công!");
+        window.location = "../index.php?mod=hs";
+    </script>
+    <?php
     exit();
+
 } else {
     echo "Lỗi khi xóa dữ liệu";
 }

@@ -27,7 +27,10 @@ if(isset($_POST['ok'])){
 		header("location:../index.php?mod=hk");
 		exit();
 	}
+	$dis = $connect->dis();
 }
+?>
+<?php
 $conn=$connect->selectquery($mahk);
 ?>
 <center><img width="100%" src="../../assets/img/Ban.png"></center>

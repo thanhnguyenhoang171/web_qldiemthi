@@ -49,13 +49,21 @@ class monhoc extends DB
         $query=mysqli_query($con,$sql);
         return $query;
     }
-    function xoa($id)
-    {
-        $con=$this->connect();
-        $sql="delete from monhoc where MaMonHoc='$id'";
-        $query=mysqli_query($con,$sql);
-        return $query;
-    }
+    // function xoa($id)
+    // {
+    //     $con=$this->connect();
+    //     // Xóa dữ liệu từ bảng diem
+    //     $query1 = "DELETE FROM giaovien WHERE Magv='$id'";
+    //     $result1 = mysqli_query($con, $query1);
+
+    //     // Xóa dữ liệu từ bảng hocsinh
+    //     $query2 = "DELETE FROM monhoc WHERE Magv='$id'";
+    //     $result2 = mysqli_query($con, $query2);
+
+    //     $sql="delete from monhoc where MaMonHoc='$id'";
+    //     $query=mysqli_query($con,$sql);
+    //     return $query;
+    // }
 
 }
 

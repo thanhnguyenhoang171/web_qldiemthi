@@ -3,7 +3,7 @@ session_start();
 require ("../classes/giaovien.class.php");
 $m = $t = $dc = $dt = $p = "";
 
-if (isset ($_POST['ok'])) {
+if (isset($_POST['ok'])) {
 	$con = new giaovien();
 	if ($_POST['txtmagv'] == null) {
 		?>
@@ -14,7 +14,7 @@ if (isset ($_POST['ok'])) {
 		<?php
 		exit();
 	} else {
-		$rule = "/^[0-9]{4}$/";
+		$rule = "/^[0-9]{10}$/";
 		if (preg_match($rule, $_POST['txtmagv'])) {
 			$m = $_POST['txtmagv'];
 		} else {
@@ -137,7 +137,8 @@ if (isset ($_POST['ok'])) {
 		<table style="background: #f1f1f1" align="center" border="1" cellspacing="0" cellpadding="10">
 			<tr>
 				<td class="ToT">Mã Giáo Viên:</td>
-				<td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giáo Viên là số 4 ký tự" /><br /></td>
+				<td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giảng Viên là số 10 ký tự" /><br />
+				</td>
 			</tr>
 			<tr>
 				<td class="ToT">Mã Môn Học</td>
@@ -158,7 +159,7 @@ if (isset ($_POST['ok'])) {
 			</tr>
 			<tr>
 
-				<td class="ToT">Tên Giáo Viên:</td>
+				<td class="ToT">Tên Giảng Viên:</td>
 				<td><input type="text" name="txtten" size="25" /></td>
 			</tr>
 			<tr>
@@ -170,13 +171,14 @@ if (isset ($_POST['ok'])) {
 				<td><input type="text" name="txtdienthoai" size="25" placeholder="Số từ 9 đến 11 số không âm" /></td>
 			</tr>
 			<tr>
-				<td class="ToT">Password Giáo Viên:</td>
-				<td><input type="password" name="txtpass" size="25" placeholder="Mật khẩu trên 6 kí tự" /></td>
+				<td class="ToT">Password Giảng Viên:</td>
+				<td><input type="password" name="txtpass" size="25" placeholder="Đặt mặt định là Mã Giảng Viên" /></td>
 			</tr>
 
 		</table>
+		<h1 style="text-align: center;"><input type="submit" class="add-button" name="ok" value="Thêm Giáo Viên" /></h1>
 	</form>
-	<h1 style="text-align: center;"><input type="submit" class="add-button" name="ok" value="Thêm Giáo Viên" /></h1>
+
 
 	<form action="index.php?mod=gv" method="post">
 		<div style="text-align:center; margin-top: 5%;">

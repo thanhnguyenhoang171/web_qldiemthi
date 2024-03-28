@@ -3,7 +3,7 @@ require "../../classes/DB.class.php";
 $connect = new db();
 $conn = $connect->connect();
 session_start();
-if (isset ($_POST['themdiem'])) {
+if (isset($_POST['themdiem'])) {
     // Hàm kiểm tra điểm hợp lệ
     function isValidDiem($diem)
     {
@@ -97,6 +97,7 @@ if (isset ($_POST['themdiem'])) {
                 <div> Mã Môn Học:
                     <?php echo $_POST['mon'] ?>
                 </div>
+
                 <div> Mã Học Kỳ:
                     <?php echo $_POST['hk'] ?>
                 </div>
@@ -120,10 +121,10 @@ if (isset ($_POST['themdiem'])) {
             <hr>
             <?php
             // Lấy thông tin lớp học, môn học, học kỳ và giáo viên từ POST
-            $malop = isset ($_POST['day']) ? $_POST['day'] : ''; // 10A7
-            $mamon = isset ($_POST['mon']) ? $_POST['mon'] : ''; // Môn Toán , Mã Môn: T
-            $mahk = isset ($_POST['hk']) ? $_POST['hk'] : '';
-            $magv = isset ($_SESSION['ses_Magv']) ? $_SESSION['ses_Magv'] : '';
+            $malop = isset($_POST['day']) ? $_POST['day'] : ''; // 10A7
+            $mamon = isset($_POST['mon']) ? $_POST['mon'] : ''; // Môn Toán , Mã Môn: T
+            $mahk = isset($_POST['hk']) ? $_POST['hk'] : '';
+            $magv = isset($_SESSION['ses_Magv']) ? $_SESSION['ses_Magv'] : '';
             $query = "SELECT d.*, hs.*, gv.*
           FROM diem AS d
           JOIN hocsinh AS hs ON d.MaHS = hs.MaHS
@@ -151,7 +152,7 @@ if (isset ($_POST['themdiem'])) {
                     <td><input style="width:90px" type="text" name="mon[]" value="<?php echo $row['MaMonHoc']; ?>"
                             readonly="readonly" /></td>
                     <td><input style="width:100px" type="text" name="hk[]"
-                            value="<?php echo isset ($_POST['hk']) ? $_POST['hk'] : ''; ?>" readonly="readonly" /></td>
+                            value="<?php echo isset($_POST['hk']) ? $_POST['hk'] : ''; ?>" readonly="readonly" /></td>
                     <td><input style="width:100px" type="text" name="diemmieng[<?php echo $i; ?>]"
                             value="<?php echo $row['DiemMieng']; ?>" /></td>
                     <td><input style="width:100px" type="text" name="diem15phut1[<?php echo $i; ?>]"
@@ -162,9 +163,12 @@ if (isset ($_POST['themdiem'])) {
                             value="<?php echo $row['Diem1Tiet1']; ?>" /></td>
                     <td><input style="width:100px" type="text" name="diem1tiet2[<?php echo $i; ?>]"
                             value="<?php echo $row['Diem1Tiet2']; ?>" /></td>
+
                     <td><input style="width:100px" type="text" name="diemthi[<?php echo $i; ?>]"
                             value="<?php echo $row['DiemThi']; ?>" /></td>
-                    <td><input style="width:100px" type="text" name="diemtb[<?php echo $i; ?>]" readonly="readonly" /></td>
+
+                    <td><input style="width:100px" type="text" name="diemtb[<?php echo $i; ?>]"
+                            value="<?php echo $row["DiemTB"]; ?>" readonly="readonly" /></td>
                 </tr>
                 <?php
             }
