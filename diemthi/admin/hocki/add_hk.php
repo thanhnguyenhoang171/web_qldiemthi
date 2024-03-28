@@ -22,7 +22,7 @@ if (isset ($_POST['ok'])) {
         } else {
             ?>
             <script type="text/javascript">
-                alert("mmmMã Học Kỳ không hợp lệ.!");
+                alert("Mã Học Kỳ không hợp lệ.!");
                 window.location = "add_hk.php";
             </script>
             <?php

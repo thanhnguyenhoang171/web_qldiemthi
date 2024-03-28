@@ -6,7 +6,7 @@ require "../../classes/day.class.php";
 
 $ma = $gv = $mon = $lop = $hk = $pc = "";
 
-if (isset ($_POST['ok'])) {
+if (isset($_POST['ok'])) {
     $connect = new day();
 
     if ($_POST['txtid'] == null) {
@@ -87,7 +87,7 @@ if (isset ($_POST['ok'])) {
             ?>
             <script type="text/javascript">
                 alert("Bạn Đã Thêm Lịch Dạy Thành Công. Nhấn OK Để Tiếp Tục !");
-                window.location = "../index.php?mod=hk";
+                window.location = "themday.php";
             </script>
             <?php
             exit();
@@ -107,14 +107,14 @@ if (isset ($_POST['ok'])) {
 <body bgcolor="#a3cbff">
     <h1 align="center">Thêm Lịch Dạy</h1>
     <form action="themday.php" method="post">
-        <table align="center" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
+        <table align="center" border="1" cellspacing="0" cellpadding="10" style="background: #f1f1f1">
             <tr>
-                <td class = "ToT">Mã Số Dạy:</td>
+                <td class="ToT">Mã Số Dạy:</td>
                 <td> <input type="text" name="txtid" size="25" /><br />
                 </td>
             </tr>
             <tr>
-                <td class = "ToT">Mã Số Giáo Viên:</td>
+                <td class="ToT">Mã Số Giáo Viên:</td>
                 <td>
                     <select name="txtgv">
                         <?php
@@ -130,7 +130,7 @@ if (isset ($_POST['ok'])) {
                 </td>
             </tr>
             <tr>
-                <td class = "ToT">Mã Số Môn Học:</td>
+                <td class="ToT">Mã Số Môn Học:</td>
                 <td>
                     <select name="txtmh">
                         <?php
@@ -146,7 +146,7 @@ if (isset ($_POST['ok'])) {
                 </td>
             </tr>
             <tr>
-                <td class = "ToT">Mã Số Học Kỳ:</td>
+                <td class="ToT">Mã Số Học Kỳ:</td>
                 <td>
                     <select name="txthk">
                         <?php
@@ -162,7 +162,7 @@ if (isset ($_POST['ok'])) {
                 </td>
             </tr>
             <tr>
-                <td class = "ToT">Mã Số Lớp:</td>
+                <td class="ToT">Mã Số Lớp:</td>
                 <td>
                     <select name="txtlop">
                         <?php
@@ -178,12 +178,12 @@ if (isset ($_POST['ok'])) {
                 </td>
             </tr>
             <tr>
-                <td class = "ToT">Mô Tả:</td>
+                <td class="ToT">Mô Tả:</td>
                 <td><input type="text" name="txtmota" size="25" /></td>
             </tr>
         </table>
-        <h1 style = "text-align: center"> 
-            <input type="submit" class ="add-button" name="ok" value="Thêm lịch" /><br />
+        <h1 style="text-align: center">
+            <input type="submit" class="add-button" name="ok" value="Thêm lịch" /><br />
         </h1>
     </form>
     <form action="../index.php?mod=day" method="post">

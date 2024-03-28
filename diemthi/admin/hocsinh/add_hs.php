@@ -3,7 +3,7 @@ session_start();
 $m = $malop = $t = $gt = $ns = $nois = $dt = $cha = $me = $p = "";
 require "../../classes/hocsinh.class.php";
 $con = new hocsinh();
-if (isset ($_POST['ok'])) {
+if (isset($_POST['ok'])) {
 	if ($_POST['txtmahs'] == null) {
 		?>
 		<script type="text/javascript">
@@ -13,7 +13,7 @@ if (isset ($_POST['ok'])) {
 		<?php
 		exit();
 	} else {
-		$rule = "/^[0-9]{6}$/";
+		$rule = "/^\d{10}$/";
 		if (preg_match($rule, $_POST['txtmahs'])) {
 			$m = $_POST['txtmahs'];
 		} else {
@@ -24,7 +24,6 @@ if (isset ($_POST['ok'])) {
 			</script>
 			<?php
 			exit();
-
 		}
 	}
 	if ($_POST['malophoc'] != null) {
@@ -33,13 +32,13 @@ if (isset ($_POST['ok'])) {
 	if ($_POST['txtten'] == null) {
 		?>
 		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Tên Sinh Viên";
-			window.location = "add_hs.php");
+			alert("Bạn Chưa Nhập Vào Tên Sinh Viên");
+			window.location = "add_hs.php";
 		</script>
 		<?php
 		exit();
 	} else {
-		$hoten = "/^[a-zA-Z'-'\sáàảãạăâắằấầặẵẫậéèẻ ẽẹếềểễệóòỏõọôốồổỗộ ơớờởỡợíìỉĩịđùúủũụưứ� �ửữựÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠ ƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼ� ��ỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞ ỠỢỤỨỪỬỮỰỲỴÝỶỸửữựỵ ỷỹ]*$/";
+		$hoten = "/^[\p{L}0-9\s\p{P}]{1,50}$/u";
 		if (preg_match($hoten, $_POST['txtten'])) {
 			$t = $_POST['txtten'];
 		} else {
@@ -52,11 +51,6 @@ if (isset ($_POST['ok'])) {
 			exit();
 		}
 	}
-	/*if($_POST['txtgt'] == null){
-												  echo "Bạn Chưa Nhập Vào giới tính";
-											  }else{
-												  $gt=$_POST['txtgt'];
-											  }*/
 	if ($_POST['txtgt'] == 1) {
 		$gt = "Nam";
 	} else {
@@ -140,22 +134,29 @@ if (isset ($_POST['ok'])) {
 		}
 	}
 
-	if ($m && $malop && $t && $gt && $ns && $nois && $dt && $cha && $me && $p) {
-		$hocsinh = $con->add($m, $malop, $t, $gt, $ns, $nois, $dt, $cha, $me, $p);
+	try {
+		if ($m && $malop && $t && $gt && $ns && $nois && $dt && $cha && $me && $p) {
+			$hocsinh = $con->add($m, $malop, $t, $gt, $ns, $nois, $dt, $cha, $me, $p);
+			?>
+			<script type="text/javascript">
+				alert("Bạn Đã Thêm Sinh Viên Thành Công. Nhấn OK Để Tiếp Tục Thêm Sinh Viên!");
+				window.location = "add_hs.php";
+			</script>
+			<?php
+			exit();
+		}
+	} catch (Exception $e) {
 		?>
-		require ("../../classes/DB.class.php");
 		<script type="text/javascript">
-			alert("Bạn Đã Thêm Sinh Viên Thành Công.Nhấn OK Để Tiếp Tục Thêm Sinh Viên!");
-			window.location = "../index.php?mod=hs";
+			alert("Thêm sinh viên bị lỗi: <?php echo $e->getMessage(); ?>");
+			window.location = "add_hs.php";
 		</script>
 		<?php
 		exit();
-
-
-
 	}
 }
 ?>
+
 
 <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 <style type="text/css">
@@ -172,7 +173,7 @@ if (isset ($_POST['ok'])) {
 			<table align="center" border="1" cellspacing="0" cellpadding="10">
 				<tr style="background-color: #f1f1f1;">
 					<td class="ToT"> Mã Sinh Viên:</td>
-					<td> <input type="text" name="txtmahs" size="25" placeholder="6 số nguyên từ 0-9" /><br />
+					<td> <input type="text" name="txtmahs" size="25" placeholder="10 số nguyên từ 0-9" /><br />
 					</td>
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
@@ -223,7 +224,7 @@ if (isset ($_POST['ok'])) {
 				</tr style='background-color: #f1f1f1;'>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Password Sinh Viên:</td>
-					<td><input type="password" name="txtpasshs" size="25" placeholder="Trên 6 kí tự" /></td>
+					<td><input type="password" name="txtpasshs" size="25" placeholder="đặt mặc định là mssv" /></td>
 				</tr>
 			</table>
 			<h1 style="text-align: center;"> <input type="submit" name="ok" value="Thêm Sinh Viên" class='add-button'>

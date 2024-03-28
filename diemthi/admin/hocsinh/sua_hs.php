@@ -5,14 +5,26 @@ $con = new hocsinh();
 require "../../includes/config.php";
 $mahs = $_GET['cmahs'];
 $malop = $t = $gt = $ns = $nois = $dt = $cha = $me = $p = "";
-if (isset ($_POST['ok'])) {
+if (isset($_POST['ok'])) {
 	if ($_POST['txtmalop'] == null) {
-		echo "ban chua nhap ma lop hoc";
+		?>
+		<script type="text/javascript">
+			alert("Bạn chưa nhập mã lớp học");
+			window.location = "sua_hs.php?cmahs=<?php echo $_GET['cmahs']; ?>";
+		</script>
+		<?php
+		exit();
 	} else {
 		$malop = $_POST['txtmalop'];
 	}
 	if ($_POST['txtten'] == null) {
-		echo "ban chua nhap ten";
+		?>
+		<script type="text/javascript">
+		alert( "Bạn chưa nhập tên");
+		window.location = "sua_hs.php?cmahs=<?php echo $_GET['cmahs']; ?>";
+		</script>
+		<?php
+		exit();
 	} else {
 		$t = $_POST['txtten'];
 	}
@@ -63,7 +75,7 @@ if (isset ($_POST['ok'])) {
 		//header("location:../index.php?mod=hs");
 		?>
 		<script type="text/javascript">
-			alert("Bạn Đã Sửa Học Sinh Thành Công.Nhấn OK Để Tiếp Tục !");
+			alert("Bạn Đã Sửa Học Sinh Thành Công. <br> Nhấn OK Để Tiếp Tục !");
 			window.location = "../index.php?mod=hs";
 		</script>
 		<?php
@@ -137,6 +149,11 @@ $row = $con->selecths($mahs);
 
 		</form>
 	</table>
+	<form action="../index.php?mod=hs" method="post">
+		<div style="text-align:center; margin-top: 2%;">
+			<input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+		</div>
+	</form>
 	<!-- <h1 style="text-align: center;">
 	<input type="submit" class='add-button' name="ok" value="Sửa" />
 	</h1> -->

@@ -17,7 +17,7 @@
     $name = $password = "";
     if (isset ($_POST["btn_submit"])) {
         //lấy thông tin từ các form bằng phương thức POST
-        $ten = "/^[a-zA-Z0-9]{6,}$/";
+        $ten = "/^[A-Za-z0-9]{1,15}$/";
         if (preg_match($ten, $_POST["username"])) {
             $name = $_POST["username"];
         } else {

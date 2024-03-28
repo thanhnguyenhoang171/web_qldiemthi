@@ -51,10 +51,10 @@ class giaovien extends DB
         $query=mysqli_query($con,$sql);
         return $query;
     }
-    function dis()
-    {
-        $con=$this->close();
-    }
+    // function dis()
+    // {
+    //     $con=$this->close();
+    // }
     function xoa($id)
     {
         $con=$this->connect();
