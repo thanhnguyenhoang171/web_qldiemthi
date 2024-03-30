@@ -1,7 +1,7 @@
 <div class="banner">
 	<center><img src="../assets/img/Ban.png" width="100%" height="250px"></center>
 
-	<body bgcolor="#CAFFFF">
+	<body bgcolor="#a3cbff">
 		<?php
 		define('ROOT', dirname(__FILE__));
 		include "../includes/function.php";
@@ -37,8 +37,8 @@
 			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<div id="menu">
-			<ul>
+		<div id="menu" style="text-align: center;">
+    	<ul style="list-style-type: none; padding: 0; margin: 0 auto; display: inline-block;">
 				<li><a href="diem/add_chon.php">Nhập Điểm Lần Đầu</a></li>
 				<li><a href="diem/capnhatdiem.php"> Cập Nhật Điểm</a></li>
 				<!-- <li><a href="qlgv.php?mod=hs">Xem Điểm</a></li> -->
@@ -54,7 +54,13 @@
 				QUẢN LÝ CỦA GIẢNG VIÊN</p>
 		</div>
 		<div
-			style="border: 1px solid #CDCDCD;background-color:#B1AFAF;width: 500px;margin-left: 425px;font-family: Tahoma;font-size:19px;color:#761c19">
+			style="border: 1px solid #CDCDCD;
+			background-color:#f1f1f1;
+			width: 500px;
+			margin: 0 auto;
+			font-family: Tahoma;
+			font-size:19px;
+			color:#761c19">
 			<pre>Hướng Dẫn Sử Dụng :</pre>
 			<ul>
 				<li>Đối tượng sử dụng: Giảng viên trường Đại học Mở</li>
