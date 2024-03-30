@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 $a = $_SESSION['ses_Magv'];
@@ -10,6 +11,8 @@ $conn = $connect->connect();
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
+
     <div class="banner">
         <center><img src="../../assets/img/Ban.png" height="160px" width="100%"></center>
     </div>
@@ -18,7 +21,7 @@ $conn = $connect->connect();
 
 </head>
 
-<body bgcolor="#CAFFFF">
+<body bgcolor="#a3cbff">
     <?php
 
     ?>
@@ -27,9 +30,9 @@ $conn = $connect->connect();
     </center>
     <form action="capnhatdiem2.php" method="post">
         <div style="text-align:center; margin: 0 auto; width: 50%;">
-            <table>
+            <table style = "background: #f1f1f1">
                 <tr>
-                    <td>Mã Lớp Học</td>
+                    <td class = "ToT" style="width:200px">Mã Lớp Học</td>
                     <td>
                         <select name="day" style="width:100px;height: 25px ">
                             <?php
@@ -44,7 +47,7 @@ $conn = $connect->connect();
                     </td>
 
 
-                    <td>Tên Môn Học</td>
+                    <td class = "ToT" style="width:200px">Tên Môn Học</td>
                     <td>
                         <select name="mon" style="width:100px;height: 25px">
                             <?php
@@ -58,7 +61,7 @@ $conn = $connect->connect();
 
                         </select>
                     </td>
-                    <td>Mã Học Kỳ</td>
+                    <td class = "ToT" style="width:200px" >Mã Học Kỳ</td>
                     <td>
                         <select name="hk" style="width:100px;height: 25px">
                             <?php
@@ -72,16 +75,14 @@ $conn = $connect->connect();
 
                         </select>
                     </td>
-                    <td>
-                        <p> <input type="submit" name="add" value="Chọn" style="width:100px;height: 25px" /></p>
-                    </td>
                 </tr>
             </table>
+                <p> <input type="submit" class = 'select-style' name="add" value="Chọn" style="width:100px;height: 25px" /></p>
         </div>
     </form>
     <form action="../qlgv.php" method="post">
         <div style="text-align:center; margin-top: 20%;">
-            <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+            <input type="submit" class = 'view-button' name="back" value="Trở Về" style="width:100px;height: 25px" />
         </div>
     </form>
 </body>

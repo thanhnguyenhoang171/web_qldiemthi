@@ -96,7 +96,7 @@ if (isset ($_POST['gv'])) {
 	<title>Thay Đổi Mât Khẩu</title>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
+	<link rel="stylesheet" href="../assets/css/css/stylea.css">
 
 	<link rel="stylesheet" href="../assets/css/css/style.css">
 
@@ -125,7 +125,7 @@ if (isset ($_POST['gv'])) {
 
 	<form action="qlgv.php" method="post">
 		<div style="text-align:center; margin-top: 20%;">
-			<input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+			<input type="submit" class = "view-button" name="back" value="Trở Về" style="width:100px;height: 25px" />
 		</div>
 	</form>
 

@@ -56,6 +56,7 @@ if (isset($_POST['themdiem'])) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Trang Nhập Điểm</title>
     <div class="banner">
@@ -63,15 +64,15 @@ if (isset($_POST['themdiem'])) {
     </div>
 </head>
 
-<body bgcolor="#f0ffff">
+<body bgcolor="a3cbff">
 
     <!-- Mới cắt 1 cái ở đây -->
     <br />
     <center>
         <h1>Trang Cập Nhập Điểm</h1>
     </center>
-    <table border="1" cellspacing="0" cellpadding="1">
-        <tr style="font-weight: bold">
+    <table border="1" cellspacing="0" cellpadding="1" style = "background: #f1f1f1; width: 100%;">
+        <tr class = "ToT">
             <td>Mã Học Sinh</td>
             <td>Tên Học Sinh</td>
             <td>Lớp</td>
@@ -90,7 +91,7 @@ if (isset($_POST['themdiem'])) {
         <form action="capnhatdiem2.php" method="post">
             <!-- Phần 1 -->
             <hr>
-            <div style="text-align:center;margin-left: 400px;border: 2px solid;width:500px;font-weight: bold">
+            <div style="text-align:center;margin: 0 auto;border: 2px solid;width:100%;font-weight: bold">
                 <div>Danh Sách Lớp:
                     <?php echo $_POST['day'] ?>
                 </div>
@@ -110,10 +111,10 @@ if (isset($_POST['themdiem'])) {
             <!-- Phần 2 -->
             <div>
                 <div style="text-align: right;float: left">
-                    <a href="capnhatdiem.php"><button type='button'>Trở Về</button></a>
+                    <a href="capnhatdiem.php"><button type='button' class ='view-button'>Trở Về</button></a>
                 </div>
                 <div style="text-align: right">
-                    <input type="submit" name="themdiem" value="Thêm Điểm" />
+                    <input type="submit" class = 'add-button' name="themdiem" value="Thêm Điểm" />
                 </div>
             </div>
             <!-- Phần 2 -->

@@ -18,10 +18,12 @@ if (isset ($_POST['add'])) {
 
 <head>
 
+    <link rel="stylesheet" href="../../assets/css/css/stylea.css">
+
     <div class="banner">
         <center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
 
-<body bgcolor="#CAFFFF">
+<body bgcolor="#a3cbff">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Trang Nhập Điểm</title>
 
@@ -36,11 +38,11 @@ if (isset ($_POST['add'])) {
         </center>
         <form action="add_chon2.php" method="post">
             <div style="text-align:center; margin: 0 auto; width: 50%;">
-                <table>
+                <table style = "background: #f1f1f1">
                     <tr>
-                        <td>Mã Lớp Học</td>
+                        <td class = "ToT" style = "width: 200px">Mã Lớp Học</td>
                         <td>
-                            <select name="day" style="width:100px;height: 25px ">
+                            <select name="day" style="width:100px;height: 20px ">
                                 <?php
                                 $query = "select * from day where Magv=$a";
                                 $results = mysqli_query($conn, $query);
@@ -53,7 +55,7 @@ if (isset ($_POST['add'])) {
                         </td>
 
 
-                        <td>Mã Môn Học</td>
+                        <td class = "ToT" style = "width: 200px">Mã Môn Học</td>
                         <td>
                             <select name="mon" style="width:100px;height: 25px">
                                 <?php
@@ -68,7 +70,7 @@ if (isset ($_POST['add'])) {
                             </select>
                         </td>
 
-                        <td>Mã Học Kỳ</td>
+                        <td class = "ToT" style = "width: 200px">Mã Học Kỳ</td>
                         <td>
                             <select name="hk" style="width:100px;height: 25px">
                                 <?php
@@ -82,18 +84,16 @@ if (isset ($_POST['add'])) {
 
                             </select>
                         </td>
+                            <!-- <p> <input type="submit" name="add" class = 'select-style' value="Chọn" style="width:100px;height: 25px" /></p> -->
 
-                        <td></td>
-                        <td>
-                            <p> <input type="submit" name="add" value="Chọn" style="width:100px;height: 25px" /></p>
-                        </td>
                     </tr>
                 </table>
+                    <p> <input type="submit" name="add" class = 'select-style' value="Chọn" style="width:100px;height: 25px" /></p>                
             </div>
         </form>
         <form action="../qlgv.php" method="post">
             <div style="text-align:center; margin-top: 20%;">
-                <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
+                <input type="submit" name="back" value="Trở Về" class = "view-button" style="width:100px;height: 25px" />
             </div>
         </form>
     </body>
