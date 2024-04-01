@@ -74,8 +74,10 @@ if (isset($_POST['themdiem'])) {
         <h1>Trang Nhập Điểm</h1>
     </center>
     <form action="add_chon2.php" method="post">
+
         <table border="1" cellspacing="0" cellpadding="1" style="background: #f1f1f1; margin: 0 auto">
             <tr class="ToT">
+
                 <td>Mã Học Sinh</td>
                 <td>Tên Học Sinh</td>
                 <td>Lớp</td>
@@ -118,12 +120,16 @@ if (isset($_POST['themdiem'])) {
             <?php } ?>
         </table>
         <div style="margin-top: 10px; text-align: center;">
+
             <input type="submit" class='add-button' name="themdiem" value="Thêm Điểm" />
+
         </div>
     </form>
     <form action="add_chon.php" method="post">
         <div style="text-align:center; margin-top: 20%;">
+
             <input type="submit" class='view-button' name="back" value="Trở Về" style="width:100px;height: 25px" />
+
         </div>
     </form>
 
