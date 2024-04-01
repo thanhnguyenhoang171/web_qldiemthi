@@ -2,13 +2,18 @@
 session_start();
 $a = $_SESSION['ses_Magv'];
 require "../../includes/config.php";
-$dayhoc = $monhoc = $hk = "";
-if (isset ($_POST['add'])) {
+require "../../classes/DB.class.php";
+$connect = new db();
+$conn = $connect->connect();
+
+$dayhoc = $monhoc = $hocky = "";
+if (isset($_POST['add'])) {
     $dayhoc = $_POST['day'];
     $monhoc = $_POST['mon'];
-    $hk = $_POST['hk'];
-    if ($dayhoc && $monhoc && $hk) {
-        header('location:add_diem.php');
+    $hocky = $_POST['hk'];
+    if ($dayhoc && $monhoc && $hocky) { // Use $_SESSION['mahk'] instead of $hk
+        header('location:add_chon2.php');
+        exit(); // Make sure to exit after redirecting
     }
 }
 ?>
@@ -38,9 +43,10 @@ if (isset ($_POST['add'])) {
         </center>
         <form action="add_chon2.php" method="post">
             <div style="text-align:center; margin: 0 auto; width: 50%;">
-                <table style = "background: #f1f1f1">
+                <table style="background: #f1f1f1">
                     <tr>
-                        <td class = "ToT" style = "width: 200px">Mã Lớp Học</td>
+                        <td class="ToT" style="width: 200px">Mã Lớp Học</td>
+
                         <td>
                             <select name="day" style="width:100px;height: 20px ">
                                 <?php
@@ -55,7 +61,9 @@ if (isset ($_POST['add'])) {
                         </td>
 
 
-                        <td class = "ToT" style = "width: 200px">Mã Môn Học</td>
+
+                        <td class="ToT" style="width: 200px">Mã Môn Học</td>
+
                         <td>
                             <select name="mon" style="width:100px;height: 25px">
                                 <?php
@@ -70,7 +78,8 @@ if (isset ($_POST['add'])) {
                             </select>
                         </td>
 
-                        <td class = "ToT" style = "width: 200px">Mã Học Kỳ</td>
+                        <td class="ToT" style="width: 200px">Mã Học Kỳ</td>
+
                         <td>
                             <select name="hk" style="width:100px;height: 25px">
                                 <?php
@@ -84,16 +93,21 @@ if (isset ($_POST['add'])) {
 
                             </select>
                         </td>
-                            <!-- <p> <input type="submit" name="add" class = 'select-style' value="Chọn" style="width:100px;height: 25px" /></p> -->
+
+                        <!-- <p> <input type="submit" name="add" class = 'select-style' value="Chọn" style="width:100px;height: 25px" /></p> -->
 
                     </tr>
                 </table>
-                    <p> <input type="submit" name="add" class = 'select-style' value="Chọn" style="width:100px;height: 25px" /></p>                
+                <p> <input type="submit" name="add" class="select-style" value="Chọn"
+                        style="width:100px;height: 25px" /></p>
+
             </div>
         </form>
         <form action="../qlgv.php" method="post">
             <div style="text-align:center; margin-top: 20%;">
-                <input type="submit" name="back" value="Trở Về" class = "view-button" style="width:100px;height: 25px" />
+
+                <input type="submit" name="back" value="Trở Về" class="view-button" style="width:100px;height: 25px" />
+
             </div>
         </form>
     </body>

@@ -134,7 +134,7 @@ if (!empty($_POST['themlop'])) {
                         <td>
                             <input type="text" name="khoilop"
                                 value="<?php echo !empty($data['KhoiHoc']) ? $data['KhoiHoc'] : ''; ?>"
-                                placeholder="vd: Đào Tạo Đặc Biệt" />
+                                placeholder="vd: IT, ML,..," />
                             <?php if (!empty($errors['KhoiHoc']))
                                 echo $errors['KhoiHoc']; ?>
                         </td>

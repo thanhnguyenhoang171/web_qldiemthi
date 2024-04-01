@@ -93,7 +93,7 @@ require "../../includes/config.php";
         require "../../classes/diem.class.php";
         $connect = new diem();
         $students = $connect->alldiem();
-        if (isset ($_POST['add'])) {
+        if (isset($_POST['add'])) {
             foreach ($students as $item) {
                 if ($_POST['hk'] == $item['MaHocKy'] && $_POST['lop'] == $item['MaLopHoc'] && $_POST['mon'] == $item['MaMonHoc']) {
 
