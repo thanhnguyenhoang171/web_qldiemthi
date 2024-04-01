@@ -8,7 +8,7 @@ $pgv = $_SESSION['ses_passwordgv'];
 $connect = new DB();
 $con = $connect->connect();
 $old = $new = $pre = " ";
-if (isset ($_POST['gv'])) {
+if (isset($_POST['gv'])) {
 	if ($_POST['txtpassgv'] == null) {
 		?>
 		<script type="text/javascript">
@@ -130,6 +130,7 @@ if (isset ($_POST['gv'])) {
 	</form>
 
 	<script src="js/index.js"></script>
+
 
 </body>
 

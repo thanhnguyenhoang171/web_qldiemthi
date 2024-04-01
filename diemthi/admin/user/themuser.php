@@ -15,7 +15,7 @@
     $connect = new DB();
     $conn = $connect->connect();
     $name = $password = "";
-    if (isset ($_POST["btn_submit"])) {
+    if (isset($_POST["btn_submit"])) {
         //lấy thông tin từ các form bằng phương thức POST
         $ten = "/^[A-Za-z0-9]{1,15}$/";
         if (preg_match($ten, $_POST["username"])) {
@@ -29,7 +29,7 @@
             <?php
             exit();
         }
-        $pass = "/^(?=.*\d)(?=.*[a-zA-Z0-9]).{6,}$/";
+        $pass = "/^[A-Za-z0-9]{6,50}$/";
         if (preg_match($pass, $_POST['pass'])) {
             $password = md5($_POST["pass"]);
         } else {
@@ -78,15 +78,15 @@
 
         <body bgcolor="#a3cbff">
             <h1>THÊM ADMIN</h1>
-            <a href="../index.php?mod=capnhat"><button class = "view-button">Trở Về</button></a>
+            <a href="../index.php?mod=capnhat"><button class="view-button">Trở Về</button></a>
             <form action="themuser.php" method="post">
-                <table width="50%" border="1" cellspacing="0" cellpadding="10" style = "background: #f1f1f1">
+                <table width="50%" border="1" cellspacing="0" cellpadding="10" style="background: #f1f1f1">
                     <tr>
-                        <td class = "ToT">Tên Đăng Nhập </td>
+                        <td class="ToT">Tên Đăng Nhập </td>
                         <td><input type="text" id="username" name="username" placeholder="Ít nhất 6 ký tự"></td>
                     </tr>
                     <tr>
-                        <td  class = "ToT">Mật Khẩu </td>
+                        <td class="ToT">Mật Khẩu </td>
                         <td><input type="password" id="pass" name="pass" placeholder="Ít nhất 6 ký tự"></td>
                     </tr>
                     <!-- <tr>
@@ -97,8 +97,8 @@
                             </select> </td>
                     </tr> -->
                 </table>
-                <h1 style = "text-align: center">
-                    <td><input type="submit" class = "add-button" name="btn_submit" value="Thêm Admin"></td>
+                <h1 style="text-align: center">
+                    <td><input type="submit" class="add-button" name="btn_submit" value="Thêm Admin"></td>
                 </h1>
             </form>
         </body>
