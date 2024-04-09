@@ -4,81 +4,57 @@ require '../classes/DB.class.php';
 $connect = new DB();
 $con = $connect->connect();
 $ugv = $pgv = "";
-if (isset ($_POST['gv'])) {
+$error = '';
+if (isset($_POST['gv'])) {
 
-	if (empty ($_POST['txtusergv']) && empty ($_POST['txtpassgv'])) {
-		?>
-		<script type="text/javascript">
-			alert("Vui lòng nhập đầy đủ tên tài khoản và mật khẩu!");
-			window.location = "logingv.php";
-		</script>
-		<?php
-		exit();
+	if (empty($_POST['txtusergv']) && empty($_POST['txtpassgv'])) {
+		$error = 'Vui lòng nhập đầy đủ tên tài khoản và mật khẩu!';
+
 	} else {
-		$u = $_POST['txtusergv'];
-		$p = $_POST['txtpassgv'];
-	}
-
-	// 
-	if ($_POST['txtusergv'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Tên Tài Khoản.");
-			window.location = "logingv.php";
-		</script>
-		<?php
-		exit();
-	} else {
-		$ugv = $_POST['txtusergv'];
-	}
-
-	if ($_POST['txtpassgv'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập mật khẩu Tài Khoản.");
-			window.location = "logingv.php";
-		</script>
-		<?php
-		exit();
-	} else {
-		$pgv = $_POST['txtpassgv'];
-	}
-
-	if ($ugv && $pgv) {
-		$query = "select * from giaovien where Magv='$ugv'";
-		$results = mysqli_query($con, $query);
-
-		if (mysqli_num_rows($results) == 0) {
-			?>
-			<script type="text/javascript">
-				alert("Tên tài khoản hoặc mật khẩu chưa chính xác.Vui lòng nhập lại!");
-				window.location = "logingv.php";
-			</script>
-			<?php
-			exit();
+		// 
+		if ($_POST['txtusergv'] == null) {
+			$error = 'Bạn Chưa Nhập Tên Tài Khoản!';
 		} else {
-			$data = mysqli_fetch_assoc($results);
-			$hashed_password = $data['passwordgv']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
-			if (md5($pgv) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
-				$_SESSION['ses_Magv'] = $data['Magv'];
-				$_SESSION['ses_passwordgv'] = $hashed_password;
-				header("location: qlgv.php");
-				exit();
+			$ugv = $_POST['txtusergv'];
+		}
+
+		if ($_POST['txtpassgv'] == null) {
+			$error = 'Bạn Chưa Nhập mật khẩu Tài Khoản!';
+		} else {
+			$pgv = $_POST['txtpassgv'];
+		}
+
+		if ($ugv && $pgv) {
+			$query = "select * from giaovien where Magv='$ugv'";
+			$results = mysqli_query($con, $query);
+
+			if (mysqli_num_rows($results) == 0) {
+
+				$error = 'Tên tài khoản chưa chính xác.Vui lòng nhập lại!';
+
+
 			} else {
-				?>
-				<script type="text/javascript">
-					alert("Mật khẩu không đúng. Vui lòng kiểm tra lại!");
-					window.location = "logingv.php";
-				</script>
-				<?php
-				exit();
+				$data = mysqli_fetch_assoc($results);
+				$hashed_password = $data['passwordgv']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
+				if (md5($pgv) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
+					$_SESSION['ses_Magv'] = $data['Magv'];
+					$_SESSION['ses_passwordgv'] = $hashed_password;
+					header("location: qlgv.php");
+					exit();
+				} else {
+					$error = 'Mật khẩu không đúng. Vui lòng kiểm tra lại!';
+				}
 			}
 		}
+		$dis = $con->close();
 	}
-	$dis = $con->close();
+}
+// Hiển thị thông báo lỗi nếu có
+if (!empty($error)) {
+	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>
+	$error</div>";
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 

@@ -97,7 +97,7 @@ $dis = $connect->dong();
         </form>
     </center>
     <?php
-    if (isset ($_POST['ok'])) {
+    if (isset($_POST['ok'])) {
         $datafound = false; //flag check empty
         ?>
         <table width="73%" border="1" cellspacing="0" cellpadding="10" style="margin-left:180px">
@@ -163,7 +163,11 @@ $dis = $connect->dong();
                 }
             }
             if (!$datafound) { // If no data found, display alert
-                echo "<script>alert('Không tìm thấy dữ liệu cho học kỳ được chọn');</script>";
+                echo "<div id='errors' style='color: red; position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);'>Không tìm thấy dữ liệu cho học kỳ này!</div>";
+            }
+            else
+            {
+                echo "<div id='errors' style='color: red; position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);'>Đã tìm thấy dữ liệu cho học kỳ này!</div>";
             }
     }
     ?>
