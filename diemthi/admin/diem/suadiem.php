@@ -4,33 +4,57 @@ require "../../classes/diem.class.php";
 require "../../includes/config.php";
 $con = new diem();
 $madiem = $_GET['cma'];
-if (!empty ($_POST['edit_diem'])) {
+if (!empty($_POST['edit_diem'])) {
     // Lay data
-    $data['DiemMieng'] = isset ($_POST['diemmieng']) ? $_POST['diemmieng'] : '';
-    $data['Diem15Phut1'] = isset ($_POST['diem15phut1']) ? $_POST['diem15phut1'] : '';
-    $data['Diem15Phut2'] = isset ($_POST['diem15phut2']) ? $_POST['diem15phut2'] : '';
-    $data['Diem1Tiet1'] = isset ($_POST['diem1tiet1']) ? $_POST['diem1tiet1'] : '';
-    $data['Diem1Tiet2'] = isset ($_POST['diem1tiet2']) ? $_POST['diem1tiet2'] : '';
-    $data['DiemThi'] = isset ($_POST['diemthi']) ? $_POST['diemthi'] : '';
+    $data['DiemMieng'] = isset($_POST['diemmieng']) ? $_POST['diemmieng'] : '';
+    $data['Diem15Phut1'] = isset($_POST['diem15phut1']) ? $_POST['diem15phut1'] : '';
+    $data['Diem15Phut2'] = isset($_POST['diem15phut2']) ? $_POST['diem15phut2'] : '';
+    $data['Diem1Tiet1'] = isset($_POST['diem1tiet1']) ? $_POST['diem1tiet1'] : '';
+    $data['Diem1Tiet2'] = isset($_POST['diem1tiet2']) ? $_POST['diem1tiet2'] : '';
+    $data['DiemThi'] = isset($_POST['diemthi']) ? $_POST['diemthi'] : '';
     $errors = array();
-    if (empty ($data['DiemMieng'])) {
+    if (empty($data['DiemMieng'])) {
         $errors['DiemMieng'] = 'Chưa nhập điểm miệng';
+    } else {
+        if (!is_numeric($data['DiemMieng']) || $data['DiemMieng'] < 0 || $data['DiemMieng'] > 10) {
+            $errors['DiemMieng'] = 'Phải là số từ 0 đến 10';
+        }
     }
 
-    if (empty ($data['Diem15Phut1'])) {
+    if (empty($data['Diem15Phut1'])) {
         $errors['Diem15Phut1'] = 'Chưa nhập điểm 15 phút';
+    } else {
+        if (!is_numeric($data['Diem15Phut1']) || $data['Diem15Phut1'] < 0 || $data['Diem15Phut1'] > 10) {
+            $errors['Diem15Phut1'] = 'Phải là số từ 0 đến 10';
+        }
     }
-    if (empty ($data['Diem15Phut2'])) {
+    if (empty($data['Diem15Phut2'])) {
         $errors['Diem15Phut2'] = 'Chưa nhập điểm 15 phút';
+    } else {
+        if (!is_numeric($data['Diem15Phut2']) || $data['Diem15Phut2'] < 0 || $data['Diem15Phut2'] > 10) {
+            $errors['Diem15Phut2'] = 'Phải là số từ 0 đến 10';
+        }
     }
-    if (empty ($data['Diem1Tiet1'])) {
+    if (empty($data['Diem1Tiet1'])) {
         $errors['Diem1Tiet1'] = 'Chưa nhập điểm 1 tiết';
+    } else {
+        if (!is_numeric($data['Diem1Tiet1']) || $data['Diem1Tiet1'] < 0 || $data['Diem1Tiet1'] > 10) {
+            $errors['Diem1Tiet1'] = 'Phải là số từ 0 đến 10';
+        }
     }
-    if (empty ($data['Diem1Tiet2'])) {
+    if (empty($data['Diem1Tiet2'])) {
         $errors['Diem1Tiet2'] = 'Chưa nhập điểm 1 tiết';
+    } else {
+        if (!is_numeric($data['Diem1Tiet2']) || $data['Diem1Tiet2'] < 0 || $data['Diem1Tiet2'] > 10) {
+            $errors['Diem1Tiet2'] = 'Phải là số từ 0 đến 10';
+        }
     }
-    if (empty ($data['DiemThi'])) {
+    if (empty($data['DiemThi'])) {
         $errors['DiemThi'] = 'Chưa nhập điểm thi';
+    } else {
+        if (!is_numeric($data['DiemThi']) || $data['DiemThi'] < 0 || $data['DiemThi'] > 10) {
+            $errors['DiemThi'] = 'Phải là số từ 0 đến 10';
+        }
     }
 
     if (!$errors) {
@@ -84,75 +108,76 @@ $data = $con->selectdiem($madiem);
             <button>Trở về</button>
         </a> <br /> <br />
         <form method="post" action="suadiem.php?cma=<?php echo $data['MaDiem']; ?>">
-            <table style = "background: #f1f1f1" width="50%" border="1" cellspacing="0" cellpadding="10" style="border: 1px solid transparent;">
+            <table style="background: #f1f1f1" width="50%" border="1" cellspacing="0" cellpadding="10"
+                style="border: 1px solid transparent;">
 
                 <tr>
-                    <td class = "ToT">Điểm Miệng</td>
+                    <td class="ToT">Điểm Miệng</td>
                     <td>
                         <input type="text" name="diemmieng" value="<?php echo $data['DiemMieng']; ?>" />
-                        <?php if (!empty ($errors['DiemMieng']))
+                        <?php if (!empty($errors['DiemMieng']))
                             echo $errors['DiemMieng']; ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class = "ToT">Điểm 15 phút</td>
+                    <td class="ToT">Điểm 15 phút</td>
                     <td>
                         <input type="text" name="diem15phut1" value="<?php echo $data['Diem15Phut1']; ?>" />
-                        <?php if (!empty ($errors['Diem15Phut1']))
+                        <?php if (!empty($errors['Diem15Phut1']))
                             echo $errors['Diem15Phut1']; ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class = "ToT">Điểm 15 phút</td>
+                    <td class="ToT">Điểm 15 phút</td>
                     <td>
                         <input type="text" name="diem15phut2" value="<?php echo $data['Diem15Phut2']; ?>" />
-                        <?php if (!empty ($errors['Diem15Phut2']))
+                        <?php if (!empty($errors['Diem15Phut2']))
                             echo $errors['Diem15Phut2']; ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class = "ToT">Điểm 1 tiết</td>
+                    <td class="ToT">Điểm 1 tiết</td>
                     <td>
                         <input type="text" name="diem1tiet1" value="<?php echo $data['Diem1Tiet1']; ?>" />
-                        <?php if (!empty ($errors['Diem1Tiet1']))
+                        <?php if (!empty($errors['Diem1Tiet1']))
                             echo $errors['Diem1Tiet1']; ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class = "ToT">Điểm 1 tiết</td>
+                    <td class="ToT">Điểm 1 tiết</td>
                     <td>
                         <input type="text" name="diem1tiet2" value="<?php echo $data['Diem1Tiet2']; ?>" />
-                        <?php if (!empty ($errors['Diem1Tiet2']))
+                        <?php if (!empty($errors['Diem1Tiet2']))
                             echo $errors['Diem1Tiet2']; ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class = "ToT">Điểm thi</td>
+                    <td class="ToT">Điểm thi</td>
                     <td>
                         <input type="text" name="diemthi" value="<?php echo $data['DiemThi']; ?>" />
-                        <?php if (!empty ($errors['DiemThi']))
+                        <?php if (!empty($errors['DiemThi']))
                             echo $errors['DiemThi']; ?>
                     </td>
                 </tr>
                 <tr>
-                    <td class = "ToT">Điểm trung bình</td>
+                    <td class="ToT">Điểm trung bình</td>
                     <td>
                         <input type="text" name="diemtrungbinh" value="<?php echo $data['DiemTB']; ?>"
                             readonly="readonly" />
-                        <?php if (!empty ($errors['DiemTB']))
+                        <?php if (!empty($errors['DiemTB']))
                             echo $errors['DiemTB']; ?>
                     </td>
                 </tr>
             </table>
 
-            <a style ="text-align: center">
+            <a style="text-align: center">
                 <input type="hidden" name="id" value="<?php echo $data['MaDiem']; ?>" />
-                <input type="submit" class = "add-button" name="edit_diem" value="Lưu" />
+                <input type="submit" class="add-button" name="edit_diem" value="Lưu" />
             </a>
         </form>
     </body>

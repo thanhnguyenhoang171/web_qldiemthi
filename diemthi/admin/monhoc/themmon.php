@@ -5,7 +5,7 @@ $con = new monhoc();
 if (!empty($_POST['add_mon'])) {
     // Lay data
     // Lay data
-    $mamon = "/^[A-Za-z0-9]{1,15}$/";
+    $mamon = "/^[A-Za-z0-9]{5,15}$/";
 
     if (preg_match($mamon, isset($_POST['ma']) ? $_POST['ma'] : '')) {
         $data['MaMonHoc'] = isset($_POST['ma']) ? $_POST['ma'] : '';
@@ -107,7 +107,7 @@ if (!empty($_POST['add_mon'])) {
                     <td>
                         <input type="text" name="ma"
                             value="<?php echo !empty($data['MaMonHoc']) ? $data['MaMonHoc'] : ''; ?>"
-                            placeholder="Tối đa 5 kí tự" />
+                            placeholder="Tối đa 15 kí tự" />
                         <?php if (!empty($errors['MaMonHoc']))
                             echo $errors['MaMonHoc']; ?>
                     </td>
