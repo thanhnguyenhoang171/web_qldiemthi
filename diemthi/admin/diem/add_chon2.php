@@ -3,7 +3,7 @@ require "../../classes/DB.class.php";
 $connect = new db();
 $conn = $connect->connect();
 session_start();
-if (isset ($_POST['themdiem'])) {
+if (isset($_POST['themdiem'])) {
     // Hàm kiểm tra điểm hợp lệ
     function isValidDiem($diem)
     {
@@ -15,7 +15,7 @@ if (isset ($_POST['themdiem'])) {
     foreach ($_POST['ma'] as $i => $ma) {
         $lop = $_SESSION['malop'];
         $mon = $_SESSION['mamon'];
-        $hk = $_SESSION['mahk'];
+        $hk = $_POST['hk'][$i];
         $mieng = $_POST["diemmieng"][$i];
         $p1 = $_POST["diem1tiet1"][$i];
         $p2 = $_POST["diem1tiet2"][$i];
@@ -74,8 +74,10 @@ if (isset ($_POST['themdiem'])) {
         <h1>Trang Nhập Điểm</h1>
     </center>
     <form action="add_chon2.php" method="post">
-        <table border="1" cellspacing="0" cellpadding="1" style = "background: #f1f1f1; margin: 0 auto">
-            <tr class = "ToT">
+
+        <table border="1" cellspacing="0" cellpadding="1" style="background: #f1f1f1; margin: 0 auto">
+            <tr class="ToT">
+
                 <td>Mã Học Sinh</td>
                 <td>Tên Học Sinh</td>
                 <td>Lớp</td>
@@ -105,8 +107,8 @@ if (isset ($_POST['themdiem'])) {
                             readonly="readonly" /></td>
                     <td><input style="width:90px" type="text" name="mon[]" value="<?php echo $_SESSION['mamon']; ?>"
                             readonly="readonly" /></td>
-                    <td><input style="width:100px" type="text" name="hk[]" value="<?php echo $_SESSION['mahk']; ?>"
-                            readonly="readonly" /></td>
+                    <td><input style="width:100px" type="text" name="hk[]"
+                            value="<?php echo isset($_POST['hk']) ? $_POST['hk'] : ''; ?>" readonly="readonly" /></td>
                     <td><input style="width:100px" type="text" name="diemmieng[<?php echo $i; ?>]" /></td>
                     <td><input style="width:100px" type="text" name="diem15phut1[<?php echo $i; ?>]" /></td>
                     <td><input style="width:100px" type="text" name="diem15phut2[<?php echo $i; ?>]" /></td>
@@ -118,12 +120,16 @@ if (isset ($_POST['themdiem'])) {
             <?php } ?>
         </table>
         <div style="margin-top: 10px; text-align: center;">
-            <input type="submit" class = 'add-button' name="themdiem" value="Thêm Điểm" />
+
+            <input type="submit" class='add-button' name="themdiem" value="Thêm Điểm" />
+
         </div>
     </form>
     <form action="add_chon.php" method="post">
         <div style="text-align:center; margin-top: 20%;">
-            <input type="submit" class = 'view-button' name="back" value="Trở Về" style="width:100px;height: 25px" />
+
+            <input type="submit" class='view-button' name="back" value="Trở Về" style="width:100px;height: 25px" />
+
         </div>
     </form>
 

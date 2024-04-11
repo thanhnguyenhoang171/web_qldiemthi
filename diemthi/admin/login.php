@@ -3,84 +3,55 @@ require '../classes/DB.class.php';
 session_start();
 $connect = new DB();
 $con = $connect->connect();
-if (isset ($_POST['ok'])) {
-	if (empty ($_POST['txtuser']) && empty ($_POST['txtpass'])) {
-		?>
-		<script type="text/javascript">
-			alert("Vui lòng nhập đầy đủ tên tài khoản và mật khẩu!");
-			window.location = "login.php";
-		</script>
-		<?php
-		exit();
+$u = $p = "";
+$error = '';
+if (isset($_POST['ok'])) {
+	if (empty($_POST['txtuser']) && empty($_POST['txtpass'])) {
+		$error = 'Vui lòng nhập đầy đủ tên tài khoản và mật khẩu';
 	} else {
-		$u = $_POST['txtuser'];
-		$p = $_POST['txtpass'];
-	}
-	if ($_POST['txtuser'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Tên Tài Khoản.");
-			window.location = "login.php";
-		</script>
-		<?php
-		exit();
 
-	} else {
-		$u = $_POST['txtuser'];
-	}
-	if ($_POST['txtpass'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Mật Khẩu.Vui lòng Nhập Mật Khẩu!");
-			window.location = "login.php";
-		</script>
-		<?php
-		exit();
-	} else {
-		$p = $_POST['txtpass'];
-	}
-	if ($u && $p) {
 
-		require '../includes/config.php';
+		if ($_POST['txtuser'] == null) {
+			$error = 'Bạn Chưa Nhập Tên Tài Khoản!';
 
-		$query = "SELECT * FROM user WHERE username='$u'";
-		$results = mysqli_query($con, $query);
-		if ($numrows = mysqli_num_rows($results) == 0) {
-			?>
-			<script type="text/javascript">
-				alert("Tên Truy cập chưa chính Xác.Vui Lòng Nhập Lại!");
-				window.location = "login.php";
-			</script>
-			<?php
-			exit();
 		} else {
-			$data = mysqli_fetch_assoc($results);
-			$hashed_password = $data['password']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
-			if (md5($p) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
-				$_SESSION['ses_username'] = $data['username'];
-				$_SESSION['ses_level'] = $data['level'];
-				$_SESSION['ses_userid'] = $data['userid'];
-				$_SESSION['password'] = $hashed_password;
-				?>
-				<script type="text/javascript">
-					alert("Đăng nhập thành công!");
-					window.location = "index.php";
-				</script>
-				<?php
-				//header("location:index.php");
-				exit();
+			$u = $_POST['txtuser'];
+		}
+		if ($_POST['txtpass'] == null) {
+			$error = 'Bạn Chưa Nhập mật khẩu Tài Khoản!';
+		} else {
+			$p = $_POST['txtpass'];
+		}
+		if ($u && $p) {
+
+			require '../includes/config.php';
+
+			$query = "SELECT * FROM user WHERE username='$u'";
+			$results = mysqli_query($con, $query);
+			if ($numrows = mysqli_num_rows($results) == 0) {
+				$error = 'Tên truy cập chưa chính xác.Vui lòng nhập lại!';
 			} else {
-				?>
-				<script type="text/javascript">
-					alert("Mật khẩu không đúng. Vui lòng kiểm tra lại!");
-					window.location = "login.php";
-				</script>
-				<?php
-				exit();
+				$data = mysqli_fetch_assoc($results);
+				$hashed_password = $data['password']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
+				if (md5($p) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
+					$_SESSION['ses_username'] = $data['username'];
+					$_SESSION['ses_level'] = $data['level'];
+					$_SESSION['ses_userid'] = $data['userid'];
+					$_SESSION['password'] = $hashed_password;
+					header("location:index.php");
+					exit();
+				} else {
+					$error = 'Mật khẩu không đúng. Vui lòng kiểm tra lại!';
+				}
 			}
 		}
+		$dis = $con->close();
 	}
 
+}
+// Hiển thị thông báo lỗi nếu có
+if (!empty($error)) {
+	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
 }
 ?>
 <!DOCTYPE html>
