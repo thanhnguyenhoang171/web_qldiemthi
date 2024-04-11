@@ -4,67 +4,62 @@ require '../classes/DB.class.php';
 $connect = new DB();
 $con = $connect->connect();
 $uhs = $phs = "";
-if (isset ($_POST['hs'])) {
-	if ($_POST['txtuserhs'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Tên Tài Khoản.");
-			window.location = "loginhs.php";
-		</script>
-		<?php
-		exit();
+$error = '';
+if (isset($_POST['hs'])) {
+
+	if (empty($_POST['txtuserhs']) && empty($_POST['txtpasshs'])) {
+		$error = 'Bạn chưa nhập username và password!';
 	} else {
-		$uhs = $_POST['txtuserhs'];
-
-	}
-	if ($_POST['txtpasshs'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập mật khẩu Tài Khoản.");
-			window.location = "loginhs.php";
-		</script>
-		<?php
-		exit();
-	} else {
-		$phs = $_POST['txtpasshs'];
-	}
-	if ($uhs && $phs) {
-
-		//require("../includes/config.php");
 
 
-		$query = "SELECT * FROM hocsinh WHERE MaHS='$uhs'";
-		$results = mysqli_query($con, $query);
 
-		if (mysqli_num_rows($results) == 0) {
-			?>
-			<script type="text/javascript">
-				alert("Tên Truy cập chưa đúng. Vui lòng kiểm tra lại!");
-				window.location = "loginhs.php";
-			</script>
-			<?php
-			exit();
+		if ($_POST['txtuserhs'] == null) {
+			$error = 'Bạn chưa nhập username!';
 		} else {
-			$data = mysqli_fetch_assoc($results);
-			$hashed_password = $data['passwordhs']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
-			if (md5($phs) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
-				$_SESSION['ses_MaHS'] = $data['MaHS'];
-				$_SESSION['ses_passwordhs'] = $hashed_password;
-				header("location: qlhs.php");
-				exit();
+			$uhs = $_POST['txtuserhs'];
+
+		}
+		if ($_POST['txtpasshs'] == null) {
+			$error = 'Bạn chưa nhập password!';
+		} else {
+			$phs = $_POST['txtpasshs'];
+		}
+		if ($uhs && $phs) {
+
+			//require("../includes/config.php");
+
+
+			$query = "SELECT * FROM hocsinh WHERE MaHS='$uhs'";
+			$results = mysqli_query($con, $query);
+
+			if (!$results) {
+				$error = 'Lỗi truy vấn cơ sở dữ liệu.';
+			}
+			if (mysqli_num_rows($results) == 0) {
+				$error = 'Username không hợp lệ!';
+				//header("location: loginhs.php");
+				//	exit();
 			} else {
-				?>
-				<script type="text/javascript">
-					alert("Mật khẩu không đúng. Vui lòng kiểm tra lại!");
-					window.location = "loginhs.php";
-				</script>
-				<?php
-				exit();
+				$data = mysqli_fetch_assoc($results);
+				$hashed_password = $data['passwordhs']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
+				if (md5($phs) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
+					$_SESSION['ses_MaHS'] = $data['MaHS'];
+					$_SESSION['ses_passwordhs'] = $hashed_password;
+					$error = 'Đăng nhập thành công!';
+					header("location: qlhs.php");
+					exit();
+				} else {
+					$error = 'Password không đúng!';
+				}
 			}
 		}
-	}
 
-	$dis = $con->close();
+		$dis = $con->close();
+	}
+}
+// Hiển thị thông báo lỗi nếu có
+if (!empty($error)) {
+	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
 }
 ?>
 

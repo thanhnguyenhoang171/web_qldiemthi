@@ -2,7 +2,7 @@
     <center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
 </div>
 <br />
-<div style="text-align:right;margin-right:186px;font-weight: bold">
+<div id="info" style="text-align:right;margin-right:186px;font-weight: bold">
     <?php
     require '../../includes/config.php';
     session_start(); // Corrected typo here
@@ -10,7 +10,7 @@
     $query = "select * from hocsinh where MaHS= $mahs";
     $results = mysqli_query($conn, $query);
     while ($data = mysqli_fetch_assoc($results)) {
-        echo "Chào Bạn,  " . $data["TenHS"] . " - ";
+        echo "Chào Bạn,  " . $data["TenHS"] . ' - ';
         echo "MSSV: " . $mahs;
     }
     ?>
@@ -57,6 +57,7 @@
 require "../../classes/hocsinh.class.php";
 $connect = new hocsinh();
 $students = $connect->allhs();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -70,7 +71,7 @@ $students = $connect->allhs();
 <body bgcolor="#CAFFFF">
     <br />
     <h1 style="font-family:Tahoma;text-align: center;">THÔNG TIN SINH VIÊN</h1>
-    <table width="74%" border="1" cellspacing="0" cellpadding="10" style="margin-left:180px">
+    <table id="student-info" width="74%" border="1" cellspacing="0" cellpadding="10" style="margin-left:180px">
         <tr style="font-weight: bold;color: #0A246A">
             <td>Mã Sinh Viên</td>
             <td>Lớp</td>
@@ -89,7 +90,7 @@ $students = $connect->allhs();
                 ?>
                 <tr>
                     <td>
-                        <?php echo $item['MaHS']; ?>
+                        <div id=MHS> <?php echo $item['MaHS']; ?> </div>
                     </td>
                     <td>
                         <?php echo $item['TenHS']; ?>

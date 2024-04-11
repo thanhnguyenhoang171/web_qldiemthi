@@ -132,11 +132,11 @@ if (isset($_POST['ok'])) {
 </head>
 
 <body bgcolor="#a3cbff">
-	<h1 align="center">Trang Thêm Giảng Viên</h1>
+	<h1 align="center">Trang Thêm Giáo Viên</h1>
 	<form action="add_gv.php" method="post">
 		<table style="background: #f1f1f1" align="center" border="1" cellspacing="0" cellpadding="10">
 			<tr>
-				<td class="ToT">Mã Giảng Viên:</td>
+				<td class="ToT">Mã Giáo Viên:</td>
 				<td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giảng Viên là số 10 ký tự" /><br />
 				</td>
 			</tr>
@@ -176,8 +176,7 @@ if (isset($_POST['ok'])) {
 			</tr>
 
 		</table>
-		<h1 style="text-align: center;"><input type="submit" class="add-button" name="ok" value="Thêm Giảng Viên" />
-		</h1>
+		<h1 style="text-align: center;"><input type="submit" class="add-button" name="ok" value="Thêm Giáo Viên" /></h1>
 	</form>
 
 

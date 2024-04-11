@@ -97,7 +97,7 @@ $row = $con->selectgv($ma);
 <center><img width="100%" src="../assets/img/Ban.png"></center>
 
 <body bgcolor="#a3cbff">
-	<h1 align="center">Trang Sửa Giảng Viên</h1>
+	<h1 align="center">Trang Sửa giáo viên</h1>
 	<form action="sua_gv.php?cma=<?php echo $row['Magv']; ?>" method="post">
 		<table align="center" border="1" cellspacing="0" cellpadding="10">
 			<tr style="background: #f1f1f1">
@@ -105,7 +105,7 @@ $row = $con->selectgv($ma);
 				<td><input type="text" name="txtmamon" size="25" value="<?php echo $row['MaMonHoc']; ?>" /></td>
 			</tr>
 			<tr style="background: #f1f1f1">
-				<td class="ToT">Tên giảng viên:</td>
+				<td class="ToT">Tên giáo viên:</td>
 				<td><input type="text" name="txtten" size="25" value="<?php echo $row['Tengv']; ?>" /></td>
 			</tr>
 			<tr style="background: #f1f1f1">
@@ -117,7 +117,7 @@ $row = $con->selectgv($ma);
 				<td><input type="text" name="txtdienthoai" size="25" value="<?php echo $row['SDT']; ?>" /> </td>
 			</tr>
 			<tr style="background: #f1f1f1">
-				<td class="ToT">Password giảng viên:</td>
+				<td class="ToT">Password giáo viên:</td>
 				<td><input type="password" name="txtpass" size="25" value="<?php echo $row['passwordgv']; ?>" /></td>
 		</table>
 		<h1 style="text-align: center"> <input type="submit" class="add-button" name="ok" value="Sửa" /><br />
