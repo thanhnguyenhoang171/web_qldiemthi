@@ -8,79 +8,53 @@ $phs = $_SESSION['ses_passwordhs'];
 $connect = new DB();
 $con = $connect->connect();
 $old = $new = $pre = " ";
-if (isset ($_POST['hs'])) {
-	if ($_POST['txtpasshs'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn chưa nhập Mật Khẩu");
-			window.location = "repass2.php";
-		</script>
-		<?php
-		exit();
+$error = '';
+if (isset($_POST['hs'])) {
+	if ($_POST['txtpasshs'] == null && $_POST['txtpasshs2'] == null && $_POST['txtpasshs3'] == null) {
+		$error = 'Bạn chưa nhập thông tin!';
 	} else {
-		$old_password_md5 = md5($_POST['txtpasshs']);
+		if ($_POST['txtpasshs'] == null && $_POST['txtpasshs2'] != null) {
+			$error = 'Bạn chưa nhập Mật Khẩu';
 
-		if ($old_password_md5 != $phs) {
-			?>
-			<script type="text/javascript">
-				alert("Mật Khẩu Cũ không chính xác");
-				window.location = "repass2.php";
-			</script>
-			<?php
-			exit();
 		} else {
-			$old = $_POST['txtpasshs'];
-		}
-	}
-	if ($_POST['txtpasshs2'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn chưa nhập Mật Khẩu Mới");
-			window.location = "repass2.php";
-		</script>
-		<?php
-		exit();
-	} else {
-		if ($_POST['txtpasshs2'] != $_POST['txtpasshs3']) {
-			?>
-			<script type="text/javascript">
-				alert("Mật Khẩu Mới không trùng khớp");
-				window.location = "repass2.php";
-			</script>
-			<?php
-			exit();
-		} else {
-			$mk = "/^[a-zA-Z0-9]{6,}$/";
-			if (preg_match($mk, $_POST["txtpasshs2"])) {
-				$new = md5($_POST['txtpasshs2']);
+			$old_password_md5 = md5($_POST['txtpasshs']);
+
+			if ($old_password_md5 != $phs) {
+				$error = 'Mật Khẩu Cũ không chính xác';
 			} else {
-				?>
-				<script type="text/javascript">
-					alert("Mật Khẩu nhập vào không hợp lệ!.");
-					window.location = "repass2.php";
-				</script>
-				<?php
-				exit();
+				$old = $_POST['txtpasshs'];
+			}
+		}
+		if ($_POST['txtpasshs2'] == null && $_POST['txtpasshs'] != null) {
+			$error = 'Bạn chưa nhập Mật Khẩu Mới';
+		} else {
+			if ($_POST['txtpasshs3'] == null) {
+				$error = 'Bạn chưa nhập lại mật khẩu mới';
+			} else if ($_POST['txtpasshs2'] != $_POST['txtpasshs3']) {
+				$error = 'Mật Khẩu Mới không trùng khớp';
+			} else {
+				$mk = "/^[a-zA-Z0-9]{6,}$/";
+				if (preg_match($mk, $_POST["txtpasshs2"])) {
+					$new = md5($_POST['txtpasshs2']);
+				} else {
+					$error = 'Mật Khẩu nhập vào không hợp lệ!';
+				}
+			}
+			if ($u && $phs && $old && $new && $pre && $error == '') {
+				$query = "UPDATE hocsinh SET passwordhs='$new' WHERE MaHS=$u";
+				$results = mysqli_query($con, $query);
+				if ($results) {
+					$error = 'Đã thay đổi mật khẩu thành công!';
+				} else {
+					$error = "Có lỗi xảy ra khi cập nhật mật khẩu.";
+				}
 			}
 		}
 	}
-	if ($u && $phs && $old && $new && $pre) {
-		$query = "UPDATE hocsinh SET passwordhs='$new' WHERE MaHS=$u";
-		$results = mysqli_query($con, $query);
-		if ($results) {
-			?>
-			<script type="text/javascript">
-				alert("Đã thay đổi mật khẩu thành công!");
-				window.location = "qlhs.php";
-			</script>
-			<?php
-			exit();
-		} else {
-			echo "Có lỗi xảy ra khi cập nhật mật khẩu.";
-		}
-
-
-	}
+}
+// Hiển thị thông báo lỗi nếu có
+if (!empty($error)) {
+	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
 }
 ?>
 <!DOCTYPE html>
@@ -101,19 +75,19 @@ if (isset ($_POST['hs'])) {
 <body>
 	<div class="wrap">
 		<div class="avatar">
-			<img src="../assets/img/images/hs.png">
+			<img src="../assets/img/images/student.png">
 		</div>
 		<form action="repass2.php" method="post" novalidate>
 			<input type="password" name="txtpasshs" placeholder="old password" required>
 			<div class="bar">
 				<i></i>
 			</div>
-			<input type="password" name="txtpasshs2" placeholder="new password" required>
+			<input type="password" name="txtpasshs2" placeholder="new password (at least 6 character)" required>
 			<div class="bar">
 				<i></i>
 			</div>
 			<input type="password" name="txtpasshs3" placeholder="re-enter new password" required>
-			<a href="" class="forgot_link">forgot ?</a>
+			<a href="" class="forgot_link">refresh</a>
 			<button><input type="submit" name="hs" value="Thay đổi" /></button>
 		</form>
 
