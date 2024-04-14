@@ -5,104 +5,78 @@ session_start();
 require "../../classes/day.class.php";
 
 $ma = $gv = $mon = $lop = $hk = $pc = "";
+$error = '';
 
 if (isset($_POST['ok'])) {
     $connect = new day();
 
     if ($_POST['txtid'] == null) {
-        ?>
-        <script type="text/javascript">
-            alert("Bạn Chưa Nhập Mã Dạy Học");
-            window.location = "themday.php";
-        </script>
-        <?php
-        exit();
+        $error = "Bạn Chưa Nhập Mã Dạy Học";
+
     } else {
         $ma = $_POST['txtid'];
     }
 
     if ($_POST['txtgv'] == null) {
-        ?>
-        <script type="text/javascript">
-            alert(" Bạn Chưa Nhập Mã Giảng Viên");
-            window.location = "themday.php";
-        </script>
-        <?php
-        exit();
+        $error = " Bạn Chưa Nhập Mã Giảng Viên";
+
     } else {
         $gv = $_POST['txtgv'];
     }
 
     if ($_POST['txtmh'] == null) {
-        ?>
-        <script type="text/javascript">
-            alert("Bạn Chưa Nhập Mã Môn Học");
-            window.location = "themday.php";
-        </script>
-        <?php
-        exit();
+        $error = "Bạn Chưa Nhập Mã Môn Học";
     } else {
         $mon = $_POST['txtmh'];
     }
 
     if ($_POST['txtlop'] == null) {
-        ?>
-        <script type="text/javascript">
-            alert("Bạn Chưa Nhập Lớp Học");
-            window.location = "themday.php";
-        </script>
-        <?php
-        exit();
+        $error = "Bạn Chưa Nhập Lớp Học";
+
     } else {
         $lop = $_POST['txtlop'];
     }
 
     if ($_POST['txthk'] == null) {
-        ?>
-        <script type="text/javascript">
-            alert("Bạn Chưa Nhập Học Kỳ");
-            window.location = "themday.php";
-        </script>
-        <?php
-        exit();
+        $error = "Bạn Chưa Nhập Học Kỳ";
+
     } else {
         $hk = $_POST['txthk'];
     }
 
     if ($_POST['txtmota'] == null) {
-        ?>
-        <script type="text/javascript">
-            alert("Bạn chưa nhập Mô tả");
-            window.location = "themday.php";
-        </script>
-        <?php
-        exit();
+        $error = "Bạn chưa nhập Mô tả";
+
     } else {
         $pc = $_POST['txtmota'];
     }
-
-    if ($ma && $gv && $hk && $lop && $pc && $mon) {
-        $con = $connect->add($ma, $gv, $lop, $hk, $mon, $pc);
-        if ($con) {
-            ?>
-            <script type="text/javascript">
-                alert("Bạn Đã Thêm Lịch Dạy Thành Công. Nhấn OK Để Tiếp Tục !");
-                window.location = "themday.php";
-            </script>
-            <?php
-            exit();
-        } else {
-            ?>
-            <script type="text/javascript">
-                alert("Có lỗi xảy ra khi thêm lịch dạy!");
-            </script>
-            <?php
-            exit();
+    if ($_POST['txtid'] == null && $_POST['txtmota'] == null) {
+        $error = "Bạn chưa nhập dữ liệu";
+    }
+    if ($error == '') {
+        if ($ma && $gv && $hk && $lop && $pc && $mon) {
+            try {
+                $con = $connect->add($ma, $gv, $lop, $hk, $mon, $pc);
+                if ($con) {
+                    ?>
+                    <script type="text/javascript">
+                        alert("Bạn Đã Thêm Lịch Dạy Thành Công. Nhấn OK Để Tiếp Tục !");
+                        window.location = "themday.php";
+                    </script>
+                    <?php
+                    exit();
+                }
+            } catch (Exception $e) {
+                $error = 'Mã dạy đã tồn tại';
+            }
         }
     }
 }
+if (!empty($error)) {
+    echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+}
 ?>
-<center><img src="../../assets/img/Ban.png" width="100%" height="360px" alt=""></center>
+<center><img src="../../assets/img/Ban.png" width="100%" height="259px" alt=""></center>
 
 <body bgcolor="#a3cbff">
     <h1 align="center">Thêm Lịch Dạy</h1>
@@ -187,7 +161,7 @@ if (isset($_POST['ok'])) {
         </h1>
     </form>
     <form action="../index.php?mod=day" method="post">
-        <div style="text-align:center; margin-top: 10%;">
+        <div style="text-align:center; margin-top: 2%;">
             <input type="submit" name="back" value="Trở Về" style="width:100px;height: 25px" />
         </div>
     </form>

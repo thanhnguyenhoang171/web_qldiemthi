@@ -2,100 +2,51 @@
 session_start();
 require ("../classes/giaovien.class.php");
 $m = $t = $dc = $dt = $p = "";
-
+$erorr = '';
 if (isset($_POST['ok'])) {
 	$con = new giaovien();
 	if ($_POST['txtmagv'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Mã Giảng Viên!!!<br/>");
-			window.location = "add_gv.php";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn Chưa Nhập Mã Giảng Viên';
 	} else {
 		$rule = "/^[0-9]{10}$/";
 		if (preg_match($rule, $_POST['txtmagv'])) {
 			$m = $_POST['txtmagv'];
 		} else {
-			?>
-			<script type="text/javascript">
-				alert("Mã Giảng Viên không hợp lệ!");
-				window.location = "add_gv.php";
-			</script>
-			<?php
-			exit();
-
+			$error = 'Mã Giảng Viên không hợp lệ';
 		}
 	}
 	// done 
 
 	if ($_POST['txtten'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Tên Giảng Viên");
-			window.location = "add_gv.php";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
 	} else {
 		$t = $_POST['txtten'];
 	}
 	if ($_POST['txtdiachi'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Địa Chỉ");
-			window.location = "add_gv.php";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn Chưa Nhập Vào Địa Chỉ';
 	} else {
 		$dc = $_POST['txtdiachi'];
 	}
 	if ($_POST['txtdienthoai'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Số Điện Thoại");
-			window.location = "add_gv.php";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn Chưa Nhập Vào Số Điện Thoại';
 	} else {
 		$dienthoai = "/^[0-9]{10,11}$/";
 		if (preg_match($dienthoai, $_POST['txtdienthoai'])) {
 			$dt = $_POST['txtdienthoai'];
 		} else {
-			?>
-			<script type="text/javascript">
-				alert("Số Điện Thoại Không Hợp Lệ!");
-				window.location = "add_gv.php";
-			</script>
-			<?php
-			exit();
+			$error = 'Số Điện Thoại Không Hợp Lệ';
 		}
 	}
 	// 
 
 	if ($_POST['txtpass'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Mật Khẩu");
-			window.location = "add_gv.php";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn Chưa Nhập Mật Khẩu';
 	} else {
 		$pass = "/^[a-zA-Z0-9]{6,}$/";
 		if (preg_match($pass, $_POST['txtpass'])) {
 			$p = md5($_POST['txtpass']);
 		} else {
-			?>
-			<script type="text/javascript">
-				alert("Password nhập vào không hợp lệ.!");
-				window.location = "add_gv.php";
-			</script>
-			<?php
-			exit();
+			$error = 'Password nhập vào không hợp lệ';
 		}
 	}
 
@@ -104,22 +55,20 @@ if (isset($_POST['ok'])) {
 
 	if ($m && $mamon && $t && $dc && $dt && $p) {
 		$giaovien = $con->add($m, $mamon, $t, $dc, $dt, $p);
-		?>
-		<script type="text/javascript">
-			alert("Bạn Đã Thêm Giảng Viên Thành Công!");
-			window.location = "index.php?mod=gv";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn Đã Thêm Giảng Viên Thành Công';
 		//require ("../classes/DB.class.php");
 	}
 }
 //$con->close();
+// Hiển thị thông báo lỗi nếu có
+if (!empty($error)) {
+	echo "<div id='errors' style='color: red; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+}
 ?>
 
 <link rel="stylesheet" href="../assets/css/css/stylea.css">
 
-<center><img width="100%" src="../assets/img/Ban.png"></center>
+<center><img width="100%" height="160px" src="../assets/img/Ban.png"></center>
 
 
 
@@ -132,11 +81,11 @@ if (isset($_POST['ok'])) {
 </head>
 
 <body bgcolor="#a3cbff">
-	<h1 align="center">Trang Thêm Giáo Viên</h1>
+	<h1 align="center">Trang Thêm Giảng Viên</h1>
 	<form action="add_gv.php" method="post">
 		<table style="background: #f1f1f1" align="center" border="1" cellspacing="0" cellpadding="10">
 			<tr>
-				<td class="ToT">Mã Giáo Viên:</td>
+				<td class="ToT">Mã Giảng Viên:</td>
 				<td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giảng Viên là số 10 ký tự" /><br />
 				</td>
 			</tr>

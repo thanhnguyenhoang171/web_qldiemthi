@@ -1,67 +1,51 @@
 <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 
 <?php
-
 require '../../classes/lop.class.php';
 $con = new lop();
 $data = $con->alllop();
-
+$error = '';
 // Nếu người dùng submit form
 if (!empty($_POST['themlop'])) {
-    // Lay data
-    // Lay data
-    $malop = "/^[a-zA-Z0-9]{1,10}$/";
-    if (preg_match($malop, isset($_POST['malop']) ? $_POST['malop'] : '')) {
-        $data['MaLopHoc'] = isset($_POST['malop']) ? $_POST['malop'] : '';
+    if (empty($_POST['malop'])) {
+        $error = 'Chưa nhập Mã Lớp Học';
     } else {
-        ?>
-        <script type="text/javascript">
-            alert("Mã Lớp không hợp lệ.!");
-            window.location = "themlop.php";
-        </script>
-        <?php
-        exit();
-    }
-    $tenlop = "/^[\p{L}0-9\s\p{P}]{1,20}$/u";
-    if (preg_match($tenlop, isset($_POST['tenlop']) ? $_POST['tenlop'] : '')) {
-        $data['Tenlophoc'] = isset($_POST['tenlop']) ? $_POST['tenlop'] : '';
-    } else {
-        ?>
-        <script type="text/javascript">
-            alert("Tên Lớp không hợp lệ.!");
-            window.location = "themlop.php";
-        </script>
-        <?php
-        exit();
-    }
-    $khoi = "/^[a-zA-Z0-9]{2}$/";
-    if (preg_match($khoi, isset($_POST['khoilop']) ? $_POST['khoilop'] : '')) {
-        $data['KhoiHoc'] = isset($_POST['khoilop']) ? $_POST['khoilop'] : '';
-    } else {
-        ?>
-        <script type="text/javascript">
-            alert("Khoa không hợp lệ!");
-            window.location = "themlop.php";
-        </script>
-        <?php
-        exit();
+        $malop = "/^[a-zA-Z0-9]{1,10}$/";
+        if (!preg_match($malop, $_POST['malop'])) {
+            $error = "Mã lớp học không hợp lệ";
+        } else {
+            $data['MaLopHoc'] = $_POST['malop'];
+        }
     }
 
-    // Validate thong tin
-    $errors = array();
-    if (empty($data['MaLopHoc'])) {
-        $errors['MaLopHoc'] = 'Chưa nhập Mã Lớp Học';
+    if (empty($_POST['tenlop'])) {
+        $error = 'Chưa nhập tên lớp học';
+    } else {
+        $tenlop = "/^[\p{L}0-9\s\p{P}]{1,20}$/u";
+        if (!preg_match($tenlop, $_POST['tenlop'])) {
+            $error = 'Tên lớp học không hợp lệ';
+        } else {
+            $data['Tenlophoc'] = $_POST['tenlop'];
+        }
     }
 
-    if (empty($data['Tenlophoc'])) {
-        $errors['Tenlophoc'] = 'Chưa nhập tên lớp học';
+    if (empty($_POST['khoilop'])) {
+        $error = 'Chưa nhập khối lớp';
+    } else {
+        $khoi = "/^[a-zA-Z0-9]{2}$/";
+        if (!preg_match($khoi, $_POST['khoilop'])) {
+            $error = "Khoa không hợp lệ";
+        } else {
+            $data['KhoiHoc'] = $_POST['khoilop'];
+        }
     }
-    if (empty($data['KhoiHoc'])) {
-        $errors['KhoiHoc'] = 'Chưa nhập khối học';
+
+    if (empty($_POST['malop']) && empty($_POST['tenlop']) && empty($_POST['khoilop'])) {
+        $error = 'Bạn chưa nhập dữ liệu';
     }
 
     // Neu ko co loi thi insert
-    if (!$errors) {
+    if ($error == '') {
         try {
             $lop = $con->add($data['MaLopHoc'], $data['Tenlophoc'], $data['KhoiHoc']);
             ?>
@@ -72,25 +56,16 @@ if (!empty($_POST['themlop'])) {
             <?php
             exit();
         } catch (Exception $e) {
-            ?>
-            <script type="text/javascript">
-                alert("Thêm lớp bị lỗi: <?php echo $e->getMessage(); ?>");
-                window.location = "themlop.php";
-            </script>
-            <?php
-            exit();
+            $error = 'Mã lớp học đã tồn tại';
         }
-    } else {
-        ?>
-        <script type="text/javascript">
-            alert("Thêm lớp bị lỗi");
-            window.location = "themlop.php";
-        </script>
-        <?php
-        exit();
     }
 }
+
+if (!empty($error)) {
+    echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -101,7 +76,7 @@ if (!empty($_POST['themlop'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<center><img src="../../assets/img/Ban.png" width="100%" height="360px"></center>
+<center><img src="../../assets/img/Ban.png" width="100%" height="260px"></center>
 <center>
 
     <body bgcolor="#a3cbff">

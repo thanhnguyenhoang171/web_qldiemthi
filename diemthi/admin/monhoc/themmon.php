@@ -2,78 +2,37 @@
 session_start();
 require "../../classes/monhoc.class.php";
 $con = new monhoc();
+$error = '';
 if (!empty($_POST['add_mon'])) {
-    // Lay data
-    // Lay data
-    $mamon = "/^[A-Za-z0-9]{1,15}$/";
+
+    $mamon = "/^[A-Za-z0-9]{6,15}$/";
 
     if (preg_match($mamon, isset($_POST['ma']) ? $_POST['ma'] : '')) {
         $data['MaMonHoc'] = isset($_POST['ma']) ? $_POST['ma'] : '';
     } else {
-        ?>
-        <script type="text/javascript">
-            alert("Mã Môn học không hợp lệ.!");
-            window.location = "themmon.php";
-        </script>
-        <?php
-        exit();
-
+        $error = 'Mã Môn học không hợp lệ';
     }
     $ten = "/^[\p{L}0-9\s\p{P}]{1,50}$/u";
     if (preg_match($ten, isset($_POST['name']) ? $_POST['name'] : '')) {
         $data['TenMonHoc'] = isset($_POST['name']) ? $_POST['name'] : '';
     } else {
-        ?>
-        <script type="text/javascript">
-            alert("Thêm môn học không hợp lệ!");
-            window.location = "themmon.php";
-        </script>
-        <?php
-        exit();
+        $error = 'Tên môn học không hợp lệ';
     }
     $sotiethoc = "/^[0-9]{1,}$/";
     if (preg_match($sotiethoc, isset($_POST['tiet']) ? $_POST['tiet'] : '')) {
         $data['SoTiet'] = isset($_POST['tiet']) ? $_POST['tiet'] : '';
     } else {
-        ?>
-        <script type="text/javascript">
-            alert("Số Tiết không hợp lệ.!");
-            window.location = "themmon.php";
-        </script>
-        <?php
-        exit();
+        $error = 'Số tiết học không hợp lệ';
     }
     $heso = "/^[1-2]{1}$/";
     if (preg_match($heso, isset($_POST['so']) ? $_POST['so'] : '')) {
         $data['HeSoMonHoc'] = isset($_POST['so']) ? $_POST['so'] : '';
     } else {
-        ?>
-        <script type="text/javascript">
-            alert("Hệ Số Môn không hợp lệ.!");
-            window.location = "themmon.php";
-        </script>
-        <?php
-        exit();
+        $error = 'Hệ số môn học không hợp lệ';
     }
 
-
-    // Validate thong tin
-    $errors = array();
-    if (empty($data['MaMonHoc'])) {
-        $errors['MaMonHoc'] = 'Chưa nhập tên sinh viên';
-    }
-
-    if (empty($data['TenMonHoc'])) {
-        $errors['TenMonHoc'] = 'Chưa nhập giới tính sinh viên';
-    }
-    if (empty($data['SoTiet'])) {
-        $errors['SoTiet'] = 'Chưa nhập giới tính sinh viên';
-    }
-    if (empty($data['HeSoMonHoc'])) {
-        $errors['HeSoMonHoc'] = 'Chưa nhập giới tính sinh viên';
-    }
     // Neu ko co loi thi insert
-    if (!$errors) {
+    if ($error == '') {
         $mon = $con->add($data['MaMonHoc'], $data['TenMonHoc'], $data['SoTiet'], $data['HeSoMonHoc']);
         // Trở về trang danh sách
         ?>
@@ -81,6 +40,9 @@ if (!empty($_POST['add_mon'])) {
         <?php
         header("location:../index.php?mod=mh");
     }
+}
+if (!empty($error)) {
+    echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
 }
 ?>
 
@@ -107,7 +69,7 @@ if (!empty($_POST['add_mon'])) {
                     <td>
                         <input type="text" name="ma"
                             value="<?php echo !empty($data['MaMonHoc']) ? $data['MaMonHoc'] : ''; ?>"
-                            placeholder="Tối đa 5 kí tự" />
+                            placeholder="Ít nhất 6 ký tự" />
                         <?php if (!empty($errors['MaMonHoc']))
                             echo $errors['MaMonHoc']; ?>
                     </td>

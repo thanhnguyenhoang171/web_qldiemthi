@@ -1,11 +1,12 @@
 <?php
-
+$errors = '';
 if ($_SESSION['ses_level'] != 1) {
 	header("location:login.php");
 	exit();
 }
 
 require "../classes/hocsinh.class.php"; // Include necessary class file
+
 
 ?>
 
@@ -21,15 +22,18 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 
 <h1 align="center" style="font-family: Tahoma">Quản Lý Sinh Viên</h1>
 <h2 align="center">
-    <a href="hocsinh/add_hs.php">
-        <button type='button' class = "add-button" >Thêm Sinh Viên
-        </button>
-    </a>
+	<a href="hocsinh/add_hs.php">
+		<button type='button' class="add-button">Thêm Sinh Viên
+		</button>
+	</a>
 </h2>
 
+<?php
+
+?>
 
 <form method="post">
-	<select name="malophoc" class = "select-style">
+	<select name="malophoc" class="select-style">
 
 		<?php
 		$con = new hocsinh();
@@ -37,15 +41,14 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 		foreach ($data as $row) {
 			echo "<option value='$row[MaLopHoc]'>$row[MaLopHoc]</option>";
 		}
+
 		?>
 	</select>
-	<input type="submit" class = "view-button" 
-    value="Xem" 
-    name="submit">
+	<input type="submit" class="view-button" value="Xem" name="submit">
 </form>
 
 <table align='center' width='90%' border='1' cellspacing="0" cellpadding="10">
-	<tr class = "ToT" >
+	<tr class="ToT">
 		<td>STT</td>
 		<td>Mã Sinh Viên</td>
 		<td>Mã Lớp Học</td>
@@ -60,39 +63,47 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 		<td>Xóa</td>
 	</tr>
 	<?php
-	if (isset ($_POST['submit'])) {
+	if (isset($_POST['submit'])) {
 		// Process form submission
 		$con = new hocsinh();
 		$hocsinh = $con->getHocSinhByMaLop($_POST['malophoc']);
-		$stt = 0;
-		foreach ($hocsinh as $row) {
-			$stt++;
-			$row_color = ($stt % 2 == 0) ? "#ffffff" : "#f2f2f2";
-			echo "<tr style='background-color: $row_color;'>";
-			echo "<td>$stt</td>";
-			echo "<td>$row[MaHS]</td>";
-			echo "<td>$row[MaLopHoc]</td>";
-			echo "<td>$row[TenHS]</td>";
-			echo "<td>$row[GioiTinh]</td>";
-			echo "<td>$row[NgaySinh]</td>";
-			echo "<td>$row[noisinh]</td>";
-			echo "<td>$row[dantoc]</td>";
-			echo "<td>$row[hotencha]</td>";
-			echo "<td>$row[hotenme]</td>";
-			echo "<td>
-			<a href='hocsinh/sua_hs.php?cmahs=$row[MaHS]'>
-			<button type='button' class = 'fix-button' > Sửa </button>
-			</a>
-			</td>";
+		if (empty($hocsinh)) {
+			$errors = "Không tìm thấy dữ liệu cho lớp học đã chọn.";
+		} else {
+			$stt = 0;
+			foreach ($hocsinh as $row) {
+				$stt++;
+				$row_color = ($stt % 2 == 0) ? "#ffffff" : "#f2f2f2";
+				echo "<tr style='background-color: $row_color;'>";
+				echo "<td>$stt</td>";
+				echo "<td>$row[MaHS]</td>";
+				echo "<td>$row[MaLopHoc]</td>";
+				echo "<td>$row[TenHS]</td>";
+				echo "<td>$row[GioiTinh]</td>";
+				echo "<td>$row[NgaySinh]</td>";
+				echo "<td>$row[noisinh]</td>";
+				echo "<td>$row[dantoc]</td>";
+				echo "<td>$row[hotencha]</td>";
+				echo "<td>$row[hotenme]</td>";
+				echo "<td>
+				<a href='hocsinh/sua_hs.php?cmahs=$row[MaHS]'>
+				<button type='button' class = 'fix-button' > Sửa </button>
+				</a>
+				</td>";
 
-			echo "<td>
-			<a href='hocsinh/xoa_hs.php?cmahs=$row[MaHS]' onclick='return XacNhan();'>
-			<button type='button' class = 'fix-button'> Xóa </button>
-			</a>
-			</td>";
+				echo "<td>
+				<a href='hocsinh/xoa_hs.php?cmahs=$row[MaHS]' onclick='return XacNhan();'>
+				<button type='button' class = 'fix-button'> Xóa </button>
+				</a>
+				</td>";
 
-			echo "</tr>";
+				echo "</tr>";
+
+			}
 		}
+	}
+	if (!empty($errors)) {
+		echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$errors</div>";
 	}
 	?>
 </table>

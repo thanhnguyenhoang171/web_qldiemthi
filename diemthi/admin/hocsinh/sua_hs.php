@@ -5,61 +5,51 @@ $con = new hocsinh();
 require "../../includes/config.php";
 $mahs = $_GET['cmahs'];
 $malop = $t = $gt = $ns = $nois = $dt = $cha = $me = $p = "";
+$error = '';
 if (isset($_POST['ok'])) {
 	if ($_POST['txtmalop'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn chưa nhập mã lớp học");
-			window.location = "sua_hs.php?cmahs=<?php echo $_GET['cmahs']; ?>";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn chưa nhập mã lớp học';
 	} else {
 		$malop = $_POST['txtmalop'];
 	}
 	if ($_POST['txtten'] == null) {
-		?>
-		<script type="text/javascript">
-		alert( "Bạn chưa nhập tên");
-		window.location = "sua_hs.php?cmahs=<?php echo $_GET['cmahs']; ?>";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn chưa nhập tên';
 	} else {
 		$t = $_POST['txtten'];
 	}
 	if ($_POST['txtgt'] == null) {
-		echo "Bạn Chưa Nhập Vào giới tính";
+		$error = 'Bạn Chưa Nhập Vào giới tính';
 	} else {
 		$gt = $_POST['txtgt'];
 	}
 	if ($_POST['txtns'] == null) {
-		echo "Bạn Chưa Nhập Vào Ngày Sinh";
+		$error = 'Bạn Chưa Nhập Vào Ngày Sinh';
 	} else {
 		$ns = $_POST['txtns'];
 	}
 	if ($_POST['txtnois'] == null) {
-		echo "Bạn Chưa Nhập Vào Nơi Sinh";
+		$error = 'Bạn Chưa Nhập Vào Nơi Sinh';
 	} else {
 		$nois = $_POST['txtnois'];
 	}
 	if ($_POST['txtdantoc'] == null) {
-		echo "Bạn Chưa Nhập Vào Dân Tộc";
+		$error = 'Bạn Chưa Nhập Vào Dân Tộc';
 	} else {
 		$dt = $_POST['txtdantoc'];
 	}
 	if ($_POST['txtcha'] == null) {
-		echo "Bạn Chưa Nhập Vào Họ Tên Cha";
+		$error = 'Bạn Chưa Nhập Vào Họ Tên Cha';
+
 	} else {
 		$cha = $_POST['txtcha'];
 	}
 	if ($_POST['txtme'] == null) {
-		echo "Bạn Chưa Nhập Vào Họ Tên Mẹ";
+		$error = 'Bạn Chưa Nhập Vào Họ Tên Mẹ';
 	} else {
 		$me = $_POST['txtme'];
 	}
 	if ($_POST['txtpasshs'] == null) {
-		echo "Bạn Chưa Nhập Vào  Pass Học Sinh";
+		$error = 'Bạn Chưa Nhập Vào  Pass Học Sinh';
 	} else {
 		$p = $_POST['txtpasshs'];
 	}
@@ -75,22 +65,20 @@ if (isset($_POST['ok'])) {
 		//header("location:../index.php?mod=hs");
 		?>
 		<script type="text/javascript">
-			alert("Bạn Đã Sửa Học Sinh Thành Công. <br> Nhấn OK Để Tiếp Tục !");
+			alert("Bạn Đã Sửa Học Sinh Thành Công. Nhấn OK Để Tiếp Tục !");
 			window.location = "../index.php?mod=hs";
 		</script>
 		<?php
 		exit();
 	}
-
-
-
 }
 $row = $con->selecths($mahs);
+
 ?>
 
 <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 
-<center><img width="100%" src="../../assets/img/Ban.png"></center>
+<center><img width="100%" height="160px" src="../../assets/img/Ban.png"></center>
 
 <body bgcolor="#a3cbff">
 	<h1 style="text-align: center">TRANG SỬA HỌC THÔNG TIN HỌC SINH</h1>
@@ -158,5 +146,9 @@ $row = $con->selecths($mahs);
 	<input type="submit" class='add-button' name="ok" value="Sửa" />
 	</h1> -->
 
-
+	<?php
+	if (!empty($error)) {
+		echo "<div id='errors' style='color: red; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+	}
+	?>
 </body>

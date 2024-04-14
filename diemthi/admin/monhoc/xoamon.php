@@ -6,7 +6,7 @@ $connect = new db();
 $conn = $connect->connect();
 $id = $_GET['id'];
 // $xoa=$con->xoa($id);
-
+$error = '';
 // Xóa dữ liệu từ bảng diem
 $query1 = "DELETE FROM giaovien WHERE MaMonHoc='$id'";
 $result1 = mysqli_query($conn, $query1);
@@ -26,7 +26,8 @@ if ($result1 && $result2) {
     exit();
 
 } else {
-    echo "Lỗi khi xóa dữ liệu";
+    $error = 'Xoá môn học không thành công';
+    echo "<div id='errors' style='color: red; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
 }
 header("location: ../index.php?mod=mh");
 ?>
