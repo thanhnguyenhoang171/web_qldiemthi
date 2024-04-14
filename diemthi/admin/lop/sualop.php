@@ -62,7 +62,7 @@ $data = $con->selectlop($id);
                 </tr>
 
                 <tr>
-                    <td  class = "ToT">Khối</td>
+                    <td  class = "ToT">Khoa</td>
                     <td>
                         <input type="text" name="tiet" value="<?php echo $data['KhoiHoc']; ?>" />
                         <?php if (!empty ($errors['KhoiHoc']))

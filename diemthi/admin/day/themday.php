@@ -114,7 +114,7 @@ if (isset($_POST['ok'])) {
                 </td>
             </tr>
             <tr>
-                <td class="ToT">Mã Số Giáo Viên:</td>
+                <td class="ToT">Mã Số Giảng Viên:</td>
                 <td>
                     <select name="txtgv">
                         <?php
