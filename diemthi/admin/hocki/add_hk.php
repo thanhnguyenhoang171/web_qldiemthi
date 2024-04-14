@@ -16,7 +16,7 @@ if (isset ($_POST['ok'])) {
         <?php
         exit();
     } else {
-        $hocky = "/^[a-zA-Z0-9]{1,5}$/";
+        $hocky = "/^[a-zA-Z0-9]{1,20}$/";
         if (preg_match($hocky, $_POST['txthk'])) {
             $n = $_POST['txthk'];
         } else {
