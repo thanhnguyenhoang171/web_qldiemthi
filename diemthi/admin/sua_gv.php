@@ -4,62 +4,33 @@ require "../classes/giaovien.class.php";
 $con = new giaovien();
 $ma = $_GET['cma'];
 $mamon = $t = $dc = $dt = $p = "";
+$error = '';
 if (isset($_POST['ok'])) {
 	if ($_POST['txtmamon'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Mã Môn Học");
-			window.location = "sua_gv.php?cma=<?php echo $_GET['cma']; ?>";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn Chưa Nhập Mã Môn Học';
+
 	} else {
 		$mamon = $_POST['txtmamon'];
 	}
 	if ($_POST['txtten'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Tên Giảng Viên");
-			window.location = "sua_gv.php?cma=<?php echo $_GET['cma']; ?>";
-		</script>
-		<?php
-		exit();
-
+		$error = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
 	} else {
 		$t = $_POST['txtten'];
 	}
 	if ($_POST['txtdiachi'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Tên Giảng Viên");
-			window.location = "sua_gv.php?cma=<?php echo $_GET['cma']; ?>";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn chưa nhập vào địa chỉ';
 
 	} else {
 		$dc = $_POST['txtdiachi'];
 	}
 	if ($_POST['txtdienthoai'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Tên Giảng Viên");
-			window.location = "sua_gv.php?cma=<?php echo $_GET['cma']; ?>";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn chưa nhập vào số điện thoại';
 
 	} else {
 		$dt = $_POST['txtdienthoai'];
 	}
 	if ($_POST['txtpass'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Mật Khẩu Giảng Viên");
-			window.location = "sua_gv.php?cma=<?php echo $_GET['cma']; ?>";
-		</script>
-		<?php
-		exit();
+		$error = 'Bạn chưa nhập vào mật khẩu';
 	} else {
 		$p = $_POST['txtpass'];
 	}
@@ -76,17 +47,15 @@ if (isset($_POST['ok'])) {
 			<?php
 			exit();
 		} catch (Exception $e) {
-			?>
-			<script type="text/javascript">
-				alert("Sửa giảng viên bị lỗi: <?php echo $e->getMessage(); ?>");
-				window.location = "sua_gv.php?cma=<?php echo $ma; ?>";
-			</script>
-			<?php
-			exit();
+			$error = 'Sửa giảng viên bị lỗi';
 		}
 	}
 
 	//$dis=$con->dis();
+}
+// Hiển thị thông báo lỗi nếu có
+if (!empty($error)) {
+	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
 }
 ?>
 <?php
@@ -94,7 +63,7 @@ $row = $con->selectgv($ma);
 
 ?>
 <link rel="stylesheet" href="../assets/css/css/stylea.css">
-<center><img width="100%" src="../assets/img/Ban.png"></center>
+<center><img width="100%" height = "160px" src="../assets/img/Ban.png"></center>
 
 <body bgcolor="#a3cbff">
 	<h1 align="center">Trang Sửa giáo viên</h1>

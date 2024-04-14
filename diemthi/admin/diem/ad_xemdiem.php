@@ -1,5 +1,7 @@
 <?php
 require '../includes/config.php';
+$error = '';
+
 ?>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script type="text/javascript">
@@ -9,6 +11,7 @@ require '../includes/config.php';
         }
     }
 </script>
+
 <!DOCTYPE html>
 <html>
 
@@ -28,7 +31,7 @@ require '../includes/config.php';
             <div style="text-align:center">
                 <?php
                 ?>
-                <select name="hk" class = "select-style">
+                <select name="hk" class="select-style">
                     <?php
                     $query = "select MaHocKy from hocky";
                     $results = mysqli_query($conn, $query);
@@ -37,7 +40,7 @@ require '../includes/config.php';
                     }
                     ?>
                 </select>
-                <select name="lop" class = "select-style">
+                <select name="lop" class="select-style">
                     <?php
                     $query2 = "select * from lophoc";
                     $results2 = mysqli_query($conn, $query2);
@@ -47,7 +50,7 @@ require '../includes/config.php';
                     ?>
 
                 </select>
-                <select name="mon" class = "select-style">
+                <select name="mon" class="select-style">
                     <?php
                     $query3 = "select * from monhoc";
                     $results3 = mysqli_query($conn, $query3);
@@ -57,7 +60,7 @@ require '../includes/config.php';
                     ?>
 
                 </select>
-                <p> <input type="submit" class = "view-button" name="add" value="Chọn" /></p>
+                <p> <input type="submit" class="view-button" name="add" value="Chọn" /></p>
 
             </div>
         </form>
@@ -90,12 +93,13 @@ require '../includes/config.php';
         <?php
         require "../classes/diem.class.php";
         $connect = new diem();
+
         $students = $connect->alldiem();
-        if (isset ($_POST['add'])) {
+        if (isset($_POST['add'])) {
             foreach ($students as $item) {
                 if ($_POST['hk'] == $item['MaHocKy'] && $_POST['lop'] == $item['MaLopHoc'] && $_POST['mon'] == $item['MaMonHoc']) {
                     ?>
-                    <tr style = "background: #f1f1f1">
+                    <tr style="background: #f1f1f1">
                         <td>
                             <?php echo $item['MaHS']; ?>
                         </td>
@@ -145,10 +149,19 @@ require '../includes/config.php';
                         </td>
                     </tr>
                     <?php
+                } else {
+                    $error = 'Không có dữ liệu';
                 }
             }
+
+            if (!empty($error)) {
+                echo "<div id='errors' style='color: red; position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+            }
+
         }
+
         //disconnect_db();
+        
         ?>
     </table>
 
