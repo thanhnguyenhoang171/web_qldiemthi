@@ -15,43 +15,31 @@
     $connect = new DB();
     $conn = $connect->connect();
     $name = $password = "";
+    $errors = array();
     if (isset($_POST["btn_submit"])) {
         //lấy thông tin từ các form bằng phương thức POST
-        $ten = "/^[A-Za-z0-9]{6,15}$/";
-        if (preg_match($ten, $_POST["username"])) {
-            $name = $_POST["username"];
+        if ($_POST["username"] == null) {
+            $errors["username"] = "Chưa nhập username";
         } else {
-            ?>
-            <script type="text/javascript">
-                alert("Username không hợp lệ!");
-                window.location = "themuser.php";
-            </script>
-            <?php
-            exit();
+            $ten = "/^[A-Za-z0-9]{6,15}$/";
+            if (preg_match($ten, $_POST["username"])) {
+                $name = $_POST["username"];
+            } else {
+                $errors["username"] = "Username không hợp lệ";
+            }
         }
-        $pass = "/^[A-Za-z0-9]{6,50}$/";
-        if (preg_match($pass, $_POST['pass'])) {
-            $password = md5($_POST["pass"]);
+        if ($_POST["pass"] == null) {
+            $errors["pass"] = "Chưa nhập Password";
         } else {
-            ?>
-            <script type="text/javascript">
-                alert("Password không hợp lệ!");
-                window.location = "themuser.php";
-            </script>
-            <?php
-            exit();
+            $pass = "/^[A-Za-z0-9]{6,50}$/";
+            if (preg_match($pass, $_POST['pass'])) {
+                $password = md5($_POST["pass"]);
+            } else {
+                $errors["pass"] = "Password không hợp lệ";
+            }
         }
         $level = 1;
-        //Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
-        if ($name == "" || $password == "") {
-            ?>
-            <script type="text/javascript">
-                alert("Bạn vui lòng nhập đầy đủ thông tin");
-                window.location = "themuser.php";
-            </script>
-            <?php
-            exit();
-        } else {
+        if (empty($errors)) {
             //thực hiện việc lưu trữ dữ liệu vào db
             $sql = "INSERT INTO user(
     					username,
@@ -75,6 +63,12 @@
     ?>
     <center><img src="../../assets/img/Ban.png" width="100%" height="360px"></center>
     <center>
+        <style>
+            .error {
+                color: red;
+                font-size: 12px;
+            }
+        </style>
 
         <body bgcolor="#a3cbff">
             <h1>THÊM ADMIN</h1>
@@ -83,11 +77,13 @@
                 <table width="50%" border="1" cellspacing="0" cellpadding="10" style="background: #f1f1f1">
                     <tr>
                         <td class="ToT">Tên Đăng Nhập </td>
-                        <td><input type="text" id="username" name="username" placeholder="Ít nhất 6 ký tự"></td>
+                        <td><input type="text" id="username" name="username" placeholder="Ít nhất 6 ký tự"><?php if (!empty($errors['username']))
+                            echo '<span class="error">' . $errors['username'] . '</span>'; ?></td>
                     </tr>
                     <tr>
                         <td class="ToT">Mật Khẩu </td>
-                        <td><input type="password" id="pass" name="pass" placeholder="Ít nhất 6 ký tự"></td>
+                        <td><input type="password" id="pass" name="pass" placeholder="Ít nhất 6 ký tự"><?php if (!empty($errors['password']))
+                            echo '<span class="error">' . $errors['password'] . '</span>'; ?></td>
                     </tr>
                     <!-- <tr>
                         <td>Level </td>

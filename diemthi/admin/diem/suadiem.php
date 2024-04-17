@@ -33,7 +33,7 @@ if (!empty($_POST['edit_diem'])) {
         $errors['DiemThi'] = 'Chưa nhập điểm thi';
     }
 
-    if (!$errors) {
+    if (empty($errors)) {
         $diemmieng = floatval($_POST['diemmieng']); // Chuyển giá trị thành số thực
         $diem15phut1 = floatval($_POST['diem15phut1']);
         $diem15phut2 = floatval($_POST['diem15phut2']);
@@ -75,6 +75,12 @@ $data = $con->selectdiem($madiem);
     <link rel="stylesheet" href="../../assets/css/css/stylea.css">
 
 </head>
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
 <center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
 <center>
 
@@ -92,7 +98,7 @@ $data = $con->selectdiem($madiem);
                     <td>
                         <input type="text" name="diemmieng" value="<?php echo $data['DiemMieng']; ?>" />
                         <?php if (!empty($errors['DiemMieng']))
-                            echo $errors['DiemMieng']; ?>
+                            echo '<span class="error">' . $errors['DiemMieng'] . '</span>'; ?>
                     </td>
                 </tr>
 
@@ -100,8 +106,8 @@ $data = $con->selectdiem($madiem);
                     <td class="ToT">Điểm 15 phút</td>
                     <td>
                         <input type="text" name="diem15phut1" value="<?php echo $data['Diem15Phut1']; ?>" />
-                        <?php if (!empty($errors['Diem15Phut1']))
-                            echo $errors['Diem15Phut1']; ?>
+                    <?php if (!empty($errors['Diem15Phut1']))
+                        echo '<span class="error">' . $errors['Diem15Phut1'] . '</span>'; ?>
                     </td>
                 </tr>
 
@@ -110,7 +116,7 @@ $data = $con->selectdiem($madiem);
                     <td>
                         <input type="text" name="diem15phut2" value="<?php echo $data['Diem15Phut2']; ?>" />
                         <?php if (!empty($errors['Diem15Phut2']))
-                            echo $errors['Diem15Phut2']; ?>
+                            echo '<span class="error">' . $errors['Diem15Phut2'] . '</span>'; ?>
                     </td>
                 </tr>
 
@@ -118,8 +124,8 @@ $data = $con->selectdiem($madiem);
                     <td class="ToT">Điểm 1 tiết</td>
                     <td>
                         <input type="text" name="diem1tiet1" value="<?php echo $data['Diem1Tiet1']; ?>" />
-                        <?php if (!empty($errors['Diem1Tiet1']))
-                            echo $errors['Diem1Tiet1']; ?>
+                    <?php if (!empty($errors['Diem1Tiet1']))
+                        echo '<span class="error">' . $errors['Diem1Tiet1'] . '</span>'; ?>
                     </td>
                 </tr>
 
@@ -127,8 +133,8 @@ $data = $con->selectdiem($madiem);
                     <td class="ToT">Điểm 1 tiết</td>
                     <td>
                         <input type="text" name="diem1tiet2" value="<?php echo $data['Diem1Tiet2']; ?>" />
-                        <?php if (!empty($errors['Diem1Tiet2']))
-                            echo $errors['Diem1Tiet2']; ?>
+                    <?php if (!empty($errors['Diem1Tiet2']))
+                        echo '<span class="error">' . $errors['Diem1Tiet2'] . '</span>'; ?>
                     </td>
                 </tr>
 
@@ -136,8 +142,8 @@ $data = $con->selectdiem($madiem);
                     <td class="ToT">Điểm thi</td>
                     <td>
                         <input type="text" name="diemthi" value="<?php echo $data['DiemThi']; ?>" />
-                        <?php if (!empty($errors['DiemThi']))
-                            echo $errors['DiemThi']; ?>
+                    <?php if (!empty($errors['DiemThi']))
+                        echo '<span class="error">' . $errors['DiemThi'] . '</span>'; ?>
                     </td>
                 </tr>
                 <tr>
@@ -145,8 +151,8 @@ $data = $con->selectdiem($madiem);
                     <td>
                         <input type="text" name="diemtrungbinh" value="<?php echo $data['DiemTB']; ?>"
                             readonly="readonly" />
-                        <?php if (!empty($errors['DiemTB']))
-                            echo $errors['DiemTB']; ?>
+                <?php if (!empty($errors['DiemTB']))
+                    echo '<span class="error">' . $errors['DiemTB'] . '</span>'; ?>
                     </td>
                 </tr>
             </table>

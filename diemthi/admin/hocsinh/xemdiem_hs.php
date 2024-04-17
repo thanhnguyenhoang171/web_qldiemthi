@@ -120,7 +120,9 @@ $dis = $connect->dong();
                         ?>
                         <tr>
                             <td>
-                                <?php echo $item['TenHocKy']; ?>
+                                <div id="MaHK">
+                                    <?php echo $item['TenHocKy']; ?>
+                                </div>
                             </td>
                             <td>
                                 <?php echo $item['TenMonHoc']; ?>
@@ -164,9 +166,7 @@ $dis = $connect->dong();
             }
             if (!$datafound) { // If no data found, display alert
                 echo "<div id='errors' style='color: red; position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);'>Không tìm thấy dữ liệu cho học kỳ này!</div>";
-            }
-            else
-            {
+            } else {
                 echo "<div id='errors' style='color: red; position: absolute; top: 42%; left: 50%; transform: translate(-50%, -50%);'>Đã tìm thấy dữ liệu cho học kỳ này!</div>";
             }
     }

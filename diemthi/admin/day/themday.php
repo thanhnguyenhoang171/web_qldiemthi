@@ -5,55 +5,55 @@ session_start();
 require "../../classes/day.class.php";
 
 $ma = $gv = $mon = $lop = $hk = $pc = "";
-$error = '';
+
 
 if (isset($_POST['ok'])) {
     $connect = new day();
-
+    $errors = array();
     if ($_POST['txtid'] == null) {
-        $error = "Bạn Chưa Nhập Mã Dạy Học";
+        $errors['txtid'] = "Bạn Chưa Nhập Mã Dạy Học";
 
     } else {
         $ma = $_POST['txtid'];
     }
 
     if ($_POST['txtgv'] == null) {
-        $error = " Bạn Chưa Nhập Mã Giảng Viên";
+        $errors['txtgv'] = " Bạn Chưa Nhập Mã Giảng Viên";
 
     } else {
         $gv = $_POST['txtgv'];
     }
 
     if ($_POST['txtmh'] == null) {
-        $error = "Bạn Chưa Nhập Mã Môn Học";
+        $errors['txtmh'] = "Bạn Chưa Nhập Mã Môn Học";
     } else {
         $mon = $_POST['txtmh'];
     }
 
     if ($_POST['txtlop'] == null) {
-        $error = "Bạn Chưa Nhập Lớp Học";
+        $errors['txtlop'] = "Bạn Chưa Nhập Lớp Học";
 
     } else {
         $lop = $_POST['txtlop'];
     }
 
     if ($_POST['txthk'] == null) {
-        $error = "Bạn Chưa Nhập Học Kỳ";
+        $errors['txthk'] = "Bạn Chưa Nhập Học Kỳ";
 
     } else {
         $hk = $_POST['txthk'];
     }
 
     if ($_POST['txtmota'] == null) {
-        $error = "Bạn chưa nhập Mô tả";
+        $errors['txtmota'] = "Bạn chưa nhập Mô tả";
 
     } else {
         $pc = $_POST['txtmota'];
     }
-    if ($_POST['txtid'] == null && $_POST['txtmota'] == null) {
-        $error = "Bạn chưa nhập dữ liệu";
-    }
-    if ($error == '') {
+    // if ($_POST['txtid'] == null && $_POST['txtmota'] == null) {
+    //     $error = "Bạn chưa nhập dữ liệu";
+    // }
+    if (empty($errors)) {
         if ($ma && $gv && $hk && $lop && $pc && $mon) {
             try {
                 $con = $connect->add($ma, $gv, $lop, $hk, $mon, $pc);
@@ -67,17 +67,22 @@ if (isset($_POST['ok'])) {
                     exit();
                 }
             } catch (Exception $e) {
-                $error = 'Mã dạy đã tồn tại';
+                $errors['txtid'] = 'Mã dạy đã tồn tại';
             }
         }
     }
 }
-if (!empty($error)) {
-    echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
-}
+// if (!empty($error)) {
+//     echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+// }
 ?>
 <center><img src="../../assets/img/Ban.png" width="100%" height="259px" alt=""></center>
-
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
 <body bgcolor="#a3cbff">
     <h1 align="center">Thêm Lịch Dạy</h1>
     <form action="themday.php" method="post">
@@ -85,7 +90,8 @@ if (!empty($error)) {
             <tr>
                 <td class="ToT">Mã Số Dạy:</td>
                 <td> <input type="text" name="txtid" size="25" /><br />
-                </td>
+                    <?php if (!empty($errors['txtid']))
+                        echo '<span class="error">' . $errors['txtid'] . '</span>'; ?></td>
             </tr>
             <tr>
                 <td class="ToT">Mã Số Giảng Viên:</td>
@@ -153,7 +159,8 @@ if (!empty($error)) {
             </tr>
             <tr>
                 <td class="ToT">Mô Tả:</td>
-                <td><input type="text" name="txtmota" size="25" /></td>
+                <td><input type="text" name="txtmota" size="25" /><?php if (!empty($errors['txtmota']))
+                    echo '<span class="error">' . $errors['txtmota'] . '</span>'; ?></td>
             </tr>
         </table>
         <h1 style="text-align: center">

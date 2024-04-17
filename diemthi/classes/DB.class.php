@@ -10,7 +10,7 @@ class DB
     {
         $con = mysqli_connect($this->host, $this->user, $this->pass, $this->db);
         if (!$con) {
-            die ('Could not connect to database!');
+            die('Could not connect to database!');
         } else {
             $this->myconn = $con;
             $font = mysqli_set_charset($con, 'utf8');

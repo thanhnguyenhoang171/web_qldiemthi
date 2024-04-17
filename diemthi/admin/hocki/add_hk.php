@@ -3,21 +3,21 @@
 <?php
 session_start();
 $n = $ten = $h = $nam = "";
-$error = '';
+
 require "../../classes/hocki.class.php";
 if (isset($_POST['ok'])) {
-
+    $errors = array();
     $connect = new hocki();
     $d = $connect->allquery();
 
     if ($_POST['txthk'] == null) {
-        $error = 'Bạn chưa nhập mã học kỳ';
+        $errors['txthk'] = 'Chưa nhập mã học kỳ';
     } else {
         $hocky = "/^[a-zA-Z0-9]{1,20}$/";
         if (preg_match($hocky, $_POST['txthk'])) {
             $n = $_POST['txthk'];
         } else {
-            $error = 'Mã học kỳ không hợp lệ';
+            $errors['txthk'] = 'Mã học kỳ không hợp lệ';
         }
     }
     if ($_POST['txtten'] == null) {
@@ -27,7 +27,7 @@ if (isset($_POST['ok'])) {
         if (preg_match($tenhk, $_POST['txtten'])) {
             $ten = $_POST['txtten'];
         } else {
-            $error = 'Tên học kỳ không hợp lệ';
+            $errors['txtten'] = 'Tên học kỳ không hợp lệ';
         }
     }
     if ($_POST['txtheso'] == null) {
@@ -37,23 +37,23 @@ if (isset($_POST['ok'])) {
         if (preg_match($heso, $_POST['txtheso'])) {
             $h = $_POST['txtheso'];
         } else {
-            $error = 'Hệ số học kỳ không hợp lệ';
+            $errors['txtheso'] = 'Hệ số học kỳ không hợp lệ';
         }
     }
     if ($_POST['txtnam'] == null) {
-        $error = 'Bạn chưa nhập năm học';
+        $errors['txtnam'] = 'Bạn chưa nhập năm học';
     } else {
         $nh = "/^[0-9_-]{9,}$/";
         if (preg_match($nh, $_POST['txtnam'])) {
             $nam = $_POST['txtnam'];
         } else {
-            $error = 'Năm học không hợp lệ';
+            $errors['txtnam'] = 'Năm học không hợp lệ';
         }
     }
     if ($_POST['txthk'] == null && $_POST['txtten'] == null && $_POST['txtheso'] == null && $_POST['txtnam'] == null) {
-        $error = "Bạn chưa nhập dữ liệu";
+        $errors['txthk'] = "Bạn chưa nhập dữ liệu";
     }
-    if ($error == '') {
+    if (empty($errors)) {
         if ($n && $ten && $h && $nam) {
             try {
                 $con = $connect->add($n, $ten, $h, $nam);
@@ -65,17 +65,22 @@ if (isset($_POST['ok'])) {
                 <?php
                 exit();
             } catch (Exception $e) {
-                $error = "Mã số học kỳ đã tồn tại";
+                $errors['txthk'] = "Mã số học kỳ đã tồn tại";
             }
         }
     }
 }
-if (!empty($error)) {
-    echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
-}
+// if (!empty($error)) {
+//     echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+// }
 ?>
 <center><img src="../../assets/img/Ban.png" width="100%" height="260px"></center>
-
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
 <body bgcolor="#a3cbff">
     <h1 align="center">Trang Thêm Học Kỳ</h1>
     <form action="add_hk.php" method="post">
@@ -83,19 +88,23 @@ if (!empty($error)) {
             <tr>
                 <td class="ToT">Mã Số Học Kỳ:</td>
                 <td> <input type="text" name="txthk" size="25" placeholder="Mẫu:12016" /><br />
-                </td>
+                <?php if (!empty($errors['txthk']))
+                    echo '<span class="error">' . $errors['txthk'] . '</span>'; ?></td>
             </tr>
             <tr>
                 <td class="ToT">Tên Học Kỳ:</td>
-                <td><input type="text" name="txtten" size="25" placeholder="Là chữ tiếng Việt" /></td>
+                <td><input type="text" name="txtten" size="25" placeholder="Là chữ tiếng Việt" /><?php if (!empty($errors['txtten']))
+                    echo '<span class="error">' . $errors['txtten'] . '</span>'; ?></td>
             </tr>
             <tr>
                 <td class="ToT">Hệ Số HK:</td>
-                <td><input type="text" name="txtheso" size="25" placeholder="Nhập 1 hoặc 2" /></td>
+                <td><input type="text" name="txtheso" size="25" placeholder="Nhập 1 hoặc 2" /><?php if (!empty($errors['txtheso']))
+                    echo '<span class="error">' . $errors['txtheso'] . '</span>'; ?></td>
             </tr>
             <tr>
                 <td class="ToT">Năm Học:</td>
-                <td><input type="text" name="txtnam" size="25" placeholder="Mẫu: 2016-2017" /></td>
+                <td><input type="text" name="txtnam" size="25" placeholder="Mẫu: 2016-2017" /><?php if (!empty($errors['txtnam']))
+                    echo '<span class="error">' . $errors['txtnam'] . '</span>'; ?></td>
             </tr>
         </table>
         <h1 style="text-align: center">

@@ -2,68 +2,80 @@
 session_start();
 require ("../classes/giaovien.class.php");
 $m = $t = $dc = $dt = $p = "";
-$erorr = '';
+
 if (isset($_POST['ok'])) {
+	$errors = array();
 	$con = new giaovien();
 	if ($_POST['txtmagv'] == null) {
-		$error = 'Bạn Chưa Nhập Mã Giảng Viên';
+		$errors['txtmagv'] = 'Bạn Chưa Nhập Mã Giảng Viên';
+
 	} else {
 		$rule = "/^[0-9]{10}$/";
 		if (preg_match($rule, $_POST['txtmagv'])) {
 			$m = $_POST['txtmagv'];
 		} else {
-			$error = 'Mã Giảng Viên không hợp lệ';
+			$errors['txtmagv'] = 'Mã Giảng Viên không hợp lệ';
+
 		}
 	}
 	// done 
 
 	if ($_POST['txtten'] == null) {
-		$error = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
+		$errors['txtten'] = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
+
 	} else {
 		$t = $_POST['txtten'];
 	}
 	if ($_POST['txtdiachi'] == null) {
-		$error = 'Bạn Chưa Nhập Vào Địa Chỉ';
+		$errors['txtdiachi'] = 'Bạn Chưa Nhập Vào Địa Chỉ';
+
 	} else {
 		$dc = $_POST['txtdiachi'];
 	}
 	if ($_POST['txtdienthoai'] == null) {
-		$error = 'Bạn Chưa Nhập Vào Số Điện Thoại';
+		$errors['txtdienthoai'] = 'Bạn Chưa Nhập Vào Số Điện Thoại';
+
 	} else {
 		$dienthoai = "/^[0-9]{10,11}$/";
 		if (preg_match($dienthoai, $_POST['txtdienthoai'])) {
 			$dt = $_POST['txtdienthoai'];
 		} else {
-			$error = 'Số Điện Thoại Không Hợp Lệ';
+			$errors['txtdienthoai'] = 'Số điện thoại không hợp lệ';
 		}
 	}
 	// 
 
 	if ($_POST['txtpass'] == null) {
-		$error = 'Bạn Chưa Nhập Mật Khẩu';
+		$errors['txtpass'] = 'Bạn chưa nhập mật khẩu khẩu';
 	} else {
 		$pass = "/^[a-zA-Z0-9]{6,}$/";
 		if (preg_match($pass, $_POST['txtpass'])) {
 			$p = md5($_POST['txtpass']);
 		} else {
-			$error = 'Password nhập vào không hợp lệ';
+			$errors['txtpass'] = 'Password nhập vào không hợp lệ';
 		}
 	}
 
 	$mamon = $_POST['mamonhoc'];
 
 
-	if ($m && $mamon && $t && $dc && $dt && $p) {
+	if ($m && $mamon && $t && $dc && $dt && $p && empty($errors)) {
 		$giaovien = $con->add($m, $mamon, $t, $dc, $dt, $p);
-		$error = 'Bạn Đã Thêm Giảng Viên Thành Công';
+		?>
+		<script type="text/javascript">
+			alert("Bạn thêm Giảng Viên thành công!");
+			window.location = "index.php?mod=gv";
+		</script>
+		<?php
+		exit();
 		//require ("../classes/DB.class.php");
 	}
 }
 //$con->close();
-// Hiển thị thông báo lỗi nếu có
-if (!empty($error)) {
-	echo "<div id='errors' style='color: red; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
-}
+// // Hiển thị thông báo lỗi nếu có
+// if (!empty($error)) {
+// 	echo "<div id='errors' style='color: red; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+// }
 ?>
 
 <link rel="stylesheet" href="../assets/css/css/stylea.css">
@@ -79,6 +91,12 @@ if (!empty($error)) {
 	<meta charset="UTF-8">
 	<title>Trang Thêm Giảng Viên</title>
 </head>
+<style>
+	.error {
+		color: red;
+		font-size: 12px;
+	}
+</style>
 
 <body bgcolor="#a3cbff">
 	<h1 align="center">Trang Thêm Giảng Viên</h1>
@@ -87,6 +105,8 @@ if (!empty($error)) {
 			<tr>
 				<td class="ToT">Mã Giảng Viên:</td>
 				<td> <input type="text" name="txtmagv" size="25" placeholder="Mã Giảng Viên là số 10 ký tự" /><br />
+					<?php if (!empty($errors['txtmagv']))
+						echo '<span class="error">' . $errors['txtmagv'] . '</span>'; ?>
 				</td>
 			</tr>
 			<tr>
@@ -109,19 +129,24 @@ if (!empty($error)) {
 			<tr>
 
 				<td class="ToT">Tên Giảng Viên:</td>
-				<td><input type="text" name="txtten" size="25" /></td>
+				<td><input type="text" name="txtten" size="25" /><?php if (!empty($errors['txtten']))
+					echo '<span class="error">' . $errors['txtten'] . '</span>'; ?></td>
 			</tr>
 			<tr>
 				<td class="ToT">Địa Chỉ: </td>
-				<td><textarea type="text" name="txtdiachi"></textarea></td>
+				<td><textarea type="text" name="txtdiachi"></textarea><?php if (!empty($errors['txtdiachi']))
+					echo '<span class="error">' . $errors['txtdiachi'] . '</span>'; ?></td>
 			</tr>
 			<tr>
 				<td class="ToT">Điện Thoại:</td>
-				<td><input type="text" name="txtdienthoai" size="25" placeholder="Số từ 9 đến 11 số không âm" /></td>
+				<td><input type="text" name="txtdienthoai" size="25" placeholder="Số từ 9 đến 11 số không âm" /><?php if (!empty($errors['txtdienthoai']))
+					echo '<span class="error">' . $errors['txtdienthoai'] . '</span>'; ?></< /td>
 			</tr>
 			<tr>
 				<td class="ToT">Password Giảng Viên:</td>
-				<td><input type="password" name="txtpass" size="25" placeholder="Đặt mặt định là Mã Giảng Viên" /></td>
+				<td><input type="password" name="txtpass" size="25"
+						placeholder="Đặt mặt định là Mã Giảng Viên ít nhất 6 ký tự" /><?php if (!empty($errors['txtpass']))
+							echo '<span class="error">' . $errors['txtpass'] . '</span>'; ?></td>
 			</tr>
 
 		</table>

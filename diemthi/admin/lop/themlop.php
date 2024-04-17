@@ -4,48 +4,47 @@
 require '../../classes/lop.class.php';
 $con = new lop();
 $data = $con->alllop();
-$error = '';
+
 // Nếu người dùng submit form
 if (!empty($_POST['themlop'])) {
+    $errors = array();
     if (empty($_POST['malop'])) {
-        $error = 'Chưa nhập Mã Lớp Học';
+        $errors['malop'] = 'Chưa nhập mã lớp';
     } else {
         $malop = "/^[a-zA-Z0-9]{1,10}$/";
         if (!preg_match($malop, $_POST['malop'])) {
-            $error = "Mã lớp học không hợp lệ";
+            $errors['malop'] = "Mã lớp học không hợp lệ";
         } else {
             $data['MaLopHoc'] = $_POST['malop'];
         }
     }
 
     if (empty($_POST['tenlop'])) {
-        $error = 'Chưa nhập tên lớp học';
+        $errors['tenlop'] = 'Chưa nhập tên lớp học';
     } else {
         $tenlop = "/^[\p{L}0-9\s\p{P}]{1,20}$/u";
         if (!preg_match($tenlop, $_POST['tenlop'])) {
-            $error = 'Tên lớp học không hợp lệ';
+            $errors['tenlop'] = 'Tên lớp học không hợp lệ';
         } else {
             $data['Tenlophoc'] = $_POST['tenlop'];
         }
     }
 
     if (empty($_POST['khoilop'])) {
-        $error = 'Chưa nhập khối lớp';
+        $errors['khoilop'] = 'Chưa nhập khối lớp';
     } else {
         $khoi = "/^[a-zA-Z0-9]{2}$/";
         if (!preg_match($khoi, $_POST['khoilop'])) {
-            $error = "Khoa không hợp lệ";
+            $errors['khoilop'] = "Khoa không hợp lệ";
         } else {
             $data['KhoiHoc'] = $_POST['khoilop'];
         }
     }
 
-    if (empty($_POST['malop']) && empty($_POST['tenlop']) && empty($_POST['khoilop'])) {
-        $error = 'Bạn chưa nhập dữ liệu';
-    }
+
 
     // Neu ko co loi thi insert
-    if ($error == '') {
+    if (empty($errors)) {
         try {
             $lop = $con->add($data['MaLopHoc'], $data['Tenlophoc'], $data['KhoiHoc']);
             ?>
@@ -56,14 +55,14 @@ if (!empty($_POST['themlop'])) {
             <?php
             exit();
         } catch (Exception $e) {
-            $error = 'Mã lớp học đã tồn tại';
+            $errors['malop'] = 'Mã lớp học đã tồn tại';
         }
     }
 }
 
-if (!empty($error)) {
-    echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
-}
+// if (!empty($error)) {
+//     echo "<div id='errors' style='color: red; position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+// }
 ?>
 
 
@@ -76,6 +75,12 @@ if (!empty($error)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
 <center><img src="../../assets/img/Ban.png" width="100%" height="260px"></center>
 <center>
 
@@ -91,8 +96,8 @@ if (!empty($error)) {
                             <input type="text" name="malop"
                                 value="<?php echo !empty($data['MaLopHoc']) ? $data['MaLopHoc'] : ''; ?>"
                                 placeholder="Mẫu:IT01 " />
-                            <?php if (!empty($errors['MaLopHoc']))
-                                echo $errors['MaLopHoc']; ?>
+                            <?php if (!empty($errors['malop']))
+                                echo '<span class="error">' . $errors['malop'] . '</span>'; ?>
                         </td>
                     </tr>
                     <tr>
@@ -100,8 +105,8 @@ if (!empty($error)) {
                         <td>
                             <input type="text" name="tenlop"
                                 value="<?php echo !empty($data['Tenlophoc']) ? $data['Tenlophoc'] : ''; ?>" />
-                            <?php if (!empty($errors['Tenlophoc']))
-                                echo $errors['Tenlophoc']; ?>
+                            <?php if (!empty($errors['tenlop']))
+                                echo '<span class="error">' . $errors['tenlop'] . '</span>'; ?>
                         </td>
                     </tr>
                     <tr>
@@ -110,8 +115,8 @@ if (!empty($error)) {
                             <input type="text" name="khoilop"
                                 value="<?php echo !empty($data['KhoiHoc']) ? $data['KhoiHoc'] : ''; ?>"
                                 placeholder="vd: IT, ML,..," />
-                            <?php if (!empty($errors['KhoiHoc']))
-                                echo $errors['KhoiHoc']; ?>
+                            <?php if (!empty($errors['khoilop']))
+                                echo '<span class="error">' . $errors['khoilop'] . '</span>'; ?>
                         </td>
                     </tr>
 
