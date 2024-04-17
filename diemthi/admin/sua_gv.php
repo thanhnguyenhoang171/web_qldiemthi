@@ -4,33 +4,34 @@ require "../classes/giaovien.class.php";
 $con = new giaovien();
 $ma = $_GET['cma'];
 $mamon = $t = $dc = $dt = $p = "";
-$error = '';
+
 if (isset($_POST['ok'])) {
+	$errors = array();
 	if ($_POST['txtmamon'] == null) {
-		$error = 'Bạn Chưa Nhập Mã Môn Học';
+		$errors['txtmamon'] = 'Bạn Chưa Nhập Mã Môn học';
 
 	} else {
 		$mamon = $_POST['txtmamon'];
 	}
 	if ($_POST['txtten'] == null) {
-		$error = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
+		$errors['txtten'] = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
 	} else {
 		$t = $_POST['txtten'];
 	}
 	if ($_POST['txtdiachi'] == null) {
-		$error = 'Bạn chưa nhập vào địa chỉ';
+		$errors['txtdiachi'] = 'Bạn Chưa Nhập Vào Địa Chỉ';
 
 	} else {
 		$dc = $_POST['txtdiachi'];
 	}
 	if ($_POST['txtdienthoai'] == null) {
-		$error = 'Bạn chưa nhập vào số điện thoại';
+		$errors['txtdienthoai'] = 'Bạn Chưa Nhập Vào Số Điện Thoại';
 
 	} else {
 		$dt = $_POST['txtdienthoai'];
 	}
 	if ($_POST['txtpass'] == null) {
-		$error = 'Bạn chưa nhập vào mật khẩu';
+		$errors['txtpass'] = 'Bạn chưa nhập mật khẩu khẩu';
 	} else {
 		$p = $_POST['txtpass'];
 	}
@@ -47,23 +48,29 @@ if (isset($_POST['ok'])) {
 			<?php
 			exit();
 		} catch (Exception $e) {
-			$error = 'Sửa giảng viên bị lỗi';
+			$errors['txtmamon'] = 'Mã môn học không tồn tại';
 		}
 	}
 
 	//$dis=$con->dis();
 }
-// Hiển thị thông báo lỗi nếu có
-if (!empty($error)) {
-	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
-}
+// // Hiển thị thông báo lỗi nếu có
+// if (!empty($error)) {
+// 	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+// }
 ?>
 <?php
 $row = $con->selectgv($ma);
 
 ?>
 <link rel="stylesheet" href="../assets/css/css/stylea.css">
-<center><img width="100%" height = "160px" src="../assets/img/Ban.png"></center>
+<center><img width="100%" height="160px" src="../assets/img/Ban.png"></center>
+<style>
+	.error {
+		color: red;
+		font-size: 12px;
+	}
+</style>
 
 <body bgcolor="#a3cbff">
 	<h1 align="center">Trang Sửa giáo viên</h1>
@@ -71,23 +78,28 @@ $row = $con->selectgv($ma);
 		<table align="center" border="1" cellspacing="0" cellpadding="10">
 			<tr style="background: #f1f1f1">
 				<td class="ToT">Mã Môn Học</td>
-				<td><input type="text" name="txtmamon" size="25" value="<?php echo $row['MaMonHoc']; ?>" /></td>
+				<td><input type="text" name="txtmamon" size="25" value="<?php echo $row['MaMonHoc']; ?>" /><?php if (!empty($errors['txtmamon']))
+					   echo '<span class="error">' . $errors['txtmamon'] . '</span>'; ?></td>
 			</tr>
 			<tr style="background: #f1f1f1">
 				<td class="ToT">Tên giáo viên:</td>
-				<td><input type="text" name="txtten" size="25" value="<?php echo $row['Tengv']; ?>" /></td>
+				<td><input type="text" name="txtten" size="25" value="<?php echo $row['Tengv']; ?>" /><?php if (!empty($errors['txtten']))
+					   echo '<span class="error">' . $errors['txtten'] . '</span>'; ?></td>
 			</tr>
 			<tr style="background: #f1f1f1">
 				<td class="ToT">Địa Chỉ: </td>
-				<td><textarea type="text" name="txtdiachi"><?php echo $row['DiaChi']; ?> </textarea></td>
+				<td><textarea type="text" name="txtdiachi"><?php echo $row['DiaChi']; ?> </textarea><?php if (!empty($errors['txtdiachi']))
+					   echo '<span class="error">' . $errors['txtdiachi'] . '</span>'; ?></td>
 			</tr>
 			<tr style="background: #f1f1f1">
 				<td class="ToT">Điện Thoại:</td>
-				<td><input type="text" name="txtdienthoai" size="25" value="<?php echo $row['SDT']; ?>" /> </td>
+				<td><input type="text" name="txtdienthoai" size="25" value="<?php echo $row['SDT']; ?>" /> <?php if (!empty($errors['txtdienthoai']))
+					   echo '<span class="error">' . $errors['txtdienthoai'] . '</span>'; ?></td>
 			</tr>
 			<tr style="background: #f1f1f1">
 				<td class="ToT">Password giáo viên:</td>
-				<td><input type="password" name="txtpass" size="25" value="<?php echo $row['passwordgv']; ?>" /></td>
+				<td><input type="password" name="txtpass" size="25" value="<?php echo $row['passwordgv']; ?>" /><?php if (!empty($errors['txtpass']))
+					   echo '<span class="error">' . $errors['txtpass'] . '</span>'; ?></td>
 		</table>
 		<h1 style="text-align: center"> <input type="submit" class="add-button" name="ok" value="Sửa" /><br />
 		</h1>

@@ -50,6 +50,18 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html>
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+<style>
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+</style>
 
 <head>
     <title>Sửa Lịch Dạy</title>
@@ -70,7 +82,7 @@ if (isset($_GET['id'])) {
                     <td>
                         <input type="text" name="mamonhoc" value="<?php echo $data['MaMonHoc']; ?>" />
                         <?php if (!empty($errors['MaMonHoc']))
-                            echo $errors['MaMonHoc']; ?>
+                            echo '<span class="error">' . $errors['MaMonHoc'] . '</span>'; ?>
                     </td>
                 </tr>
                 <tr>
@@ -78,7 +90,7 @@ if (isset($_GET['id'])) {
                     <td>
                         <input type="text" name="magiangvien" value="<?php echo $data['Magv']; ?>" />
                         <?php if (!empty($errors['Magv']))
-                            echo $errors['Magv']; ?>
+                            echo '<span class="error">' . $errors['Magv'] . '</span>'; ?>
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +98,7 @@ if (isset($_GET['id'])) {
                     <td>
                         <input type="text" name="malophoc" value="<?php echo $data['MaLopHoc']; ?>" />
                         <?php if (!empty($errors['MaLopHoc']))
-                            echo $errors['MaLopHoc']; ?>
+                            echo '<span class="error">' . $errors['MaLopHoc'] . '</span>'; ?>
                     </td>
                 </tr>
                 <tr>
@@ -94,7 +106,7 @@ if (isset($_GET['id'])) {
                     <td>
                         <input type="text" name="mahocky" value="<?php echo $data['MaHocKy']; ?>" />
                         <?php if (!empty($errors['MaHocKy']))
-                            echo $errors['MaHocKy']; ?>
+                            echo '<span class="error">' . $errors['MaHocKy'] . '</span>'; ?>
                     </td>
                 </tr>
                 <tr>
@@ -102,7 +114,7 @@ if (isset($_GET['id'])) {
                     <td>
                         <input type="text" name="motaphancong" value="<?php echo $data['MoTaPhanCong']; ?>" />
                         <?php if (!empty($errors['MoTaPhanCong']))
-                            echo $errors['MoTaPhanCong']; ?>
+                            echo '<span class="error">' . $errors['MoTaPhanCong'] . '</span>'; ?>
                     </td>
                 </tr>
             </table>

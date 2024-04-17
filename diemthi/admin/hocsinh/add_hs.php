@@ -4,51 +4,28 @@ $m = $malop = $t = $gt = $ns = $nois = $dt = $cha = $me = $p = "";
 require "../../classes/hocsinh.class.php";
 $con = new hocsinh();
 if (isset($_POST['ok'])) {
+	$errors = array();
 	if ($_POST['txtmahs'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Mã Sinh Viên!<br/>");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtmahs'] = 'Chưa nhập mã học sinh';
 	} else {
 		$rule = "/^\d{10}$/";
 		if (preg_match($rule, $_POST['txtmahs'])) {
 			$m = $_POST['txtmahs'];
 		} else {
-			?>
-			<script type="text/javascript">
-				alert("Mã Sinh Viên không hợp lệ.!");
-				window.location = "add_hs.php";
-			</script>
-			<?php
-			exit();
+			$errors['txtmahs'] = 'Mã học sinh không hợp lệ';
 		}
 	}
 	if ($_POST['malophoc'] != null) {
 		$malop = $_POST['malophoc'];
 	}
 	if ($_POST['txtten'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Tên Sinh Viên");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtten'] = 'Chưa nhập tên học sinh';
 	} else {
 		$hoten = "/^[\p{L}0-9\s\p{P}]{1,50}$/u";
 		if (preg_match($hoten, $_POST['txtten'])) {
 			$t = $_POST['txtten'];
 		} else {
-			?>
-			<script type="text/javascript">
-				alert("Họ Tên Sinh Viên không hợp lệ.!");
-				window.location = "add_hs.php";
-			</script>
-			<?php
-			exit();
+			$errors['txtten'] = 'Tên học sinh không hợp lệ';
 		}
 	}
 	if ($_POST['txtgt'] == 1) {
@@ -57,85 +34,43 @@ if (isset($_POST['ok'])) {
 		$gt = "Nữ";
 	}
 	if ($_POST['txtngs'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Ngày Sinh");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtngs'] = 'Bạn chưa nhập ngày sinh';
 	} else {
 		$ns = $_POST['txtngs'];
 	}
 	if ($_POST['txtns'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Nơi Sinh");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtns'] = 'Bạn chưa nhập nơi sinh';
 	} else {
 		$nois = $_POST['txtns'];
 	}
 	if ($_POST['txtdantoc'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Dân Tộc");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtdantoc'] = 'Bạn chưa nhập dân tộc';
 	} else {
 		$dt = $_POST['txtdantoc'];
 	}
 	if ($_POST['txtcha'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Họ Tên Cha");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtcha'] = 'Bạn chưa nhập tên cha';
 	} else {
 		$cha = $_POST['txtcha'];
 	}
 	if ($_POST['txtme'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Vào Họ Tên Mẹ");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtme'] = 'Bạn chưa nhập tên mẹ';
 	} else {
 		$me = $_POST['txtme'];
 	}
 	if ($_POST['txtpasshs'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn Chưa Nhập Mật Khẩu Sinh Viên");
-			window.location = "add_hs.php";
-		</script>
-		<?php
-		exit();
+		$errors['txtpasshs'] = 'Bạn chưa nhập password';
 	} else {
 		$pass = "/^[a-zA-Z0-9]{6,}$/";
 		if (preg_match($pass, $_POST['txtpasshs'])) {
 			$p = md5($_POST['txtpasshs']);
 		} else {
-			?>
-			<script type="text/javascript">
-				alert("Password nhập vào không hợp lệ.!");
-				window.location = "add_hs.php";
-			</script>
-			<?php
-			exit();
+			$errors['txtpasshs'] = 'Password không hợp lệ';
 		}
 	}
 
 	try {
-		if ($m && $malop && $t && $gt && $ns && $nois && $dt && $cha && $me && $p) {
+		if ($m && $malop && $t && $gt && $ns && $nois && $dt && $cha && $me && $p && empty($errors)) {
 			$hocsinh = $con->add($m, $malop, $t, $gt, $ns, $nois, $dt, $cha, $me, $p);
 			?>
 			<script type="text/javascript">
@@ -164,6 +99,12 @@ if (isset($_POST['ok'])) {
 		font-weight: bold;
 	}
 </style>
+<style>
+	.error {
+		color: red;
+		font-size: 12px;
+	}
+</style>
 
 <body bgcolor="#a3cbff">
 	<center><img src="../../assets/img/Ban.png" width="100%" height="160px"></center>
@@ -174,6 +115,8 @@ if (isset($_POST['ok'])) {
 				<tr style="background-color: #f1f1f1;">
 					<td class="ToT"> Mã Sinh Viên:</td>
 					<td> <input type="text" name="txtmahs" size="25" placeholder="10 số nguyên từ 0-9" /><br />
+						<?php if (!empty($errors['txtmahs']))
+							echo '<span class="error">' . $errors['txtmahs'] . '</span>'; ?>
 					</td>
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
@@ -194,7 +137,10 @@ if (isset($_POST['ok'])) {
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Tên Học Sinh</td>
-					<td><input type="text" name="txtten" size="25" /></td>
+					<td><input type="text" name="txtten" size="25" />
+						<?php if (!empty($errors['txtten']))
+							echo '<span class="error">' . $errors['txtten'] . '</span>'; ?>
+					</td>
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Giới Tính</td>
@@ -204,27 +150,33 @@ if (isset($_POST['ok'])) {
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Ngày Sinh:</td>
-					<td><input type="date" name="txtngs" size="25" /> </td>
+					<td><input type="date" name="txtngs" size="25" /><?php if (!empty($errors['txtngs']))
+						echo '<span class="error">' . $errors['txtngs'] . '</span>'; ?> </td>
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Nơi Sinh:</td>
-					<td><input type="text" name="txtns" size="25" /> </td>
+					<td><input type="text" name="txtns" size="25" /> <?php if (!empty($errors['txtns']))
+						echo '<span class="error">' . $errors['txtns'] . '</span>'; ?></td>
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Dân Tộc:</td>
-					<td><input type="text" name="txtdantoc" size="25" /> </td>
+					<td><input type="text" name="txtdantoc" size="25" /> <?php if (!empty($errors['txtdantoc']))
+						echo '<span class="error">' . $errors['txtdantoc'] . '</span>'; ?></td>
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Họ Tên Cha:</td>
-					<td><input type="text" name="txtcha" size="25" /> </td>
+					<td><input type="text" name="txtcha" size="25" /><?php if (!empty($errors['txtcha']))
+						echo '<span class="error">' . $errors['txtcha'] . '</span>'; ?> </td>
 				</tr>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Họ Tên Mẹ:</td>
-					<td><input type="text" name="txtme" size="25" /> </td>
+					<td><input type="text" name="txtme" size="25" /> <?php if (!empty($errors['txtme']))
+						echo '<span class="error">' . $errors['txtme'] . '</span>'; ?></td>
 				</tr style='background-color: #f1f1f1;'>
 				<tr style='background-color: #f1f1f1;'>
 					<td class="ToT">Password Sinh Viên:</td>
-					<td><input type="password" name="txtpasshs" size="25" placeholder="đặt mặc định là mssv" /></td>
+					<td><input type="password" name="txtpasshs" size="25" placeholder="đặt mặc định là mssv" /><?php if (!empty($errors['txtpasshs']))
+						echo '<span class="error">' . $errors['txtpasshs'] . '</span>'; ?></td>
 				</tr>
 			</table>
 			<h1 style="text-align: center;"> <input type="submit" name="ok" value="Thêm Sinh Viên" class='add-button'>
