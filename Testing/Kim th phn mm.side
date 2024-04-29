@@ -4266,6 +4266,166 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "2411be4e-833e-4b08-b01d-c026523be6f8",
+    "name": "QTV_XoaSinhVien",
+    "commands": [{
+      "id": "9fa3fbc4-adbf-4e11-8db5-d1c6cc3c67d3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?mod=hs",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f153f1aa-4ec6-4130-bb82-a5734dd91a75",
+      "comment": "",
+      "command": "click",
+      "target": "name=malophoc",
+      "targets": [
+        ["name=malophoc", "name"],
+        ["css=.select-style", "css:finder"],
+        ["xpath=//select[@name='malophoc']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ecd3a55f-6a27-4d49-a93b-c149793ff02e",
+      "comment": "",
+      "command": "select",
+      "target": "name=malophoc",
+      "targets": [],
+      "value": "label=CS01C"
+    }, {
+      "id": "e0fafcbf-3e2e-48a5-aa72-ca0fd9ace0cb",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.view-button", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "685c167d-9852-4b38-81a6-195636192606",
+      "comment": "",
+      "command": "chooseOkOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "280f756e-481d-45fa-8902-2d694325b293",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(3) > td:nth-child(12) .fix-button",
+      "targets": [
+        ["css=tr:nth-child(3) > td:nth-child(12) .fix-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
+        ["xpath=//tr[3]/td[12]/a/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f30bfdbe-8d81-41be-94a6-abfbf68d0e75",
+      "comment": "",
+      "command": "webdriverChooseOkOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a952362-b977-4a58-94ba-23255a7cabc9",
+      "comment": "",
+      "command": "click",
+      "target": "name=malophoc",
+      "targets": [
+        ["name=malophoc", "name"],
+        ["css=.select-style", "css:finder"],
+        ["xpath=//select[@name='malophoc']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3214f64-c4d6-4107-b0d4-f1b165c1af46",
+      "comment": "",
+      "command": "select",
+      "target": "name=malophoc",
+      "targets": [],
+      "value": "label=CS01C"
+    }, {
+      "id": "625e1d3f-914a-4f5c-ac62-391d58124d1c",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.view-button", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f9865383-8639-40ff-b111-5278c346c817",
+      "comment": "",
+      "command": "click",
+      "target": "name=malophoc",
+      "targets": [
+        ["name=malophoc", "name"],
+        ["css=.select-style", "css:finder"],
+        ["xpath=//select[@name='malophoc']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "44555bde-d3ef-49ec-a1ed-49aa901281fb",
+      "comment": "",
+      "command": "click",
+      "target": "name=malophoc",
+      "targets": [
+        ["name=malophoc", "name"],
+        ["css=.select-style", "css:finder"],
+        ["xpath=//select[@name='malophoc']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a7358b17-3185-4dd8-986a-127654f74d63",
+      "comment": "",
+      "command": "select",
+      "target": "name=malophoc",
+      "targets": [],
+      "value": "CS01C"
+    }, {
+      "id": "b7f93dbd-af6f-490f-bc8a-2489dc5aa2a0",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.view-button", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc027706-f653-4ec4-bf52-4e3e6940aafc",
+      "comment": "",
+      "command": "assertElementNotPresent",
+      "target": "xpath=//td[contains(.,'9999955555')]",
+      "targets": [
+        ["css=tr:nth-child(3) > #mahs", "css:finder"],
+        ["xpath=(//td[@id='mahs'])[2]", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'9999955555')]", "xpath:innerText"]
+      ],
+      "value": "9999955555"
+    }, {
+      "id": "ce0c484a-e4d0-4454-badf-1a8498809bfb",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "b04ad864-0fd9-40ea-b888-62a90ce8691c",
@@ -4315,7 +4475,7 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["92fe5992-7e75-4c72-aae5-bed05b4c545c", "a7e49542-6a49-48c8-9f85-b4a74472ad9d"]
+    "tests": ["92fe5992-7e75-4c72-aae5-bed05b4c545c", "a7e49542-6a49-48c8-9f85-b4a74472ad9d", "8b3cabe1-223a-4ee2-98dc-1739093ff771", "fb9e0e05-7a5c-426f-93cf-749849f6afeb", "a84bae69-ac02-47fc-8d48-fd8881579ccd", "292e61e3-8d05-465e-b856-e9bddf8b7e7e", "2411be4e-833e-4b08-b01d-c026523be6f8"]
   }],
   "urls": ["http://localhost/web_qldiemthi/diemthi/", "http://localhost/web_qldiemthi/diemthi/admin/qlhs.php", "http://localhost/web_qldiemthi/diemthi/index.html", "http://localhost/web_qldiemthi/diemthi/admin/hocsinh/xemdiem_hs.php", "http://localhost/web_qldiemthi/diemthi/admin/login.php", "http://localhost/web_qldiemthi/diemthi/admin/index.php?mod=hs", "http://localhost/web_qldiemthi/diemthi/admin/hocsinh/add_hs.php"],
   "plugins": []
