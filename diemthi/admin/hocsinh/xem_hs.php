@@ -75,16 +75,16 @@ require "../classes/hocsinh.class.php"; // Include necessary class file
 				$stt++;
 				$row_color = ($stt % 2 == 0) ? "#ffffff" : "#f2f2f2";
 				echo "<tr style='background-color: $row_color;'>";
-				echo "<td>$stt</td>";
-				echo "<td>$row[MaHS]</td>";
-				echo "<td>$row[MaLopHoc]</td>";
-				echo "<td>$row[TenHS]</td>";
-				echo "<td>$row[GioiTinh]</td>";
-				echo "<td>$row[NgaySinh]</td>";
-				echo "<td>$row[noisinh]</td>";
-				echo "<td>$row[dantoc]</td>";
-				echo "<td>$row[hotencha]</td>";
-				echo "<td>$row[hotenme]</td>";
+				echo "<td id='stt'>$stt</td>";
+				echo "<td id = 'mahs'>$row[MaHS]</td>";
+				echo "<td id = 'malop' >$row[MaLopHoc]</td>";
+				echo "<td id = 'ten'>$row[TenHS]</td>";
+				echo "<td id = 'gt'>$row[GioiTinh]</td>";
+				echo "<td id = 'ns'>$row[NgaySinh]</td>";
+				echo "<td id = 'nois'>$row[noisinh]</td>";
+				echo "<td id = 'dtoc'>$row[dantoc]</td>";
+				echo "<td id = 'tencha'>$row[hotencha]</td>";
+				echo "<td id = 'tenme'>$row[hotenme]</td>";
 				echo "<td>
 				<a href='hocsinh/sua_hs.php?cmahs=$row[MaHS]'>
 				<button type='button' class = 'fix-button' > Sửa </button>
