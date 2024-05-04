@@ -4266,6 +4266,951 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "85b8653b-878c-416f-be69-1f801d778eb1",
+    "name": "QTV_QLSVSuaSinhVienMaLopKoTonTai",
+    "commands": [{
+      "id": "497fdeaa-ff6b-4889-ac8b-081b8b6f5389",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?mod=hs",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3be1f5e4-9df7-4fc4-8ed0-cb95e68b7e64",
+      "comment": "",
+      "command": "click",
+      "target": "name=malophoc",
+      "targets": [
+        ["name=malophoc", "name"],
+        ["css=.select-style", "css:finder"],
+        ["xpath=//select[@name='malophoc']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "892915f0-3419-4db5-a98a-58d61d536052",
+      "comment": "",
+      "command": "select",
+      "target": "name=malophoc",
+      "targets": [],
+      "value": "label=CS02C"
+    }, {
+      "id": "8151ce04-94f5-4633-869a-8f58f215374d",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.view-button", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6d08b20-f028-4cdf-8179-9f406974fb03",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(11) .fix-button",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(11) .fix-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//td[11]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sửa')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "24dd6de9-bb51-4d55-aa3d-e4bccaf686f8",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtmalop",
+      "targets": [
+        ["name=txtmalop", "name"],
+        ["css=tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='txtmalop']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71703db5-c3ed-454b-a85d-0aecf63d9b4f",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtmalop",
+      "targets": [
+        ["name=txtmalop", "name"],
+        ["css=tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='txtmalop']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "CS03C"
+    }, {
+      "id": "e0f980f2-53f5-4a46-8337-86a42f02cbc9",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtten",
+      "targets": [
+        ["name=txtten", "name"],
+        ["css=tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='txtten']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b8b412b6-eec9-4865-a2b3-fc40a9038b45",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtten",
+      "targets": [
+        ["name=txtten", "name"],
+        ["css=tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='txtten']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Phạm Thị Lan"
+    }, {
+      "id": "ded73abd-736e-4a8c-a81b-b8e610788a32",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtgt",
+      "targets": [
+        ["name=txtgt", "name"],
+        ["css=tr:nth-child(3) input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtgt']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6cb45b20-c6f3-48a4-9038-edf2ba378fab",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtns",
+      "targets": [
+        ["name=txtns", "name"],
+        ["css=tr:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='txtns']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9213280a-bfa5-48fe-b720-8a939b8a0431",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtns",
+      "targets": [
+        ["name=txtns", "name"],
+        ["css=tr:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='txtns']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": "2010-05-05"
+    }, {
+      "id": "1aa859fc-2fd2-4427-8fdd-0836be80eafd",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtnois",
+      "targets": [
+        ["name=txtnois", "name"],
+        ["css=tr:nth-child(5) input", "css:finder"],
+        ["xpath=//input[@name='txtnois']", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e293491d-ae4f-43fb-84f2-86709b8ebf96",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtnois",
+      "targets": [
+        ["name=txtnois", "name"],
+        ["css=tr:nth-child(5) input", "css:finder"],
+        ["xpath=//input[@name='txtnois']", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Hà Nội"
+    }, {
+      "id": "5882071c-109c-45e8-bf96-e72481c5832d",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtdantoc",
+      "targets": [
+        ["name=txtdantoc", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='txtdantoc']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "346fb337-4239-4cdf-9a7e-3fd43462d2f4",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtdantoc",
+      "targets": [
+        ["name=txtdantoc", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='txtdantoc']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Kinh"
+    }, {
+      "id": "e14d8d39-45a9-49f0-a9a8-449714c009ad",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtcha",
+      "targets": [
+        ["name=txtcha", "name"],
+        ["css=tr:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='txtcha']", "xpath:attributes"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "57a7be64-c64e-4dda-839a-fc95250c95ee",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtcha",
+      "targets": [
+        ["name=txtcha", "name"],
+        ["css=tr:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='txtcha']", "xpath:attributes"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Phạm Văn Nam"
+    }, {
+      "id": "94e43606-c9ac-41d3-b6cb-52d8ae1e224a",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtme",
+      "targets": [
+        ["name=txtme", "name"],
+        ["css=tr:nth-child(8) input", "css:finder"],
+        ["xpath=//input[@name='txtme']", "xpath:attributes"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5f20b980-fe12-4f24-aac5-5a1cfa24d7f5",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtme",
+      "targets": [
+        ["name=txtme", "name"],
+        ["css=tr:nth-child(8) input", "css:finder"],
+        ["xpath=//input[@name='txtme']", "xpath:attributes"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": "Nguyễn Thị Hương"
+    }, {
+      "id": "dd854bb6-3d92-4611-9f62-b4688f31d516",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpasshs",
+      "targets": [
+        ["name=txtpasshs", "name"],
+        ["css=tr:nth-child(9) input", "css:finder"],
+        ["xpath=//input[@name='txtpasshs']", "xpath:attributes"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c7ca2be-cfe7-4928-98c1-3bb7f7d62665",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpasshs",
+      "targets": [
+        ["name=txtpasshs", "name"],
+        ["css=tr:nth-child(9) input", "css:finder"],
+        ["xpath=//input[@name='txtpasshs']", "xpath:attributes"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": "1234567890"
+    }, {
+      "id": "176b2360-c02b-4f31-ad50-3af331ec7993",
+      "comment": "",
+      "command": "click",
+      "target": "name=ok",
+      "targets": [
+        ["name=ok", "name"],
+        ["css=.add-button", "css:finder"],
+        ["xpath=//input[@name='ok']", "xpath:attributes"],
+        ["xpath=//tr[10]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3a6f77ce-16ca-4a97-83a5-432646c325d9",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Mã lớp không tồn tại"
+    }, {
+      "id": "b664f42d-6ca9-4223-9b15-8ca7fc633c49",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ef1d5be6-c4b3-4453-8d24-5d969e989801",
+    "name": "QTV_QLSVSuaSinhVienThieuDL",
+    "commands": [{
+      "id": "6822bb61-5994-497f-8b3f-6293b334d327",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?mod=hs",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5192ec00-b386-4529-b615-99cbff34e9cb",
+      "comment": "",
+      "command": "click",
+      "target": "name=malophoc",
+      "targets": [
+        ["name=malophoc", "name"],
+        ["css=.select-style", "css:finder"],
+        ["xpath=//select[@name='malophoc']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e837fcef-8338-44b1-8a62-118873c0fd3c",
+      "comment": "",
+      "command": "select",
+      "target": "name=malophoc",
+      "targets": [],
+      "value": "label=CS02C"
+    }, {
+      "id": "e3d95d73-3480-454f-b2ec-cf133343f371",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.view-button", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5c16e9d0-cab3-444a-a777-cd0411a7f0c7",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(11) .fix-button",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(11) .fix-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//td[11]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sửa')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eabb0651-fea1-4b98-b02e-69671c8d8d1b",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtmalop",
+      "targets": [
+        ["name=txtmalop", "name"],
+        ["css=tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='txtmalop']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d407ebaa-d916-4e8f-b71a-ab0f4003a7b5",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtmalop",
+      "targets": [
+        ["name=txtmalop", "name"],
+        ["css=tr:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='txtmalop']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5101d5f6-de74-4071-85d8-c959e8d53675",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtten",
+      "targets": [
+        ["name=txtten", "name"],
+        ["css=tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='txtten']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb07bce1-ad1d-4bc1-ae30-aeb1f00e2245",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtten",
+      "targets": [
+        ["name=txtten", "name"],
+        ["css=tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='txtten']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "31103028-e6d8-4ef7-aa39-a01ecb6864b6",
+      "comment": "",
+      "command": "//click",
+      "target": "name=txtgt",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2fecca87-ae74-4acd-83cc-5dca3a5307d0",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtns",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "54412850-6f26-47e4-ac87-5076c2ebc07f",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtns",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7fd51e7c-5c4d-439f-ba94-ebb13d055018",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[5]/td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb747881-aa34-4efe-bbac-a01bfb9ea430",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtnois",
+      "targets": [
+        ["name=txtnois", "name"],
+        ["css=tr:nth-child(5) input", "css:finder"],
+        ["xpath=//input[@name='txtnois']", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "61885a4e-fbc3-48a1-bea6-8dffd4dd5acd",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtnois",
+      "targets": [
+        ["name=txtnois", "name"],
+        ["css=tr:nth-child(5) input", "css:finder"],
+        ["xpath=//input[@name='txtnois']", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cf13273-41c6-41f4-98c3-1a23a072cc11",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtdantoc",
+      "targets": [
+        ["name=txtdantoc", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='txtdantoc']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d53e8823-fece-4676-8261-b8b9f336b76b",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtdantoc",
+      "targets": [
+        ["name=txtdantoc", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='txtdantoc']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b64897e7-55ec-4c63-8d8b-8ea5d86bb8e6",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtcha",
+      "targets": [
+        ["name=txtcha", "name"],
+        ["css=tr:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='txtcha']", "xpath:attributes"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ab62bc1-07a0-4bb5-add3-99b24f583a37",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtcha",
+      "targets": [
+        ["name=txtcha", "name"],
+        ["css=tr:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='txtcha']", "xpath:attributes"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb4e99e0-acf4-49dd-9e6e-cb2f858cd2c7",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtme",
+      "targets": [
+        ["name=txtme", "name"],
+        ["css=tr:nth-child(8) input", "css:finder"],
+        ["xpath=//input[@name='txtme']", "xpath:attributes"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0305b6a1-e58d-48d5-ad72-0398768d67f6",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtme",
+      "targets": [
+        ["name=txtme", "name"],
+        ["css=tr:nth-child(8) input", "css:finder"],
+        ["xpath=//input[@name='txtme']", "xpath:attributes"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4d599c1c-6996-4472-b1ae-d554d97ce417",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpasshs",
+      "targets": [
+        ["name=txtpasshs", "name"],
+        ["css=tr:nth-child(9) input", "css:finder"],
+        ["xpath=//input[@name='txtpasshs']", "xpath:attributes"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2d1f887b-3172-45d9-bb99-ccdfb71a6275",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpasshs",
+      "targets": [
+        ["name=txtpasshs", "name"],
+        ["css=tr:nth-child(9) input", "css:finder"],
+        ["xpath=//input[@name='txtpasshs']", "xpath:attributes"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "afae3c92-d8f8-401a-a02b-7272a6070e1e",
+      "comment": "",
+      "command": "click",
+      "target": "name=ok",
+      "targets": [
+        ["name=ok", "name"],
+        ["css=.add-button", "css:finder"],
+        ["xpath=//input[@name='ok']", "xpath:attributes"],
+        ["xpath=//tr[10]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c5b89219-3704-41df-96bd-433829f7b5f9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) .error",
+      "targets": [
+        ["css=tr:nth-child(1) .error", "css:finder"],
+        ["xpath=//td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa nhập mã lớp học')]", "xpath:innerText"]
+      ],
+      "value": "Chưa nhập mã lớp học"
+    }, {
+      "id": "758925d2-5ebf-48dd-b477-130a13c76adf",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) .error",
+      "targets": [
+        ["css=tr:nth-child(2) .error", "css:finder"],
+        ["xpath=//tr[2]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa nhập tên lớp học')]", "xpath:innerText"]
+      ],
+      "value": "Chưa nhập tên lớp học"
+    }, {
+      "id": "bf859634-f099-4f8d-bf32-c3d3a21a35c9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.error:nth-child(3)",
+      "targets": [
+        ["css=.error:nth-child(3)", "css:finder"],
+        ["xpath=//tr[3]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa chọn giới tính')]", "xpath:innerText"]
+      ],
+      "value": "Chưa chọn giới tính"
+    }, {
+      "id": "e9e1bef0-bc17-4d3e-a017-c6797a875789",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(4) .error",
+      "targets": [
+        ["css=tr:nth-child(4) .error", "css:finder"],
+        ["xpath=//tr[4]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa chọn ngày sinh')]", "xpath:innerText"]
+      ],
+      "value": "Chưa chọn ngày sinh"
+    }, {
+      "id": "de3061a4-2094-4fff-b3ca-774e6008b741",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(5) .error",
+      "targets": [
+        ["css=tr:nth-child(5) .error", "css:finder"],
+        ["xpath=//tr[5]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa nhập nơi sinh')]", "xpath:innerText"]
+      ],
+      "value": "Chưa nhập nơi sinh"
+    }, {
+      "id": "b0bd6f90-69aa-47d3-9448-18bb460c5f87",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(6) .error",
+      "targets": [
+        ["css=tr:nth-child(6) .error", "css:finder"],
+        ["xpath=//tr[6]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa nhập dân tộc')]", "xpath:innerText"]
+      ],
+      "value": "Chưa nhập dân tộc"
+    }, {
+      "id": "8b2c90ae-906b-40ca-a8e9-58861a491699",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(7) .error",
+      "targets": [
+        ["css=tr:nth-child(7) .error", "css:finder"],
+        ["xpath=//tr[7]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa nhập tên cha')]", "xpath:innerText"]
+      ],
+      "value": "Chưa nhập tên cha"
+    }, {
+      "id": "08de8444-8135-43d8-8b49-2f98d11acf9c",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(8) .error",
+      "targets": [
+        ["css=tr:nth-child(8) .error", "css:finder"],
+        ["xpath=//tr[8]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa nhập tên mẹ')]", "xpath:innerText"]
+      ],
+      "value": "Chưa nhập tên mẹ"
+    }, {
+      "id": "c91c3eae-cbbc-4545-9b21-f9169220f661",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(9) .error",
+      "targets": [
+        ["css=tr:nth-child(9) .error", "css:finder"],
+        ["xpath=//tr[9]/td[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Chưa nhập password')]", "xpath:innerText"]
+      ],
+      "value": "Chưa nhập password"
+    }, {
+      "id": "fd08c166-cd7d-43d6-bb20-0a09cdfe57f3",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "d7da1832-1d4e-4750-95e7-b91cc3c301e4",
+    "name": "QTV_QLSVSuaSaiDL",
+    "commands": [{
+      "id": "1bd889f7-0c81-410f-bfb4-d2885ce21763",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?mod=hs",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0639e0dd-4ff4-4361-8970-de7a1486bb17",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "784x816",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "061aea74-ca1b-4daf-9e30-b756b4830815",
+      "comment": "",
+      "command": "click",
+      "target": "name=malophoc",
+      "targets": [
+        ["name=malophoc", "name"],
+        ["css=.select-style", "css:finder"],
+        ["xpath=//select[@name='malophoc']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5dada5e-4745-4cb4-81ae-71383ac2354e",
+      "comment": "",
+      "command": "select",
+      "target": "name=malophoc",
+      "targets": [],
+      "value": "label=CS02C"
+    }, {
+      "id": "f9632c0b-46fd-4656-854f-cfae1b01bbf5",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.view-button", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ea35b7b8-1c49-413e-b101-2cebb7319c0c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(11) .fix-button",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(11) .fix-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//td[11]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Sửa')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fae14d65-d241-419b-81fd-86c51dba95ae",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(2)", "css:finder"],
+        ["xpath=//tr[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "36e179c4-47ca-4e2e-9277-d971fc052694",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtten",
+      "targets": [
+        ["name=txtten", "name"],
+        ["css=tr:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@name='txtten']", "xpath:attributes"],
+        ["xpath=//tr[2]/td[2]/input", "xpath:position"]
+      ],
+      "value": "qưertyuio[ádfghjklzxcvbnm"
+    }, {
+      "id": "6956b284-589d-442d-b9d6-994455e624ea",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtgt",
+      "targets": [
+        ["name=txtgt", "name"],
+        ["css=tr:nth-child(3) input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtgt']", "xpath:attributes"],
+        ["xpath=//tr[3]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6eb42a2c-2366-4caa-8a6f-7ffc25ee3d26",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtns",
+      "targets": [
+        ["name=txtns", "name"],
+        ["css=tr:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='txtns']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c629b63-902f-4612-929c-74d6e291c1f3",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtns",
+      "targets": [
+        ["name=txtns", "name"],
+        ["css=tr:nth-child(4) input", "css:finder"],
+        ["xpath=//input[@name='txtns']", "xpath:attributes"],
+        ["xpath=//tr[4]/td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b5678ebf-50d8-4ac7-8a4b-5e7ff42aa808",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(5)",
+      "targets": [
+        ["css=tr:nth-child(5)", "css:finder"],
+        ["xpath=//tr[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40e18a06-5ea6-485d-a0db-57f1c9bfc3eb",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtnois",
+      "targets": [
+        ["name=txtnois", "name"],
+        ["css=tr:nth-child(5) input", "css:finder"],
+        ["xpath=//input[@name='txtnois']", "xpath:attributes"],
+        ["xpath=//tr[5]/td[2]/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "e189e13d-a49d-4eed-b293-b0c009e019ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(6) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(6) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[6]/td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "14db7cd4-0ab1-499a-8afc-929bbcab33a6",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtdantoc",
+      "targets": [
+        ["name=txtdantoc", "name"],
+        ["css=tr:nth-child(6) input", "css:finder"],
+        ["xpath=//input[@name='txtdantoc']", "xpath:attributes"],
+        ["xpath=//tr[6]/td[2]/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "5bec4bc0-ea8d-4b95-b184-0a360370a206",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(7) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(7) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[7]/td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fbe22043-543d-43a4-b112-e86ed98d90de",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtcha",
+      "targets": [
+        ["name=txtcha", "name"],
+        ["css=tr:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@name='txtcha']", "xpath:attributes"],
+        ["xpath=//tr[7]/td[2]/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "28876bd1-fd7f-46b3-b13b-d85eae03f5ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(8) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(8) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[8]/td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5cac9edc-8e42-4889-87b6-795e9dfaa70f",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtme",
+      "targets": [
+        ["name=txtme", "name"],
+        ["css=tr:nth-child(8) input", "css:finder"],
+        ["xpath=//input[@name='txtme']", "xpath:attributes"],
+        ["xpath=//tr[8]/td[2]/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "184114f0-d6db-4c0e-80b0-2067809ec77e",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(9)",
+      "targets": [
+        ["css=tr:nth-child(9)", "css:finder"],
+        ["xpath=//tr[9]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ebe754b-4cc2-44fe-b6f8-5bd79031672b",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpasshs",
+      "targets": [
+        ["name=txtpasshs", "name"],
+        ["css=tr:nth-child(9) input", "css:finder"],
+        ["xpath=//input[@name='txtpasshs']", "xpath:attributes"],
+        ["xpath=//tr[9]/td[2]/input", "xpath:position"]
+      ],
+      "value": "a"
+    }, {
+      "id": "6132c0b3-1e49-4e99-9f76-ba13851f7f18",
+      "comment": "",
+      "command": "click",
+      "target": "name=ok",
+      "targets": [
+        ["name=ok", "name"],
+        ["css=.add-button", "css:finder"],
+        ["xpath=//input[@name='ok']", "xpath:attributes"],
+        ["xpath=//tr[10]/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "edcbc2b6-1c14-4cf5-9571-7a5af44ffd12",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) .error",
+      "targets": [],
+      "value": "Tên sinh viên không hợp lệ"
+    }, {
+      "id": "f2141bc8-ba77-4a01-95e3-279f3a4281e7",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(5) .error",
+      "targets": [],
+      "value": "Nơi sinh không hợp lệ"
+    }, {
+      "id": "a8972bc9-9a29-47ca-ac67-d787da2e8e78",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(6) .error",
+      "targets": [],
+      "value": "Dân tộc không hợp lệ"
+    }, {
+      "id": "278269d3-b3eb-4169-b889-e6abc4b443ab",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(7) .error",
+      "targets": [],
+      "value": "Tên cha không hợp lệ"
+    }, {
+      "id": "0ac79d6f-a484-4c03-a2e5-8da5ef39c9ee",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(8) .error",
+      "targets": [],
+      "value": "Tên mẹ không hợp lệ"
+    }, {
+      "id": "5c8ffd3e-00b8-4c91-9e76-37af63c80625",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(8) .error",
+      "targets": [],
+      "value": "Mật khẩu không hợp lệ"
+    }, {
+      "id": "b5255f17-0cce-495b-9d24-37a128dba785",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "b04ad864-0fd9-40ea-b888-62a90ce8691c",
@@ -4315,7 +5260,7 @@
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["92fe5992-7e75-4c72-aae5-bed05b4c545c", "a7e49542-6a49-48c8-9f85-b4a74472ad9d"]
+    "tests": ["92fe5992-7e75-4c72-aae5-bed05b4c545c", "a7e49542-6a49-48c8-9f85-b4a74472ad9d", "8b3cabe1-223a-4ee2-98dc-1739093ff771", "fb9e0e05-7a5c-426f-93cf-749849f6afeb", "a84bae69-ac02-47fc-8d48-fd8881579ccd", "292e61e3-8d05-465e-b856-e9bddf8b7e7e", "85b8653b-878c-416f-be69-1f801d778eb1", "ef1d5be6-c4b3-4453-8d24-5d969e989801", "d7da1832-1d4e-4750-95e7-b91cc3c301e4"]
   }],
   "urls": ["http://localhost/web_qldiemthi/diemthi/", "http://localhost/web_qldiemthi/diemthi/admin/qlhs.php", "http://localhost/web_qldiemthi/diemthi/index.html", "http://localhost/web_qldiemthi/diemthi/admin/hocsinh/xemdiem_hs.php", "http://localhost/web_qldiemthi/diemthi/admin/login.php", "http://localhost/web_qldiemthi/diemthi/admin/index.php?mod=hs", "http://localhost/web_qldiemthi/diemthi/admin/hocsinh/add_hs.php"],
   "plugins": []
