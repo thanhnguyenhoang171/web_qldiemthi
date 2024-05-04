@@ -1,0 +1,7 @@
+MKhue:
+- Font-end web
+- Fixing back-end
+- Test by selenium
+Hthanh:
+- Back-end
+- Testing PHPUnit
