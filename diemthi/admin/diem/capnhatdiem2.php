@@ -1,24 +1,41 @@
 <?php
-require "../../classes/DB.class.php";
+// require "../../classes/DB.class.php";
+require "diemthi\classes\DB.class.php";
 $connect = new db();
 $conn = $connect->connect();
 session_start();
-if (isset($_POST['themdiem'])) {
-    // Hàm kiểm tra điểm hợp lệ
-    function isValidDiem($diem)
-    {
-        return is_numeric($diem) && $diem >= 0 && $diem <= 10 && intval($diem) == $diem;
-    }
 
-    // Duyệt qua tất cả các sinh viên trong danh sách và lưu điểm của từng sinh viên
+// Hàm kiểm tra điểm hợp lệ
+function isValidDiem($diem)
+{
+    return is_numeric($diem) && $diem >= 0 && $diem <= 10 && intval($diem) == $diem;
+}
+
+// Hàm cập nhật điểm
+function capNhatDiem($maHS, $mieng, $p1, $p2, $t1, $t2, $d, $tb)
+{
+    global $conn;
+    $sql = "UPDATE diem 
+            SET DiemMieng='$mieng', Diem15Phut1='$p1', Diem15Phut2='$p2', Diem1Tiet1='$t1', Diem1Tiet2='$t2', DiemThi='$d', DiemTB='$tb' 
+            WHERE MaHS='$maHS'";
+    $result = mysqli_query($conn, $sql);
+
+    return $result;
+}
+
+// Hàm kiểm tra và cập nhật điểm cho danh sách học sinh
+function kiemTraVaCapNhatDiem($post)
+{
+    global $conn;
     $error = false; // Biến để kiểm tra xem có lỗi nhập sai hay không
-    foreach ($_POST['ma'] as $i => $ma) {
-        $mieng = $_POST["diemmieng"][$i];
-        $p1 = $_POST["diem15phut1"][$i];
-        $p2 = $_POST["diem15phut2"][$i];
-        $t1 = $_POST["diem1tiet1"][$i];
-        $t2 = $_POST["diem1tiet2"][$i];
-        $d = $_POST["diemthi"][$i];
+
+    foreach ($post['ma'] as $i => $ma) {
+        $mieng = $post["diemmieng"][$i];
+        $p1 = $post["diem15phut1"][$i];
+        $p2 = $post["diem15phut2"][$i];
+        $t1 = $post["diem1tiet1"][$i];
+        $t2 = $post["diem1tiet2"][$i];
+        $d = $post["diemthi"][$i];
 
         // Kiểm tra điểm hợp lệ
         if (!isValidDiem($mieng) || !isValidDiem($p1) || !isValidDiem($p2) || !isValidDiem($t1) || !isValidDiem($t2) || !isValidDiem($d)) {
@@ -28,17 +45,22 @@ if (isset($_POST['themdiem'])) {
 
         $tb = ($mieng + ($p1 + $p2) * 2 + $t1 + $t2 + $d * 3) / 10;
 
-        // Thực hiện truy vấn SQL để cập nhật điểm của sinh viên vào cơ sở dữ liệu
-        $sql = "UPDATE diem 
-                SET DiemMieng='$mieng', Diem15Phut1='$p1', Diem15Phut2='$p2', Diem1Tiet1='$t1', Diem1Tiet2='$t2', DiemThi='$d', DiemTB='$tb' 
-                WHERE MaHS='$ma'";
-        $result = mysqli_query($conn, $sql);
+        // Thực hiện cập nhật điểm
+        $result = capNhatDiem($ma, $mieng, $p1, $p2, $t1, $t2, $d, $tb);
 
         if (!$result) {
             $error = true; // Đánh dấu có lỗi
             break; // Thoát khỏi vòng lặp ngay khi gặp lỗi
         }
     }
+
+    return $error;
+}
+
+
+// Xử lý khi nhấn nút "Thêm Điểm"
+if (isset($_POST['themdiem'])) {
+    $error = kiemTraVaCapNhatDiem($_POST);
 
     if ($error) {
         echo "<script type='text/javascript'>alert('Có lỗi xảy ra khi sửa điểm');</script>";
@@ -71,8 +93,8 @@ if (isset($_POST['themdiem'])) {
     <center>
         <h1>Trang Cập Nhập Điểm</h1>
     </center>
-    <table border="1" cellspacing="0" cellpadding="1" style = "background: #f1f1f1; width: 100%;">
-        <tr class = "ToT">
+    <table border="1" cellspacing="0" cellpadding="1" style="background: #f1f1f1; width: 100%;">
+        <tr class="ToT">
             <td>Mã Học Sinh</td>
             <td>Tên Học Sinh</td>
             <td>Lớp</td>
@@ -111,10 +133,10 @@ if (isset($_POST['themdiem'])) {
             <!-- Phần 2 -->
             <div>
                 <div style="text-align: right;float: left">
-                    <a href="capnhatdiem.php"><button type='button' class ='view-button'>Trở Về</button></a>
+                    <a href="capnhatdiem.php"><button type='button' class='view-button'>Trở Về</button></a>
                 </div>
                 <div style="text-align: right">
-                    <input type="submit" class = 'add-button' name="themdiem" value="Thêm Điểm" />
+                    <input type="submit" class='add-button' name="themdiem" value="Thêm Điểm" />
                 </div>
             </div>
             <!-- Phần 2 -->
