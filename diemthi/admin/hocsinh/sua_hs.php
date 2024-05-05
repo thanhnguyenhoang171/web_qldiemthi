@@ -66,7 +66,7 @@ if (isset($_POST['ok'])) {
 		//header("location:../index.php?mod=hs");
 		?>
 		<script type="text/javascript">
-			alert("Bạn Đã Sửa Học Sinh Thành Công. Nhấn OK Để Tiếp Tục !");
+			alert("Bạn Đã Sửa Sinh Viên Thành Công. Nhấn OK Để Tiếp Tục !");
 			window.location = "../index.php?mod=hs";
 		</script>
 		<?php
@@ -81,14 +81,14 @@ $row = $con->selecths($mahs);
 
 <center><img width="100%" height="160px" src="../../assets/img/Ban.png"></center>
 <style>
-    .error {
-        color: red;
-        font-size: 12px;
-    }
+	.error {
+		color: red;
+		font-size: 12px;
+	}
 </style>
 
 <body bgcolor="#a3cbff">
-	<h1 style="text-align: center">TRANG SỬA HỌC THÔNG TIN HỌC SINH</h1>
+	<h1 style="text-align: center">TRANG SỬA HỌC THÔNG TIN SINH VIÊN</h1>
 
 	<table align="center" border="1" cellspacing="0" cellpadding="10" style="border: 1px solid transparent;">
 		<form action="sua_hs.php?cmahs=<?php echo $row['MaHS']; ?>" method="post">
@@ -100,7 +100,7 @@ $row = $con->selecths($mahs);
 			</tr>
 
 			<tr style='background: #f1f1f1'>
-				<td class="ToT">Tên Học Sinh</td>
+				<td class="ToT">Tên Sinh Viên</td>
 				<td><input type="text" name="txtten" size="25" value="<?php echo $row['TenHS']; ?>" /><?php if (!empty($errors['txtten']))
 					   echo '<span class="error">' . $errors['txtten'] . '</span>'; ?></td>
 			</tr>
@@ -109,45 +109,51 @@ $row = $con->selecths($mahs);
 
 				<td><input type="radio" name="txtgt" value="Nam" value="<?php echo $row['GioiTinh']; ?>">Nam
 					<input type="radio" name="txtgt" value="Nữ" value="<?php echo $row['GioiTinh']; ?>">Nữ
-				<?php if (!empty($errors['txtgt']))
-					echo '<span class="error">' . $errors['txtgt'] . '</span>'; ?>
+					<?php if (!empty($errors['txtgt']))
+						echo '<span class="error">' . $errors['txtgt'] . '</span>'; ?>
 				</td>
 			</tr>
 			<tr style='background: #f1f1f1'>
 				<td class="ToT">Ngày Sinh:</td>
-				<td><input type="date" name="txtns" size="25" value="<?php echo $row['NgaySinh']; ?>" /> 
-			<?php if (!empty($errors['txtns']))
-				echo '<span class="error">' . $errors['txtns'] . '</span>'; ?></td>
+				<td><input type="date" name="txtns" size="25" value="<?php echo $row['NgaySinh']; ?>" />
+					<?php if (!empty($errors['txtns']))
+						echo '<span class="error">' . $errors['txtns'] . '</span>'; ?>
+				</td>
 			</tr>
 			<tr style='background: #f1f1f1'>
 				<td class="ToT">Nơi Sinh:</td>
 				<td><input type="text" name="txtnois" size="25" value="<?php echo $row['noisinh']; ?>" />
-			<?php if (!empty($errors['txtnois']))
-				echo '<span class="error">' . $errors['txtnois'] . '</span>'; ?> </td>
+					<?php if (!empty($errors['txtnois']))
+						echo '<span class="error">' . $errors['txtnois'] . '</span>'; ?>
+				</td>
 			</tr>
 			<tr style='background: #f1f1f1'>
 				<td class="ToT">Dân Tộc:</td>
-				<td><input type="text" name="txtdantoc" size="25" value="<?php echo $row['dantoc']; ?>" /> 
-			<?php if (!empty($errors['txtdantoc']))
-				echo '<span class="error">' . $errors['txtdantoc'] . '</span>'; ?></td>
+				<td><input type="text" name="txtdantoc" size="25" value="<?php echo $row['dantoc']; ?>" />
+					<?php if (!empty($errors['txtdantoc']))
+						echo '<span class="error">' . $errors['txtdantoc'] . '</span>'; ?>
+				</td>
 			</tr>
 			<tr style='background: #f1f1f1'>
 				<td class="ToT">Họ Tên Cha:</td>
-				<td><input type="text" name="txtcha" size="25" value="<?php echo $row['hotencha']; ?>" /> 
-			<?php if (!empty($errors['txtcha']))
-				echo '<span class="error">' . $errors['txtcha'] . '</span>'; ?></td>
+				<td><input type="text" name="txtcha" size="25" value="<?php echo $row['hotencha']; ?>" />
+					<?php if (!empty($errors['txtcha']))
+						echo '<span class="error">' . $errors['txtcha'] . '</span>'; ?>
+				</td>
 			</tr>
 			<tr style='background: #f1f1f1'>
 				<td class="ToT">Họ Tên Mẹ:</td>
 				<td><input type="text" name="txtme" size="25" value="<?php echo $row['hotenme']; ?>" />
-			<?php if (!empty($errors['txtme']))
-				echo '<span class="error">' . $errors['txtme'] . '</span>'; ?> </td>
+					<?php if (!empty($errors['txtme']))
+						echo '<span class="error">' . $errors['txtme'] . '</span>'; ?>
+				</td>
 			</tr>
 			<tr style='background: #f1f1f1'>
-				<td class="ToT">Password Học Sinh:</td>
+				<td class="ToT">Password Sinh Viên:</td>
 				<td><input type="password" name="txtpasshs" size="25" value="<?php echo $row['passwordhs']; ?>" />
-			<?php if (!empty($errors['txtpasshs']))
-				echo '<span class="error">' . $errors['txtpasshs'] . '</span>'; ?></td>
+					<?php if (!empty($errors['txtpasshs']))
+						echo '<span class="error">' . $errors['txtpasshs'] . '</span>'; ?>
+				</td>
 			</tr>
 			<tr style="text-align: center;">
 				<td style="border: 1px solid transparent;"><input type="submit" class='add-button' name="ok"
