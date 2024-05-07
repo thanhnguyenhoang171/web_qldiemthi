@@ -3,52 +3,60 @@ class DB
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $pass = ''; // Đây là một mẫu, tránh lưu mật khẩu trực tiếp trong mã
+    private $pass = ''; // This is just a placeholder, avoid storing passwords directly in code
     private $db = 'quanlydiem';
     private $myconn;
-    private $connected = false; // Biến để kiểm tra trạng thái kết nối
+    private $connected = false; // Variable to check connection status
 
+    // Method to establish database connection
     public function connect()
     {
-        $con = mysqli_connect($this->host, $this->user, $this->pass, $this->db);
-        if (!$con) {
+        $this->myconn = new mysqli($this->host, $this->user, $this->pass, $this->db);
+
+        // Check connection
+        if ($this->myconn->connect_error) {
             // Handle connection error
-            throw new Exception('Could not connect to database: ' . mysqli_connect_error());
+            throw new Exception('Could not connect to database: ' . $this->myconn->connect_error);
         } else {
-            $this->myconn = $con;
-            mysqli_set_charset($con, 'utf8');
+            // Set character set
+            $this->myconn->set_charset('utf8');
+            $this->connected = true; // Set connected flag to true
         }
+
         return $this->myconn;
     }
 
-
+    // Method to close database connection
     public function close()
     {
-        if ($this->myconn) {
-            mysqli_close($this->myconn);
-            // Ghi vào nhật ký hoặc thông báo người dùng khi kết nối được đóng
+        if ($this->connected && $this->myconn) {
+            $this->myconn->close();
+            // Optionally log or notify user when connection is closed
             // echo 'Connection closed!';
-            $this->connected = false; // Đã đóng kết nối
+            $this->connected = false; // Connection closed
         }
     }
-    // Phương thức để kiểm tra xem đã kết nối thành công chưa
+
+    // Method to check if connected to database
     public function isConnected()
     {
         return $this->connected;
     }
 
+    // Method to execute a query
     public function query($sql)
     {
-        $result = mysqli_query($this->myconn, $sql);
+        $result = $this->myconn->query($sql);
         return $result !== false ? $result : false;
     }
 
+    // Method to execute a select query
     public function select($sql)
     {
-        $result = mysqli_query($this->myconn, $sql);
+        $result = $this->myconn->query($sql);
         if ($result !== false) {
             $rows = array();
-            while ($row = mysqli_fetch_assoc($result)) {
+            while ($row = $result->fetch_assoc()) {
                 $rows[] = $row;
             }
             return $rows;
@@ -57,21 +65,25 @@ class DB
         }
     }
 
+    // Method to execute an insert query
     public function insert($sql)
     {
-        $result = mysqli_query($this->myconn, $sql);
-        return $result !== false && mysqli_affected_rows($this->myconn) > 0 ? mysqli_insert_id($this->myconn) : false;
+        $result = $this->myconn->query($sql);
+        return $result !== false && $this->myconn->affected_rows > 0 ? $this->myconn->insert_id : false;
     }
 
+    // Method to execute an update query
     public function update($sql)
     {
-        $result = mysqli_query($this->myconn, $sql);
-        return $result !== false && mysqli_affected_rows($this->myconn) > 0 ? true : false;
+        $result = $this->myconn->query($sql);
+        return $result !== false && $this->myconn->affected_rows > 0 ? true : false;
     }
 
+    // Method to execute a delete query
     public function delete($sql)
     {
-        $result = mysqli_query($this->myconn, $sql);
-        return $result !== false && mysqli_affected_rows($this->myconn) > 0 ? true : false;
+        $result = $this->myconn->query($sql);
+        return $result !== false && $this->myconn->affected_rows > 0 ? true : false;
     }
 }
+
