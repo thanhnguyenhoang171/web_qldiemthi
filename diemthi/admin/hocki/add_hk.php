@@ -87,7 +87,7 @@ if (isset($_POST['ok'])) {
         <table align="center" border="1" cellspacing="0" cellpadding="10" style="background: #f1f1f1">
             <tr>
                 <td class="ToT">Mã Số Học Kỳ:</td>
-                <td> <input type="text" name="txthk" size="25" placeholder="Mẫu:12016" /><br />
+                <td> <input type="text" name="txthk" size="25" placeholder="Mẫu:21HK2" /><br />
                 <?php if (!empty($errors['txthk']))
                     echo '<span class="error">' . $errors['txthk'] . '</span>'; ?></td>
             </tr>

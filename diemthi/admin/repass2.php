@@ -1,5 +1,6 @@
 <?php
 require '../classes/DB.class.php';
+//require 'diemthi\classes\DB.class.php';
 session_start();
 $u = $_SESSION['ses_MaHS'];
 $phs = $_SESSION['ses_passwordhs'];
