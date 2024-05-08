@@ -1,6 +1,6 @@
 <?php
-// require "../../classes/DB.class.php";
-require "diemthi\classes\DB.class.php";
+require "../../classes/DB.class.php";
+//require "diemthi/classes/DB.class.php";
 $connect = new db();
 $conn = $connect->connect();
 session_start();
