@@ -31,7 +31,7 @@ if (!empty($_POST['themlop'])) {
     }
 
     if (empty($_POST['khoilop'])) {
-        $errors['khoilop'] = 'Chưa nhập khối lớp';
+        $errors['khoilop'] = 'Chưa nhập khoa';
     } else {
         $khoi = "/^[a-zA-Z0-9]{2}$/";
         if (!preg_match($khoi, $_POST['khoilop'])) {
