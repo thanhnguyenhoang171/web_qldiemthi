@@ -66,9 +66,10 @@ if (isset($_POST['ok'])) {
                     <?php
                     exit();
                 }
-            } catch (Exception $e) {
-                $errors['txtid'] = 'Mã dạy đã tồn tại';
-            }
+                } catch (Exception $e) 
+                    {
+                        $errors['txtid'] = "Mã dạy đã tồn tại";
+                    }
         }
     }
 }

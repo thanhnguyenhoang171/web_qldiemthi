@@ -13,7 +13,7 @@ if (!empty($_POST['edit_mon'])) {
     $errors = array();
 
     if (empty($data['Tenlophoc'])) {
-        $errors['Tenlonhoc'] = 'Chưa nhập tên lớp học';
+        $errors['Tenlophoc'] = 'Chưa nhập tên lớp học';
     }
 
     if (empty($data['KhoiHoc'])) {
@@ -58,7 +58,7 @@ $data = $con->selectlop($id);
                     <td>
                         <input type="text" name="name" value="<?php echo $data['Tenlophoc']; ?>" />
                         <?php if (!empty($errors['Tenlophoc']))
-                            echo $errors['tenlophoc']; ?>
+                            echo $errors['Tenlophoc']; ?>
                     </td>
                 </tr>
 

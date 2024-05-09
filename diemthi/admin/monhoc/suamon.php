@@ -24,7 +24,7 @@ if (!empty($_POST['edit_mon'])) {
     if (empty($errors)) {
         ?>
         <script type="text/javascript">
-            var result = confirm("Bạn có chắc chắn muốn môn học?");
+            var result = confirm("Bạn có chắc chắn muốn sửa môn học?");
             if (result == true) {
                 <?php
                 $mon = $con->edit($data['MaMonHoc'], $data['TenMonHoc'], $data['SoTiet'], $data['HeSoMonHoc']);
