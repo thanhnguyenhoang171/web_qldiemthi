@@ -8,8 +8,12 @@ $pad = $_SESSION['password'];
 $connect = new DB();
 $con = $connect->connect();
 $old = $new = $pre = " ";
+$error = '';
 
 
+
+//code cũ
+/*
 if (isset ($_POST['ad'])) {
     if ($_POST['txtpassad'] == null) {
         ?>
@@ -91,7 +95,56 @@ if (isset ($_POST['ad'])) {
 
 
     }
+}*/
+
+if (isset($_POST['ad'])) {
+    if ($_POST['txtpassad'] == null && $_POST['txtpassad2'] == null && $_POST['txtpassad3'] == null) {
+        $error = 'Vui lòng không bỏ trống thông tin!';
+    } else {
+        if ($_POST['txtpassad'] == null && $_POST['txtpassad2'] != null) {
+            $error = 'Bạn chưa nhập mật khẩu cũ!';
+
+        } else {
+            $old_password_md5 = md5($_POST['txtpassad']);
+
+            if ($old_password_md5 != $pad) {
+                $error = 'Mật khẩu cũ không chính xác!';
+            } else {
+                $old = $_POST['txtpassad'];
+            }
+        }
+        if ($_POST['txtpassad2'] == null && $_POST['txtpassad'] != null) {
+            $error = 'Bạn chưa nhập mật khẩu mới!';
+        } else {
+            if ($_POST['txtpassad3'] == null) {
+                $error = 'Bạn chưa nhập lại mật khẩu mới!';
+            } else if ($_POST['txtpassad2'] != $_POST['txtpassad3']) {
+                $error = 'Mật khẩu mới không trùng khớp!';
+            } else {
+                $mk = "/^[a-zA-Z0-9]{6,}$/";
+                if (preg_match($mk, $_POST["txtpassad2"])) {
+                    $new = md5($_POST['txtpassad2']);
+                } else {
+                    $error = 'Mật khẩu nhập vào không hợp lệ!';
+                }
+            }
+            if ($u && $pad && $old && $new && $pre && $error == '') {
+                $query = "UPDATE user SET passwordad='$new' WHERE userid=$u";
+                $results = mysqli_query($con, $query);
+                if ($results) {
+                    $error = 'Đã thay đổi mật khẩu thành công!';
+                } else {
+                    $error = "Có lỗi xảy ra khi cập nhật mật khẩu.";
+                }
+            }
+        }
+    }
 }
+// Hiển thị thông báo lỗi nếu có
+if (!empty($error)) {
+    echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
+}
+
 ?>
 <!DOCTYPE html>
 <html>
