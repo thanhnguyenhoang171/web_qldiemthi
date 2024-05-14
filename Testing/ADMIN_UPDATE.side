@@ -427,6 +427,198 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "0cbd59b6-4931-42cd-a8c8-810d98aca10e",
+    "name": "HienDS_ThanhCong",
+    "commands": [{
+      "id": "42dba119-9eac-42d1-9210-6d403ed4ef6f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "62e58758-b669-47f2-8920-94b799a5803b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "640x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "25627d38-f7ee-4753-a1c6-03ba2f5820cb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7950af51-c6c5-4941-82fc-9bcee902ff7d",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Xem thông tin')]",
+      "targets": [
+        ["css=h2:nth-child(3) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//h2[2]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Xem thông tin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "00d2b46f-bbd3-4d2a-ae1e-70da6c4209b8",
+      "comment": "",
+      "command": "assertText",
+      "target": "xpath=//td[contains(.,'qldtou')]",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'qldtou')]", "xpath:innerText"]
+      ],
+      "value": "qldtou"
+    }, {
+      "id": "fb04cb89-3774-4013-94c9-0371f0107481",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "aa4905f4-6754-4013-9dba-2a660a09e013",
+    "name": "DoiMatKhau_BoTrong",
+    "commands": [{
+      "id": "38f05c63-c66e-477a-a5b3-91e87512e0be",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7eaa89f0-6bc3-45a8-8ba9-61bd7e4fd0bd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "640x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "858abccb-2073-4d8c-8b2d-f1b19105dd1f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "15b46871-ffea-475b-95ad-63919a49a2f5",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2:nth-child(4) .add-button",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c6144f5-7d30-4231-ac12-fe9c723c93d7",
+      "comment": "",
+      "command": "click",
+      "target": "name=ad",
+      "targets": [
+        ["name=ad", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='ad']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d39f375-af06-4e81-9cfe-204c76d5c7f2",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [
+        ["id=errors", "id"],
+        ["css=#errors", "css:finder"],
+        ["xpath=//div[@id='errors']", "xpath:attributes"],
+        ["xpath=//div[3]", "xpath:position"],
+        ["xpath=//div[contains(.,'Vui lòng không bỏ trống thông tin!')]", "xpath:innerText"]
+      ],
+      "value": "Vui lòng không bỏ trống thông tin!"
+    }, {
+      "id": "48eba1e6-77f1-4842-aa9f-2d820779d148",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "865a2a84-65bb-48a8-949c-5dfd72c586a0",
+    "name": "DoiMatKhau_ThieuDuLieu",
+    "commands": [{
+      "id": "9dad928b-45b2-4a87-9ff4-e6b000b37a0f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33e2a6ae-0e5d-439d-88db-d66d78ec82f7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "640x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f7efe4c3-170b-4276-884e-4b5a600012f6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c03f76bc-a982-417d-9379-24c9870501d2",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2:nth-child(4) .add-button",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d05f4637-1e02-46e3-a383-c6e0cf20be11",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "f55fda38-5b44-413e-a793-87f3f5387aab",
