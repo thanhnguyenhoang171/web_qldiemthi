@@ -2,7 +2,7 @@
   "id": "36b56fe2-5d03-4784-bdae-74a3103e1d4c",
   "version": "2.0",
   "name": "ADMIN_UPDATE",
-  "url": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+  "url": "http://localhost/web_qldiemthi/diemthi/admin/index.php",
   "tests": [{
     "id": "da98f9f0-0b8c-41e6-aa93-e990802321cb",
     "name": "Them_BoTrong",
@@ -62,7 +62,7 @@
     }, {
       "id": "bbb71b94-a0ff-4f2d-bc07-d4524e6749f8",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//span[contains(.,'Chưa nhập username')]",
       "targets": [
         ["css=.error", "css:finder"],
@@ -73,7 +73,7 @@
     }, {
       "id": "ddcc48fa-44ed-409a-a097-08b25e0545ee",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//span[contains(.,'Chưa nhập password')]",
       "targets": [],
       "value": "Chưa nhập password"
@@ -196,7 +196,7 @@
     }, {
       "id": "794d1ef3-0fa8-4943-af02-92023083b00a",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//span[contains(.,'Username không hợp lệ')]",
       "targets": [
         ["css=.error", "css:finder"],
@@ -207,7 +207,7 @@
     }, {
       "id": "c48c8e50-ce2e-4eb9-b2ed-90ad9b2afc04",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//span[contains(.,'Password không hợp lệ')]",
       "targets": [],
       "value": "Password không hợp lệ"
@@ -342,7 +342,7 @@
     }, {
       "id": "dc953550-e207-4156-b799-5fc89df7d040",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//td[contains(.,'nckhou')]",
       "targets": [
         ["css=tr:nth-child(3) > td:nth-child(2)", "css:finder"],
@@ -427,6 +427,856 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "0cbd59b6-4931-42cd-a8c8-810d98aca10e",
+    "name": "HienDS_ThanhCong",
+    "commands": [{
+      "id": "42dba119-9eac-42d1-9210-6d403ed4ef6f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "62e58758-b669-47f2-8920-94b799a5803b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "640x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "25627d38-f7ee-4753-a1c6-03ba2f5820cb",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7950af51-c6c5-4941-82fc-9bcee902ff7d",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Xem thông tin')]",
+      "targets": [
+        ["css=h2:nth-child(3) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//h2[2]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Xem thông tin')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "00d2b46f-bbd3-4d2a-ae1e-70da6c4209b8",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=//td[contains(.,'qldtou')]",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'qldtou')]", "xpath:innerText"]
+      ],
+      "value": "qldtou"
+    }, {
+      "id": "fb04cb89-3774-4013-94c9-0371f0107481",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "aa4905f4-6754-4013-9dba-2a660a09e013",
+    "name": "DoiMatKhau_BoTrong",
+    "commands": [{
+      "id": "38f05c63-c66e-477a-a5b3-91e87512e0be",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7eaa89f0-6bc3-45a8-8ba9-61bd7e4fd0bd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "640x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "858abccb-2073-4d8c-8b2d-f1b19105dd1f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "15b46871-ffea-475b-95ad-63919a49a2f5",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2:nth-child(4) .add-button",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1c6144f5-7d30-4231-ac12-fe9c723c93d7",
+      "comment": "",
+      "command": "click",
+      "target": "name=ad",
+      "targets": [
+        ["name=ad", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='ad']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5d39f375-af06-4e81-9cfe-204c76d5c7f2",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [
+        ["id=errors", "id"],
+        ["css=#errors", "css:finder"],
+        ["xpath=//div[@id='errors']", "xpath:attributes"],
+        ["xpath=//div[3]", "xpath:position"],
+        ["xpath=//div[contains(.,'Vui lòng không bỏ trống thông tin!')]", "xpath:innerText"]
+      ],
+      "value": "Vui lòng không bỏ trống thông tin!"
+    }, {
+      "id": "48eba1e6-77f1-4842-aa9f-2d820779d148",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "865a2a84-65bb-48a8-949c-5dfd72c586a0",
+    "name": "DoiMatKhau_ThieuDuLieu",
+    "commands": [{
+      "id": "9e56b5f6-6ecb-466c-8c0e-68f198acfd42",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c8b5af0f-dfe3-45e5-bfe4-5f53c89b3d59",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "768x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b1184cae-2cd1-4476-9ea2-68ab66b33627",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "80362b30-f2f8-427f-92f7-d6abb61d3212",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Đổi Mật Khẩu')]",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "458e86c3-acea-4e47-9a7a-f75dc2d9d773",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "77b5d0b4-50a0-4ad5-94a6-96100be29817",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminn"
+    }, {
+      "id": "8c9fa0d9-e4ea-4b7f-956f-a6eda96d2005",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e12b56b5-29e6-4d00-b2c4-b17c0225d2b0",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "6856ca31-4f62-4c85-8816-3aed8d0d4808",
+      "comment": "",
+      "command": "click",
+      "target": "name=ad",
+      "targets": [
+        ["name=ad", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='ad']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6569a939-820c-49d4-9e09-223f5c7f638d",
+      "comment": "Empty new password",
+      "command": "//assertText",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Bạn chưa nhập mật khẩu mới!"
+    }, {
+      "id": "a5b4b626-18ce-4886-9c2b-81c419a18580",
+      "comment": "Empty repassword",
+      "command": "//assertText",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Bạn chưa nhập lại mật khẩu mới!"
+    }, {
+      "id": "dce3eaab-7860-473b-8067-283dd70465be",
+      "comment": "Empty old password",
+      "command": "//assertText",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Bạn chưa nhập mật khẩu cũ!"
+    }, {
+      "id": "a81468a2-a577-48c2-a2fa-c19f39582422",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2fdeb555-58bd-4512-b732-46cf180dfa6a",
+    "name": "DoiMatKhau_SaiMKCu",
+    "commands": [{
+      "id": "eb75028c-90ba-4d64-bbab-e4afdc84d4fa",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8d367e2b-000d-4b02-a61b-5e1b5b8070c0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "768x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82c2e8a6-6f51-47da-a2b3-90d2ec5f512a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cb34f890-cf77-45f6-8237-a442b2c0920b",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Đổi Mật Khẩu')]",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "27fa266a-c3ee-48c8-9ddc-18c36bb4fbcc",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f8aa126c-1f56-41dd-8bce-264b5c56aca7",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "addmin"
+    }, {
+      "id": "ecf52057-8a8e-4c39-bce2-b7b20fb48aa0",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2c8f310-2d2a-47f0-9737-45469491f888",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "71ff36c9-8a0c-4c8f-bf05-d155e99d60b0",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "df24a43d-9f50-476a-acc8-9b072d917012",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "2b3ceb7b-bb70-4863-9b46-2b0b3419bda7",
+      "comment": "",
+      "command": "click",
+      "target": "name=ad",
+      "targets": [
+        ["name=ad", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='ad']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bbd6cea7-d854-444b-8946-df207e8d1d92",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Mật khẩu cũ không chính xác!"
+    }, {
+      "id": "0921d32d-b1ba-47a7-ae82-533a69a65e90",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ec2978a7-a221-4a15-b9ea-13f6e5b25556",
+    "name": "DoiMatKhau_SaiDuLieu",
+    "commands": [{
+      "id": "477c4970-fd40-4ddc-a4d4-ee1b84079708",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f88518d5-7a5d-4360-9fc2-65a7b6832a1c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "768x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4bbc8b1-288f-414a-be7b-8f06678a0e33",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c60397c5-6309-470e-92a8-3382694fe587",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//button[contains(.,'Đổi Mật Khẩu')]",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8bb1ac4f-cee2-41b4-be9c-222fe6bc8d06",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "22aa87b0-760d-4319-9b4b-8ce63f49e253",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminn"
+    }, {
+      "id": "8dfb6c0b-8d8a-482f-a540-75a0f84ffd4a",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d990564e-0f72-453c-b7b4-35866362de05",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "12345"
+    }, {
+      "id": "001a413f-be1f-4dd4-a616-1ebdc047ecc6",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec0d7dc0-bd20-469e-ad0f-a94743f42dc0",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "12345"
+    }, {
+      "id": "08b42597-08fb-4712-af29-d94b7c871221",
+      "comment": "",
+      "command": "click",
+      "target": "name=ad",
+      "targets": [
+        ["name=ad", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='ad']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6064db29-87e3-4fdd-b936-a5abe9f0ffd2",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Mật khẩu nhập vào không hợp lệ!"
+    }, {
+      "id": "62e47630-6869-49cd-8d27-6ef20eb05c15",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "9230bc68-be95-4c41-8993-4b10ba5e4bda",
+    "name": "DoiMatKhau_KhongTrungKhop",
+    "commands": [{
+      "id": "50873e68-a2bd-48cf-943a-e9d8ebf5876c",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php?",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8742aa7d-f21f-47dc-ba2f-269676e352bc",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "768x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "36651152-81a2-4c40-9be3-a143f42a5fa0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "332350d2-df52-4d65-ac39-3f8060054dc4",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2:nth-child(4) .add-button",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ae2b49f-2328-4f62-8a88-2e828ffa8316",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fce0a99c-875c-411b-af6b-09c0e996bbed",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminn"
+    }, {
+      "id": "afe062e7-43ac-415d-8b3a-a5bad9028d79",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5a02a17f-aea4-47fc-a07c-3c3c8ab5e7c2",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "1234567"
+    }, {
+      "id": "261d89fd-022f-4890-979e-ea7cde639602",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a2092be-5e99-495d-a2d2-815f9f0708cd",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "1234566"
+    }, {
+      "id": "bcfa617d-bc3f-4a28-8664-1f4b3f5867a5",
+      "comment": "",
+      "command": "click",
+      "target": "name=ad",
+      "targets": [
+        ["name=ad", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='ad']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "533a0f82-1e96-49b9-a82d-ef8c77119e40",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [
+        ["id=errors", "id"],
+        ["css=#errors", "css:finder"],
+        ["xpath=//div[@id='errors']", "xpath:attributes"],
+        ["xpath=//div[3]", "xpath:position"],
+        ["xpath=//div[contains(.,'Mật khẩu mới không trùng khớp!')]", "xpath:innerText"]
+      ],
+      "value": "Mật khẩu mới không trùng khớp!"
+    }, {
+      "id": "636912f3-94ab-420e-8048-39dec1578050",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "a649a369-0cba-439e-9f08-b69daf9ec343",
+    "name": "DoiMatKhau_ThanhCong",
+    "commands": [{
+      "id": "8497d38d-db5a-4610-a64b-4829f22e4437",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/index.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b5e98fc1-f9f0-4eaa-8027-ab5a2343c441",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "768x680",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b231d748-8974-4fa3-933a-013c4d87af45",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Cập Nhật",
+      "targets": [
+        ["linkText=Cập Nhật", "linkText"],
+        ["css=li:nth-child(8) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Cập Nhật')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[8]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'index.php?mod=capnhat')]", "xpath:href"],
+        ["xpath=//li[8]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Cập Nhật')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a244de0c-8841-49a0-82e0-d553168ed596",
+      "comment": "",
+      "command": "click",
+      "target": "css=h2:nth-child(4) .add-button",
+      "targets": [
+        ["css=h2:nth-child(4) .add-button", "css:finder"],
+        ["xpath=(//button[@type='button'])[3]", "xpath:attributes"],
+        ["xpath=//h2[3]/a/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Đổi Mật Khẩu')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6382d5f-7d4f-46b1-8ebd-f5d4d3b799d2",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0a1441e-236e-4bbc-8fd8-d11f199893bc",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad",
+      "targets": [
+        ["name=txtpassad", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtpassad']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "123456"
+    }, {
+      "id": "201f2300-c700-466e-8ab0-376937089210",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8a063c62-8fa2-429e-975a-4805b2626fda",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad2",
+      "targets": [
+        ["name=txtpassad2", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassad2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "1111111"
+    }, {
+      "id": "1fbf82a2-e6d2-4747-9a9c-688d140514ca",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a029518-7cfb-482c-8026-b174a434e170",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassad3",
+      "targets": [
+        ["name=txtpassad3", "name"],
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@name='txtpassad3']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "1111111"
+    }, {
+      "id": "074a3b05-cd60-4bc1-ad46-631aab0ef286",
+      "comment": "",
+      "command": "click",
+      "target": "name=ad",
+      "targets": [
+        ["name=ad", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='ad']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2cbedd6a-a91c-4ded-96e7-b9e8d85d84f6",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [
+        ["id=errors", "id"],
+        ["css=#errors", "css:finder"],
+        ["xpath=//div[@id='errors']", "xpath:attributes"],
+        ["xpath=//div[4]", "xpath:position"],
+        ["xpath=//div[contains(.,'Đã thay đổi mật khẩu thành công!')]", "xpath:innerText"]
+      ],
+      "value": "Đã thay đổi mật khẩu thành công!"
+    }]
   }],
   "suites": [{
     "id": "f55fda38-5b44-413e-a793-87f3f5387aab",
@@ -436,6 +1286,6 @@
     "timeout": 300,
     "tests": ["da98f9f0-0b8c-41e6-aa93-e990802321cb"]
   }],
-  "urls": ["http://localhost/web_qldiemthi/diemthi/admin/index.php?"],
+  "urls": ["http://localhost/web_qldiemthi/diemthi/admin/index.php?", "http://localhost/web_qldiemthi/diemthi/admin/index.php"],
   "plugins": []
 }

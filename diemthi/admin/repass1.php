@@ -1,11 +1,13 @@
 <?php
 session_start();
 require '../classes/DB.class.php';
+
 //require 'diemthi/classes/DB.class.php'; // for testing
 function validateOldPassword($inputPassword, $sessionPassword)
 {
 	if ($inputPassword == null) {
 		return "Bạn chưa nhập Mật Khẩu";
+
 	}
 	if (md5($inputPassword) != $sessionPassword) {
 		return "Mật Khẩu Cũ không chính xác";
