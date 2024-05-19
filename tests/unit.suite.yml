@@ -7,4 +7,11 @@ modules:
     enabled:
         - Asserts
         - \Helper\Unit
+        - Db:
+            dsn: 'mysql:host=127.0.0.1;dbname=quanlydiem'
+            user: 'root'
+            password: ''
+            dump: ''
+            populate: true
+            cleanup: true
     step_decorators: ~        
