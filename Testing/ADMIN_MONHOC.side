@@ -1214,7 +1214,7 @@
     }, {
       "id": "850bc2cf-dc47-41ae-a93f-ee28c07ab648",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "id=errors",
       "targets": [],
       "value": "Mã môn học đã tồn tại"
