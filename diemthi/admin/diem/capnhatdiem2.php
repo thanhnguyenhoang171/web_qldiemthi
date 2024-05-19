@@ -1,6 +1,5 @@
 <?php
 require "../../classes/DB.class.php";
-//require "diemthi/classes/DB.class.php";
 $connect = new db();
 $conn = $connect->connect();
 session_start();
@@ -12,9 +11,8 @@ function isValidDiem($diem)
 }
 
 // Hàm cập nhật điểm
-function capNhatDiem($maHS, $mieng, $p1, $p2, $t1, $t2, $d, $tb)
+function capNhatDiem($maHS, $mieng, $p1, $p2, $t1, $t2, $d, $tb, $conn)
 {
-    global $conn;
     $sql = "UPDATE diem 
             SET DiemMieng='$mieng', Diem15Phut1='$p1', Diem15Phut2='$p2', Diem1Tiet1='$t1', Diem1Tiet2='$t2', DiemThi='$d', DiemTB='$tb' 
             WHERE MaHS='$maHS'";
@@ -24,9 +22,8 @@ function capNhatDiem($maHS, $mieng, $p1, $p2, $t1, $t2, $d, $tb)
 }
 
 // Hàm kiểm tra và cập nhật điểm cho danh sách học sinh
-function kiemTraVaCapNhatDiem($post)
+function kiemTraVaCapNhatDiem($post, $conn)
 {
-    global $conn;
     $error = false; // Biến để kiểm tra xem có lỗi nhập sai hay không
 
     foreach ($post['ma'] as $i => $ma) {
@@ -46,7 +43,7 @@ function kiemTraVaCapNhatDiem($post)
         $tb = ($mieng + ($p1 + $p2) * 2 + $t1 + $t2 + $d * 3) / 10;
 
         // Thực hiện cập nhật điểm
-        $result = capNhatDiem($ma, $mieng, $p1, $p2, $t1, $t2, $d, $tb);
+        $result = capNhatDiem($ma, $mieng, $p1, $p2, $t1, $t2, $d, $tb, $conn);
 
         if (!$result) {
             $error = true; // Đánh dấu có lỗi
@@ -57,10 +54,9 @@ function kiemTraVaCapNhatDiem($post)
     return $error;
 }
 
-
 // Xử lý khi nhấn nút "Thêm Điểm"
 if (isset($_POST['themdiem'])) {
-    $error = kiemTraVaCapNhatDiem($_POST);
+    $error = kiemTraVaCapNhatDiem($_POST, $conn);
 
     if ($error) {
         echo "<script type='text/javascript'>alert('Có lỗi xảy ra khi sửa điểm');</script>";
@@ -71,7 +67,6 @@ if (isset($_POST['themdiem'])) {
     echo "<script type='text/javascript'>window.location.href='../qlgv.php?mod=hs';</script>";
     exit(); // Dừng script ngay sau khi thực hiện xong thêm điểm
 }
-
 ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

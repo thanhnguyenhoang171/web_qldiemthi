@@ -1,81 +1,23 @@
 <?php
-session_start();
-require ("../classes/giaovien.class.php");
+require_once ("fnct_add_gv.php");
+
 $m = $t = $dc = $dt = $p = "";
 
 if (isset($_POST['ok'])) {
-	$errors = array();
-	$con = new giaovien();
-	if ($_POST['txtmagv'] == null) {
-		$errors['txtmagv'] = 'Bạn Chưa Nhập Mã Giảng Viên';
+	list($data, $errors) = validateInput($_POST);
 
-	} else {
-		$rule = "/^[0-9]{10}$/";
-		if (preg_match($rule, $_POST['txtmagv'])) {
-			$m = $_POST['txtmagv'];
+	if (empty($errors)) {
+		if (addGiaoVien($data)) {
+			echo '<script type="text/javascript">
+                alert("Bạn thêm Giảng Viên thành công!");
+                window.location = "index.php?mod=gv";
+                </script>';
+			exit();
 		} else {
-			$errors['txtmagv'] = 'Mã Giảng Viên không hợp lệ';
-
+			$errors['general'] = 'Có lỗi xảy ra khi thêm giảng viên';
 		}
-	}
-	// done 
-
-	if ($_POST['txtten'] == null) {
-		$errors['txtten'] = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
-
-	} else {
-		$t = $_POST['txtten'];
-	}
-	if ($_POST['txtdiachi'] == null) {
-		$errors['txtdiachi'] = 'Bạn Chưa Nhập Vào Địa Chỉ';
-
-	} else {
-		$dc = $_POST['txtdiachi'];
-	}
-	if ($_POST['txtdienthoai'] == null) {
-		$errors['txtdienthoai'] = 'Bạn Chưa Nhập Vào Số Điện Thoại';
-
-	} else {
-		$dienthoai = "/^[0-9]{10,11}$/";
-		if (preg_match($dienthoai, $_POST['txtdienthoai'])) {
-			$dt = $_POST['txtdienthoai'];
-		} else {
-			$errors['txtdienthoai'] = 'Số điện thoại không hợp lệ';
-		}
-	}
-	// 
-
-	if ($_POST['txtpass'] == null) {
-		$errors['txtpass'] = 'Bạn chưa nhập mật khẩu khẩu';
-	} else {
-		$pass = "/^[a-zA-Z0-9]{6,}$/";
-		if (preg_match($pass, $_POST['txtpass'])) {
-			$p = md5($_POST['txtpass']);
-		} else {
-			$errors['txtpass'] = 'Password nhập vào không hợp lệ';
-		}
-	}
-
-	$mamon = $_POST['mamonhoc'];
-
-
-	if ($m && $mamon && $t && $dc && $dt && $p && empty($errors)) {
-		$giaovien = $con->add($m, $mamon, $t, $dc, $dt, $p);
-		?>
-		<script type="text/javascript">
-			alert("Bạn thêm Giảng Viên thành công!");
-			window.location = "index.php?mod=gv";
-		</script>
-		<?php
-		exit();
-		//require ("../classes/DB.class.php");
 	}
 }
-//$con->close();
-// // Hiển thị thông báo lỗi nếu có
-// if (!empty($error)) {
-// 	echo "<div id='errors' style='color: red; position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
-// }
 ?>
 
 <link rel="stylesheet" href="../assets/css/css/stylea.css">

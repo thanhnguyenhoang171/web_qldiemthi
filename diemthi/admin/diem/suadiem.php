@@ -2,16 +2,10 @@
 session_start();
 require "../../classes/diem.class.php";
 require "../../includes/config.php";
-$con = new diem();
-$madiem = $_GET['cma'];
-if (!empty($_POST['edit_diem'])) {
-    // Lay data
-    $data['DiemMieng'] = isset($_POST['diemmieng']) ? $_POST['diemmieng'] : '';
-    $data['Diem15Phut1'] = isset($_POST['diem15phut1']) ? $_POST['diem15phut1'] : '';
-    $data['Diem15Phut2'] = isset($_POST['diem15phut2']) ? $_POST['diem15phut2'] : '';
-    $data['Diem1Tiet1'] = isset($_POST['diem1tiet1']) ? $_POST['diem1tiet1'] : '';
-    $data['Diem1Tiet2'] = isset($_POST['diem1tiet2']) ? $_POST['diem1tiet2'] : '';
-    $data['DiemThi'] = isset($_POST['diemthi']) ? $_POST['diemthi'] : '';
+// require "diemthi\classes\diem.class.php";
+// require "diemthi\includes\config.php";
+function validateData($data)
+{
     $errors = array();
     if (empty($data['DiemMieng'])) {
         $errors['DiemMieng'] = 'Chưa nhập điểm miệng';
@@ -33,36 +27,58 @@ if (!empty($_POST['edit_diem'])) {
         $errors['DiemThi'] = 'Chưa nhập điểm thi';
     }
 
-    if (empty($errors)) {
-        $diemmieng = floatval($_POST['diemmieng']); // Chuyển giá trị thành số thực
-        $diem15phut1 = floatval($_POST['diem15phut1']);
-        $diem15phut2 = floatval($_POST['diem15phut2']);
-        $diem1tiet1 = floatval($_POST['diem1tiet1']);
-        $diem1tiet2 = floatval($_POST['diem1tiet2']);
-        $diemthi = floatval($_POST['diemthi']);
+    return $errors;
+}
+function calculateDiemTrungBinh($data)
+{
+    $diemmieng = floatval($data['DiemMieng']);
+    $diem15phut1 = floatval($data['Diem15Phut1']);
+    $diem15phut2 = floatval($data['Diem15Phut2']);
+    $diem1tiet1 = floatval($data['Diem1Tiet1']);
+    $diem1tiet2 = floatval($data['Diem1Tiet2']);
+    $diemthi = floatval($data['DiemThi']);
 
-        $diemtrungbinh = ($diemmieng + $diem15phut1 + $diem15phut2 + ($diem1tiet1 + $diem1tiet2) * 2 + $diemthi * 3) / 10; // Tính điểm trung bình
-        ?>
-        <script type="text/javascript">
-            var result = confirm("Bạn có chắc chắn muốn lưu điểm?");
-            if (result == true) {
-                // Nếu người dùng chọn Yes, tiến hành lưu điểm
-                <?php
-                $diem = $con->edit($madiem, $data['DiemMieng'], $data['Diem15Phut1'], $data['Diem15Phut2'], $data['Diem1Tiet1'], $data['Diem1Tiet2'], $data['DiemThi'], $diemtrungbinh);
-                ?>
-                // Trở về trang danh sách
-                window.location.href = "../index.php?mod=diem";
-            } else {
-                // Trở về trang danh sách
-                window.location.href = "../index.php?mod=diem";
+    return ($diemmieng + $diem15phut1 + $diem15phut2 + ($diem1tiet1 + $diem1tiet2) * 2 + $diemthi * 3) / 10;
+}
+function handleFormSubmission($con, $madiem)
+{
+    if (!empty($_POST['edit_diem'])) {
+        $data['DiemMieng'] = isset($_POST['diemmieng']) ? $_POST['diemmieng'] : '';
+        $data['Diem15Phut1'] = isset($_POST['diem15phut1']) ? $_POST['diem15phut1'] : '';
+        $data['Diem15Phut2'] = isset($_POST['diem15phut2']) ? $_POST['diem15phut2'] : '';
+        $data['Diem1Tiet1'] = isset($_POST['diem1tiet1']) ? $_POST['diem1tiet1'] : '';
+        $data['Diem1Tiet2'] = isset($_POST['diem1tiet2']) ? $_POST['diem1tiet2'] : '';
+        $data['DiemThi'] = isset($_POST['diemthi']) ? $_POST['diemthi'] : '';
+
+        $errors = validateData($data);
+
+        if (empty($errors)) {
+            $diemtrungbinh = calculateDiemTrungBinh($data);
+
+            $result = $con->edit($madiem, $data['DiemMieng'], $data['Diem15Phut1'], $data['Diem15Phut2'], $data['Diem1Tiet1'], $data['Diem1Tiet2'], $data['DiemThi'], $diemtrungbinh);
+
+            if ($result) {
+                echo "<script type='text/javascript'>
+                        var result = confirm('Bạn có chắc chắn muốn lưu điểm?');
+                        if (result == true) {
+                            window.location.href = '../index.php?mod=diem';
+                        } else {
+                            window.location.href = '../index.php?mod=diem';
+                        }
+                    </script>";
+                exit();
             }
-        </script>
-        <?php
-        exit();
+            //return $result; // for testing
+        }
     }
 }
-?>
-<?php
+
+// Main logic
+$con = new diem();
+$madiem = $_GET['cma'];
+
+handleFormSubmission($con, $madiem);
+
 $data = $con->selectdiem($madiem);
 ?>
 <!DOCTYPE html>

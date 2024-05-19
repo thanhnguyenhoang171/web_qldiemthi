@@ -1,92 +1,78 @@
 <?php
 session_start();
-$u = $_SESSION['ses_Magv'];
 require '../classes/DB.class.php';
+
+//require 'diemthi/classes/DB.class.php'; // for testing
+function validateOldPassword($inputPassword, $sessionPassword)
+{
+	if ($inputPassword == null) {
+		return "Bạn chưa nhập Mật Khẩu";
+
+	}
+	if (md5($inputPassword) != $sessionPassword) {
+		return "Mật Khẩu Cũ không chính xác";
+	}
+	return null;
+}
+
+function validateNewPassword($newPassword, $confirmPassword)
+{
+	if ($newPassword == null) {
+		return "Bạn chưa nhập Mật Khẩu Mới";
+	}
+	if ($newPassword != $confirmPassword) {
+		return "Mật Khẩu Mới không trùng khớp";
+	}
+	if (!preg_match("/^[a-zA-Z0-9]{6,}$/", $newPassword)) {
+		return "Mật Khẩu nhập vào không hợp lệ!";
+	}
+	return null;
+}
+
+function updatePassword($con, $userId, $newPassword)
+{
+	$newPasswordMd5 = md5($newPassword);
+	$query = "UPDATE giaovien SET passwordgv='$newPasswordMd5' WHERE Magv=$userId";
+	return mysqli_query($con, $query);
+}
+
+function handlePasswordChange($con, $userId, $sessionPassword)
+{
+	$oldPasswordError = validateOldPassword($_POST['txtpassgv'], $sessionPassword);
+	if ($oldPasswordError) {
+		return $oldPasswordError;
+	}
+
+	$newPasswordError = validateNewPassword($_POST['txtpassgv2'], $_POST['txtpassgv3']);
+	if ($newPasswordError) {
+		return $newPasswordError;
+	}
+
+	if (updatePassword($con, $userId, $_POST['txtpassgv2'])) {
+		echo "<script type='text/javascript'>
+                alert('Đã thay đổi mật khẩu thành công!');
+                window.location = 'qlgv.php';
+              </script>";
+		exit();
+	} else {
+		return "Có lỗi xảy ra khi cập nhật mật khẩu.";
+	}
+}
+
+// Main script logic
+$u = $_SESSION['ses_Magv'];
 $pgv = $_SESSION['ses_passwordgv'];
-?>
-<?php
 $connect = new DB();
 $con = $connect->connect();
-$old = $new = $pre = " ";
-$error = '';
 
-if (isset($_POST['gv'])) {
-	if ($_POST['txtpassgv'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn chưa nhập Mật Khẩu");
-			window.location = "repass1.php";
-		</script>
-		<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['gv'])) {
+	$error = handlePasswordChange($con, $u, $pgv);
+	if ($error) {
+		echo "<script type='text/javascript'>
+                alert('$error');
+                window.location = 'repass1.php';
+              </script>";
 		exit();
-	} else {
-		$old_password_md5 = md5($_POST['txtpassgv']);
-
-		if ($old_password_md5 != $pgv) {
-			?>
-			<script type="text/javascript">
-				alert("Mật Khẩu Cũ không chính xác");
-				window.location = "repass1.php";
-			</script>
-			<?php
-			exit();
-		} else {
-			$old = $_POST['txtpassgv'];
-		}
-	}
-	if ($_POST['txtpassgv2'] == null) {
-		?>
-		<script type="text/javascript">
-			alert("Bạn chưa nhập Mật Khẩu Mới");
-			window.location = "repass1.php";
-		</script>
-		<?php
-		exit();
-	} else {
-		if ($_POST['txtpassgv2'] != $_POST['txtpassgv3']) {
-
-			?>
-			<script type="text/javascript">
-				alert("Mật Khẩu Mới không trùng khớp");
-				window.location = "repass1.php";
-			</script>
-			<?php
-			exit();
-		} else {
-			$mk = "/^[a-zA-Z0-9]{6,}$/";
-			if (preg_match($mk, $_POST["txtpassgv2"])) {
-				$new = md5($_POST['txtpassgv2']);
-			} else {
-				?>
-				<script type="text/javascript">
-					alert("Mật Khẩu nhập vào không hợp lệ!.");
-					window.location = "repass1.php";
-				</script>
-				<?php
-				exit();
-			}
-		}
-	}
-	if ($u && $pgv && $old && $new && $pre) {
-		$query = "UPDATE giaovien SET passwordgv='$new' WHERE Magv=$u";
-		$results = mysqli_query($con, $query);
-		if ($results) {
-			?>
-			<script type="text/javascript">
-				alert("Đã thay đổi mật khẩu thành công!");
-				window.location = "qlgv.php";
-			</script>
-			<?php
-			exit();
-		} else {
-			?>
-			<script type="text/javascript">
-				alert("Có lỗi xảy ra khi cập nhật mật khẩu.");
-			</script>
-			<?php
-			exit();
-		}
-
 	}
 }
 ?>
