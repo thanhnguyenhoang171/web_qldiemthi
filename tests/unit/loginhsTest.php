@@ -1,6 +1,6 @@
 <?php
 
-class testDoiMKTest extends \Codeception\Test\Unit
+class loginhsTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
