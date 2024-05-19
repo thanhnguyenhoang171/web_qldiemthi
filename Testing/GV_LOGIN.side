@@ -1,0 +1,454 @@
+{
+  "id": "c9edb2ce-2afc-41cc-b239-74c46f721dc9",
+  "version": "2.0",
+  "name": "Kiểm thử phần mềm",
+  "url": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+  "tests": [{
+    "id": "0f7aa399-334e-4ce5-9ca8-a4dd00aee1a8",
+    "name": "Login_SaiTK_gv",
+    "commands": [{
+      "id": "20d5d64e-9d85-4223-b1fc-cc340bc9b6b3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9cdac08e-e80f-43c7-9ce8-b2dbbc80c040",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Giảng Viên",
+      "targets": [
+        ["linkText=Giảng Viên", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Giảng Viên')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'logingv.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Giảng Viên')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bb35edbb-84e4-4be3-aa81-b3b3b340d5d7",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtusergv",
+      "targets": [
+        ["name=txtusergv", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtusergv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9ead5f23-78e6-4a80-a0ce-8c0f8ed7d8ac",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtusergv",
+      "targets": [
+        ["name=txtusergv", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtusergv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "23000000000"
+    }, {
+      "id": "991c4678-062c-4b90-a4b6-416f46b66c00",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassgv",
+      "targets": [
+        ["name=txtpassgv", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassgv']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a71b1ca-1f7a-4e09-ac1c-25fc186e8294",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassgv",
+      "targets": [
+        ["name=txtpassgv", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassgv']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "2300000001"
+    }, {
+      "id": "10e7bd87-2321-44b6-b4b0-2edddb507349",
+      "comment": "",
+      "command": "click",
+      "target": "name=gv",
+      "targets": [
+        ["name=gv", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='gv']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d93a3f5-30ea-4dda-be28-d8b049704af4",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Tên tài khoản chưa chính xác.Vui lòng nhập lại!"
+    }, {
+      "id": "534b58c4-5337-4f08-8ce3-ec2c6dd71694",
+      "comment": "",
+      "command": "close",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "780cd52c-6b4d-4aa3-bef9-5689ea30a88d",
+    "name": "Login_SaiMK_gv",
+    "commands": [{
+      "id": "4fb3fcd3-650c-4419-9940-c1aec22d0566",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e52daa92-7f88-4d3f-ace1-f06b5b88f2ca",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "795x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33aa770a-1eeb-4463-8cf9-c53ad6246950",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Giảng Viên",
+      "targets": [
+        ["linkText=Giảng Viên", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Giảng Viên')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'logingv.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Giảng Viên')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "46ce2328-6133-4564-8922-16668f69eb6b",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtusergv",
+      "targets": [
+        ["name=txtusergv", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtusergv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "55aada88-1eba-47d3-8312-47ba54067763",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtusergv",
+      "targets": [
+        ["name=txtusergv", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtusergv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2300000001"
+    }, {
+      "id": "ff9f3513-e5d5-4d82-bd56-eb7046ef39dc",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassgv",
+      "targets": [
+        ["name=txtpassgv", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassgv']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "139cc071-8f3d-45ad-b205-16bf8d6733e2",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassgv",
+      "targets": [
+        ["name=txtpassgv", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassgv']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "123456789"
+    }, {
+      "id": "16724669-403e-4e98-820f-26afce2f80f8",
+      "comment": "",
+      "command": "click",
+      "target": "name=gv",
+      "targets": [
+        ["name=gv", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='gv']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0cd7197-dafb-4763-ba46-353eb8f544ee",
+      "comment": "",
+      "command": "click",
+      "target": "id=errors",
+      "targets": [
+        ["id=errors", "id"],
+        ["css=#errors", "css:finder"],
+        ["xpath=//div[@id='errors']", "xpath:attributes"],
+        ["xpath=//div[2]", "xpath:position"],
+        ["xpath=//div[contains(.,'Mật khẩu không đúng. Vui lòng kiểm tra lại!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "84b249a2-f3c8-498d-8631-d39330b9427c",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [
+        ["id=errors", "id"],
+        ["css=#errors", "css:finder"],
+        ["xpath=//div[@id='errors']", "xpath:attributes"],
+        ["xpath=//div[3]", "xpath:position"],
+        ["xpath=//div[contains(.,'Mật khẩu không đúng. Vui lòng kiểm tra lại!')]", "xpath:innerText"]
+      ],
+      "value": "Mật khẩu không đúng. Vui lòng kiểm tra lại!"
+    }, {
+      "id": "6d967fa2-108f-4df5-b7ad-a46d2a376d7a",
+      "comment": "",
+      "command": "close",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "52f0e497-6f79-4102-877b-a00e11c2f5fb",
+    "name": "Login_BoTrong_gv",
+    "commands": [{
+      "id": "85afd8c5-cfec-450f-9675-2c93db1972f4",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "04d7f1db-50da-48dd-9ee1-930beb07c1db",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "796x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aef02108-3e80-4744-8397-0fe018da66a2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Giảng Viên",
+      "targets": [
+        ["linkText=Giảng Viên", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Giảng Viên')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'logingv.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Giảng Viên')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d0f65f26-3eb3-456d-8e4d-22b3ff80f6bb",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtusergv",
+      "targets": [
+        ["name=txtusergv", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtusergv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4cb70094-7544-4945-8f1c-58201318aca1",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtusergv",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5a09c8d-61f9-4b02-bed4-c773d6a11bca",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassgv",
+      "targets": [
+        ["name=txtpassgv", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassgv']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4a90c3dd-c039-4cf1-8cf5-581857087366",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassgv",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "db770771-bd83-4462-bd43-da2c3af24844",
+      "comment": "",
+      "command": "click",
+      "target": "name=gv",
+      "targets": [
+        ["name=gv", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='gv']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c36c859f-c138-45d5-89e0-82e6f7e72123",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=errors",
+      "targets": [
+        ["id=errors", "id"],
+        ["css=#errors", "css:finder"],
+        ["xpath=//div[@id='errors']", "xpath:attributes"],
+        ["xpath=//div[4]", "xpath:position"],
+        ["xpath=//div[contains(.,'Vui lòng nhập đầy đủ tên tài khoản và mật khẩu!')]", "xpath:innerText"]
+      ],
+      "value": "Vui lòng nhập đầy đủ tên tài khoản và mật khẩu!"
+    }, {
+      "id": "360a324c-8deb-439a-aa49-c5a0525eb46e",
+      "comment": "",
+      "command": "close",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "b878dadd-bdc8-4c5b-bb64-27accca3648c",
+    "name": "Login_ThanhCong_gv",
+    "commands": [{
+      "id": "beb42ec2-3424-4c73-962d-1d3c9a4a97db",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "29a8184d-5fe0-4196-a72a-947bbb68f308",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Giảng Viên",
+      "targets": [
+        ["linkText=Giảng Viên", "linkText"],
+        ["css=li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Giảng Viên')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'logingv.php')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Giảng Viên')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "830b7973-3462-40c5-9006-6ecc8c966b4e",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtusergv",
+      "targets": [
+        ["name=txtusergv", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtusergv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "68a3eedb-5929-4c5f-a832-16547aba2186",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtusergv",
+      "targets": [
+        ["name=txtusergv", "name"],
+        ["css=form > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='txtusergv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "2300000001"
+    }, {
+      "id": "73c51dd8-46eb-4b77-9bc2-a6f282b27f49",
+      "comment": "",
+      "command": "click",
+      "target": "name=txtpassgv",
+      "targets": [
+        ["name=txtpassgv", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassgv']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bc7fe03b-be41-4e59-a5d6-3bca81fc3afb",
+      "comment": "",
+      "command": "type",
+      "target": "name=txtpassgv",
+      "targets": [
+        ["name=txtpassgv", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='txtpassgv']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "2300000001"
+    }, {
+      "id": "64a2b104-e564-4c6d-bf02-57272f4edb56",
+      "comment": "",
+      "command": "click",
+      "target": "name=gv",
+      "targets": [
+        ["name=gv", "name"],
+        ["css=button > input", "css:finder"],
+        ["xpath=//input[@name='gv']", "xpath:attributes"],
+        ["xpath=//button/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3bd0655-a278-4b04-bb0b-6fb40ab607b5",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Đăng Xuất",
+      "targets": [
+        ["linkText=Đăng Xuất", "linkText"],
+        ["css=li:nth-child(5) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Đăng Xuất')]", "xpath:link"],
+        ["xpath=//div[@id='menu']/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'logout.php')]", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Đăng Xuất')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e57e9bb9-b987-4505-bf42-0ca8999c0108",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "49f9a74e-6412-49cb-8893-36033a5d2711",
+    "name": "Giang_Vien",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["52f0e497-6f79-4102-877b-a00e11c2f5fb", "780cd52c-6b4d-4aa3-bef9-5689ea30a88d", "0f7aa399-334e-4ce5-9ca8-a4dd00aee1a8", "b878dadd-bdc8-4c5b-bb64-27accca3648c"]
+  }],
+  "urls": ["http://localhost/web_qldiemthi/diemthi/", "http://localhost/web_qldiemthi/diemthi/admin/qlhs.php", "http://localhost/web_qldiemthi/diemthi/admin/dangnhap.php"],
+  "plugins": []
+}

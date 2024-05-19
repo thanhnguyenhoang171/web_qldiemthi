@@ -8,6 +8,8 @@ $pgv = $_SESSION['ses_passwordgv'];
 $connect = new DB();
 $con = $connect->connect();
 $old = $new = $pre = " ";
+$error = '';
+
 if (isset($_POST['gv'])) {
 	if ($_POST['txtpassgv'] == null) {
 		?>

@@ -129,7 +129,7 @@ if (isset($_POST['ad'])) {
                 }
             }
             if ($u && $pad && $old && $new && $pre && $error == '') {
-                $query = "UPDATE user SET passwordad='$new' WHERE userid=$u";
+                $query = "UPDATE user SET password ='$new' WHERE userid=$u";
                 $results = mysqli_query($con, $query);
                 if ($results) {
                     $error = 'Đã thay đổi mật khẩu thành công!';
