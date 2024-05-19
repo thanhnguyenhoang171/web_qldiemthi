@@ -367,7 +367,7 @@
     }]
   }, {
     "id": "f767a606-c59b-4f0e-a60e-c0be795b90b4",
-    "name": "NhapDiemLan1_Error",
+    "name": "NhapDiemLan1_SaiDuLieu",
     "commands": [{
       "id": "0ecb7bd0-8fe5-4326-82ec-5db19d63f801",
       "comment": "",
@@ -634,7 +634,7 @@
     }]
   }, {
     "id": "05800e17-75d3-493e-9f5e-8fdfb5192535",
-    "name": "NhapDiemLan1_Error (1)",
+    "name": "NhapDiemLan1_DaCoDiem",
     "commands": [{
       "id": "d38957a2-73b7-4274-bb4e-a41b0076b48e",
       "comment": "",
@@ -1462,6 +1462,13 @@
       ],
       "value": ""
     }, {
+      "id": "0a0cbb43-ef3c-43bc-ad31-932a6165b091",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=errors",
+      "targets": [],
+      "value": "Không có dữ liệu điểm, không thể cập nhập"
+    }, {
       "id": "254c8712-7c23-417a-b992-e15645e35e42",
       "comment": "",
       "command": "close",
@@ -1573,21 +1580,21 @@
     }, {
       "id": "9f5f764c-923a-4c99-9cff-f24cffc00a46",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//td[contains(.,'23HK2')]",
       "targets": [],
       "value": "23HK2"
     }, {
       "id": "0fc51ac0-5724-414c-bf47-b05421d671b7",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//td[contains(.,'FB04C')]",
       "targets": [],
       "value": "FB04C"
     }, {
       "id": "66ee66a1-55b9-4f49-a5be-be2b7008e91c",
       "comment": "",
-      "command": "assertText",
+      "command": "assertElementPresent",
       "target": "xpath=//td[contains(.,'GTI212')]",
       "targets": [
         ["css=tr:nth-child(2) > td:nth-child(3)", "css:finder"],
