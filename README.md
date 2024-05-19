@@ -6,4 +6,6 @@ Phần mềm quản lý điểm thi dành cho sinh viên, giảng viên và qu�
 </br>
 Folder Testing - chứa file test bằng Selenium IDE
 </br>
-Folder test - chứa những file unit test bằng PHPUnit, Codecept
+Folder test - chứa những file unit test bằng Codecept
+</br>
+Folder Test_selenium_py - Chứa những file test bằng Selenium trên python
