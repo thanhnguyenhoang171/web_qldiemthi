@@ -1,90 +1,128 @@
 <?php
 session_start();
-$m = $malop = $t = $gt = $ns = $nois = $dt = $cha = $me = $p = "";
-require "../../classes/hocsinh.class.php";
 
-$con = new hocsinh();
-if (isset($_POST['ok'])) {
+require "../../classes/hocsinh.class.php";
+//require "diemthi\classes\hocsinh.class.php"; // for testing
+function validateInput($data)
+{
     $errors = array();
-    if ($_POST['txtmahs'] == null) {
+    $validatedData = array();
+
+    // Validate MaHS
+    if ($data['txtmahs'] == null) {
         $errors['txtmahs'] = 'Chưa nhập mã học sinh';
     } else {
         $rule = "/^\d{10}$/";
-        if (preg_match($rule, $_POST['txtmahs'])) {
-            $m = $_POST['txtmahs'];
+        if (preg_match($rule, $data['txtmahs'])) {
+            $validatedData['txtmahs'] = $data['txtmahs'];
         } else {
             $errors['txtmahs'] = 'Mã học sinh không hợp lệ';
         }
     }
-    if ($_POST['malophoc'] != null) {
-        $malop = $_POST['malophoc'];
+
+    // Validate MaLopHoc
+    if ($data['malophoc'] != null) {
+        $validatedData['malophoc'] = $data['malophoc'];
     }
-    if ($_POST['txtten'] == null) {
+
+    // Validate TenHS
+    if ($data['txtten'] == null) {
         $errors['txtten'] = 'Chưa nhập tên học sinh';
     } else {
         $hoten = "/^[\p{L}0-9\s\p{P}]{1,50}$/u";
-        if (preg_match($hoten, $_POST['txtten'])) {
-            $t = $_POST['txtten'];
+        if (preg_match($hoten, $data['txtten'])) {
+            $validatedData['txtten'] = $data['txtten'];
         } else {
             $errors['txtten'] = 'Tên học sinh không hợp lệ';
         }
     }
-    if ($_POST['txtgt'] == 1) {
-        $gt = "Nam";
-    } else {
-        $gt = "Nữ";
-    }
-    if ($_POST['txtngs'] == null) {
+
+    // Validate GioiTinh
+    $validatedData['txtgt'] = $data['txtgt'] == 1 ? "Nam" : "Nữ";
+
+    // Validate NgaySinh
+    if ($data['txtngs'] == null) {
         $errors['txtngs'] = 'Bạn chưa nhập ngày sinh';
     } else {
-        $ns = $_POST['txtngs'];
+        $validatedData['txtngs'] = $data['txtngs'];
     }
-    if ($_POST['txtns'] == null) {
+
+    // Validate NoiSinh
+    if ($data['txtns'] == null) {
         $errors['txtns'] = 'Bạn chưa nhập nơi sinh';
     } else {
-        $nois = $_POST['txtns'];
+        $validatedData['txtns'] = $data['txtns'];
     }
-    if ($_POST['txtdantoc'] == null) {
+
+    // Validate DanToc
+    if ($data['txtdantoc'] == null) {
         $errors['txtdantoc'] = 'Bạn chưa nhập dân tộc';
     } else {
-        $dt = $_POST['txtdantoc'];
+        $validatedData['txtdantoc'] = $data['txtdantoc'];
     }
-    if ($_POST['txtcha'] == null) {
+
+    // Validate Cha
+    if ($data['txtcha'] == null) {
         $errors['txtcha'] = 'Bạn chưa nhập tên cha';
     } else {
-        $cha = $_POST['txtcha'];
+        $validatedData['txtcha'] = $data['txtcha'];
     }
-    if ($_POST['txtme'] == null) {
+
+    // Validate Me
+    if ($data['txtme'] == null) {
         $errors['txtme'] = 'Bạn chưa nhập tên mẹ';
     } else {
-        $me = $_POST['txtme'];
+        $validatedData['txtme'] = $data['txtme'];
     }
-    if ($_POST['txtpasshs'] == null) {
+
+    // Validate Password
+    if ($data['txtpasshs'] == null) {
         $errors['txtpasshs'] = 'Bạn chưa nhập password';
     } else {
         $pass = "/^[a-zA-Z0-9]{6,}$/";
-        if (preg_match($pass, $_POST['txtpasshs'])) {
-            $p = md5($_POST['txtpasshs']);
+        if (preg_match($pass, $data['txtpasshs'])) {
+            $validatedData['txtpasshs'] = md5($data['txtpasshs']);
         } else {
             $errors['txtpasshs'] = 'Password không hợp lệ';
         }
     }
 
-    try {
-        if ($m && $malop && $t && $gt && $ns && $nois && $dt && $cha && $me && $p && empty($errors)) {
-            $hocsinh = $con->add($m, $malop, $t, $gt, $ns, $nois, $dt, $cha, $me, $p);
+    return array($validatedData, $errors);
+}
 
-                ?>
+function addStudent($data)
+{
+    $con = new hocsinh();
+    return $con->add(
+        $data['txtmahs'],
+        $data['malophoc'],
+        $data['txtten'],
+        $data['txtgt'],
+        $data['txtngs'],
+        $data['txtns'],
+        $data['txtdantoc'],
+        $data['txtcha'],
+        $data['txtme'],
+        $data['txtpasshs']
+    );
+}
+
+if (isset($_POST['ok'])) {
+    list($validatedData, $errors) = validateInput($_POST);
+
+    if (empty($errors)) {
+        try {
+            $hocsinh = addStudent($validatedData);
+            ?>
             <script type="text/javascript">
                 alert("Bạn Đã Thêm Sinh Viên Thành Công. Nhấn OK Để Tiếp Tục Thêm Sinh Viên!");
                 window.location = "add_hs.php";
             </script>
             <?php
             exit();
+        } catch (Exception $e) {
+            $errors[''] = "Mã sinh viên đã tồn tại";
         }
-    } catch (Exception $e) {
-        $errors[''] = "Mã sinh viên đã tồn tại";
-        exit();
     }
 }
 ?>

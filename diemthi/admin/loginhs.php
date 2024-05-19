@@ -1,62 +1,30 @@
 <?php
 session_start();
+//require '../classes/DB.class.php';
 require '../classes/DB.class.php';
+require 'fnct_loginhs.php';
+
 $connect = new DB();
 $con = $connect->connect();
 $uhs = $phs = "";
 $error = '';
+
 if (isset($_POST['hs'])) {
+	$uhs = $_POST['txtuserhs'] ?? '';
+	$phs = $_POST['txtpasshs'] ?? '';
 
-	if (empty($_POST['txtuserhs']) && empty($_POST['txtpasshs'])) {
+	if (empty($uhs) && empty($phs)) {
 		$error = 'Bạn chưa nhập username và password!';
+	} elseif (empty($uhs)) {
+		$error = 'Bạn chưa nhập username!';
+	} elseif (empty($phs)) {
+		$error = 'Bạn chưa nhập password!';
 	} else {
-
-
-
-		if ($_POST['txtuserhs'] == null) {
-			$error = 'Bạn chưa nhập username!';
-		} else {
-			$uhs = $_POST['txtuserhs'];
-
-		}
-		if ($_POST['txtpasshs'] == null) {
-			$error = 'Bạn chưa nhập password!';
-		} else {
-			$phs = $_POST['txtpasshs'];
-		}
-		if ($uhs && $phs) {
-
-			//require("../includes/config.php");
-
-
-			$query = "SELECT * FROM hocsinh WHERE MaHS='$uhs'";
-			$results = mysqli_query($con, $query);
-
-			if (!$results) {
-				$error = 'Lỗi truy vấn cơ sở dữ liệu.';
-			}
-			if (mysqli_num_rows($results) == 0) {
-				$error = 'Username không hợp lệ!';
-				//header("location: loginhs.php");
-				//	exit();
-			} else {
-				$data = mysqli_fetch_assoc($results);
-				$hashed_password = $data['passwordhs']; // Lấy mật khẩu đã được mã hóa từ cơ sở dữ liệu
-				if (md5($phs) == $hashed_password) { // So sánh mật khẩu đã mã hóa với mật khẩu đã nhập và mã hóa
-					$_SESSION['ses_MaHS'] = $data['MaHS'];
-					$_SESSION['ses_passwordhs'] = $hashed_password;
-					$error = 'Đăng nhập thành công!';
-					header("location: qlhs.php");
-					exit();
-				} else {
-					$error = 'Password không đúng!';
-				}
-			}
-		}
-
-		$dis = $con->close();
+		$error = handleLogin($con, $uhs, $phs);
 	}
+	$con->close();
 }
+
 // Hiển thị thông báo lỗi nếu có
 if (!empty($error)) {
 	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";

@@ -1,68 +1,74 @@
 <?php
 session_start();
 require "../classes/giaovien.class.php";
-$con = new giaovien();
-$ma = $_GET['cma'];
-$mamon = $t = $dc = $dt = $p = "";
-
-if (isset($_POST['ok'])) {
+//require "diemthi/classes/giaovien.class.php"; // for testing
+function validateInput($data)
+{
 	$errors = array();
-	if ($_POST['txtmamon'] == null) {
+	if ($data['txtmamon'] == null) {
 		$errors['txtmamon'] = 'Bạn Chưa Nhập Mã Môn học';
-
-	} else {
-		$mamon = $_POST['txtmamon'];
 	}
-	if ($_POST['txtten'] == null) {
+	if ($data['txtten'] == null) {
 		$errors['txtten'] = 'Bạn Chưa Nhập Vào Tên Giảng Viên';
-	} else {
-		$t = $_POST['txtten'];
 	}
-	if ($_POST['txtdiachi'] == null) {
+	if ($data['txtdiachi'] == null) {
 		$errors['txtdiachi'] = 'Bạn Chưa Nhập Vào Địa Chỉ';
-
-	} else {
-		$dc = $_POST['txtdiachi'];
 	}
-	if ($_POST['txtdienthoai'] == null) {
+	if ($data['txtdienthoai'] == null) {
 		$errors['txtdienthoai'] = 'Bạn Chưa Nhập Vào Số Điện Thoại';
-
-	} else {
-		$dt = $_POST['txtdienthoai'];
 	}
-	if ($_POST['txtpass'] == null) {
+	if ($data['txtpass'] == null) {
 		$errors['txtpass'] = 'Bạn chưa nhập mật khẩu khẩu';
-	} else {
-		$p = $_POST['txtpass'];
 	}
-	// Kiểm tra nếu không có lỗi thì tiến hành sửa giáo viên
-	if ($mamon && $t && $dc && $dt && $p) {
+	return $errors;
+}
+
+function updateGiaoVien($con, $ma, $data)
+{
+	$mamon = $data['txtmamon'];
+	$t = $data['txtten'];
+	$dc = $data['txtdiachi'];
+	$dt = $data['txtdienthoai'];
+	$p = $data['txtpass'];
+	$encryptedPassword = md5($p);
+	return $con->edit($ma, $mamon, $t, $dc, $dt, $encryptedPassword);
+}
+
+function handleFormSubmission($con, $ma)
+{
+	$errors = validateInput($_POST);
+	if (empty($errors)) {
 		try {
-			$encryptedPassword = md5($p);
-			$giaovien = $con->edit($ma, $mamon, $t, $dc, $dt, $encryptedPassword);
-			?>
-			<script type="text/javascript">
-				alert("Bạn Sửa Giảng Viên thành công!");
-				window.location = "index.php?mod=gv";
-			</script>
-			<?php
+			updateGiaoVien($con, $ma, $_POST);
+			echo "<script type='text/javascript'>
+                    alert('Bạn Sửa Giảng Viên thành công!');
+                    window.location = 'index.php?mod=gv';
+                  </script>";
 			exit();
 		} catch (Exception $e) {
 			$errors['txtmamon'] = 'Mã môn học không tồn tại';
 		}
 	}
-
-	//$dis=$con->dis();
+	return $errors;
 }
-// // Hiển thị thông báo lỗi nếu có
-// if (!empty($error)) {
-// 	echo "<div id='errors' style='color: red; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>$error</div>";
-// }
-?>
-<?php
-$row = $con->selectgv($ma);
+
+function getGiaoVien($con, $ma)
+{
+	return $con->selectgv($ma);
+}
+
+$con = new giaovien();
+$ma = $_GET['cma'];
+$errors = [];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['ok'])) {
+	$errors = handleFormSubmission($con, $ma);
+}
+
+$row = getGiaoVien($con, $ma);
 
 ?>
+
 <link rel="stylesheet" href="../assets/css/css/stylea.css">
 <center><img width="100%" height="160px" src="../assets/img/Ban.png"></center>
 <style>
