@@ -1,7 +1,7 @@
 MKhue:
 - Font-end web
 - Fixing back-end
-- Test by selenium
+- Testing Selenium, Codeception
 Hthanh:
 - Back-end
-- Testing PHPUnit
+- Testing Selenium, Codeception
